@@ -1,0 +1,1752 @@
+[
+  {
+    "template": "1",
+    "key": "acetaminophen",
+    "combo_hash": "acetaminophen::1"
+  },
+  {
+    "template": "2",
+    "key": "acetaminophen",
+    "combo_hash": "acetaminophen::2"
+  },
+  {
+    "template": "3",
+    "key": "acetaminophen",
+    "combo_hash": "acetaminophen::3"
+  },
+  {
+    "template": "4",
+    "key": "acetaminophen",
+    "combo_hash": "acetaminophen::4"
+  },
+  {
+    "template": "5",
+    "key": "acetaminophen",
+    "combo_hash": "acetaminophen::5"
+  },
+  {
+    "template": "1",
+    "key": "activated-charcoal",
+    "combo_hash": "activated-charcoal::1"
+  },
+  {
+    "template": "2",
+    "key": "activated-charcoal",
+    "combo_hash": "activated-charcoal::2"
+  },
+  {
+    "template": "3",
+    "key": "activated-charcoal",
+    "combo_hash": "activated-charcoal::3"
+  },
+  {
+    "template": "4",
+    "key": "activated-charcoal",
+    "combo_hash": "activated-charcoal::4"
+  },
+  {
+    "template": "5",
+    "key": "activated-charcoal",
+    "combo_hash": "activated-charcoal::5"
+  },
+  {
+    "template": "1",
+    "key": "adenosine",
+    "combo_hash": "adenosine::1"
+  },
+  {
+    "template": "2",
+    "key": "adenosine",
+    "combo_hash": "adenosine::2"
+  },
+  {
+    "template": "3",
+    "key": "adenosine",
+    "combo_hash": "adenosine::3"
+  },
+  {
+    "template": "4",
+    "key": "adenosine",
+    "combo_hash": "adenosine::4"
+  },
+  {
+    "template": "5",
+    "key": "adenosine",
+    "combo_hash": "adenosine::5"
+  },
+  {
+    "template": "1",
+    "key": "albuterol",
+    "combo_hash": "albuterol::1"
+  },
+  {
+    "template": "2",
+    "key": "albuterol",
+    "combo_hash": "albuterol::2"
+  },
+  {
+    "template": "3",
+    "key": "albuterol",
+    "combo_hash": "albuterol::3"
+  },
+  {
+    "template": "4",
+    "key": "albuterol",
+    "combo_hash": "albuterol::4"
+  },
+  {
+    "template": "5",
+    "key": "albuterol",
+    "combo_hash": "albuterol::5"
+  },
+  {
+    "template": "1",
+    "key": "amiodarone",
+    "combo_hash": "amiodarone::1"
+  },
+  {
+    "template": "2",
+    "key": "amiodarone",
+    "combo_hash": "amiodarone::2"
+  },
+  {
+    "template": "3",
+    "key": "amiodarone",
+    "combo_hash": "amiodarone::3"
+  },
+  {
+    "template": "4",
+    "key": "amiodarone",
+    "combo_hash": "amiodarone::4"
+  },
+  {
+    "template": "5",
+    "key": "amiodarone",
+    "combo_hash": "amiodarone::5"
+  },
+  {
+    "template": "1",
+    "key": "aspirin",
+    "combo_hash": "aspirin::1"
+  },
+  {
+    "template": "2",
+    "key": "aspirin",
+    "combo_hash": "aspirin::2"
+  },
+  {
+    "template": "3",
+    "key": "aspirin",
+    "combo_hash": "aspirin::3"
+  },
+  {
+    "template": "4",
+    "key": "aspirin",
+    "combo_hash": "aspirin::4"
+  },
+  {
+    "template": "5",
+    "key": "aspirin",
+    "combo_hash": "aspirin::5"
+  },
+  {
+    "template": "1",
+    "key": "atropine",
+    "combo_hash": "atropine::1"
+  },
+  {
+    "template": "2",
+    "key": "atropine",
+    "combo_hash": "atropine::2"
+  },
+  {
+    "template": "3",
+    "key": "atropine",
+    "combo_hash": "atropine::3"
+  },
+  {
+    "template": "4",
+    "key": "atropine",
+    "combo_hash": "atropine::4"
+  },
+  {
+    "template": "5",
+    "key": "atropine",
+    "combo_hash": "atropine::5"
+  },
+  {
+    "template": "1",
+    "key": "bumetanide",
+    "combo_hash": "bumetanide::1"
+  },
+  {
+    "template": "2",
+    "key": "bumetanide",
+    "combo_hash": "bumetanide::2"
+  },
+  {
+    "template": "3",
+    "key": "bumetanide",
+    "combo_hash": "bumetanide::3"
+  },
+  {
+    "template": "4",
+    "key": "bumetanide",
+    "combo_hash": "bumetanide::4"
+  },
+  {
+    "template": "5",
+    "key": "bumetanide",
+    "combo_hash": "bumetanide::5"
+  },
+  {
+    "template": "1",
+    "key": "calcium-chloride",
+    "combo_hash": "calcium-chloride::1"
+  },
+  {
+    "template": "2",
+    "key": "calcium-chloride",
+    "combo_hash": "calcium-chloride::2"
+  },
+  {
+    "template": "3",
+    "key": "calcium-chloride",
+    "combo_hash": "calcium-chloride::3"
+  },
+  {
+    "template": "4",
+    "key": "calcium-chloride",
+    "combo_hash": "calcium-chloride::4"
+  },
+  {
+    "template": "5",
+    "key": "calcium-chloride",
+    "combo_hash": "calcium-chloride::5"
+  },
+  {
+    "template": "1",
+    "key": "dexamethasone",
+    "combo_hash": "dexamethasone::1"
+  },
+  {
+    "template": "2",
+    "key": "dexamethasone",
+    "combo_hash": "dexamethasone::2"
+  },
+  {
+    "template": "3",
+    "key": "dexamethasone",
+    "combo_hash": "dexamethasone::3"
+  },
+  {
+    "template": "4",
+    "key": "dexamethasone",
+    "combo_hash": "dexamethasone::4"
+  },
+  {
+    "template": "5",
+    "key": "dexamethasone",
+    "combo_hash": "dexamethasone::5"
+  },
+  {
+    "template": "1",
+    "key": "dextrose",
+    "combo_hash": "dextrose::1"
+  },
+  {
+    "template": "2",
+    "key": "dextrose",
+    "combo_hash": "dextrose::2"
+  },
+  {
+    "template": "3",
+    "key": "dextrose",
+    "combo_hash": "dextrose::3"
+  },
+  {
+    "template": "4",
+    "key": "dextrose",
+    "combo_hash": "dextrose::4"
+  },
+  {
+    "template": "5",
+    "key": "dextrose",
+    "combo_hash": "dextrose::5"
+  },
+  {
+    "template": "1",
+    "key": "diazepam",
+    "combo_hash": "diazepam::1"
+  },
+  {
+    "template": "2",
+    "key": "diazepam",
+    "combo_hash": "diazepam::2"
+  },
+  {
+    "template": "3",
+    "key": "diazepam",
+    "combo_hash": "diazepam::3"
+  },
+  {
+    "template": "4",
+    "key": "diazepam",
+    "combo_hash": "diazepam::4"
+  },
+  {
+    "template": "5",
+    "key": "diazepam",
+    "combo_hash": "diazepam::5"
+  },
+  {
+    "template": "1",
+    "key": "diltiazem",
+    "combo_hash": "diltiazem::1"
+  },
+  {
+    "template": "2",
+    "key": "diltiazem",
+    "combo_hash": "diltiazem::2"
+  },
+  {
+    "template": "3",
+    "key": "diltiazem",
+    "combo_hash": "diltiazem::3"
+  },
+  {
+    "template": "4",
+    "key": "diltiazem",
+    "combo_hash": "diltiazem::4"
+  },
+  {
+    "template": "5",
+    "key": "diltiazem",
+    "combo_hash": "diltiazem::5"
+  },
+  {
+    "template": "1",
+    "key": "diphenhydramine",
+    "combo_hash": "diphenhydramine::1"
+  },
+  {
+    "template": "2",
+    "key": "diphenhydramine",
+    "combo_hash": "diphenhydramine::2"
+  },
+  {
+    "template": "3",
+    "key": "diphenhydramine",
+    "combo_hash": "diphenhydramine::3"
+  },
+  {
+    "template": "4",
+    "key": "diphenhydramine",
+    "combo_hash": "diphenhydramine::4"
+  },
+  {
+    "template": "5",
+    "key": "diphenhydramine",
+    "combo_hash": "diphenhydramine::5"
+  },
+  {
+    "template": "1",
+    "key": "dobutamine",
+    "combo_hash": "dobutamine::1"
+  },
+  {
+    "template": "2",
+    "key": "dobutamine",
+    "combo_hash": "dobutamine::2"
+  },
+  {
+    "template": "3",
+    "key": "dobutamine",
+    "combo_hash": "dobutamine::3"
+  },
+  {
+    "template": "4",
+    "key": "dobutamine",
+    "combo_hash": "dobutamine::4"
+  },
+  {
+    "template": "5",
+    "key": "dobutamine",
+    "combo_hash": "dobutamine::5"
+  },
+  {
+    "template": "1",
+    "key": "dopamine",
+    "combo_hash": "dopamine::1"
+  },
+  {
+    "template": "2",
+    "key": "dopamine",
+    "combo_hash": "dopamine::2"
+  },
+  {
+    "template": "3",
+    "key": "dopamine",
+    "combo_hash": "dopamine::3"
+  },
+  {
+    "template": "4",
+    "key": "dopamine",
+    "combo_hash": "dopamine::4"
+  },
+  {
+    "template": "5",
+    "key": "dopamine",
+    "combo_hash": "dopamine::5"
+  },
+  {
+    "template": "1",
+    "key": "droperidol",
+    "combo_hash": "droperidol::1"
+  },
+  {
+    "template": "2",
+    "key": "droperidol",
+    "combo_hash": "droperidol::2"
+  },
+  {
+    "template": "3",
+    "key": "droperidol",
+    "combo_hash": "droperidol::3"
+  },
+  {
+    "template": "4",
+    "key": "droperidol",
+    "combo_hash": "droperidol::4"
+  },
+  {
+    "template": "5",
+    "key": "droperidol",
+    "combo_hash": "droperidol::5"
+  },
+  {
+    "template": "1",
+    "key": "epinephrine",
+    "combo_hash": "epinephrine::1"
+  },
+  {
+    "template": "2",
+    "key": "epinephrine",
+    "combo_hash": "epinephrine::2"
+  },
+  {
+    "template": "3",
+    "key": "epinephrine",
+    "combo_hash": "epinephrine::3"
+  },
+  {
+    "template": "4",
+    "key": "epinephrine",
+    "combo_hash": "epinephrine::4"
+  },
+  {
+    "template": "5",
+    "key": "epinephrine",
+    "combo_hash": "epinephrine::5"
+  },
+  {
+    "template": "1",
+    "key": "etomidate",
+    "combo_hash": "etomidate::1"
+  },
+  {
+    "template": "2",
+    "key": "etomidate",
+    "combo_hash": "etomidate::2"
+  },
+  {
+    "template": "3",
+    "key": "etomidate",
+    "combo_hash": "etomidate::3"
+  },
+  {
+    "template": "4",
+    "key": "etomidate",
+    "combo_hash": "etomidate::4"
+  },
+  {
+    "template": "5",
+    "key": "etomidate",
+    "combo_hash": "etomidate::5"
+  },
+  {
+    "template": "1",
+    "key": "famotidine",
+    "combo_hash": "famotidine::1"
+  },
+  {
+    "template": "2",
+    "key": "famotidine",
+    "combo_hash": "famotidine::2"
+  },
+  {
+    "template": "3",
+    "key": "famotidine",
+    "combo_hash": "famotidine::3"
+  },
+  {
+    "template": "4",
+    "key": "famotidine",
+    "combo_hash": "famotidine::4"
+  },
+  {
+    "template": "5",
+    "key": "famotidine",
+    "combo_hash": "famotidine::5"
+  },
+  {
+    "template": "1",
+    "key": "fentanyl",
+    "combo_hash": "fentanyl::1"
+  },
+  {
+    "template": "2",
+    "key": "fentanyl",
+    "combo_hash": "fentanyl::2"
+  },
+  {
+    "template": "3",
+    "key": "fentanyl",
+    "combo_hash": "fentanyl::3"
+  },
+  {
+    "template": "4",
+    "key": "fentanyl",
+    "combo_hash": "fentanyl::4"
+  },
+  {
+    "template": "5",
+    "key": "fentanyl",
+    "combo_hash": "fentanyl::5"
+  },
+  {
+    "template": "1",
+    "key": "flumazenil",
+    "combo_hash": "flumazenil::1"
+  },
+  {
+    "template": "2",
+    "key": "flumazenil",
+    "combo_hash": "flumazenil::2"
+  },
+  {
+    "template": "3",
+    "key": "flumazenil",
+    "combo_hash": "flumazenil::3"
+  },
+  {
+    "template": "4",
+    "key": "flumazenil",
+    "combo_hash": "flumazenil::4"
+  },
+  {
+    "template": "5",
+    "key": "flumazenil",
+    "combo_hash": "flumazenil::5"
+  },
+  {
+    "template": "1",
+    "key": "furosemide",
+    "combo_hash": "furosemide::1"
+  },
+  {
+    "template": "2",
+    "key": "furosemide",
+    "combo_hash": "furosemide::2"
+  },
+  {
+    "template": "3",
+    "key": "furosemide",
+    "combo_hash": "furosemide::3"
+  },
+  {
+    "template": "4",
+    "key": "furosemide",
+    "combo_hash": "furosemide::4"
+  },
+  {
+    "template": "5",
+    "key": "furosemide",
+    "combo_hash": "furosemide::5"
+  },
+  {
+    "template": "1",
+    "key": "glucagon",
+    "combo_hash": "glucagon::1"
+  },
+  {
+    "template": "2",
+    "key": "glucagon",
+    "combo_hash": "glucagon::2"
+  },
+  {
+    "template": "3",
+    "key": "glucagon",
+    "combo_hash": "glucagon::3"
+  },
+  {
+    "template": "4",
+    "key": "glucagon",
+    "combo_hash": "glucagon::4"
+  },
+  {
+    "template": "5",
+    "key": "glucagon",
+    "combo_hash": "glucagon::5"
+  },
+  {
+    "template": "1",
+    "key": "haloperidol",
+    "combo_hash": "haloperidol::1"
+  },
+  {
+    "template": "2",
+    "key": "haloperidol",
+    "combo_hash": "haloperidol::2"
+  },
+  {
+    "template": "3",
+    "key": "haloperidol",
+    "combo_hash": "haloperidol::3"
+  },
+  {
+    "template": "4",
+    "key": "haloperidol",
+    "combo_hash": "haloperidol::4"
+  },
+  {
+    "template": "5",
+    "key": "haloperidol",
+    "combo_hash": "haloperidol::5"
+  },
+  {
+    "template": "1",
+    "key": "hydralazine",
+    "combo_hash": "hydralazine::1"
+  },
+  {
+    "template": "2",
+    "key": "hydralazine",
+    "combo_hash": "hydralazine::2"
+  },
+  {
+    "template": "3",
+    "key": "hydralazine",
+    "combo_hash": "hydralazine::3"
+  },
+  {
+    "template": "4",
+    "key": "hydralazine",
+    "combo_hash": "hydralazine::4"
+  },
+  {
+    "template": "5",
+    "key": "hydralazine",
+    "combo_hash": "hydralazine::5"
+  },
+  {
+    "template": "1",
+    "key": "hydromorphone",
+    "combo_hash": "hydromorphone::1"
+  },
+  {
+    "template": "2",
+    "key": "hydromorphone",
+    "combo_hash": "hydromorphone::2"
+  },
+  {
+    "template": "3",
+    "key": "hydromorphone",
+    "combo_hash": "hydromorphone::3"
+  },
+  {
+    "template": "4",
+    "key": "hydromorphone",
+    "combo_hash": "hydromorphone::4"
+  },
+  {
+    "template": "5",
+    "key": "hydromorphone",
+    "combo_hash": "hydromorphone::5"
+  },
+  {
+    "template": "1",
+    "key": "hydroxocobalamin",
+    "combo_hash": "hydroxocobalamin::1"
+  },
+  {
+    "template": "2",
+    "key": "hydroxocobalamin",
+    "combo_hash": "hydroxocobalamin::2"
+  },
+  {
+    "template": "3",
+    "key": "hydroxocobalamin",
+    "combo_hash": "hydroxocobalamin::3"
+  },
+  {
+    "template": "4",
+    "key": "hydroxocobalamin",
+    "combo_hash": "hydroxocobalamin::4"
+  },
+  {
+    "template": "5",
+    "key": "hydroxocobalamin",
+    "combo_hash": "hydroxocobalamin::5"
+  },
+  {
+    "template": "1",
+    "key": "hydroxyzine",
+    "combo_hash": "hydroxyzine::1"
+  },
+  {
+    "template": "2",
+    "key": "hydroxyzine",
+    "combo_hash": "hydroxyzine::2"
+  },
+  {
+    "template": "3",
+    "key": "hydroxyzine",
+    "combo_hash": "hydroxyzine::3"
+  },
+  {
+    "template": "4",
+    "key": "hydroxyzine",
+    "combo_hash": "hydroxyzine::4"
+  },
+  {
+    "template": "5",
+    "key": "hydroxyzine",
+    "combo_hash": "hydroxyzine::5"
+  },
+  {
+    "template": "1",
+    "key": "ipratropium",
+    "combo_hash": "ipratropium::1"
+  },
+  {
+    "template": "2",
+    "key": "ipratropium",
+    "combo_hash": "ipratropium::2"
+  },
+  {
+    "template": "3",
+    "key": "ipratropium",
+    "combo_hash": "ipratropium::3"
+  },
+  {
+    "template": "4",
+    "key": "ipratropium",
+    "combo_hash": "ipratropium::4"
+  },
+  {
+    "template": "5",
+    "key": "ipratropium",
+    "combo_hash": "ipratropium::5"
+  },
+  {
+    "template": "1",
+    "key": "ketamine",
+    "combo_hash": "ketamine::1"
+  },
+  {
+    "template": "2",
+    "key": "ketamine",
+    "combo_hash": "ketamine::2"
+  },
+  {
+    "template": "3",
+    "key": "ketamine",
+    "combo_hash": "ketamine::3"
+  },
+  {
+    "template": "4",
+    "key": "ketamine",
+    "combo_hash": "ketamine::4"
+  },
+  {
+    "template": "5",
+    "key": "ketamine",
+    "combo_hash": "ketamine::5"
+  },
+  {
+    "template": "1",
+    "key": "ketorolac",
+    "combo_hash": "ketorolac::1"
+  },
+  {
+    "template": "2",
+    "key": "ketorolac",
+    "combo_hash": "ketorolac::2"
+  },
+  {
+    "template": "3",
+    "key": "ketorolac",
+    "combo_hash": "ketorolac::3"
+  },
+  {
+    "template": "4",
+    "key": "ketorolac",
+    "combo_hash": "ketorolac::4"
+  },
+  {
+    "template": "5",
+    "key": "ketorolac",
+    "combo_hash": "ketorolac::5"
+  },
+  {
+    "template": "1",
+    "key": "labetalol",
+    "combo_hash": "labetalol::1"
+  },
+  {
+    "template": "2",
+    "key": "labetalol",
+    "combo_hash": "labetalol::2"
+  },
+  {
+    "template": "3",
+    "key": "labetalol",
+    "combo_hash": "labetalol::3"
+  },
+  {
+    "template": "4",
+    "key": "labetalol",
+    "combo_hash": "labetalol::4"
+  },
+  {
+    "template": "5",
+    "key": "labetalol",
+    "combo_hash": "labetalol::5"
+  },
+  {
+    "template": "1",
+    "key": "lactated-ringers",
+    "combo_hash": "lactated-ringers::1"
+  },
+  {
+    "template": "2",
+    "key": "lactated-ringers",
+    "combo_hash": "lactated-ringers::2"
+  },
+  {
+    "template": "3",
+    "key": "lactated-ringers",
+    "combo_hash": "lactated-ringers::3"
+  },
+  {
+    "template": "4",
+    "key": "lactated-ringers",
+    "combo_hash": "lactated-ringers::4"
+  },
+  {
+    "template": "5",
+    "key": "lactated-ringers",
+    "combo_hash": "lactated-ringers::5"
+  },
+  {
+    "template": "1",
+    "key": "levalbuterol",
+    "combo_hash": "levalbuterol::1"
+  },
+  {
+    "template": "2",
+    "key": "levalbuterol",
+    "combo_hash": "levalbuterol::2"
+  },
+  {
+    "template": "3",
+    "key": "levalbuterol",
+    "combo_hash": "levalbuterol::3"
+  },
+  {
+    "template": "4",
+    "key": "levalbuterol",
+    "combo_hash": "levalbuterol::4"
+  },
+  {
+    "template": "5",
+    "key": "levalbuterol",
+    "combo_hash": "levalbuterol::5"
+  },
+  {
+    "template": "1",
+    "key": "lidocaine",
+    "combo_hash": "lidocaine::1"
+  },
+  {
+    "template": "2",
+    "key": "lidocaine",
+    "combo_hash": "lidocaine::2"
+  },
+  {
+    "template": "3",
+    "key": "lidocaine",
+    "combo_hash": "lidocaine::3"
+  },
+  {
+    "template": "4",
+    "key": "lidocaine",
+    "combo_hash": "lidocaine::4"
+  },
+  {
+    "template": "5",
+    "key": "lidocaine",
+    "combo_hash": "lidocaine::5"
+  },
+  {
+    "template": "1",
+    "key": "lorazepam",
+    "combo_hash": "lorazepam::1"
+  },
+  {
+    "template": "2",
+    "key": "lorazepam",
+    "combo_hash": "lorazepam::2"
+  },
+  {
+    "template": "3",
+    "key": "lorazepam",
+    "combo_hash": "lorazepam::3"
+  },
+  {
+    "template": "4",
+    "key": "lorazepam",
+    "combo_hash": "lorazepam::4"
+  },
+  {
+    "template": "5",
+    "key": "lorazepam",
+    "combo_hash": "lorazepam::5"
+  },
+  {
+    "template": "1",
+    "key": "magnesium-sulfate",
+    "combo_hash": "magnesium-sulfate::1"
+  },
+  {
+    "template": "2",
+    "key": "magnesium-sulfate",
+    "combo_hash": "magnesium-sulfate::2"
+  },
+  {
+    "template": "3",
+    "key": "magnesium-sulfate",
+    "combo_hash": "magnesium-sulfate::3"
+  },
+  {
+    "template": "4",
+    "key": "magnesium-sulfate",
+    "combo_hash": "magnesium-sulfate::4"
+  },
+  {
+    "template": "5",
+    "key": "magnesium-sulfate",
+    "combo_hash": "magnesium-sulfate::5"
+  },
+  {
+    "template": "1",
+    "key": "meperidine",
+    "combo_hash": "meperidine::1"
+  },
+  {
+    "template": "2",
+    "key": "meperidine",
+    "combo_hash": "meperidine::2"
+  },
+  {
+    "template": "3",
+    "key": "meperidine",
+    "combo_hash": "meperidine::3"
+  },
+  {
+    "template": "4",
+    "key": "meperidine",
+    "combo_hash": "meperidine::4"
+  },
+  {
+    "template": "5",
+    "key": "meperidine",
+    "combo_hash": "meperidine::5"
+  },
+  {
+    "template": "1",
+    "key": "methylprednisolone",
+    "combo_hash": "methylprednisolone::1"
+  },
+  {
+    "template": "2",
+    "key": "methylprednisolone",
+    "combo_hash": "methylprednisolone::2"
+  },
+  {
+    "template": "3",
+    "key": "methylprednisolone",
+    "combo_hash": "methylprednisolone::3"
+  },
+  {
+    "template": "4",
+    "key": "methylprednisolone",
+    "combo_hash": "methylprednisolone::4"
+  },
+  {
+    "template": "5",
+    "key": "methylprednisolone",
+    "combo_hash": "methylprednisolone::5"
+  },
+  {
+    "template": "1",
+    "key": "metoprolol",
+    "combo_hash": "metoprolol::1"
+  },
+  {
+    "template": "2",
+    "key": "metoprolol",
+    "combo_hash": "metoprolol::2"
+  },
+  {
+    "template": "3",
+    "key": "metoprolol",
+    "combo_hash": "metoprolol::3"
+  },
+  {
+    "template": "4",
+    "key": "metoprolol",
+    "combo_hash": "metoprolol::4"
+  },
+  {
+    "template": "5",
+    "key": "metoprolol",
+    "combo_hash": "metoprolol::5"
+  },
+  {
+    "template": "1",
+    "key": "midazolam",
+    "combo_hash": "midazolam::1"
+  },
+  {
+    "template": "2",
+    "key": "midazolam",
+    "combo_hash": "midazolam::2"
+  },
+  {
+    "template": "3",
+    "key": "midazolam",
+    "combo_hash": "midazolam::3"
+  },
+  {
+    "template": "4",
+    "key": "midazolam",
+    "combo_hash": "midazolam::4"
+  },
+  {
+    "template": "5",
+    "key": "midazolam",
+    "combo_hash": "midazolam::5"
+  },
+  {
+    "template": "1",
+    "key": "morphine-sulfate",
+    "combo_hash": "morphine-sulfate::1"
+  },
+  {
+    "template": "2",
+    "key": "morphine-sulfate",
+    "combo_hash": "morphine-sulfate::2"
+  },
+  {
+    "template": "3",
+    "key": "morphine-sulfate",
+    "combo_hash": "morphine-sulfate::3"
+  },
+  {
+    "template": "4",
+    "key": "morphine-sulfate",
+    "combo_hash": "morphine-sulfate::4"
+  },
+  {
+    "template": "5",
+    "key": "morphine-sulfate",
+    "combo_hash": "morphine-sulfate::5"
+  },
+  {
+    "template": "1",
+    "key": "naloxone",
+    "combo_hash": "naloxone::1"
+  },
+  {
+    "template": "2",
+    "key": "naloxone",
+    "combo_hash": "naloxone::2"
+  },
+  {
+    "template": "3",
+    "key": "naloxone",
+    "combo_hash": "naloxone::3"
+  },
+  {
+    "template": "4",
+    "key": "naloxone",
+    "combo_hash": "naloxone::4"
+  },
+  {
+    "template": "5",
+    "key": "naloxone",
+    "combo_hash": "naloxone::5"
+  },
+  {
+    "template": "1",
+    "key": "nicardipine",
+    "combo_hash": "nicardipine::1"
+  },
+  {
+    "template": "2",
+    "key": "nicardipine",
+    "combo_hash": "nicardipine::2"
+  },
+  {
+    "template": "3",
+    "key": "nicardipine",
+    "combo_hash": "nicardipine::3"
+  },
+  {
+    "template": "4",
+    "key": "nicardipine",
+    "combo_hash": "nicardipine::4"
+  },
+  {
+    "template": "5",
+    "key": "nicardipine",
+    "combo_hash": "nicardipine::5"
+  },
+  {
+    "template": "1",
+    "key": "nitroglycerin",
+    "combo_hash": "nitroglycerin::1"
+  },
+  {
+    "template": "2",
+    "key": "nitroglycerin",
+    "combo_hash": "nitroglycerin::2"
+  },
+  {
+    "template": "3",
+    "key": "nitroglycerin",
+    "combo_hash": "nitroglycerin::3"
+  },
+  {
+    "template": "4",
+    "key": "nitroglycerin",
+    "combo_hash": "nitroglycerin::4"
+  },
+  {
+    "template": "5",
+    "key": "nitroglycerin",
+    "combo_hash": "nitroglycerin::5"
+  },
+  {
+    "template": "1",
+    "key": "nitrous-oxide",
+    "combo_hash": "nitrous-oxide::1"
+  },
+  {
+    "template": "2",
+    "key": "nitrous-oxide",
+    "combo_hash": "nitrous-oxide::2"
+  },
+  {
+    "template": "3",
+    "key": "nitrous-oxide",
+    "combo_hash": "nitrous-oxide::3"
+  },
+  {
+    "template": "4",
+    "key": "nitrous-oxide",
+    "combo_hash": "nitrous-oxide::4"
+  },
+  {
+    "template": "5",
+    "key": "nitrous-oxide",
+    "combo_hash": "nitrous-oxide::5"
+  },
+  {
+    "template": "1",
+    "key": "norepinephrine",
+    "combo_hash": "norepinephrine::1"
+  },
+  {
+    "template": "2",
+    "key": "norepinephrine",
+    "combo_hash": "norepinephrine::2"
+  },
+  {
+    "template": "3",
+    "key": "norepinephrine",
+    "combo_hash": "norepinephrine::3"
+  },
+  {
+    "template": "4",
+    "key": "norepinephrine",
+    "combo_hash": "norepinephrine::4"
+  },
+  {
+    "template": "5",
+    "key": "norepinephrine",
+    "combo_hash": "norepinephrine::5"
+  },
+  {
+    "template": "1",
+    "key": "normal-saline",
+    "combo_hash": "normal-saline::1"
+  },
+  {
+    "template": "2",
+    "key": "normal-saline",
+    "combo_hash": "normal-saline::2"
+  },
+  {
+    "template": "3",
+    "key": "normal-saline",
+    "combo_hash": "normal-saline::3"
+  },
+  {
+    "template": "4",
+    "key": "normal-saline",
+    "combo_hash": "normal-saline::4"
+  },
+  {
+    "template": "5",
+    "key": "normal-saline",
+    "combo_hash": "normal-saline::5"
+  },
+  {
+    "template": "1",
+    "key": "ondansetron",
+    "combo_hash": "ondansetron::1"
+  },
+  {
+    "template": "2",
+    "key": "ondansetron",
+    "combo_hash": "ondansetron::2"
+  },
+  {
+    "template": "3",
+    "key": "ondansetron",
+    "combo_hash": "ondansetron::3"
+  },
+  {
+    "template": "4",
+    "key": "ondansetron",
+    "combo_hash": "ondansetron::4"
+  },
+  {
+    "template": "5",
+    "key": "ondansetron",
+    "combo_hash": "ondansetron::5"
+  },
+  {
+    "template": "1",
+    "key": "oral-glucose",
+    "combo_hash": "oral-glucose::1"
+  },
+  {
+    "template": "2",
+    "key": "oral-glucose",
+    "combo_hash": "oral-glucose::2"
+  },
+  {
+    "template": "3",
+    "key": "oral-glucose",
+    "combo_hash": "oral-glucose::3"
+  },
+  {
+    "template": "4",
+    "key": "oral-glucose",
+    "combo_hash": "oral-glucose::4"
+  },
+  {
+    "template": "5",
+    "key": "oral-glucose",
+    "combo_hash": "oral-glucose::5"
+  },
+  {
+    "template": "1",
+    "key": "oxygen",
+    "combo_hash": "oxygen::1"
+  },
+  {
+    "template": "2",
+    "key": "oxygen",
+    "combo_hash": "oxygen::2"
+  },
+  {
+    "template": "3",
+    "key": "oxygen",
+    "combo_hash": "oxygen::3"
+  },
+  {
+    "template": "4",
+    "key": "oxygen",
+    "combo_hash": "oxygen::4"
+  },
+  {
+    "template": "5",
+    "key": "oxygen",
+    "combo_hash": "oxygen::5"
+  },
+  {
+    "template": "1",
+    "key": "oxytocin",
+    "combo_hash": "oxytocin::1"
+  },
+  {
+    "template": "2",
+    "key": "oxytocin",
+    "combo_hash": "oxytocin::2"
+  },
+  {
+    "template": "3",
+    "key": "oxytocin",
+    "combo_hash": "oxytocin::3"
+  },
+  {
+    "template": "4",
+    "key": "oxytocin",
+    "combo_hash": "oxytocin::4"
+  },
+  {
+    "template": "5",
+    "key": "oxytocin",
+    "combo_hash": "oxytocin::5"
+  },
+  {
+    "template": "1",
+    "key": "potassium-chloride",
+    "combo_hash": "potassium-chloride::1"
+  },
+  {
+    "template": "2",
+    "key": "potassium-chloride",
+    "combo_hash": "potassium-chloride::2"
+  },
+  {
+    "template": "3",
+    "key": "potassium-chloride",
+    "combo_hash": "potassium-chloride::3"
+  },
+  {
+    "template": "4",
+    "key": "potassium-chloride",
+    "combo_hash": "potassium-chloride::4"
+  },
+  {
+    "template": "5",
+    "key": "potassium-chloride",
+    "combo_hash": "potassium-chloride::5"
+  },
+  {
+    "template": "1",
+    "key": "pralidoxime",
+    "combo_hash": "pralidoxime::1"
+  },
+  {
+    "template": "2",
+    "key": "pralidoxime",
+    "combo_hash": "pralidoxime::2"
+  },
+  {
+    "template": "3",
+    "key": "pralidoxime",
+    "combo_hash": "pralidoxime::3"
+  },
+  {
+    "template": "4",
+    "key": "pralidoxime",
+    "combo_hash": "pralidoxime::4"
+  },
+  {
+    "template": "5",
+    "key": "pralidoxime",
+    "combo_hash": "pralidoxime::5"
+  },
+  {
+    "template": "1",
+    "key": "procainamide",
+    "combo_hash": "procainamide::1"
+  },
+  {
+    "template": "2",
+    "key": "procainamide",
+    "combo_hash": "procainamide::2"
+  },
+  {
+    "template": "3",
+    "key": "procainamide",
+    "combo_hash": "procainamide::3"
+  },
+  {
+    "template": "4",
+    "key": "procainamide",
+    "combo_hash": "procainamide::4"
+  },
+  {
+    "template": "5",
+    "key": "procainamide",
+    "combo_hash": "procainamide::5"
+  },
+  {
+    "template": "1",
+    "key": "promethazine",
+    "combo_hash": "promethazine::1"
+  },
+  {
+    "template": "2",
+    "key": "promethazine",
+    "combo_hash": "promethazine::2"
+  },
+  {
+    "template": "3",
+    "key": "promethazine",
+    "combo_hash": "promethazine::3"
+  },
+  {
+    "template": "4",
+    "key": "promethazine",
+    "combo_hash": "promethazine::4"
+  },
+  {
+    "template": "5",
+    "key": "promethazine",
+    "combo_hash": "promethazine::5"
+  },
+  {
+    "template": "1",
+    "key": "propofol",
+    "combo_hash": "propofol::1"
+  },
+  {
+    "template": "2",
+    "key": "propofol",
+    "combo_hash": "propofol::2"
+  },
+  {
+    "template": "3",
+    "key": "propofol",
+    "combo_hash": "propofol::3"
+  },
+  {
+    "template": "4",
+    "key": "propofol",
+    "combo_hash": "propofol::4"
+  },
+  {
+    "template": "5",
+    "key": "propofol",
+    "combo_hash": "propofol::5"
+  },
+  {
+    "template": "1",
+    "key": "propranolol",
+    "combo_hash": "propranolol::1"
+  },
+  {
+    "template": "2",
+    "key": "propranolol",
+    "combo_hash": "propranolol::2"
+  },
+  {
+    "template": "3",
+    "key": "propranolol",
+    "combo_hash": "propranolol::3"
+  },
+  {
+    "template": "4",
+    "key": "propranolol",
+    "combo_hash": "propranolol::4"
+  },
+  {
+    "template": "5",
+    "key": "propranolol",
+    "combo_hash": "propranolol::5"
+  },
+  {
+    "template": "1",
+    "key": "protamine-sulfate",
+    "combo_hash": "protamine-sulfate::1"
+  },
+  {
+    "template": "2",
+    "key": "protamine-sulfate",
+    "combo_hash": "protamine-sulfate::2"
+  },
+  {
+    "template": "3",
+    "key": "protamine-sulfate",
+    "combo_hash": "protamine-sulfate::3"
+  },
+  {
+    "template": "4",
+    "key": "protamine-sulfate",
+    "combo_hash": "protamine-sulfate::4"
+  },
+  {
+    "template": "5",
+    "key": "protamine-sulfate",
+    "combo_hash": "protamine-sulfate::5"
+  },
+  {
+    "template": "1",
+    "key": "racemic-epinephrine",
+    "combo_hash": "racemic-epinephrine::1"
+  },
+  {
+    "template": "2",
+    "key": "racemic-epinephrine",
+    "combo_hash": "racemic-epinephrine::2"
+  },
+  {
+    "template": "3",
+    "key": "racemic-epinephrine",
+    "combo_hash": "racemic-epinephrine::3"
+  },
+  {
+    "template": "4",
+    "key": "racemic-epinephrine",
+    "combo_hash": "racemic-epinephrine::4"
+  },
+  {
+    "template": "5",
+    "key": "racemic-epinephrine",
+    "combo_hash": "racemic-epinephrine::5"
+  },
+  {
+    "template": "1",
+    "key": "rocuronium",
+    "combo_hash": "rocuronium::1"
+  },
+  {
+    "template": "2",
+    "key": "rocuronium",
+    "combo_hash": "rocuronium::2"
+  },
+  {
+    "template": "3",
+    "key": "rocuronium",
+    "combo_hash": "rocuronium::3"
+  },
+  {
+    "template": "4",
+    "key": "rocuronium",
+    "combo_hash": "rocuronium::4"
+  },
+  {
+    "template": "5",
+    "key": "rocuronium",
+    "combo_hash": "rocuronium::5"
+  },
+  {
+    "template": "1",
+    "key": "sodium-bicarbonate",
+    "combo_hash": "sodium-bicarbonate::1"
+  },
+  {
+    "template": "2",
+    "key": "sodium-bicarbonate",
+    "combo_hash": "sodium-bicarbonate::2"
+  },
+  {
+    "template": "3",
+    "key": "sodium-bicarbonate",
+    "combo_hash": "sodium-bicarbonate::3"
+  },
+  {
+    "template": "4",
+    "key": "sodium-bicarbonate",
+    "combo_hash": "sodium-bicarbonate::4"
+  },
+  {
+    "template": "5",
+    "key": "sodium-bicarbonate",
+    "combo_hash": "sodium-bicarbonate::5"
+  },
+  {
+    "template": "1",
+    "key": "succinylcholine",
+    "combo_hash": "succinylcholine::1"
+  },
+  {
+    "template": "2",
+    "key": "succinylcholine",
+    "combo_hash": "succinylcholine::2"
+  },
+  {
+    "template": "3",
+    "key": "succinylcholine",
+    "combo_hash": "succinylcholine::3"
+  },
+  {
+    "template": "4",
+    "key": "succinylcholine",
+    "combo_hash": "succinylcholine::4"
+  },
+  {
+    "template": "5",
+    "key": "succinylcholine",
+    "combo_hash": "succinylcholine::5"
+  },
+  {
+    "template": "1",
+    "key": "terbutaline",
+    "combo_hash": "terbutaline::1"
+  },
+  {
+    "template": "2",
+    "key": "terbutaline",
+    "combo_hash": "terbutaline::2"
+  },
+  {
+    "template": "3",
+    "key": "terbutaline",
+    "combo_hash": "terbutaline::3"
+  },
+  {
+    "template": "4",
+    "key": "terbutaline",
+    "combo_hash": "terbutaline::4"
+  },
+  {
+    "template": "5",
+    "key": "terbutaline",
+    "combo_hash": "terbutaline::5"
+  },
+  {
+    "template": "1",
+    "key": "thiamine",
+    "combo_hash": "thiamine::1"
+  },
+  {
+    "template": "2",
+    "key": "thiamine",
+    "combo_hash": "thiamine::2"
+  },
+  {
+    "template": "3",
+    "key": "thiamine",
+    "combo_hash": "thiamine::3"
+  },
+  {
+    "template": "4",
+    "key": "thiamine",
+    "combo_hash": "thiamine::4"
+  },
+  {
+    "template": "5",
+    "key": "thiamine",
+    "combo_hash": "thiamine::5"
+  },
+  {
+    "template": "1",
+    "key": "tranexamic-acid",
+    "combo_hash": "tranexamic-acid::1"
+  },
+  {
+    "template": "2",
+    "key": "tranexamic-acid",
+    "combo_hash": "tranexamic-acid::2"
+  },
+  {
+    "template": "3",
+    "key": "tranexamic-acid",
+    "combo_hash": "tranexamic-acid::3"
+  },
+  {
+    "template": "4",
+    "key": "tranexamic-acid",
+    "combo_hash": "tranexamic-acid::4"
+  },
+  {
+    "template": "5",
+    "key": "tranexamic-acid",
+    "combo_hash": "tranexamic-acid::5"
+  },
+  {
+    "template": "1",
+    "key": "vasopressin",
+    "combo_hash": "vasopressin::1"
+  },
+  {
+    "template": "2",
+    "key": "vasopressin",
+    "combo_hash": "vasopressin::2"
+  },
+  {
+    "template": "3",
+    "key": "vasopressin",
+    "combo_hash": "vasopressin::3"
+  },
+  {
+    "template": "4",
+    "key": "vasopressin",
+    "combo_hash": "vasopressin::4"
+  },
+  {
+    "template": "5",
+    "key": "vasopressin",
+    "combo_hash": "vasopressin::5"
+  },
+  {
+    "template": "1",
+    "key": "vecuronium",
+    "combo_hash": "vecuronium::1"
+  },
+  {
+    "template": "2",
+    "key": "vecuronium",
+    "combo_hash": "vecuronium::2"
+  },
+  {
+    "template": "3",
+    "key": "vecuronium",
+    "combo_hash": "vecuronium::3"
+  },
+  {
+    "template": "4",
+    "key": "vecuronium",
+    "combo_hash": "vecuronium::4"
+  },
+  {
+    "template": "5",
+    "key": "vecuronium",
+    "combo_hash": "vecuronium::5"
+  },
+  {
+    "template": "1",
+    "key": "verapamil",
+    "combo_hash": "verapamil::1"
+  },
+  {
+    "template": "2",
+    "key": "verapamil",
+    "combo_hash": "verapamil::2"
+  },
+  {
+    "template": "3",
+    "key": "verapamil",
+    "combo_hash": "verapamil::3"
+  },
+  {
+    "template": "4",
+    "key": "verapamil",
+    "combo_hash": "verapamil::4"
+  },
+  {
+    "template": "5",
+    "key": "verapamil",
+    "combo_hash": "verapamil::5"
+  }
+]
