@@ -17,7 +17,7 @@ You are setting up a new carousel run. This skill handles everything before crea
 Run the combo selector:
 
 ```
-node /data/.openclaw/workspace/skills/carousel-master/references/carousel_next.js
+node /data/.openclaw/workspace/skills/carousel-init/references/carousel_next.js
 ```
 
 Parse the JSON output from stdout:

@@ -20,12 +20,12 @@ Follow every step below in exact order. Do not skip steps. Do not improvise.
 
 ## File Locations
 
-### Pipeline config (in this skill folder)
+### Pipeline config (owned by carousel-init)
 
 | File | Path | Purpose |
 |------|------|---------|
-| Combo selector | `skills/carousel-master/references/carousel_next.js` | Node script that picks the next drug×template combo. |
-| Combo list | `skills/carousel-master/references/carousel_combos.json` | Pre-generated array of all valid drug×template combos. Regenerate when drugs are added or removed. |
+| Combo selector | `skills/carousel-init/references/carousel_next.js` | Node script that picks the next drug×template combo. |
+| Combo list | `skills/carousel-init/references/carousel_combos.json` | Pre-generated array of all valid drug×template combos. Regenerate when drugs are added or removed. |
 
 ### External reference data (owned by subskills)
 
