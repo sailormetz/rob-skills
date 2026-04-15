@@ -35,14 +35,14 @@ Structure:
 When Sailor sends a message starting with `P` followed by one or more numbers (case-insensitive):
 
 - Single set: `P13`
-- Multiple sets: `P13, 13, 12` or `P13,13,12` or `P13 13 12`
+- Multiple sets: `P13, 5, 4` or `P13,5,4` or `P13 5 4`
 
-Parse all numbers from the message. The `P` prefix applies to the whole message, not just the first number.
+Parse all numbers from the message. The `P` prefix applies to the whole message, not just the first number. Each number is a **separate set** — append each individually to `entries[]`. Example: `P13, 5, 4` adds three entries `[13, 5, 4]`, not one entry of 22. This handles batched logging when Sailor forgets to log sets individually.
 
 1. Read `pushups.json` (create it with `{ "setGoal": 13, "dailyGoal": 100, "days": {} }` if it doesn't exist)
 2. Get today's date in `YYYY-MM-DD` format (CT timezone — use system date)
 3. If today's entry doesn't exist in `days`, create it with `dailyGoal` and `setGoal` stamped from top-level values
-4. Add all parsed numbers to `entries[]` and update `total` accordingly
+4. Append each parsed number individually to `entries[]` and add their sum to `total`
 5. Write the file back
 6. Reply: `✅ +[sum] = [total]/[dailyGoal], Goal: [setGoal]`
    - If total >= dailyGoal: `✅ +[sum] = [total]/[dailyGoal], Goal: [setGoal] 💪`
