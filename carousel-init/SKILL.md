@@ -57,7 +57,7 @@ If the pull fails, stop and report the error. Do not proceed with stale data.
 
 Read `cards/data/drugs.js`. Find the drug object where `id` matches `selection.key`.
 
-- **If found:** Write the raw drug object to `carousel-pipeline/carousel_working_data.json`
+- **If found:** Write the raw drug object to `carousel-pipeline/current-run/carousel_working_data.json`
 - **If not found:** Stop. Report error: `DRUG_NOT_FOUND: No drug with id "[selection.key]" exists in drugs.js`
 
 Write the object exactly as it exists — no transformations.
@@ -66,7 +66,7 @@ Write the object exactly as it exists — no transformations.
 
 ## Step 5 — Write Pipeline State
 
-Create `carousel-pipeline/carousel_pipeline_state.json`:
+Create `carousel-pipeline/current-run/carousel_pipeline_state.json`:
 
 ```json
 {

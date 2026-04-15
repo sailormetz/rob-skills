@@ -41,29 +41,29 @@ All writable files live under `/data/.openclaw/workspace/carousel-pipeline/`.
 
 | File | Path | Purpose |
 |------|------|---------|
-| State file | `carousel-pipeline/carousel_pipeline_state.json` | Current run progress. Created by carousel-init, deleted only after Sailor approves. |
-| Working data | `carousel-pipeline/carousel_working_data.json` | Extracted drug object for this run. Written by carousel-init. |
 | Usage log | `carousel-pipeline/carousel_usage_log.json` | Permanent ledger of every completed combo. Never delete. |
 
-### Transient run data (`current-run/`)
+### Run data (`current-run/`)
 
-Intermediate outputs from each step are stored in `carousel-pipeline/current-run/`:
+Everything for the current run lives in `carousel-pipeline/current-run/`:
 
 | File | Written by | Purpose |
 |------|------------|---------|
+| `carousel_pipeline_state.json` | `carousel-init` | Run progress tracking |
+| `carousel_working_data.json` | `carousel-init` | Extracted drug object |
 | `carousel_script.md` | `carousel-script` (step 1) | Full slide-by-slide carousel text |
 | `slides/slide_01.jpg`, etc. | `carousel-design` (step 2) | Finished JPEG slides |
 
 **Cleanup rules:**
 - `current-run/` is NOT deleted automatically on success. It persists until Sailor explicitly approves.
 - On failure, `current-run/` is always kept for debugging.
-- Only delete `current-run/`, `carousel_working_data.json`, and `carousel_pipeline_state.json` after Sailor approves in Phase 4.
+- Only delete `current-run/` after Sailor approves in Phase 4. One folder, one delete.
 
 ---
 
 ## Resume Check
 
-Before doing anything else, check if `carousel_pipeline_state.json` exists.
+Before doing anything else, check if `carousel-pipeline/current-run/carousel_pipeline_state.json` exists.
 
 - **If it exists and has incomplete steps:** A previous run was interrupted. Resume directly at Phase 2 (Step Loop). Do not re-run init.
 - **If it exists and all steps are complete:** This is a stale file from a run that needs approval. Inform Sailor and STOP.
@@ -92,7 +92,7 @@ Execute the subskill matching that step's `subskill` field:
 
 | Step | Subskill | What it does |
 |------|----------|--------------|
-| 1 | `carousel-script` | Reads `carousel_working_data.json`. From its own references folder, reads `global_rules.md` and the specific `template_[selection.template].md`. Writes the full carousel text slide-by-slide to `current-run/carousel_script.md`. |
+| 1 | `carousel-script` | Reads `current-run/carousel_working_data.json`. From its own references folder, reads `global_rules.md` and the specific `template_[selection.template].md`. Writes the full carousel text slide-by-slide to `current-run/carousel_script.md`. |
 | 2 | `carousel-design` | Takes the carousel script from step 1 and produces designed slides as individual HTML files at 1080×1920, then converts each to JPEG via Puppeteer. Writes to `current-run/slides/`. |
 | 3 | `carousel-export` | Emails the completed JPEG carousel slides plus run metadata to the configured email address. |
 
@@ -118,7 +118,7 @@ All three steps completed successfully.
 
 1. Email the following:
    - Subject: `Carousel complete: [combo_hash]`
-   - Body: Full contents of `carousel_pipeline_state.json`
+   - Body: Full contents of `current-run/carousel_pipeline_state.json`
    - Attachments: The finished JPEG carousel slides from `current-run/slides/`
 2. Notify Sailor the carousel is ready for review.
 3. **STOP.** Do NOT write to `carousel_usage_log.json`. Do NOT delete any files. The run is not finalized until Sailor approves in Phase 4.
@@ -133,15 +133,13 @@ This phase runs ONLY when Sailor sends an explicit approval. Trigger phrases:
 - `"approve carousel"`
 - `"done with [combo_hash]"` (e.g. "done with epinephrine::2")
 
-**Before executing:** Verify that `carousel_pipeline_state.json` exists and all three steps show `status: "complete"`. If not, inform Sailor the run is not in a completable state and STOP.
+**Before executing:** Verify that `current-run/carousel_pipeline_state.json` exists and all three steps show `status: "complete"`. If not, inform Sailor the run is not in a completable state and STOP.
 
 1. Write the `combo_hash` and current timestamp to `carousel_usage_log.json`:
    ```json
    { "[combo_hash]": { "last_used": "<ISO 8601 timestamp>" } }
    ```
-2. Delete `carousel_pipeline_state.json`.
-3. Delete `carousel_working_data.json`.
-4. Delete the entire `current-run/` folder and its contents.
+2. Delete the entire `current-run/` folder and its contents.
 5. Confirm to Sailor: `"✅ [combo_hash] finalized and logged. current-run cleaned up."`
 
 **Rules:**
@@ -160,9 +158,9 @@ Something went wrong. The pipeline stops here.
 2. Write the updated state file to disk.
 3. Email the following:
    - Subject: `Carousel failed: [combo_hash or "no selection"]`
-   - Body: Full contents of `carousel_pipeline_state.json` including `error_log`
+   - Body: Full contents of `current-run/carousel_pipeline_state.json` including `error_log`
    - No carousel attachments.
-4. Do NOT delete `carousel_pipeline_state.json`. It must persist for debugging.
+4. Do NOT delete `current-run/`. It must persist for debugging.
 5. Do NOT write to `carousel_usage_log.json`. The combo is not used.
 6. STOP.
 
@@ -177,7 +175,7 @@ Something went wrong. The pipeline stops here.
 | 2 (step 2) | HTML-to-JPEG conversion fails | `DESIGN_EXPORT_FAILED: Slide conversion failed — [error detail]` |
 | 2 (step 3) | Email send fails | `EMAIL_FAILED: Could not send carousel email — [error detail]` |
 | 2 (any) | Expected output file missing after step completion | `STEP_OUTPUT_MISSING: [subskill name] completed but expected output file not found` |
-| Any | State file cannot be written | `STATE_WRITE_FAILED: Could not write carousel_pipeline_state.json — [error detail]` |
+| Any | State file cannot be written | `STATE_WRITE_FAILED: Could not write current-run/carousel_pipeline_state.json — [error detail]` |
 
 ---
 
@@ -187,6 +185,6 @@ Something went wrong. The pipeline stops here.
 - NEVER run a step out of order.
 - NEVER proceed past a failed step.
 - NEVER write to `carousel_usage_log.json` unless all steps completed and Sailor approved.
-- NEVER delete `carousel_pipeline_state.json` on failure.
+- NEVER delete `current-run/` on failure.
 - ALWAYS write the state file to disk after changing any step status.
 - ALWAYS send an email on exit, whether success or failure.
