@@ -155,11 +155,11 @@ Repeat until all steps show `status: "complete"`, then proceed to Success Exit.
 
 All three steps completed successfully.
 
-1. Email the following:
+1. Email the following to Sailor:
    - Subject: `Carousel complete: [combo_hash]`
    - Body: Full contents of `runs/{combo_hash}/carousel_pipeline_state.json`
    - Attachments: The finished JPEG carousel slides from `runs/{combo_hash}/slides/`
-2. Notify Sailor the carousel is ready for review.
+2. Message Sailor on Telegram: `[combo_hash]` is done and ready for review.
 3. **STOP.** Do NOT write to `carousel_usage_log.json`. Do NOT delete any files. The run is not finalized until Sailor approves in Phase 4.
 
 Sailor may request changes — if so, re-run only the affected step(s) using data still in `runs/{combo_hash}/`, update the state file, and re-export.
@@ -199,10 +199,7 @@ Something went wrong. The pipeline stops here.
 
 1. Write a plain description of the error to `error_log` in the state file (if not already written). Describe what failed, where, and why — no error codes, just what happened.
 2. Write the updated state file to disk at `runs/{combo_hash}/carousel_pipeline_state.json`.
-3. Email the following:
-   - Subject: `Carousel failed: [combo_hash or "no selection"]`
-   - Body: Full contents of `runs/{combo_hash}/carousel_pipeline_state.json` including `error_log`
-   - No carousel attachments.
+3. Message Sailor on Telegram with the full `carousel_pipeline_state.json` contents so he can read the error. No email on failure.
 4. Do NOT delete the run folder. It must persist for debugging.
 5. Do NOT write to `carousel_usage_log.json`. The combo is not used.
 6. STOP.
@@ -217,5 +214,5 @@ Something went wrong. The pipeline stops here.
 - NEVER write to `carousel_usage_log.json` unless all steps completed and Sailor approved.
 - NEVER delete a run folder on failure.
 - ALWAYS write the state file to disk after changing any step status.
-- ALWAYS send an email on exit, whether success or failure.
+- ALWAYS notify Sailor on exit — email + Telegram ping on success, Telegram only on failure.
 - Each run is isolated in its own folder — never cross-contaminate data between runs.
