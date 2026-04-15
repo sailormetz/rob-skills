@@ -144,7 +144,7 @@ After each subskill completes successfully:
 If a subskill fails:
 
 1. Set that step's `status` to `"error"`.
-2. Write the error details to `error_log` in the state file.
+2. Write a plain description of what went wrong to `error_log` in the state file.
 3. Go to Failure Exit immediately. Do NOT proceed to the next step.
 
 Repeat until all steps show `status: "complete"`, then proceed to Success Exit.
@@ -197,7 +197,7 @@ The `combo_hash` is **required** — it identifies which run to finalize. If Sai
 
 Something went wrong. The pipeline stops here.
 
-1. Write the error to `error_log` in the state file (if not already written).
+1. Write a plain description of the error to `error_log` in the state file (if not already written). Describe what failed, where, and why — no error codes, just what happened.
 2. Write the updated state file to disk at `runs/{combo_hash}/carousel_pipeline_state.json`.
 3. Email the following:
    - Subject: `Carousel failed: [combo_hash or "no selection"]`
@@ -206,19 +206,6 @@ Something went wrong. The pipeline stops here.
 4. Do NOT delete the run folder. It must persist for debugging.
 5. Do NOT write to `carousel_usage_log.json`. The combo is not used.
 6. STOP.
-
-### Error Reference
-
-| Phase | Condition | Error message |
-|-------|-----------|---------------|
-| 1 | carousel-init fails (any reason) | Use the specific error reported by carousel-init |
-| 2 | Subskill not found by name | `SUBSKILL_NOT_FOUND: [subskill name] could not be located in the skills directory` |
-| 2 (step 1) | `global_rules.md` not found | `REFERENCE_MISSING: global_rules.md not found in carousel-script/references/` |
-| 2 (step 1) | Template file not found | `REFERENCE_MISSING: template_[selection.template].md not found in carousel-script/references/` |
-| 2 (step 2) | HTML-to-JPEG conversion fails | `DESIGN_EXPORT_FAILED: Slide conversion failed — [error detail]` |
-| 2 (step 3) | Email send fails | `EMAIL_FAILED: Could not send carousel email — [error detail]` |
-| 2 (any) | Expected output file missing after step completion | `STEP_OUTPUT_MISSING: [subskill name] completed but expected output file not found` |
-| Any | State file cannot be written | `STATE_WRITE_FAILED: Could not write runs/{combo_hash}/carousel_pipeline_state.json — [error detail]` |
 
 ---
 

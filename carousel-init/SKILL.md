@@ -32,7 +32,7 @@ Parse the JSON output from stdout:
 }
 ```
 
-**If the script fails** (non-zero exit, invalid JSON, missing fields), stop and report the error to carousel-master. Do not proceed.
+**If the script fails** (non-zero exit, invalid JSON, missing fields), stop and report what went wrong to carousel-master. Do not proceed.
 
 ---
 
@@ -40,11 +40,11 @@ Parse the JSON output from stdout:
 
 Read `carousel-pipeline/carousel_usage_log.json`. If the file doesn't exist, treat as empty (first run).
 
-- **If `combo_hash` exists in the log:** Stop. Report error: `DUPLICATE_COMBO: [combo_hash] already exists in carousel_usage_log.json`
+- **If `combo_hash` exists in the log:** Stop. Tell carousel-master this combo has already been completed.
 - **If not found:** Proceed.
 
 Also check if `carousel-pipeline/runs/{combo_hash}/` already exists:
-- **If it exists:** A run for this combo is already in progress (pending approval or incomplete). Stop. Report error: `RUN_FOLDER_EXISTS: runs/{combo_hash}/ already exists — previous run may be pending approval or incomplete`
+- **If it exists:** A run for this combo is already in progress or pending approval. Stop. Tell carousel-master the run folder already exists.
 - **If it doesn't exist:** Proceed.
 
 ---
@@ -69,7 +69,7 @@ mkdir -p /data/.openclaw/workspace/carousel-pipeline/runs/{combo_hash}
 Read `cards/data/drugs.js`. Find the drug object where `id` matches `selection.key`.
 
 - **If found:** Write the raw drug object to `carousel-pipeline/runs/{combo_hash}/carousel_working_data.json`
-- **If not found:** Stop. Report error: `DRUG_NOT_FOUND: No drug with id "[selection.key]" exists in drugs.js`
+- **If not found:** Stop. Tell carousel-master the drug id wasn't found in drugs.js.
 
 Write the object exactly as it exists — no transformations.
 
