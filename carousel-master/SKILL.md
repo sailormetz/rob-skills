@@ -62,6 +62,40 @@ Each run gets its own folder at `carousel-pipeline/runs/{combo_hash}/`. Multiple
 
 ---
 
+## Pipeline State File Structure
+
+Each run folder contains a `carousel_pipeline_state.json` with this structure:
+
+```json
+{
+  "run_id": "2026-04-15T18:30:00.000Z",
+  "selection": {
+    "template": "3",
+    "key": "ketamine",
+    "combo_hash": "ketamine::3"
+  },
+  "steps": [
+    { "id": 1, "subskill": "carousel-script",  "status": "pending" },
+    { "id": 2, "subskill": "carousel-design",  "status": "pending" },
+    { "id": 3, "subskill": "carousel-export",  "status": "pending" }
+  ],
+  "error_log": null
+}
+```
+
+**Status values per step:**
+- `"pending"` — not yet started
+- `"complete"` — finished successfully
+- `"error"` — failed (details in `error_log`)
+
+**How to read run state:**
+- **In progress:** at least one step is `"pending"` or `"error"`, and at least one is `"complete"` — the run was interrupted or failed mid-pipeline
+- **Not started:** all steps are `"pending"` — init ran but no subskills executed yet
+- **Complete (pending approval):** all steps are `"complete"` — waiting for Sailor to approve
+- **Failed:** any step is `"error"` — check `error_log` for details
+
+---
+
 ## Resume Check
 
 Before doing anything else, scan `carousel-pipeline/runs/` for any existing run folders.
