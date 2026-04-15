@@ -98,13 +98,21 @@ Each run folder contains a `carousel_pipeline_state.json` with this structure:
 
 ## Resume Check
 
-Before doing anything else, scan `carousel-pipeline/runs/` for any existing run folders.
+Before doing anything else, scan `carousel-pipeline/runs/` for any existing run folders. For each, read its `carousel_pipeline_state.json` and categorize it:
 
-For each folder, read its `carousel_pipeline_state.json`:
+- **Interrupted** — has at least one `"complete"` step and at least one `"pending"` step, no `"error"`. Was cut off mid-pipeline.
+- **Failed** — has a step with `"error"`. Known failure, needs debugging.
+- **Complete** — all steps `"complete"`. Pending Sailor's approval.
 
-- **If any run has incomplete steps:** A previous run was interrupted. Ask Sailor whether to resume it or start a new run. If resuming, load that run's `combo_hash` and jump to Phase 2 (Step Loop). Do not re-run init.
-- **If all existing runs have all steps complete:** They're pending approval. Inform Sailor of the pending runs, then proceed to Phase 1 for a new run.
-- **If no run folders exist:** Proceed to Phase 1.
+Then report a summary to Sailor before proceeding:
+
+1. **Interrupted runs:** Ask Sailor whether to resume. If yes, load that run's `combo_hash` and jump to Phase 2 (Step Loop). Do not re-run init.
+2. **Failed runs:** Remind Sailor they exist and need attention (e.g. "heads up — `ketamine::3` failed and is still sitting in runs/"). Do not offer to resume. Skip them.
+3. **Complete runs:** Remind Sailor they're pending approval (e.g. "`epinephrine::1` is done and waiting for your approval").
+
+After the summary, proceed to Phase 1 for a new run. If Sailor wants to resume an interrupted run instead, do that.
+
+If no run folders exist, skip the summary and go straight to Phase 1.
 
 ---
 
