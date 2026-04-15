@@ -12,6 +12,7 @@ All data lives at `/data/.openclaw/workspace/pushups.json`.
 Structure:
 ```json
 {
+  "setGoal": 13,
   "2026-04-14": {
     "total": 45,
     "entries": [10, 25, 10],
@@ -19,6 +20,8 @@ Structure:
   }
 }
 ```
+
+- `setGoal` — current per-set rep target. Persists across days. Change via "set goal [N]" or "goal [N]".
 
 ## Logging Sets (P[number] or P[n1], [n2], [n3]...)
 
@@ -33,8 +36,28 @@ Parse all numbers from the message. The `P` prefix applies to the whole message,
 2. Get today's date in `YYYY-MM-DD` format (CT timezone — use system date)
 3. Add all parsed numbers to `entries[]` and update `total` accordingly
 4. Write the file back
-5. Reply: `✅ +[sum of this batch] → [total]/100 today`
-   - If total >= 100: `✅ +[sum] → [total]/100 — 100 done! 💪`
+5. Reply: `✅ +[sum] = [total]/100, Goal: [setGoal]`
+   - If total >= 100: `✅ +[sum] = [total]/100, Goal: [setGoal] 💪`
+
+## Changing Set Goal
+
+When Sailor says "set goal [N]", "goal [N]", or similar:
+
+1. Read `pushups.json`
+2. Update `setGoal` to the new number
+3. Write the file back
+4. Reply: `✅ Set goal updated to [N]`
+
+## Evening Cron Message
+
+The cron job at 7pm CT sends exactly ONE message to Sailor. No other messages, no status confirmations, no summaries.
+
+- Normal day (total < 100): `[total]/100 pushups done today. [100-total] more to go.`
+- Hit goal (total >= 100): `[total]/100 pushups done today. Goal hit ✅`
+- Rest day (rest=true): `Rest day — back at it tomorrow 💪`
+- No entry for today: `No pushups logged today. 100 to go.`
+
+Send the message and reply NO_REPLY. Do not send any additional messages.
 
 ## Logging a Rest Day
 
