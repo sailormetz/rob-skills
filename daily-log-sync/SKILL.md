@@ -50,3 +50,4 @@ Only commits if there are actual changes. Silent if nothing changed.
 - Keep entries brief — future-me needs facts, not narrative
 - Session snapshots are supplementary — prioritize live conversation context over snapshot content
 - Do not message Sailor about this — it runs silently
+- **Log the 80%, skip the minutiae.** Only log things that move projects forward or change direction: progress on builds, decisions, config changes, new skills/tools set up. One-off questions, casual inquiries, and small tangents with no follow-up thread don't need to be logged. The point is high-level continuity — where are we on the things that matter.
