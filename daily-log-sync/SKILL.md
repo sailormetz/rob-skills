@@ -1,3 +1,11 @@
+---
+name: daily-log-sync
+description: "Writes meaningful session activity to today's daily memory log and auto-commits the workspace to GitHub. Triggered by heartbeats and the HEARTBEAT.md directive. Also scans session-memory snapshots (YYYY-MM-DD-*.md) created on /new for important context."
+version: "1.0.0"
+author: rob
+tags: [memory, logging, heartbeat, github]
+---
+
 # daily-log-sync
 
 Writes meaningful activity from the current session to today's daily log, then commits and pushes the workspace to GitHub.
