@@ -106,11 +106,11 @@ Before doing anything else, scan `carousel-pipeline/runs/` for any existing run 
 
 Then report a summary to Sailor before proceeding:
 
-1. **Interrupted runs:** Ask Sailor whether to resume. If yes, load that run's `combo_hash` and jump to Phase 2 (Step Loop). Do not re-run init.
+1. **Interrupted runs:** Resume automatically. Load that run's `combo_hash`, tell Sailor you're picking it back up, and jump to Phase 2 (Step Loop). Do not re-run init.
 2. **Failed runs:** Remind Sailor they exist and need attention (e.g. "heads up — `ketamine::3` failed and is still sitting in runs/"). Do not offer to resume. Skip them.
 3. **Complete runs:** Remind Sailor they're pending approval (e.g. "`epinephrine::1` is done and waiting for your approval").
 
-After the summary, proceed to Phase 1 for a new run. If Sailor wants to resume an interrupted run instead, do that.
+If an interrupted run was found and resumed, do not start a new run. Otherwise, proceed to Phase 1.
 
 If no run folders exist, skip the summary and go straight to Phase 1.
 
