@@ -46,27 +46,35 @@ Do not use: "Stop." as an opener (too dramatic), or parenthetical asides like "(
      *The risks all trace back to one mechanism...*
 
 [3]  Every dose causes a transient [blue: potassium shift] out of muscle cells.
-     In a healthy patient, that's manageable. In a patient with already-elevated K+, that bump can push them into [lavender: cardiac arrest].
-     [coral: Hyperkalemia] is the big one — and it's not always obvious you're dealing with it.
-     *Several conditions amplify that K+ release dramatically...*
+     In a healthy patient, that's manageable — but if K+ is already elevated, that bump can push them into [lavender: cardiac arrest].
+     Several conditions amplify that release dramatically.
+     *Here's the first one...*
 
-[4]  Burns and crush injuries older than 48 hours upregulate [blue: acetylcholine receptors] along the muscle membrane.
-     Succinylcholine hits all of them at once — the K+ release is massive.
-     [coral: Major burns] and [coral: crush injuries >48 hrs] are absolute contraindications for this reason.
+[4]  <subtleHeader>Hyperkalemia</subtleHeader>
+     <text>[coral: Hyperkalemia] is the primary contraindication — and it's not always obvious you're dealing with it.</text>
+     <text>Any patient with known or suspected elevated K+ is at risk from that potassium shift.</text>
+     *Burns and crush injuries take this further...*
 
-[5]  Neuromuscular diseases carry the same receptor upregulation risk.
-     [coral: Muscular dystrophy] and [coral: denervation injuries] — spinal cord injury, prolonged immobility — all follow the same pattern.
-     The mechanism is identical to burns. The outcome can be the same.
+[5]  <subtleHeader>Burns / Crush Injuries</subtleHeader>
+     <text>Major tissue damage upregulates [blue: acetylcholine receptors] along the muscle membrane.</text>
+     <text>Succinylcholine hits all of them at once — the K+ release becomes massive.</text>
+     <text>[coral: Major burns] and [coral: crush injuries >48 hrs] are absolute contraindications for this reason.</text>
 
-[6]  [coral: Personal or family history of malignant hyperthermia] is an absolute contraindication.
-     Succinylcholine is a known trigger — it can initiate the cascade even without prior personal exposure.
-     This is a classic board question. Know it cold.
+[6]  <subtleHeader>Neuromuscular Disease</subtleHeader>
+     <text>[coral: Muscular dystrophy] and [coral: denervation injuries] — spinal cord injury, prolonged immobility — carry the same receptor upregulation risk.</text>
+     <text>The mechanism is identical to burns. The outcome can be the same.</text>
 
-[7]  [coral: Penetrating eye injury] is the last one.
-     The fasciculations succinylcholine causes raise intraocular pressure, which can worsen a globe rupture.
-     Use a non-depolarizing agent if you have one available.
+[7]  <subtleHeader>Malignant Hyperthermia</subtleHeader>
+     <text>[coral: Personal or family history of malignant hyperthermia] is an absolute contraindication.</text>
+     <text>Succinylcholine is a known trigger — it can initiate the cascade even without prior personal exposure.</text>
+     <text>Classic board question. Know it cold.</text>
 
-[8]  Save this for your next exam.
+[8]  <subtleHeader>Penetrating Eye Injury</subtleHeader>
+     <text>[coral: Penetrating eye injury] is the last one.</text>
+     <text>The fasciculations succinylcholine causes raise intraocular pressure, which can worsen a globe rupture.</text>
+     <text>Use a non-depolarizing agent if you have one available.</text>
+
+[9]  Save this for your next exam.
      All 70 drugs, one app → link in bio.
 ```
 

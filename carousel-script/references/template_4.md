@@ -57,17 +57,19 @@ A post-administration concern is anything the medic needs to be aware of, watch 
      But morphine is a [blue: mu-opioid agonist] with downstream effects beyond analgesia.
      *The big ones are cardiovascular and respiratory...*
 
-[3]  [lavender: Hypotension] is the most common adverse effect to manage.
-     Morphine causes histamine release, which vasodilates — BP can drop, especially if the patient is volume-depleted.
-     Check BP after each dose. This is the primary reason fentanyl gets picked instead in many protocols.
+[3]  <subtleHeader>Hypotension</subtleHeader>
+     <text>The most common adverse effect to manage.</text>
+     <text>Morphine causes histamine release, which vasodilates — BP can drop, especially if the patient is volume-depleted.</text>
+     <text>Check BP after each dose. This is the primary reason fentanyl gets picked instead in many protocols.</text>
 
-[4]  [lavender: Respiratory depression] is the risk you can't ignore.
-     Morphine suppresses the brainstem's respiratory drive, and it builds gradually — slower onset than fentanyl means it can creep up on you.
-     Monitor RR and etCO₂ continuously. Have naloxone drawn and ready.
+[4]  <subtleHeader>Respiratory Depression</subtleHeader>
+     <text>The risk you can't ignore.</text>
+     <text>Morphine suppresses the brainstem's respiratory drive, and it builds gradually — slower onset than fentanyl means it can creep up on you.</text>
+     <text>Monitor RR and etCO₂ continuously. Have naloxone drawn and ready.</text>
 
-[5]  [lavender: Nausea and vomiting] are common and predictable.
-     Opioids stimulate the chemoreceptor trigger zone — the same pathway antiemetics target.
-     Some protocols pair morphine with an antiemetic upfront. Position the patient to protect the airway if vomiting occurs.
+[5]  <subtleHeader>Nausea & Vomiting</subtleHeader>
+     <text>Common and predictable — opioids stimulate the chemoreceptor trigger zone.</text>
+     <text>Some protocols pair morphine with an antiemetic upfront. Position the patient to protect the airway if vomiting occurs.</text>
 
 [6]  BP after every dose. RR and SpO₂ continuously.
      If RR drops below 12 or SpO₂ trends down despite O₂, you're watching respiratory depression develop.
@@ -87,22 +89,22 @@ A post-administration concern is anything the medic needs to be aware of, watch 
      Fast onset, fast drop in preload. That's the mechanism and the risk.
      *Most of what you're watching for traces back to that drop in preload...*
 
-[3]  [lavender: Hypotension] is your primary concern.
-     BP can fall quickly, especially after repeat doses or in a volume-depleted patient.
-     Check BP before every dose. Hold if systolic drops below 90.
+[3]  <subtleHeader>Hypotension</subtleHeader>
+     <text>BP can fall quickly, especially after repeat doses or in a volume-depleted patient.</text>
+     <text>Check BP before every dose. Hold if systolic drops below 90.</text>
 
-[4]  Right-sided MI is where nitro can cause serious harm.
-     The right ventricle is preload-dependent — take away preload with nitro and BP can crash.
-     If you haven't confirmed it's not a right-sided infarction, check leads before giving.
-     If it's already on board and BP is dropping, treat aggressively.
+[4]  <subtleHeader>Right-Sided MI</subtleHeader>
+     <text>The right ventricle is preload-dependent — take away preload with nitro and BP can crash.</text>
+     <text>If you haven't confirmed it's not a right-sided infarction, check leads before giving.</text>
+     <text>If it's already on board and BP is dropping, treat aggressively.</text>
 
-[5]  [amber: PDE inhibitors] in the last 24–48 hours are the interaction that matters.
-     Sildenafil, tadalafil, or similar drugs — combined with nitro, the result is profound, potentially life-threatening hypotension.
-     Ask before the first dose. If you find out after, prepare for aggressive fluid resuscitation.
+[5]  <subtleHeader>PDE Inhibitors</subtleHeader>
+     <text>[amber: Sildenafil], [amber: tadalafil], or similar drugs in the last 24–48 hours — combined with nitro, the result is profound, potentially life-threatening hypotension.</text>
+     <text>Ask before the first dose. If you find out after, prepare for aggressive fluid resuscitation.</text>
 
 [6]  BP before every dose. Ask about PDE inhibitors before the first.
      [lavender: Headache] is expected — it's the vasodilation — warn the patient so they don't think it's worsening.
-     Everything else you're watching for traces back to hypotension.
+     Everything else traces back to hypotension.
 
 [7]  Save this for your next chest pain call.
      All 70 drugs, one app → link in bio.

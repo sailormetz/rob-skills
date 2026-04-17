@@ -47,19 +47,23 @@ All drugs in the dataset.
      Which receptor matters most depends on why you're giving it.
      *Start with the most critical use...*
 
-[3]  In [green: cardiac arrest], β-1 stimulation raises coronary perfusion pressure between compressions — improving the odds of successful defibrillation.
-     1 mg IV/IO (1:10,000) every 3–5 min. Push fast and flush with 20 mL NS.
+[3]  <subtleHeader>Cardiac Arrest</subtleHeader>
+     <text>[blue: β-1] stimulation raises coronary perfusion pressure between compressions — improving the odds of successful defibrillation.</text>
+     <text>1 mg IV/IO (1:10,000) every 3–5 min. Push fast and flush with 20 mL NS.</text>
      *The anaphylaxis dose is completely different...*
 
-[4]  For [green: anaphylaxis], α-1 restores BP and β-2 opens the airway.
-     0.3–0.5 mg IM (1:1,000) into the anterolateral thigh. Repeat every 5–15 min if no improvement.
-     IM is the correct route in a patient with a pulse — IV push carries a high risk of fatal arrhythmia.
+[4]  <subtleHeader>Anaphylaxis</subtleHeader>
+     <text>[blue: α-1] restores BP. [blue: β-2] opens the airway. Both are in crisis during anaphylaxis.</text>
+     <text>0.3–0.5 mg IM (1:1,000) into the anterolateral thigh. Repeat every 5–15 min if no improvement.</text>
+     <text>IM is the correct route in a patient with a pulse — IV push carries a high risk of fatal arrhythmia.</text>
 
-[5]  As a [green: vasopressor infusion] for refractory shock, α-1 vasoconstriction maintains MAP when other pressors have failed.
-     0.05–0.3 mcg/kg/min IV, titrated to MAP ≥65 mmHg.
+[5]  <subtleHeader>Vasopressor Infusion</subtleHeader>
+     <text>For refractory shock, [blue: α-1] vasoconstriction maintains MAP when other pressors have failed.</text>
+     <text>0.05–0.3 mcg/kg/min IV, titrated to MAP ≥65 mmHg.</text>
 
-[6]  For [green: croup and bronchospasm], the α-agonist effect reduces subglottic edema when given nebulized.
-     5 mg nebulized (5 mL of 1:1,000). May repeat in 20 min if needed.
+[6]  <subtleHeader>Croup / Bronchospasm</subtleHeader>
+     <text>The [blue: α-agonist] effect reduces subglottic edema when given nebulized.</text>
+     <text>5 mg nebulized (5 mL of 1:1,000). May repeat in 20 min if needed.</text>
 
 [7]  Save this for your next exam.
      All 70 drugs, one app → link in bio.

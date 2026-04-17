@@ -15,8 +15,8 @@ All drugs in the dataset.
 | 1 | Hook | Drug name + hook that frames the value of knowing this drug. Max 15 words. Lead with the drug name. See global_rules for hook and teaser guidance. |
 | 2 | Identity | Generic name, trade name(s), pharmacological class(es). One-sentence summary of what the drug does in plain language. Use `[amber: ...]` for trade names, `[blue: ...]` for drug classes. Source fields: `genericName`, `tradeNames`, `classes`, `summary`. |
 | 3 | Mechanism | Simplified MOA. For multi-target drugs: explain each relevant receptor, its action, and the clinical result. For single-target drugs: cover the mechanism in 2–3 lines. Source field: `moa[].target`. Pick the 1–3 most clinically relevant targets. Use `[blue: ...]` for receptor names and mechanism terms. |
-| 4–5 | Indications | Top 2–3 indications, each with the most testable dose/route. If doses differ significantly between indications, use one slide per indication. If doses are similar, combine onto one slide. Use `[green: ...]` for indication names. Source fields: `indications[].name`, `indications[].doses`. |
-| 6 | Contraindications | Top 2–4 contraindications, one per line. Include a brief rationale connecting each to the drug's mechanism. Use `[coral: ...]` for named contraindications. Source field: `contraindications`. |
+| 4–5 | Indications | Top 2–3 indications, each with the most testable dose/route. If doses differ significantly between indications, use one slide per indication. If doses are similar, combine onto one slide. Use `[green: ...]` for indication names. Use `<subtleHeader>` to name each indication when indications get separate slides. Source fields: `indications[].name`, `indications[].doses`. |
+| 6 | Contraindications | Top 2–4 contraindications, one per line. Include a brief rationale connecting each to the drug's mechanism. Use `[coral: ...]` for named contraindications. If the contraindications are distinct enough to warrant separate slides (Template 2 territory), use `<subtleHeader>` per contraindication. Source field: `contraindications`. |
 | 7 | Pearl | One high-yield clinical detail: a common mistake, a test-day trap, a field tip, or a critical nuance. Must be specific to this drug. Use `[amber: ...]` for warnings or `[lavender: ...]` for named adverse effects if relevant. |
 | 8 | CTA | Save + app reference. Use one of the standard CTA options from global_rules. |
 
@@ -57,14 +57,15 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
      [blue: β-2] relaxes the airways.
      *Which receptor matters most depends on why you're giving it...*
 
-[4]  In [green: cardiac arrest], the dose is 1 mg IV/IO every 3–5 min.
-     Use the 1:10,000 concentration for IV push.
-     Flush with 20 mL NS after each dose to move it centrally.
+[4]  <subtleHeader>Cardiac Arrest</subtleHeader>
+     <text>1 mg IV/IO (1:10,000) every 3–5 min.</text>
+     <text>Push fast and flush with 20 mL NS after each dose to move it centrally.</text>
      *Anaphylaxis is a different situation entirely...*
 
-[5]  For [green: anaphylaxis], the dose is 0.3–0.5 mg IM into the anterolateral thigh.
-     Use the 1:1,000 concentration — ten times more concentrated than the arrest dose.
-     Repeat every 5–15 min if there's no improvement.
+[5]  <subtleHeader>Anaphylaxis</subtleHeader>
+     <text>0.3–0.5 mg IM (1:1,000) into the anterolateral thigh.</text>
+     <text>That's ten times more concentrated than the arrest dose — the concentration matters as much as the dose.</text>
+     <text>Repeat every 5–15 min if there's no improvement.</text>
 
 [6]  The main concern is the cardiovascular load it creates.
      [coral: Coronary insufficiency] is a relative contraindication — epi increases myocardial O₂ demand, which can worsen ischemia.

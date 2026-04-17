@@ -73,6 +73,41 @@ The first version is a label and bullets. The second is a sentence that leads so
 
 ---
 
+## Subtle Headers
+
+When a carousel covers multiple distinct sub-topics within a section — separate contraindications, separate indications, separate adverse effects — use a subtle header to name each one. Headers let the reader scan at a glance without reading every line to figure out what a slide is about.
+
+**Format:**
+```
+[3]  <subtleHeader>Hyperkalemia</subtleHeader>
+     <text>Lead line goes here.</text>
+     <text>Supporting detail.</text>
+     *teaser*
+```
+
+When a slide uses a `<subtleHeader>`, all body text lines are wrapped in `<text>` tags. Color tags go inside `<text>` tags. Teasers remain as italic lines outside the tags.
+
+```
+<subtleHeader>Hypotension</subtleHeader>
+<text>[lavender: Hypotension] is the most common adverse effect to manage.</text>
+<text>Morphine causes histamine release, which vasodilates — BP can drop especially if volume depleted.</text>
+```
+
+**Use subtle headers when:**
+- Multiple contraindications are each getting their own slide (Template 2)
+- Multiple indications are each getting their own slide (Template 5)
+- Multiple adverse effects or post-administration concerns are each getting their own slide (Template 4)
+- Any repeating structural pattern where each slide covers one item from a set
+
+**Do not use subtle headers when:**
+- The carousel is one continuous narrative chain (e.g., a step-by-step mechanism walkthrough in Template 3)
+- A slide naturally flows from the previous one and a header would interrupt rather than orient
+- The slide only has 1–2 lines of content — a header would dominate
+
+When no `<subtleHeader>` is present, keep the plain slide format from the Slide Numbering Format section.
+
+---
+
 ## Narrative Continuity
 
 Each slide should pick up where the previous one left off. The transition doesn't have to be explicit, but the reader should feel the flow rather than a hard reset.
@@ -156,30 +191,44 @@ These match the drug cards app palette exactly.
 
 Output each carousel as a numbered slide sequence. Teasers appear as italic lines at the bottom of their slide.
 
+**Plain slide (no header):**
 ```
 [1]  <hook text>
 
 [2]  <lead line>
      <supporting lines>
      *<teaser>*
+```
 
-[3]  <lead line>
-     <supporting lines>
+**Slide with subtle header:**
+```
+[3]  <subtleHeader>Section Name</subtleHeader>
+     <text>Lead line goes here.</text>
+     <text>Supporting detail.</text>
      *<teaser>*
+```
 
-...
-
+**CTA slide:**
+```
 [N]  <CTA line 1>
      <CTA line 2>
 ```
 
-Example with emphasis tags and teaser:
-
+Example — plain slide with color tags and teaser:
 ```
 [2]  Also called [amber: Adrenalin], or [amber: EpiPen].
      It's a [blue: sympathomimetic], [blue: catecholamine], and [blue: vasopressor]. It mimics your body's natural stress response.
      It's the first-line drug for both [green: anaphylaxis] and [green: cardiac arrest].
      *The reason it works for both comes down to how it hits the body...*
+```
+
+Example — slide with subtle header, color tags, and teaser:
+```
+[4]  <subtleHeader>Hyperkalemia</subtleHeader>
+     <text>Every dose causes a transient [blue: potassium shift] out of muscle cells.</text>
+     <text>In a patient with already-elevated K+, that bump can push them into [lavender: cardiac arrest].</text>
+     <text>[coral: Hyperkalemia] is the big one — and it's not always obvious you're dealing with it.</text>
+     *Several conditions amplify that K+ release dramatically...*
 ```
 
 ---
