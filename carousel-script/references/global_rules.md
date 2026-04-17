@@ -14,13 +14,17 @@ These rules apply to every slide of every carousel regardless of template.
 
 ## The Core Principle: Tell a Story
 
-A carousel is not a flashcard set. It is a story about one drug, told in slides.
+A carousel is not a flashcard set. It is a narrative — told in slides.
 
-The viewer should feel like they're being walked through something, not flipping through a reference sheet. Every slide picks up where the last one left off. The information builds. By the end, the viewer understands the drug as a whole — not as a collection of disconnected facts.
+The viewer should feel like they're being walked through something, not flipping through a reference sheet. Every slide picks up where the last one left off. The information builds. By the end, the viewer has been led somewhere — they understand something they didn't before, or understand it better.
 
-**Before writing, ask: what is the story of this drug?** What makes it interesting, specific, or worth knowing? That answer shapes everything — the hook, the order of slides, the tone. The template tells you what topics to cover. You decide how to connect them into a coherent arc.
+**The template tells you what to cover. Your job is to connect it.**
 
-A good carousel has a beginning (here's what this drug is and why it matters), a middle (here's how it works and when you use it), and an end (here's what to watch for, and what to remember). The CTA is the closing line.
+Every template has a scope — contraindications, mechanism, indications, post-administration. Whatever the scope, the content inside it should still have a natural progression. Start from the most foundational idea and move toward the most specific. Establish context before making claims. Give the reader a reason to care before giving them the detail.
+
+**Before writing, ask: what is the through-line of this carousel?** What is the one thing the viewer should walk away understanding? Every slide should serve that through-line. If a slide doesn't move the narrative forward, cut it or reframe it.
+
+Narrative doesn't require breadth. A carousel entirely about contraindications can still tell a story — why this drug creates these risks, how each contraindication connects back to the drug's mechanism, which ones are most dangerous and why. That's a story. A list of bullet points is not.
 
 ---
 
