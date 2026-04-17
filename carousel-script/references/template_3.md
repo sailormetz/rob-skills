@@ -34,6 +34,41 @@ All drugs in the dataset.
 - The synthesis slide is mandatory. The mechanism must be tied back to a clinical outcome the student cares about.
 - Do not include dosing information in this template. The focus is purely on mechanism.
 
+## Example: Dopamine (multi-target, dose-dependent approach)
+
+```
+[1]  Dopamine — the drug that changes what it does based on how much you give.
+     *Same drug, three completely different receptor profiles...*
+
+[2]  It's a [blue: catecholamine] and [blue: sympathomimetic] — one of the few drugs where the dose doesn't just change how strong the effect is. It changes which receptors you're hitting entirely.
+     Used for [green: shock] and [green: symptomatic bradycardia].
+     *Start at the bottom of the dose range...*
+
+[3]  <subtleHeader>Low Dose — D1 Receptors</subtleHeader>
+     <text>At low doses, dopamine primarily activates [blue: D1 dopaminergic receptors] in the renal and mesenteric vasculature.</text>
+     <text>This causes vasodilation in those beds, which was historically called "renal-dose dopamine."</text>
+     <text>That theory has been debunked — there is no proven renal protection at low doses. This range is no longer clinically targeted.</text>
+     *As the dose climbs, you hit a different receptor entirely...*
+
+[4]  <subtleHeader>Mid Dose — Beta-1 Receptors</subtleHeader>
+     <text>In the mid range, [blue: β-1 adrenergic receptors] dominate — this is the inotropic range.</text>
+     <text>HR goes up. Contractility increases. Cardiac output improves.</text>
+     <text>This is the range used for cardiogenic shock and symptomatic bradycardia when atropine has failed.</text>
+     *Push the dose higher and you activate a third receptor...*
+
+[5]  <subtleHeader>High Dose — Alpha-1 Receptors</subtleHeader>
+     <text>At high doses, [blue: α-1 adrenergic receptors] take over and cause peripheral vasoconstriction.</text>
+     <text>SVR rises, BP rises — but so does the afterload the heart has to pump against.</text>
+     <text>At very high doses, α-1 vasoconstriction can actually override the dopaminergic dilation and reduce renal perfusion.</text>
+
+[6]  Understanding the dose-receptor relationship explains why dopamine is now third-line for shock.
+     The tachyarrhythmia risk is real at every range — and norepinephrine and epinephrine produce more predictable effects without the dose-dependent receptor shifting.
+     When you do use it, titrate to MAP ≥65 mmHg and watch the rhythm continuously.
+
+[7]  Save this to your study deck.
+     The complete drug reference is in the bio.
+```
+
 ## Example: Naloxone (step-by-step approach)
 
 ```
