@@ -39,7 +39,7 @@ Do not use: "Stop." as an opener (too dramatic), or parenthetical asides like "(
 
 ```
 [1]  Succinylcholine — know when to hold it.
-     *Some of these mistakes are fatal. Here's the list...*
+     *Some of these mistakes are fatal...*
 
 [2]  It's a [blue: depolarizing neuromuscular blocker] — fastest onset of anything you'll use for [green: RSI].
      But that depolarization is exactly what makes it dangerous in the wrong patient.
