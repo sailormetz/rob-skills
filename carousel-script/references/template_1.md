@@ -77,6 +77,13 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
      Getting them reversed means a tenfold dosing error.
      Know which is which before you reach for it.
 
-[8]  Save this for your next exam.
+[8]  <subtleHeader>Recap</subtleHeader>
+     <text>Epinephrine — the essentials:</text>
+     <pill>Sympathomimetic · Catecholamine</pill>
+     <pill>Cardiac Arrest: 1 mg IV/IO (1:10,000)</pill>
+     <pill>Anaphylaxis: 0.3–0.5 mg IM (1:1,000)</pill>
+     <pill>Relative CI: Coronary Insufficiency, Uncontrolled HTN</pill>
+
+[9]  Save this for your next exam.
      All 70 drugs, one app → link in bio.
 ```

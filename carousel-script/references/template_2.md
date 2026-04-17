@@ -74,7 +74,15 @@ Do not use: "Stop." as an opener (too dramatic), or parenthetical asides like "(
      <text>The fasciculations succinylcholine causes raise intraocular pressure, which can worsen a globe rupture.</text>
      <text>Use a non-depolarizing agent if you have one available.</text>
 
-[9]  Save this for your next exam.
+[9]  <subtleHeader>Recap</subtleHeader>
+     <text>Hold succinylcholine when you see any of these:</text>
+     <pill>Hyperkalemia</pill>
+     <pill>Burns / Crush >48 hrs</pill>
+     <pill>Neuromuscular Disease</pill>
+     <pill>Malignant Hyperthermia Hx</pill>
+     <pill>Penetrating Eye Injury</pill>
+
+[10] Save this for your next exam.
      All 70 drugs, one app → link in bio.
 ```
 

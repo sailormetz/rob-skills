@@ -71,11 +71,17 @@ A post-administration concern is anything the medic needs to be aware of, watch 
      <text>Common and predictable — opioids stimulate the chemoreceptor trigger zone.</text>
      <text>Some protocols pair morphine with an antiemetic upfront. Position the patient to protect the airway if vomiting occurs.</text>
 
-[6]  BP after every dose. RR and SpO₂ continuously.
+[6]  <subtleHeader>Recap</subtleHeader>
+     <text>After morphine, watch for:</text>
+     <pill>Hypotension</pill>
+     <pill>Respiratory Depression</pill>
+     <pill>Nausea & Vomiting</pill>
+
+[7]  BP after every dose. RR and SpO₂ continuously.
      If RR drops below 12 or SpO₂ trends down despite O₂, you're watching respiratory depression develop.
      Naloxone drawn and ready. That's the bottom line.
 
-[7]  Save this for your next shift.
+[8]  Save this for your next shift.
      Full doses, MOA, and contraindications for every drug → link in bio.
 ```
 
@@ -102,11 +108,17 @@ A post-administration concern is anything the medic needs to be aware of, watch 
      <text>[amber: Sildenafil], [amber: tadalafil], or similar drugs in the last 24–48 hours — combined with nitro, the result is profound, potentially life-threatening hypotension.</text>
      <text>Ask before the first dose. If you find out after, prepare for aggressive fluid resuscitation.</text>
 
-[6]  BP before every dose. Ask about PDE inhibitors before the first.
+[6]  <subtleHeader>Recap</subtleHeader>
+     <text>After nitro, watch for:</text>
+     <pill>Hypotension</pill>
+     <pill>Right-Sided MI</pill>
+     <pill>PDE Inhibitor Interaction</pill>
+
+[7]  BP before every dose. Ask about PDE inhibitors before the first.
      [lavender: Headache] is expected — it's the vasodilation — warn the patient so they don't think it's worsening.
      Everything else traces back to hypotension.
 
-[7]  Save this for your next chest pain call.
+[8]  Save this for your next chest pain call.
      All 70 drugs, one app → link in bio.
 ```
 

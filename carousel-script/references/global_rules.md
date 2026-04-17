@@ -108,6 +108,34 @@ When no `<subtleHeader>` is present, keep the plain slide format from the Slide 
 
 ---
 
+## Recap Slides
+
+When a carousel covers multiple distinct items (contraindications, adverse effects, indications, mechanism targets), add a recap slide before the CTA to give the viewer a scannable summary of everything covered.
+
+**Format:**
+```
+[N]  <subtleHeader>Recap</subtleHeader>
+     <text>One framing sentence — what to do with this list.</text>
+     <pill>Item one</pill>
+     <pill>Item two</pill>
+     <pill>Item three</pill>
+```
+
+The `<text>` line frames the pills — "watch for," "hold for," "works for," etc. The `<pill>` tags render as compact visual chips, not body text. Keep each pill to 1–4 words.
+
+**Use a recap slide when:**
+- The carousel has 3+ distinct named items (contraindications, adverse effects, indications, receptor targets)
+- The viewer would benefit from seeing all items in one place after walking through them one by one
+
+**Do not use a recap slide when:**
+- The carousel is a continuous narrative chain (e.g., step-by-step mechanism in Template 3)
+- The carousel only covers 1–2 items — a recap would just repeat the whole carousel
+- The content is already self-summarizing (e.g., a bottom line slide that already functions as a recap)
+
+The recap slide goes immediately before the CTA. The CTA is always the final slide.
+
+---
+
 ## Narrative Continuity
 
 Each slide should pick up where the previous one left off. The transition doesn't have to be explicit, but the reader should feel the flow rather than a hard reset.
@@ -208,7 +236,16 @@ Output each carousel as a numbered slide sequence. Teasers appear as italic line
      *<teaser>*
 ```
 
-**CTA slide:**
+**Recap slide (when applicable — goes before CTA):**
+```
+[N]  <subtleHeader>Recap</subtleHeader>
+     <text>Framing sentence.</text>
+     <pill>Item one</pill>
+     <pill>Item two</pill>
+     <pill>Item three</pill>
+```
+
+**CTA slide (always last):**
 ```
 [N]  <CTA line 1>
      <CTA line 2>

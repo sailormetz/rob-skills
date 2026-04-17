@@ -65,7 +65,14 @@ All drugs in the dataset.
      <text>The [blue: α-agonist] effect reduces subglottic edema when given nebulized.</text>
      <text>5 mg nebulized (5 mL of 1:1,000). May repeat in 20 min if needed.</text>
 
-[7]  Save this for your next exam.
+[7]  <subtleHeader>Recap</subtleHeader>
+     <text>Epinephrine works for:</text>
+     <pill>Cardiac Arrest</pill>
+     <pill>Anaphylaxis</pill>
+     <pill>Vasopressor Infusion</pill>
+     <pill>Croup / Bronchospasm</pill>
+
+[8]  Save this for your next exam.
      All 70 drugs, one app → link in bio.
 ```
 
