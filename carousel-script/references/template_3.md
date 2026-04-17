@@ -40,7 +40,7 @@ All drugs in the dataset.
 [1]  Dopamine — the drug that changes what it does based on how much you give.
      *Same drug, three completely different receptor profiles...*
 
-[2]  It's a [blue: catecholamine] and [blue: sympathomimetic] — one of the few drugs where the dose doesn't just change how strong the effect is. It changes which receptors you're hitting entirely.
+[2]  It's a [blue: catecholamine] and [blue: sympathomimetic] — one of the few drugs where the dose changes which receptors you're hitting entirely.
      Used for [green: shock] and [green: symptomatic bradycardia].
      *Start at the bottom of the dose range...*
 
