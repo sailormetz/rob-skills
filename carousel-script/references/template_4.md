@@ -14,27 +14,27 @@ All drugs in the dataset.
 
 | Slide | Role | Content Rules |
 |-------|------|---------------|
-| 1 | Hook | Drug name + post-administration framing. Max 15 words. |
-| 2 | Context | What the drug is and what you gave it for. One or two lines. This anchors everything that follows to the intended use. |
-| 3–6 | Post-administration concerns | Each slide covers one thing that can happen after giving the drug. This can be an adverse effect, a drug interaction, a special population concern, or a monitoring action — whatever is most clinically important for this drug. **If the drug has 3+ concerns:** One per slide. Concern as headline, 1–3 lines covering why it happens and what to do about it. **If the drug has 1–2 concerns:** Go deeper. Spend multiple slides per concern: what it is, why the pharmacology creates the risk, what it looks like, and how you respond. |
-| 7 | Bottom line | The quick-reference version: what to monitor, how often, and what crosses the line from expected to dangerous. 1–3 lines. |
-| Last | CTA | Save + follow prompt. |
+| 1 | Hook | Drug name + post-administration framing. Max 15 words. See global_rules for hook and teaser guidance. |
+| 2 | Context | What the drug is and what you gave it for. One or two lines. Anchors everything that follows to the intended use. Use `[blue: ...]` for class terms and `[green: ...]` for the indication you gave it for. |
+| 3–6 | Post-administration concerns | Each slide covers one thing that can happen after giving the drug. Start with a lead line that names or frames the concern. Follow with why it happens and what to do about it. Use `[lavender: ...]` for adverse effects, `[amber: ...]` for warnings. **If the drug has 3+ concerns:** One per slide. **If the drug has 1–2 concerns:** Go deeper across multiple slides: what it is, why the pharmacology creates the risk, what it looks like clinically, and how you respond. |
+| 7 | Bottom line | Quick-reference version: what to monitor, how often, and what crosses the line from expected to dangerous. 1–3 lines. Practical enough to use on scene. |
+| Last | CTA | Save + app reference. Use one of the standard CTA options from global_rules. |
 
 **Total slides:** 5–8
 
 ## Hook Formulas
 
-- `You gave [Drug]. Here's what can happen next.`
-- `[Drug] — what to expect after administration`
-- `Pushed [Drug]? Now pay attention.`
-- `What can go wrong after [Drug]`
+- `You gave [Drug]. Here's what to watch.`
+- `[Drug] — what to expect after administration.`
+- `The job isn't done when you push [Drug].`
+- `Pushed [Drug]? Here's what comes next.`
 
 ## What Counts as a Post-Administration Concern
 
 A post-administration concern is anything the medic needs to be aware of, watch for, or act on after the drug has been given. This includes:
 
-- **Adverse effects** — unintended pharmacological effects (hypotension from vasodilation, respiratory depression from opioid receptor activity, etc.). Include a brief mechanistic rationale for why it happens.
-- **Drug interactions** — specific drugs or drug classes that change the risk profile. Name the interacting drug or class. "Watch for interactions" is not acceptable. "PDE inhibitors within 24–48 hrs cause profound hypotension with nitro" is acceptable.
+- **Adverse effects** — unintended pharmacological effects. Include a brief mechanistic rationale for why it happens. Use `[lavender: ...]` for named adverse effects.
+- **Drug interactions** — specific drugs or drug classes that change the risk profile. Name the interacting drug or class. "Watch for interactions" is not acceptable. "PDE inhibitors within 24–48 hrs cause profound hypotension with nitro" is acceptable. Use `[amber: ...]` for interacting drug names.
 - **Special populations** — patient groups where the drug behaves differently or carries extra risk post-administration (elderly, renal impairment, pediatric, pregnancy).
 - **Expected but alarming effects** — things that look like complications but are actually the drug working (adenosine causing brief asystole, ketamine causing emergence reactions). The student needs to know these are expected so they don't panic or intervene unnecessarily.
 - **Monitoring actions** — specific vitals, signs, or timelines to watch. Must be concrete: what to check, how often, and what threshold triggers action.
@@ -43,80 +43,87 @@ A post-administration concern is anything the medic needs to be aware of, watch 
 
 - Every concern slide must include both the *what* and the *so what*. State what happens and what the medic does about it. "Hypotension" alone is incomplete. "Hypotension — check BP after each dose, hold if systolic drops below 90" is complete.
 - Order concerns from most clinically dangerous to least.
-- If a concern is the primary reason one drug gets chosen over another in the same class, state that connection. "This is why fentanyl gets picked over morphine in a lot of protocols."
+- If a concern is the primary reason one drug gets chosen over another in the same class, say so explicitly.
 - Do not repeat contraindications from Template 2. If a point is a reason to withhold the drug entirely, it belongs in Template 2. If it's something to manage or monitor after the drug is already on board, it belongs here.
-- The bottom line slide must be practical enough to use on scene. It's a cheat sheet, not a summary paragraph.
+- The bottom line slide must be practical enough to use on scene. Facts and thresholds, not summary prose.
 
 ## Example: Morphine
 
 ```
-[1]  You gave morphine. Here's what can happen next.
-[2]  THE JOB
-     Opioid analgesic. You gave it for pain.
-     But it doesn't just hit pain receptors.
-[3]  HYPOTENSION
-     Morphine causes histamine release, which vasodilates.
-     BP can drop, especially if volume depleted.
-     Check BP after each dose.
-     This is the main reason fentanyl gets picked instead.
-[4]  RESPIRATORY DEPRESSION
-     Opioids suppress the brainstem's respiratory drive.
-     Morphine is slower onset than fentanyl, so this
-     creeps up. Monitor RR and etCO₂ continuously.
-[5]  NAUSEA / VOMITING
-     Opioids stimulate the chemoreceptor trigger zone.
-     Common enough that some protocols pair morphine
-     with an antiemetic. Position for airway protection.
-[6]  THE BOTTOM LINE
-     BP after every dose. RR and SpO₂ continuously.
-     Have naloxone drawn and ready.
-[7]  Save this — know what you're watching for 💊
-     All 70 drugs, one app → link in bio.
+[1]  You gave morphine. Here's what to watch.
+     *It doesn't just hit pain receptors...*
+
+[2]  You gave it for [green: pain management] — and it will work.
+     But morphine is a [blue: mu-opioid agonist] with downstream effects beyond analgesia.
+     *The big ones are cardiovascular and respiratory...*
+
+[3]  [lavender: Hypotension] is the most common adverse effect to manage.
+     Morphine causes histamine release, which vasodilates — BP can drop, especially if the patient is volume-depleted.
+     Check BP after each dose. This is the primary reason fentanyl gets picked instead in many protocols.
+
+[4]  [lavender: Respiratory depression] is the risk you can't ignore.
+     Morphine suppresses the brainstem's respiratory drive, and it builds gradually — slower onset than fentanyl means it can creep up on you.
+     Monitor RR and etCO₂ continuously. Have naloxone drawn and ready.
+
+[5]  [lavender: Nausea and vomiting] are common and predictable.
+     Opioids stimulate the chemoreceptor trigger zone — the same pathway antiemetics target.
+     Some protocols pair morphine with an antiemetic upfront. Position the patient to protect the airway if vomiting occurs.
+
+[6]  BP after every dose. RR and SpO₂ continuously.
+     If RR drops below 12 or SpO₂ trends down despite O₂, you're watching respiratory depression develop.
+     Naloxone drawn and ready. That's the bottom line.
+
+[7]  Save this for your next shift.
+     Full doses, MOA, and contraindications for every drug → link in bio.
 ```
 
 ## Example: Nitroglycerin
 
 ```
-[1]  You gave nitro. Here's what to watch.
-[2]  THE JOB
-     Nitroglycerin for chest pain or acute CHF.
-     Vasodilator — it works fast.
-[3]  BLOOD PRESSURE
-     Nitro drops preload. BP can fall quickly,
-     especially after repeat doses. Check BP before
-     every dose. Hold if systolic drops below 90.
-[4]  RIGHT-SIDED MI
-     If the pain is a right-sided infarction, nitro can
-     cause severe hypotension. That right ventricle is
-     preload-dependent. A reason to check right-sided
-     leads before giving — but if already given, watch BP closely.
-[5]  PDE INHIBITORS
-     Viagra, Cialis, or similar within 24–48 hrs.
-     Combined with nitro → profound, life-threatening
-     hypotension. If you find out after giving,
-     prepare for aggressive fluid resuscitation.
-[6]  THE BOTTOM LINE
-     BP before every dose. Ask about PDE inhibitors
-     before the first dose. Headache is expected —
-     warn the patient so they don't think it's worsening.
-[7]  Save this for your next chest pain call 💊
-     Full doses, MOA, and contraindications for every drug → link in bio.
+[1]  You gave nitro. Here's what comes next.
+     *One thing matters more than anything else...*
+
+[2]  You gave it for [green: chest pain] or [green: acute CHF] — it works by vasodilation.
+     Fast onset, fast drop in preload. That's the mechanism and the risk.
+     *Most of what you're watching for traces back to that drop in preload...*
+
+[3]  [lavender: Hypotension] is your primary concern.
+     BP can fall quickly, especially after repeat doses or in a volume-depleted patient.
+     Check BP before every dose. Hold if systolic drops below 90.
+
+[4]  Right-sided MI is where nitro can cause serious harm.
+     The right ventricle is preload-dependent — take away preload with nitro and BP can crash.
+     If you haven't confirmed it's not a right-sided infarction, check leads before giving.
+     If it's already on board and BP is dropping, treat aggressively.
+
+[5]  [amber: PDE inhibitors] in the last 24–48 hours are the interaction that matters.
+     Sildenafil, tadalafil, or similar drugs — combined with nitro, the result is profound, potentially life-threatening hypotension.
+     Ask before the first dose. If you find out after, prepare for aggressive fluid resuscitation.
+
+[6]  BP before every dose. Ask about PDE inhibitors before the first.
+     [lavender: Headache] is expected — it's the vasodilation — warn the patient so they don't think it's worsening.
+     Everything else you're watching for traces back to hypotension.
+
+[7]  Save this for your next chest pain call.
+     All 70 drugs, one app → link in bio.
 ```
 
 ## Example: Ondansetron (short carousel — limited concerns)
 
 ```
-[1]  You gave ondansetron. One thing matters.
-[2]  THE JOB
-     Antiemetic for nausea and vomiting.
-     Generally well-tolerated, but one risk stands out.
-[3]  QT PROLONGATION
-     Dose-dependent risk. Higher doses increase QT interval.
-     Use caution if the patient is on other QT-prolonging
-     drugs. Contraindicated in congenital long QT.
-[4]  THE BOTTOM LINE
-     Monitor rhythm if giving repeat doses or if
-     the patient has QT risk factors.
-[5]  Save this — even routine drugs need monitoring 💊
+[1]  You gave ondansetron. One thing matters most.
+
+[2]  It's a [blue: 5-HT3 antagonist] — blocks serotonin at the chemoreceptor trigger zone.
+     Generally well-tolerated, but there's one risk that scales with dose.
+
+[3]  [lavender: QT prolongation] is dose-dependent.
+     Higher doses and repeat dosing extend the QT interval.
+     Use caution if the patient is on other QT-prolonging drugs. Contraindicated in congenital long QT.
+     Monitor rhythm if giving repeat doses or if the patient has known QT risk factors.
+
+[4]  BP and rhythm. That's the monitor.
+     Single dose in a healthy patient — low risk. Repeat dosing in a cardiac patient — think before you give it again.
+
+[5]  Save this for your next clinical rotation.
      The complete drug reference is in the bio.
 ```
