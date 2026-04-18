@@ -54,7 +54,7 @@ if (fs.existsSync(DATA_PATH)) {
 const entries      = data.entries;
 const lastEntry    = entries.length > 0 ? entries[entries.length - 1] : null;
 const tank_miles   = lastEntry ? odometer - lastEntry.odometer : null;
-const mpg          = tank_miles !== null ? parseFloat((tank_miles / gallons).toFixed(2)) : null;
+const mpg          = tank_miles !== null ? parseFloat((tank_miles / gallons).toFixed(1)) : null;
 const id           = entries.length + 1;
 
 const newEntry = { id, date, odometer, tank_miles, gallons, mpg };
@@ -66,7 +66,7 @@ const allMpg         = entriesWithMpg.map(e => e.mpg);
 
 data.summary = {
   total_entries:        entries.length,
-  avg_mpg:              allMpg.length > 0 ? parseFloat((allMpg.reduce((a, b) => a + b, 0) / allMpg.length).toFixed(2)) : null,
+  avg_mpg:              allMpg.length > 0 ? parseFloat((allMpg.reduce((a, b) => a + b, 0) / allMpg.length).toFixed(1)) : null,
   best_mpg:             allMpg.length > 0 ? Math.max(...allMpg) : null,
   worst_mpg:            allMpg.length > 0 ? Math.min(...allMpg) : null,
   total_miles_tracked:  entriesWithMpg.reduce((a, e) => a + e.tank_miles, 0),
