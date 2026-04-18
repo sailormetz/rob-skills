@@ -200,6 +200,10 @@ These match the drug cards app palette exactly.
 - Green, coral, and lavender are strictly codified. Use them only for their defined category. Do not cross-apply them.
 - Blue and amber are more discretionary. Both can flex when the content doesn't map cleanly to a strict category. When in doubt, default to blue.
 - Only highlight what genuinely earns it. Not every sentence needs emphasis. Over-highlighting kills the effect.
+- **Color the key word or phrase — not the surrounding context.** Two patterns:
+  - *Named clinical entity:* color the word itself — `[coral: Bradycardia]`, `[green: Anaphylaxis]`, `[lavender: normeperidine]`. The explanatory text around it stays uncolored.
+  - *Clinical action or monitoring instruction:* color the phrase the medic needs to act on — `[amber: Monitor RR and etCO₂]`, `[amber: Titrate to respiratory effort]`, `[amber: Push slowly]`. Don't color the full sentence.
+- When in doubt: isolate the single biggest idea on that line and color just that.
 - Every slide must have at least one color tag. If the content is straightforward and nothing screams for emphasis, tag the single most important word or phrase in amber or blue. A slide where every third word is colored is not.
 - Doses and routes are never tagged. The design layer renders doses in large display type automatically.
 - Teasers are never highlighted.
