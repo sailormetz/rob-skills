@@ -40,10 +40,11 @@ All drugs in the dataset.
 ## Example: Epinephrine
 
 ```
-[1]  Epinephrine — every reason you reach for it.
+[1]  [amber: Epinephrine] — every reason you reach for it.
      *Four indications. One drug. Here's all of them...*
 
-[2]  It's a [blue: sympathomimetic] and [blue: catecholamine] — hits [blue: α-1], [blue: β-1], and [blue: β-2] simultaneously.
+[2]  <sectionLabel>Overview</sectionLabel>
+     It's a [blue: sympathomimetic] and [blue: catecholamine] — hits [blue: α-1], [blue: β-1], and [blue: β-2] simultaneously.
      Vasoconstriction, cardiac stimulation, bronchodilation: all three at once.
      Which receptor matters most depends on why you're giving it.
      *Start with the most critical use...*
@@ -88,18 +89,23 @@ All drugs in the dataset.
 ## Example: Ondansetron (short carousel — limited indications)
 
 ```
-[1]  Ondansetron — simple drug. Know the dose.
+[1]  [amber: Ondansetron] — simple drug. Know the dose.
+     *One indication. One caveat. Here it is...*
 
-[2]  It's a [blue: 5-HT3 antagonist] — blocks serotonin at the chemoreceptor trigger zone, which is what triggers emesis.
+[2]  <sectionLabel>Overview</sectionLabel>
+     It's a [blue: 5-HT3 antagonist] — blocks serotonin at the [blue: chemoreceptor trigger zone], which is what triggers emesis.
      One indication. Straightforward mechanism. The details are in the dose.
+     *Here's how to use it...*
 
-[3]  For [green: nausea and vomiting], ondansetron blocks the serotonin signal before it triggers the vomiting reflex.
+[3]  <sectionLabel>Indications</sectionLabel>
+     For [green: nausea and vomiting], ondansetron blocks the serotonin signal before it triggers the vomiting reflex.
      4 mg IV or ODT. Can repeat once in 15 min.
      Pedi (6 mo–12 yrs): 0.1 mg/kg IV, max 4 mg.
      *But there's a nuance on repeat dosing...*
 
-[4]  The nuance is the QT risk.
-     Repeat dosing prolongs the QT interval in a dose-dependent way.
+[4]  <sectionLabel>Cautions</sectionLabel>
+     The nuance is the [lavender: QT risk].
+     Repeat dosing prolongs the [lavender: QT interval] in a dose-dependent way.
      Use caution in patients on other QT-prolonging drugs. Contraindicated in congenital long QT.
      *Save this one...*
 

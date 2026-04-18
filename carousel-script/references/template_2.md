@@ -39,14 +39,16 @@ Do not use: "Stop." as an opener (too dramatic), or parenthetical asides like "(
 ## Example: Succinylcholine
 
 ```
-[1]  Succinylcholine — know when to hold it.
+[1]  [amber: Succinylcholine] — know when to hold it.
      *Some of these mistakes are fatal...*
 
-[2]  It's a [blue: depolarizing neuromuscular blocker] — fastest onset of anything you'll use for [green: RSI].
+[2]  <sectionLabel>Overview</sectionLabel>
+     It's a [blue: depolarizing neuromuscular blocker] — fastest onset of anything you'll use for [green: RSI].
      But that depolarization is exactly what makes it dangerous in the wrong patient.
      *The risks all trace back to one mechanism...*
 
-[3]  Every dose causes a transient [blue: potassium shift] out of muscle cells.
+[3]  <sectionLabel>Mechanism</sectionLabel>
+     Every dose causes a transient [blue: potassium shift] out of muscle cells.
      In a healthy patient, that's manageable — but if K+ is already elevated, that bump can push them into [lavender: cardiac arrest].
      Several conditions amplify that release dramatically.
      *Here's the first one...*

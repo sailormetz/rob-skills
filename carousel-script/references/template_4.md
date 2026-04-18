@@ -51,30 +51,31 @@ A post-administration concern is anything the medic needs to be aware of, watch 
 ## Example: Morphine
 
 ```
-[1]  You gave morphine. Here's what to watch.
+[1]  You gave [amber: morphine]. Here's what to watch.
      *It doesn't just hit pain receptors...*
 
-[2]  You gave it for [green: pain management] — and it will work.
+[2]  <sectionLabel>Overview</sectionLabel>
+     You gave it for [green: pain management] — and it will work.
      But morphine is a [blue: mu-opioid agonist] with downstream effects beyond analgesia.
      *The big ones are cardiovascular and respiratory...*
 
 [3]  <sectionLabel>After Administration</sectionLabel>
      <topicName>Hypotension</topicName>
      The most common adverse effect to manage.
-     Morphine causes histamine release, which vasodilates — BP can drop, especially if the patient is volume-depleted.
+     Morphine causes [blue: histamine release], which vasodilates — BP can drop, especially if the patient is volume-depleted.
      Check BP after each dose. This is the primary reason fentanyl gets picked instead in many protocols.
      *Next up — the one that can sneak up on you...*
 
 [4]  <sectionLabel>After Administration</sectionLabel>
      <topicName>Respiratory Depression</topicName>
      The risk you can't ignore.
-     Morphine suppresses the brainstem's respiratory drive, and it builds gradually — slower onset than fentanyl means it can creep up on you.
+     Morphine suppresses the brainstem's [lavender: respiratory drive], and it builds gradually — slower onset than fentanyl means it can creep up on you.
      Monitor RR and etCO₂ continuously. Have naloxone drawn and ready.
      *One more...*
 
 [5]  <sectionLabel>After Administration</sectionLabel>
      <topicName>Nausea & Vomiting</topicName>
-     Common and predictable — opioids stimulate the chemoreceptor trigger zone.
+     Common and predictable — opioids stimulate the [blue: chemoreceptor trigger zone].
      Some protocols pair morphine with an antiemetic upfront. Position the patient to protect the airway if vomiting occurs.
      *Let's recap...*
 
@@ -84,8 +85,9 @@ A post-administration concern is anything the medic needs to be aware of, watch 
      [lavender: Nausea & Vomiting] — position airway; consider antiemetic
      *Bottom line...*
 
-[7]  BP after every dose. RR and SpO₂ continuously.
-     If RR drops below 12 or SpO₂ trends down despite O₂, you're watching respiratory depression develop.
+[7]  <sectionLabel>Bottom Line</sectionLabel>
+     BP after every dose. RR and SpO₂ continuously.
+     If RR drops below 12 or SpO₂ trends down despite O₂, you're watching [lavender: respiratory depression] develop.
      Naloxone drawn and ready. That's the bottom line.
      *Save this one...*
 
@@ -97,22 +99,23 @@ A post-administration concern is anything the medic needs to be aware of, watch 
 ## Example: Nitroglycerin
 
 ```
-[1]  You gave nitro. Here's what comes next.
+[1]  You gave [amber: nitro]. Here's what comes next.
      *One thing matters more than anything else...*
 
-[2]  You gave it for [green: chest pain] or [green: acute CHF] — it works by vasodilation.
+[2]  <sectionLabel>Overview</sectionLabel>
+     You gave it for [green: chest pain] or [green: acute CHF] — it works by [blue: vasodilation].
      Fast onset, fast drop in preload. That's the mechanism and the risk.
      *Most of what you're watching for traces back to that drop in preload...*
 
 [3]  <sectionLabel>After Administration</sectionLabel>
      <topicName>Hypotension</topicName>
      BP can fall quickly, especially after repeat doses or in a volume-depleted patient.
-     Check BP before every dose. Hold if systolic drops below 90.
+     Check BP before every dose. Hold if systolic drops below 90. [lavender: Hypotension] is the primary risk.
      *There's one specific patient population where this gets much worse...*
 
 [4]  <sectionLabel>After Administration</sectionLabel>
      <topicName>Right-Sided MI</topicName>
-     The right ventricle is preload-dependent — take away preload with nitro and BP can crash.
+     The [blue: right ventricle] is preload-dependent — take away preload with nitro and BP can crash.
      If you haven't confirmed it's not a right-sided infarction, check leads before giving.
      If it's already on board and BP is dropping, treat aggressively.
      *And one drug interaction that can be life-threatening...*
@@ -129,7 +132,8 @@ A post-administration concern is anything the medic needs to be aware of, watch 
      [amber: PDE Inhibitors] — sildenafil/tadalafil within 24–48 hrs; profound hypotension risk
      *Bottom line...*
 
-[7]  BP before every dose. Ask about PDE inhibitors before the first.
+[7]  <sectionLabel>Bottom Line</sectionLabel>
+     BP before every dose. Ask about [amber: PDE inhibitors] before the first.
      [lavender: Headache] is expected — it's the vasodilation — warn the patient so they don't think it's worsening.
      Everything else traces back to hypotension.
      *Save this one...*
@@ -142,18 +146,23 @@ A post-administration concern is anything the medic needs to be aware of, watch 
 ## Example: Ondansetron (short carousel — limited concerns)
 
 ```
-[1]  You gave ondansetron. One thing matters most.
+[1]  You gave [amber: ondansetron]. One thing matters most.
+     *It's well-tolerated — until it isn't...*
 
-[2]  It's a [blue: 5-HT3 antagonist] — blocks serotonin at the chemoreceptor trigger zone.
+[2]  <sectionLabel>Overview</sectionLabel>
+     It's a [blue: 5-HT3 antagonist] — blocks serotonin at the [blue: chemoreceptor trigger zone].
      Generally well-tolerated, but there's one risk that scales with dose.
+     *Here's what to watch for...*
 
-[3]  [lavender: QT prolongation] is dose-dependent.
+[3]  <sectionLabel>After Administration</sectionLabel>
+     [lavender: QT prolongation] is dose-dependent.
      Higher doses and repeat dosing extend the QT interval.
      Use caution if the patient is on other QT-prolonging drugs. Contraindicated in congenital long QT.
      Monitor rhythm if giving repeat doses or if the patient has known QT risk factors.
      *So what does that mean practically...*
 
-[4]  BP and rhythm. That's the monitor.
+[4]  <sectionLabel>Bottom Line</sectionLabel>
+     BP and [amber: rhythm]. That's the monitor.
      Single dose in a healthy patient — low risk. Repeat dosing in a cardiac patient — think before you give it again.
      *Save this one...*
 
