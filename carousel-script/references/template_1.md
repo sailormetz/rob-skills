@@ -21,7 +21,7 @@ All drugs in the dataset.
 | 8 | Recap | Brief summary of the N major ideas covered in the carousel — one line per concept, no pills. Use the same color tags as the body slides (e.g. `[blue: ...]` for mechanism, `[green: ...]` for indications, `[coral: ...]` for contraindications). Each line: colored label — key fact or dose. Do not introduce new information. |
 | 9 | CTA | Save + app reference. Use one of the standard CTA options from global_rules. |
 
-**Total slides:** 7–9
+**Total slides:** 8–10
 
 ## Hook Formulas
 
