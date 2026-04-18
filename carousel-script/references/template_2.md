@@ -99,19 +99,22 @@ Do not use: "Stop." as an opener (too dramatic), or parenthetical asides like "(
 ## Example: Naloxone (short carousel — single contraindication, explored in depth)
 
 ```
-[1]  Naloxone — almost no reason to hold it.
+[1]  [amber: Naloxone] — almost no reason to hold it.
      *Almost.*
 
-[2]  It's a [blue: competitive opioid antagonist] — displaces opioids from [blue: mu receptors] and takes their place without activating them.
+[2]  <sectionLabel>Contraindications</sectionLabel>
+     It's a [blue: competitive opioid antagonist] — displaces opioids from [blue: mu receptors] and takes their place without activating them.
      There is only one true absolute contraindication: [coral: known hypersensitivity] to naloxone.
      *But the real risk isn't a contraindication. It's technique.*
 
-[3]  Push it too fast or at too high a dose and you precipitate acute opioid withdrawal.
-     That means combativeness, vomiting, and in severe cases, [lavender: pulmonary edema].
+[3]  <sectionLabel>Cautions</sectionLabel>
+     Push it too fast or at too high a dose and you precipitate [lavender: acute opioid withdrawal].
+     That means combativeness, vomiting, and in severe cases, pulmonary edema.
      This isn't a contraindication — it's a dosing and technique issue. But it's what actually hurts people.
      *So what does that mean in practice...*
 
-[4]  Titrate to respiratory effort, not consciousness.
+[4]  <sectionLabel>Cautions</sectionLabel>
+     [amber: Titrate to respiratory effort], not consciousness.
      The goal is adequate breathing — not a wide-awake patient in full withdrawal.
      Start low, go slow, and monitor continuously after administration.
      *Save this one...*
