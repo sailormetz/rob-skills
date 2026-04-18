@@ -1,197 +1,312 @@
 # Carousel Design Spec — Rob the Paramedic
 
-Design language pulled directly from the drug cards web app (`cards/style.css`). Carousels should feel like a screenshot from the app — same palette, same fonts, same DNA.
+All values sourced directly from `design_mockup.html`. That file is the canonical visual reference — when in doubt, check it.
 
 ---
 
 ## Canvas
 
-- **Dimensions:** 1080 × 1920px (portrait, 9:16 TikTok/Reels)
+- **Dimensions:** 1080 × 1920px (portrait, 9:16 — TikTok/Reels)
 - **Format:** JPEG, 95% quality
-- **Background:** `hsl(45, 2%, 5%)` — near-black with a warm undertone (matches `--bg`)
+- **Aspect ratio:** enforced via CSS `aspect-ratio: 1080 / 1920` on `.slide`
+- **Sizing unit:** `cqw` (container query width) — all internal spacing scales from the slide's own rendered width, so the design is resolution-independent
 
 ---
 
-## Color Palette
+## Design Tokens
 
-Pull directly from the app's CSS variables:
+Defined as CSS custom properties on `:root`. Override `--bg-h`, `--bg-s`, `--bg-l` on `<html>` to adjust background tone.
 
-| Token | Value | Use |
-|-------|-------|-----|
-| `--bg` | `hsl(45, 2%, 5%)` | Slide background |
-| `--surface` | `hsl(45, 2%, 12%)` | Card/panel backgrounds |
-| `--surface-2` | `hsl(45, 2%, 16%)` | Nested surfaces, meta cells |
-| `--border` | `hsl(45, 2%, 24%)` | Dividers, borders |
-| `--text` | `hsl(45, 4%, 93%)` | Primary body text |
-| `--text-mut` | `hsl(45, 2%, 60%)` | Secondary/muted text |
-| `--text-faint` | `hsl(45, 2%, 36%)` | Labels, captions |
-| `--green` | `#52d693` | Positive, go, indications |
-| `--red` | `#e86363` | Danger, contraindications |
-| `--blue` | `#5e9be8` | Accent, links, active states |
-| `--orange` | `#daa040` | Warnings, precautions |
-| `--cyan` | `#4dc4b0` | Tertiary accent |
-| `--lilac` | `#7c6ddd` | Adverse effects |
+### Background
 
-**Accent color for carousels:** `--blue` (`#5e9be8`) — use for section labels, highlights, and the slide counter dot/bar.
+| Variable | Value | Notes |
+|----------|-------|-------|
+| `--bg-h` | `9` | Hue — slight warm tint |
+| `--bg-s` | `9%` | Saturation |
+| `--bg-l` | `10.5%` | Lightness |
+| `--bg` | `hsl(9, 9%, 10.5%)` | Computed background — used on `.slide` |
+| `--panel` | same as `--bg` | Slide panel fill |
+| `--panel-raise` | `--bg-l + 2.5%` | Slightly lighter surface (structural use only) |
+| `--panel-border` | `--bg-l + 7%` | Border color for structural dividers |
+
+### Text
+
+| Variable | Value | Use |
+|----------|-------|-----|
+| `--ink` | `#ececec` | Primary body text |
+| `--ink-dim` | `#8a8a8a` | De-emphasized text (e.g. `.ci-item .why`) |
+| `--teaser-color` | `hsl(0, 0%, 92%)` | Teaser italic lines |
+
+### Semantic Color Palette
+
+Matches the drug cards app exactly. Used only for their defined content type — never cross-applied.
+
+| Variable | Hex | Use |
+|----------|-----|-----|
+| `--amber` | `#daa040` | Trade/brand names · warnings · precautions |
+| `--blue` | `#5e9be8` | Drug classes · receptors · mechanism terms · technical concepts |
+| `--green` | `#52d693` | Indications · clinical uses |
+| `--coral` | `#e86363` | Contraindications |
+| `--lavender` | `#7c6ddd` | Adverse effects · side effects |
+
+### Safe Zone
+
+```css
+--safe-y: 17.8cqw;
+/* TikTok safe zone: 1/10th of slide height.
+   In cqw for a 1080×1920 slide: 192 / 1080 ≈ 17.78cqw */
+```
+
+Content must stay within the safe zone on all body slides. Progress bar and footer sit at the safe zone edges.
 
 ---
 
 ## Typography
 
-Fonts match the app exactly. Load via Google Fonts in the HTML template.
+Three typefaces — all locked to their assigned roles. Do not mix.
 
-```html
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@700&family=IBM+Plex+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-```
+| Typeface | Assigned to |
+|----------|-------------|
+| **Barlow Semi Condensed** | Titles, headers, display text — `.slide-title`, `.hook-title`, `.dose-name`, `.hook-eyebrow`, `.cta-line1`, `.cta-eyebrow`, `.counter`, `.footer` |
+| **IBM Plex Sans** | Body text, teasers, CTA body — `.line`, `.teaser`, `.hook-sub`, `.cta-line2`, `.recap-item .label`, `.recap-item .desc` |
+| **JetBrains Mono** | Receptor name labels, numerical comparisons — `.mech-inline`, `.conc-num` |
 
-| Role | Font | Weight | Size (approx) |
-|------|------|--------|---------------|
-| Drug name / slide title | IBM Plex Sans | 800 | 72–88px |
-| ALL CAPS headline | IBM Plex Sans | 700 | 48–56px, letter-spacing: 0.08em |
-| Body text | IBM Plex Sans | 400 | 38–44px |
-| Dose amounts | Barlow Semi Condensed | 700 | 80–96px |
-| Code / monospace labels | JetBrains Mono | 400–600 | 32–38px |
-| Labels / metadata | IBM Plex Sans | 500–600, uppercase | 26–32px, letter-spacing: 0.10em |
+### Type Scale (in cqw — scales with slide width)
 
-**Line height:** 1.4–1.5 for body text. 1.0–1.1 for large display text.
-**Anti-aliasing:** Always `-webkit-font-smoothing: antialiased`.
+| Element | Size | Weight | Notes |
+|---------|------|--------|-------|
+| Hook drug name (`.hook-title`) | `13cqw` | 800 | Line height `.95`, letter-spacing `-0.02em` |
+| Topic header (`.dose-name`) | `8.5cqw` | 700 | Letter-spacing `-0.015em`, line-height `1` |
+| CTA save prompt (`.cta-line1`) | `10cqw` | 700 | Letter-spacing `-0.015em` |
+| Body line (`.line`) | `5.1cqw` | 500 | Line height `1.35` |
+| Teaser (`.teaser`) | `5.1cqw` | 400 | Italic, `--teaser-color` |
+| Hook line (`.hook-sub`) | `5.1cqw` | 500 | Max-width 88% |
+| Section label (`.slide-title.subtle`) | `3.4cqw` | 600 | Uppercase, letter-spacing `.26em`, color `#6a6a6a` |
+| Hook eyebrow (`.hook-eyebrow`) | `4.4cqw` | 700 | Uppercase, letter-spacing `.22em`, color `--amber` |
+| CI name (`.ci-item .nm`) | `5.4cqw` | 700 | — |
+| CI rationale (`.ci-item .why`) | `4.2cqw` | 400 | Color `#b4b4b4` |
+| Conc comparison (`.conc-line`) | `5.6cqw` | 500 | — |
+| Recap label (`.recap-item .label`) | `4.4cqw` | 600 | IBM Plex Sans, colored |
+| Recap desc (`.recap-item .desc`) | `4.8cqw` | 400 | `--ink` |
+| Footer (`.footer`) | `2.7cqw` | 600 | Uppercase, letter-spacing `.26em`, color `#5a5a5a` |
+| CTA app line (`.cta-line2`) | `4.6cqw` | 500 | Color `#c8c8c8` |
 
 ---
 
-## Slide Layout
+## Auto-Generated Elements
 
-Each slide is a full 1080×1920 HTML page rendered to JPEG.
+These appear on every slide. Script authors never write them — the design layer handles them.
 
-### Common structure (all slides):
+### Progress Bar
+
+A row of pill-shaped segments spanning the slide width, positioned at the top of the safe zone.
+
+```css
+.progress {
+  position: absolute;
+  left: 6.5cqw; right: 6.5cqw;
+  top: var(--safe-y);
+  display: flex; gap: 1.2cqw;
+}
+.progress .seg    { flex: 1; height: 0.9cqw; border-radius: 999px; background: #2a2a2a; }
+.progress .seg.done   { background: rgba(94,155,232,.35); }  /* prior slides — dim blue */
+.progress .seg.active { background: var(--blue); }           /* current slide — bright blue */
+```
+
+Generated by JS at runtime from `N / TOTAL` counters. Each `.counter` div is replaced by the bar and removed from the DOM.
+
+### Footer
 
 ```
-┌─────────────────────────────┐
-│  [SLIDE COUNTER]  top-right │  ← small, muted — e.g. "3 / 7"
-│                             │
-│                             │
-│   [CONTENT AREA]            │  ← vertically centered
-│                             │
-│                             │
-│  [BRAND FOOTER]  bottom     │  ← "Rob the Paramedic" wordmark
-└─────────────────────────────┘
+ROB THE PARAMEDIC
 ```
 
-- **Padding:** 80px horizontal, 100px top/bottom (safe area for TikTok UI chrome)
-- **Slide counter:** top-right, 28px, `--text-faint`, `IBM Plex Sans 500`, format: `N / TOTAL`
-- **Brand footer:** bottom-center, 24px, `--text-faint`, `IBM Plex Sans 500 uppercase`, letter-spacing: 0.12em — text: `ROB THE PARAMEDIC`
+Positioned at the bottom of every slide, below the safe zone:
+
+```css
+.footer {
+  position: absolute; left: 0; right: 0;
+  bottom: calc(var(--safe-y) - 13cqw);
+  text-align: center; color: #5a5a5a;
+  letter-spacing: .26em; font-size: 2.7cqw; font-weight: 600;
+}
+```
+
+---
+
+## Slide Layouts
+
+### Horizontal Padding
+
+All slide content uses `6.5cqw` left/right padding.
+
+### Vertical Positioning
+
+Body content sits in a flex column (`.body`) with `margin: auto` — vertically centered by default. Three modifiers:
+
+| Class | Behavior |
+|-------|----------|
+| `.body` | Vertically centered (default) |
+| `.body.center` | Centered with `justify-content: center` (Identity slide) |
+| `.body.top` | Pinned toward top — `margin-top: 10cqw` |
+| `.body.bottom` | Pinned toward bottom — `margin-bottom: 9cqw` |
+
+Use `.body.center` on slides with compact content that should sit mid-card. Use `.body.top` when content is dense and would otherwise float too high. Default `.body` works for most slides.
 
 ---
 
 ## Slide Types
 
-### Slide 1 — Hook (Cover)
+### Hook (Slide 1) — `.hook-wrap`
 
-The first slide is the scroll-stopper. Big, centered, bold.
-
-```
-┌─────────────────────────────┐
-│                        1/7  │
-│                             │
-│                             │
-│   [DRUG NAME]               │  ← 80–88px, weight 800, --text
-│   [hook text]               │  ← 40–44px, weight 400, --text-mut
-│                             │
-│                             │
-│   ROB THE PARAMEDIC         │
-└─────────────────────────────┘
-```
-
-- Drug name: all caps or title case, top of content block
-- Hook text: 1–2 lines, positioned below drug name, slightly muted
-- Optional: thin accent bar (`--blue`, 4px wide, full-width) at top of slide
-
-### Slide 2–N — Body Slides
-
-Information slides. Surface-card aesthetic with a section label and content.
+Full-bleed, vertically centered column. No frame or top-row.
 
 ```
-┌─────────────────────────────┐
-│                        N/7  │
-│                             │
-│  ┌───────────────────────┐  │
-│  │ SECTION LABEL         │  │  ← --text-faint, uppercase, 28px
-│  │───────────────────────│  │
-│  │                       │  │
-│  │  [content]            │  │
-│  │                       │  │
-│  └───────────────────────┘  │
-│                             │
-│   ROB THE PARAMEDIC         │
-└─────────────────────────────┘
+[hook-eyebrow]     ← template label in amber, uppercase, letter-spaced
+[hook-title]       ← drug name, 13cqw, Barlow 800
+[hook-sub]         ← hook line, 5.1cqw, body text
+[hook-teaser]      ← teaser, italic (if present)
+[footer]
 ```
 
-- Card background: `--surface` with 16px border-radius
-- Section label: uppercase, `--blue` or context-colored (see Color Palette), letter-spacing: 0.12em
-- Body text: 38–44px, `--text`, line-height 1.5
-- Dose amounts: use Barlow Semi Condensed 700, 80–96px, `--text` — prominent display
-
-### Last Slide — CTA
-
-Clean, centered, minimal. Drives to the app.
-
-```
-┌─────────────────────────────┐
-│                        7/7  │
-│                             │
-│                             │
-│   [CTA text]                │  ← 44px, weight 500, --text
-│                             │
-│   [optional emoji]          │
-│                             │
-│   link in bio               │  ← 32px, --text-faint
-│   ──────────────────        │
-│   ROB THE PARAMEDIC         │
-└─────────────────────────────┘
-```
+- Eyebrow is auto-generated from template. See `template_eyebrows.md`.
+- Extra top padding clears the progress bar: `padding-top: calc(var(--safe-y) + 5cqw)`
 
 ---
 
-## Color Coding by Section Type
+### Standard Body Slide — `.frame`
 
-Match the app's section label colors:
+Used for: Identity, Mechanism, Dose, Cautions, Clinical Pearl, and any narrative slide.
 
-| Section | Color |
-|---------|-------|
-| Drug class / general | `--blue` (`#5e9be8`) |
-| Indications | `--green` (`#52d693`) |
-| Contraindications | `--red` (`#e86363`) |
-| Warnings / Precautions | `--orange` (`#daa040`) |
-| Adverse effects | `--lilac` (`#7c6ddd`) |
-| Mechanism of action | `--cyan` (`#4dc4b0`) |
-| Dose | `--green` (`#52d693`) |
+```
+[progress bar]       ← absolute, top of safe zone
+[top-row]
+  [slide-title.subtle]   ← sectionLabel, top-left, gray uppercase
+  [counter]              ← replaced by progress bar JS
+[body]
+  [dose-name]?           ← topicName (optional), large Barlow
+  [line] ...             ← body text
+  [teaser]               ← italic, last line
+[footer]
+```
+
+- Frame padding: `calc(var(--safe-y) + 5cqw)` top, `6.5cqw` sides, `var(--safe-y)` bottom
+- Gap between body elements: `3.2cqw`
 
 ---
 
-## Pills & Tags
+### Mechanism Slide — adds `.mech-list`
 
-For inline categorization (drug class, routes, etc.), use pill styles from the app:
+When a slide covers multiple receptor targets, group the receptor lines in a `.mech-list` div. Receptor name labels (α-1, β-1, etc.) use `.mech-inline` for JetBrains Mono lock.
 
-```css
-/* Example — blue pill */
-background: rgba(94, 155, 232, 0.12);
-border: 1px solid rgba(94, 155, 232, 0.3);
-color: #5e9be8;
-border-radius: 999px;
-padding: 6px 20px;
-font-size: 28px;
-font-weight: 500;
+```html
+<div class="mech-list">
+  <p class="line"><span class="c-amber mech-inline">α-1</span> causes vasoconstriction...</p>
+  <p class="line"><span class="c-blue mech-inline">β-1</span> increases HR and contractility.</p>
+</div>
 ```
 
-Scale up sizes since we're at 1080px canvas width — app pill sizes × ~2.
+Gap inside `.mech-list`: `3cqw`. Use only when there are 2+ receptor lines to group.
+
+---
+
+### Contraindications Slide — adds `.ci-list`
+
+When named contraindications each have a rationale, use `.ci-list` with `.ci-item` children instead of flat `.line` elements. Each item has a colored name and a smaller rationale below it.
+
+```html
+<div class="ci-list">
+  <div class="ci-item">
+    <div class="nm c-coral">Coronary insufficiency</div>
+    <div class="why">Epi increases myocardial O₂ demand, which can worsen ischemia.</div>
+  </div>
+</div>
+```
+
+- `.nm`: `5.4cqw`, weight 700, colored with the appropriate class
+- `.why`: `4.2cqw`, weight 400, color `#b4b4b4`, margin-top `1cqw`
+- Gap between items: `4.2cqw`
+
+Use `.ci-list` when contraindications have distinct named items with rationales. Use plain `.line` elements for a single-sentence contraindications overview.
+
+---
+
+### Pearl Slide — adds `.conc-statements`
+
+For side-by-side numerical comparisons (e.g. 1:10,000 vs 1:1,000), use `.conc-statements` with `.conc-line` rows. Numeric values get `.conc-num` for JetBrains Mono.
+
+```html
+<div class="conc-statements">
+  <p class="conc-line"><span class="conc-num c-amber">1:10,000</span> is for IV push in arrest.</p>
+  <p class="conc-line"><span class="conc-num c-amber">1:1,000</span> is for IM in anaphylaxis.</p>
+</div>
+```
+
+- `.conc-line`: `5.6cqw`, weight 500, line-height `1.25`
+- Gap inside `.conc-statements`: `1.6cqw`, margin `2cqw 0`
+
+Use only for structured numerical comparisons. Plain `.line` for everything else on pearl slides.
+
+---
+
+### Recap Slide — adds `.recap-list`
+
+Each topic covered gets a `.recap-item` with a colored `.label` and a plain `.desc` below it.
+
+```html
+<div class="recap-list">
+  <div class="recap-item">
+    <div class="label c-blue">Mechanism</div>
+    <div class="desc">α-1, β-1, β-2 stimulation</div>
+  </div>
+</div>
+```
+
+- `.label`: `4.4cqw`, weight 600, colored with `c-[color]`
+- `.desc`: `4.8cqw`, weight 400, `--ink`, line-height `1.35`
+- Gap between items: `5cqw`
+- The `<topicName>` (e.g. "The essentials.") renders as `.dose-name` above the list
+
+---
+
+### CTA (Last Slide) — `.cta-wrap`
+
+Full-bleed, vertically centered. No frame or top-row.
+
+```
+[cta-eyebrow]?     ← optional small label
+[cta-line1]        ← save prompt, 10cqw Barlow 700
+[cta-line2]        ← app reference line, 4.6cqw
+  [cta-link]       ← "Link in bio" in --amber
+[footer]
+```
+
+- Same extra top padding as hook: `padding-top: calc(var(--safe-y) + 5cqw)`
+- "Link in bio" is always on its own line, wrapped in `.cta-link` for amber color
+
+---
+
+## Inline Color Tags
+
+Applied as `<span class="c-[color]">` within body text. All colored spans are `font-weight: 600`.
+
+| Class | Color | Maps from script tag |
+|-------|-------|---------------------|
+| `.c-blue` | `#5e9be8` | `[blue: ...]` |
+| `.c-amber` | `#daa040` | `[amber: ...]` |
+| `.c-green` | `#52d693` | `[green: ...]` |
+| `.c-coral` | `#e86363` | `[coral: ...]` |
+| `.c-lavender` | `#7c6ddd` | `[lavender: ...]` |
 
 ---
 
 ## What NOT to Do
 
-- No white backgrounds — this is a dark-mode-only product
-- No gradients unless a very subtle `hsla(45, 20%, 60%, 0.06)` top-fade (as used in `.card-header`)
-- No drop shadows heavier than `rgba(0,0,0,0.8)` at 24px blur
+- No light or white backgrounds — dark only
+- No card-within-slide chrome (no inner surface panels, no inner borders)
 - No fonts outside the three approved families
-- No color values outside the palette — don't invent new accents
-- Don't crowd the slide — leave breathing room, center content vertically
-- Don't put more than ~40 words on a body slide (enforced by carousel-script)
+- No color values outside the defined palette
+- No border-radius on `.slide` — shows as artifact on JPEG crop
+- No content outside the safe zone (`--safe-y` top and bottom)
+- No more than one `.dose-name` per slide
+- Do not skip the progress bar JS — it must be included in every generated HTML
