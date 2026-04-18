@@ -141,9 +141,10 @@ Think of it as a conversation. You finish one thought, then move naturally to th
 
 **Example — identity slide followed by mechanism slide:**
 
-Slide 2: *"It's a sympathomimetic, catecholamine, and vasopressor. It mimics your body's natural stress response. It's the first-line drug for both anaphylaxis and cardiac arrest."*
+Slide 2 (Identity): *"Also called Adrenalin and EpiPen. It's a sympathomimetic, catecholamine, and vasopressor — it mimics your body's own stress response. First-line for both anaphylaxis and cardiac arrest."*
+Teaser: *"The reason it works for both comes down to which receptors it hits..."*
 
-Slide 3: *"The reason it works for both comes down to which receptors it hits..."*
+Slide 3 (Mechanism): *"It hits three receptors at once, and each one does something different. α-1 causes vasoconstriction, which brings BP back up. β-1 increases HR and contractility. β-2 relaxes the airways."*
 
 That's a story. Each slide sets up the next.
 
