@@ -18,7 +18,8 @@ All drugs in the dataset.
 | 4–5 | Indications | Top 2–3 indications, each with the most testable dose/route. If doses differ significantly between indications, use one slide per indication. If doses are similar, combine onto one slide. Use `[green: ...]` for indication names. Use `<subtleHeader>` to name each indication when indications get separate slides. Source fields: `indications[].name`, `indications[].doses`. |
 | 6 | Contraindications | Top 2–4 contraindications, one per line. Include a brief rationale connecting each to the drug's mechanism. Use `[coral: ...]` for named contraindications. If the contraindications are distinct enough to warrant separate slides (Template 2 territory), use `<subtleHeader>` per contraindication. Source field: `contraindications`. |
 | 7 | Pearl | One high-yield clinical detail: a common mistake, a test-day trap, a field tip, or a critical nuance. Must be specific to this drug. Use `[amber: ...]` for warnings or `[lavender: ...]` for named adverse effects if relevant. |
-| 8 | CTA | Save + app reference. Use one of the standard CTA options from global_rules. |
+| 8 | Recap | Brief summary of the N major ideas covered in the carousel — one line per concept, no pills. Use the same color tags as the body slides (e.g. `[blue: ...]` for mechanism, `[green: ...]` for indications, `[coral: ...]` for contraindications). Each line: colored label — key fact or dose. Do not introduce new information. |
+| 9 | CTA | Save + app reference. Use one of the standard CTA options from global_rules. |
 
 **Total slides:** 7–9
 
@@ -81,11 +82,10 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
      *Let's recap...*
 
 [8]  <subtleHeader>Recap</subtleHeader>
-     <text>Epinephrine — the essentials:</text>
-     <pill>Sympathomimetic · Catecholamine · Vasopressor</pill>
-     <pill>Cardiac Arrest: 1 mg IV/IO (1:10,000)</pill>
-     <pill>Anaphylaxis: 0.3–0.5 mg IM (1:1,000)</pill>
-     <pill>Relative CI: Coronary Insufficiency, Uncontrolled HTN</pill>
+     [blue: Mechanism] — α-1, β-1, β-2 stimulation
+     [green: Cardiac Arrest] — 1 mg IV/IO (1:10,000) every 3–5 min
+     [green: Anaphylaxis] — 0.3–0.5 mg IM (1:1,000) into the anterolateral thigh
+     [coral: Contraindications] — relative: coronary insufficiency, uncontrolled HTN
      *One more slide...*
 
 [9]  Save this for your next exam.
