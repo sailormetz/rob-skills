@@ -72,6 +72,7 @@ All drugs in the dataset.
 
 [7]  Save this to your study deck.
      The complete drug reference is in the bio.
+     Link in bio.
 ```
 
 ## Example: Naloxone (step-by-step approach)
@@ -111,4 +112,5 @@ All drugs in the dataset.
 
 [8]  Save this to your study deck.
      The complete drug reference is in the bio.
+     Link in bio.
 ```

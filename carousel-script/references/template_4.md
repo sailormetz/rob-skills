@@ -90,7 +90,8 @@ A post-administration concern is anything the medic needs to be aware of, watch 
      *Save this one...*
 
 [8]  Save this for your next shift.
-     Full doses, MOA, and contraindications for every drug → link in bio.
+     Full doses, MOA, and contraindications for every drug.
+     Link in bio.
 ```
 
 ## Example: Nitroglycerin
@@ -134,7 +135,8 @@ A post-administration concern is anything the medic needs to be aware of, watch 
      *Save this one...*
 
 [8]  Save this for your next chest pain call.
-     All 70 drugs, one app → link in bio.
+     All 70 drugs, one app.
+     Link in bio.
 ```
 
 ## Example: Ondansetron (short carousel — limited concerns)
@@ -157,4 +159,5 @@ A post-administration concern is anything the medic needs to be aware of, watch 
 
 [5]  Save this for your next clinical rotation.
      The complete drug reference is in the bio.
+     Link in bio.
 ```

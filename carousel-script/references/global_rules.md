@@ -358,15 +358,18 @@ The CTA is the closing line of the story — brief, practical, direct.
 
 ```
 Save this for your next exam.
-All 70 drugs, one app → link in bio.
+All 70 drugs, one app.
+Link in bio.
 ```
 ```
 Save this for your next shift.
-Full doses, MOA, and contraindications for every drug → link in bio.
+Full doses, MOA, and contraindications for every drug.
+Link in bio.
 ```
 ```
 Save this to your study deck.
 The complete drug reference is in the bio.
+Link in bio.
 ```
 
 Vary the save prompt to match context. The app reference line stays consistent.

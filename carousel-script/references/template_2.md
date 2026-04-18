@@ -93,7 +93,8 @@ Do not use: "Stop." as an opener (too dramatic), or parenthetical asides like "(
      *One more slide...*
 
 [10] Save this for your next exam.
-     All 70 drugs, one app → link in bio.
+     All 70 drugs, one app.
+     Link in bio.
 ```
 
 ## Example: Naloxone (short carousel — single contraindication, explored in depth)
@@ -120,5 +121,6 @@ Do not use: "Stop." as an opener (too dramatic), or parenthetical asides like "(
      *Save this one...*
 
 [5]  Save this for your next shift.
-     Full doses, MOA, and contraindications for every drug → link in bio.
+     Full doses, MOA, and contraindications for every drug.
+     Link in bio.
 ```

@@ -81,7 +81,8 @@ All drugs in the dataset.
      *One more slide...*
 
 [8]  Save this for your next exam.
-     All 70 drugs, one app → link in bio.
+     All 70 drugs, one app.
+     Link in bio.
 ```
 
 ## Example: Ondansetron (short carousel — limited indications)
@@ -104,4 +105,5 @@ All drugs in the dataset.
 
 [5]  Save this for your next clinical rotation.
      The complete drug reference is in the bio.
+     Link in bio.
 ```
