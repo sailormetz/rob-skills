@@ -1,6 +1,6 @@
 ---
 name: mpg-tracker
-description: "Tracks fuel economy for Sailor's 2010 Toyota Tacoma. Triggers when Sailor sends a fill-up with odometer reading and gallons pumped. Calculate MPG, log the entry, and report MPG + running average. Trigger phrases: 'filled up', 'fill up', 'gas: [odometer] [gallons]', or any message that includes an odometer reading and gallons in the same message."
+description: "Tracks fuel economy for Sailor's 2010 Toyota Tacoma. Triggers when Sailor sends a fill-up with odometer reading and gallons pumped. Log the entry and report MPG + running average. Trigger phrases: 'filled up', 'fill up', 'gas: [odometer] [gallons]', or any message that includes an odometer reading and gallons."
 version: "1.0.0"
 author: rob
 tags: [mpg, fuel, tacoma, tracker]
@@ -8,62 +8,56 @@ tags: [mpg, fuel, tacoma, tracker]
 
 # mpg-tracker
 
-Logs fuel fill-ups, calculates MPG, and tracks running average for the 2010 Toyota Tacoma.
+Logs fuel fill-ups and calculates MPG for the 2010 Toyota Tacoma.
 
 ## Data File
 
-All data lives at `mpg.json` in the workspace root. Structure:
+`mpg.json` in the workspace root. Structure:
 
 ```json
 {
   "vehicle": "2010 Toyota Tacoma",
   "entries": [
     {
-      "date": "YYYY-MM-DD",
+      "id": 1,
+      "date": "2026-04-18",
       "odometer": 87342,
+      "tank_miles": 312,
       "gallons": 14.2,
-      "miles_driven": 312,
       "mpg": 21.97
     }
-  ]
+  ],
+  "summary": {
+    "total_entries": 1,
+    "avg_mpg": 21.97,
+    "best_mpg": 21.97,
+    "worst_mpg": 21.97,
+    "total_miles_tracked": 312,
+    "total_gallons": 14.2
+  }
 }
 ```
 
-If the file doesn't exist yet, create it with an empty `entries` array on first use.
-
 ## Workflow
 
-1. **Parse the input** — extract odometer reading and gallons from the message.
+1. Parse odometer and gallons from Sailor's message.
 
-2. **Read `mpg.json`** — get the last entry's odometer to calculate miles driven. If no prior entries exist, record this fill-up as the baseline (no MPG calculated — need two fill-ups to get a number).
+2. Write `skills/mpg-tracker/input.json`:
+   ```json
+   { "odometer": 87342, "gallons": 14.2 }
+   ```
 
-3. **Calculate:**
-   - `miles_driven = current_odometer - last_odometer`
-   - `mpg = miles_driven / gallons` (round to 2 decimal places)
-   - `running_average = sum of all mpg values / number of entries with mpg`
+3. Run the script:
+   ```
+   node /data/.openclaw/workspace/skills/mpg-tracker/log_fillup.js
+   ```
 
-4. **Append the new entry** to `mpg.json` and save.
+4. Report the script's output back to Sailor.
 
-5. **Reply** with:
-   - This fill-up MPG
-   - Running average across all fill-ups
-   - Total entries logged
-
-## Reply Format
-
-```
-⛽ [miles_driven] miles on [gallons] gal → [mpg] MPG
-Average across [N] fill-ups: [running_avg] MPG
-```
-
-If it's the first fill-up (baseline):
-```
-⛽ Baseline set at [odometer] miles. Send odometer + gallons next fill-up to start tracking.
-```
+5. Commit the workspace to save the updated `mpg.json`.
 
 ## Rules
 
-- Never overwrite existing entries — always append.
-- If input is ambiguous (e.g. only one number provided), ask which is odometer and which is gallons.
-- Round MPG to 2 decimal places.
-- Store odometer as a whole number, gallons as a float.
+- Always run the script — never calculate or write manually.
+- If the message is ambiguous (only one number), ask which is odometer and which is gallons.
+- After logging, commit: `cd /data/.openclaw/workspace && git add mpg.json && git commit -m "mpg: log fill-up [date]" && git push`
