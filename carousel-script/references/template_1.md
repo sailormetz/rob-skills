@@ -81,7 +81,7 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
      Know which is which before you reach for it.
      *Let's recap...*
 
-[8]  <subtleHeader>Recap</subtleHeader>
+[8]  <subtleHeader>The essentials.</subtleHeader>
      [blue: Mechanism] — α-1, β-1, β-2 stimulation
      [green: Cardiac Arrest] — 1 mg IV/IO (1:10,000) every 3–5 min
      [green: Anaphylaxis] — 0.3–0.5 mg IM (1:1,000) into the anterolateral thigh
