@@ -89,5 +89,6 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
      *One more slide...*
 
 [9]  Save this for your next exam.
-     All 70 drugs, one app → link in bio.
+     All paramedics drugs, one app
+     Link in bio.
 ```
