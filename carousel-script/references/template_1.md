@@ -44,7 +44,7 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
 ## Example: Epinephrine
 
 ```
-[1]  Epinephrine — how well do you really know this drug?
+[1]  [amber: Epinephrine] — how well do you really know this drug?
      *It does three jobs at once. Here's all of them...*
 
 [2]  <sectionLabel>Identity</sectionLabel>
@@ -62,7 +62,7 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
 
 [4]  <sectionLabel>Dose</sectionLabel>
      <topicName>Cardiac Arrest</topicName>
-     1 mg IV/IO (1:10,000) every 3–5 min.
+     [amber: 1 mg IV/IO] (1:10,000) every 3–5 min.
      Push fast and flush with 20 mL NS after each dose to move it centrally.
      *Anaphylaxis is a different situation entirely...*
 
@@ -82,8 +82,8 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
 
 [7]  <sectionLabel>Clinical Pearl</sectionLabel>
      The concentration mix-up is one of the most common errors with this drug.
-     1:10,000 is for IV push in arrest. 1:1,000 is for IM in anaphylaxis.
-     Getting them reversed means a tenfold dosing error.
+     [amber: 1:10,000] is for IV push in arrest. [amber: 1:1,000] is for IM in anaphylaxis.
+     Getting them reversed means a [lavender: tenfold dosing error].
      *Let's recap...*
 
 [8]  <sectionLabel>Recap</sectionLabel>
