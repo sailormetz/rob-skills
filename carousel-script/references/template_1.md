@@ -66,10 +66,10 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
      <text>0.3–0.5 mg IM (1:1,000) into the anterolateral thigh.</text>
      <text>That's ten times more concentrated than the arrest dose — the concentration matters as much as the dose.</text>
      <text>Repeat every 5–15 min if there's no improvement.</text>
-     *But think twice before giving it in these situations...*
+     *Before you give it — know the contraindications...*
 
-[6]  The main concern is the cardiovascular load it creates.
-     [coral: Coronary insufficiency] is a relative contraindication — epi increases myocardial O₂ demand, which can worsen ischemia.
+[6]  Epi has [coral: relative contraindications] — not hard stops, but situations where the cardiovascular load becomes a real concern.
+     [coral: Coronary insufficiency] — epi increases myocardial O₂ demand, which can worsen ischemia.
      [coral: Uncontrolled HTN] carries the same concern.
      There are no absolute contraindications in cardiac arrest.
      *One more thing — and it trips people up every time...*
