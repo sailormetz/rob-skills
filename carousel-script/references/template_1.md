@@ -78,7 +78,6 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
 [7]  The concentration mix-up is one of the most common errors with this drug.
      1:10,000 is for IV push in arrest. 1:1,000 is for IM in anaphylaxis.
      Getting them reversed means a tenfold dosing error.
-     Know which is which before you reach for it.
      *Let's recap...*
 
 [8]  <subtleHeader>The essentials.</subtleHeader>
