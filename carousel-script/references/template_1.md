@@ -82,7 +82,7 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
 
 [8]  <subtleHeader>Recap</subtleHeader>
      <text>Epinephrine — the essentials:</text>
-     <pill>Sympathomimetic · Catecholamine</pill>
+     <pill>Sympathomimetic · Catecholamine · Vasopressor</pill>
      <pill>Cardiac Arrest: 1 mg IV/IO (1:10,000)</pill>
      <pill>Anaphylaxis: 0.3–0.5 mg IM (1:1,000)</pill>
      <pill>Relative CI: Coronary Insufficiency, Uncontrolled HTN</pill>
