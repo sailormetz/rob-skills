@@ -54,7 +54,7 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
      *The reason it works for both comes down to which receptors it hits...*
 
 [3]  <sectionLabel>Mechanism</sectionLabel>
-     It hits three receptors at once, and each one does something different.
+     It hits three receptors at once, and *each one does something different*.
      [blue: α-1] causes vasoconstriction, which brings BP back up.
      [blue: β-1] increases HR and contractility.
      [blue: β-2] relaxes the airways.
@@ -63,13 +63,13 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
 [4]  <sectionLabel>Dose</sectionLabel>
      <topicName>Cardiac Arrest</topicName>
      [amber: 1 mg IV/IO] (1:10,000) every 3–5 min.
-     Push fast and flush with 20 mL NS after each dose to move it centrally.
+     Push fast and flush with 20 mL NS after each dose to *move it centrally*.
      *Anaphylaxis is a different situation entirely...*
 
 [5]  <sectionLabel>Dose</sectionLabel>
      <topicName>Anaphylaxis</topicName>
      0.3–0.5 mg IM (1:1,000) into the anterolateral thigh.
-     That's ten times more concentrated than the arrest dose — the concentration matters as much as the dose.
+     That's ten times more concentrated than the arrest dose — *the concentration matters as much as the dose*.
      [amber: Repeat every 5–15 min] if there's no improvement.
      *Before you give it — know the contraindications...*
 
@@ -77,11 +77,11 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
      Epi has [coral: relative contraindications] — not hard stops, but situations where the cardiovascular load becomes a real concern.
      [coral: Coronary insufficiency] — epi increases myocardial O₂ demand, which can worsen ischemia.
      [coral: Uncontrolled HTN] carries the same concern.
-     There are no absolute contraindications in cardiac arrest.
+     There are *no absolute contraindications* in cardiac arrest.
      *One more thing — and it trips people up every time...*
 
 [7]  <sectionLabel>Clinical Pearl</sectionLabel>
-     The concentration mix-up is one of the most common errors with this drug.
+     The concentration mix-up is *one of the most common errors* with this drug.
      [amber: 1:10,000] is for IV push in arrest. [amber: 1:1,000] is for IM in anaphylaxis.
      Getting them reversed means a [lavender: tenfold dosing error].
      *Let's recap...*

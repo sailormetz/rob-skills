@@ -46,25 +46,25 @@ All drugs in the dataset.
 [2]  <sectionLabel>Overview</sectionLabel>
      It's a [blue: sympathomimetic] and [blue: catecholamine] — hits [blue: α-1], [blue: β-1], and [blue: β-2] simultaneously.
      Vasoconstriction, cardiac stimulation, bronchodilation: all three at once.
-     Which receptor matters most depends on why you're giving it.
+     *Which receptor matters most* depends on why you're giving it.
      *Start with the most critical use...*
 
 [3]  <sectionLabel>Indications</sectionLabel>
      <topicName>Cardiac Arrest</topicName>
      [blue: β-1] stimulation raises coronary perfusion pressure between compressions — improving the odds of successful defibrillation.
-     1 mg IV/IO (1:10,000) every 3–5 min. Push fast and flush with 20 mL NS.
+     1 mg IV/IO (1:10,000) every 3–5 min. [amber: Push fast] and flush with 20 mL NS.
      *The anaphylaxis dose is completely different...*
 
 [4]  <sectionLabel>Indications</sectionLabel>
      <topicName>Anaphylaxis</topicName>
      [blue: α-1] restores BP. [blue: β-2] opens the airway. Both are in crisis during anaphylaxis.
      0.3–0.5 mg IM (1:1,000) into the anterolateral thigh. Repeat every 5–15 min if no improvement.
-     IM is the correct route in a patient with a pulse — IV push carries a high risk of fatal arrhythmia.
+     IM is the correct route in a patient with a pulse — *IV push carries a high risk of fatal arrhythmia*.
      *Two more uses — these come up less often but still get tested...*
 
 [5]  <sectionLabel>Indications</sectionLabel>
      <topicName>Vasopressor Infusion</topicName>
-     For refractory shock, [blue: α-1] vasoconstriction maintains MAP when other pressors have failed.
+     For refractory shock, [blue: α-1] vasoconstriction maintains MAP *when other pressors have failed*.
      0.05–0.3 mcg/kg/min IV, titrated to MAP ≥65 mmHg.
      *Last one...*
 
@@ -99,14 +99,14 @@ All drugs in the dataset.
 
 [3]  <sectionLabel>Indications</sectionLabel>
      For [green: nausea and vomiting], ondansetron blocks the serotonin signal before it triggers the vomiting reflex.
-     4 mg IV or ODT. Can repeat once in 15 min.
+     4 mg IV or ODT. Can *repeat once* in 15 min.
      Pedi (6 mo–12 yrs): 0.1 mg/kg IV, max 4 mg.
      *But there's a nuance on repeat dosing...*
 
 [4]  <sectionLabel>Cautions</sectionLabel>
      The nuance is the [lavender: QT risk].
      Repeat dosing prolongs the [lavender: QT interval] in a dose-dependent way.
-     Use caution in patients on other QT-prolonging drugs. Contraindicated in congenital long QT.
+     Use caution in patients on other QT-prolonging drugs. *Contraindicated in congenital long QT.*
      *Save this one...*
 
 [5]  Save this for your next clinical rotation.

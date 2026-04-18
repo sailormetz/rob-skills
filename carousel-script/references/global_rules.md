@@ -208,6 +208,25 @@ These match the drug cards app palette exactly.
 - Doses and routes are never tagged. The design layer renders doses in large display type automatically.
 - Teasers are never highlighted.
 
+### Inline Italic Emphasis
+
+Use `*text*` within a body line for secondary emphasis — points that deserve attention but don’t warrant a color tag.
+
+```
+[lavender: Bradycardia] can occur, especially with *rapid push*.
+```
+
+**Rules:**
+- Maximum 1–2 inline italics per slide. No minimum.
+- Italics are for the second tier — supporting details, qualifiers, consequences, or pointed bottom-line statements.
+- Do not italicize the primary key word or phrase — that gets a color tag.
+- Do not italicize full sentences. Keep it to a word or short phrase.
+- Teasers at the bottom of slides are separate — they are always italic as a block, not inline.
+
+**Distinguish from teasers in the script:** Inline emphasis appears `*mid-sentence*`. A teaser is `*on its own line at the bottom of the slide*` and gets the teaser class in HTML (`<em class="teaser">`).
+
+**In HTML:** Inline italic emphasis renders as a plain `<em>` tag within the `.line` paragraph. It is not the `.teaser` class.
+
 ---
 
 ## Tag Reference
@@ -223,7 +242,8 @@ Every tag in the script system. Untagged lines are treated as plain body text by
 | `[green: ...]` | Bracket | Inline color: indications and clinical uses. |
 | `[coral: ...]` | Bracket | Inline color: contraindications. |
 | `[lavender: ...]` | Bracket | Inline color: adverse effects and side effects. |
-| `*text*` | Asterisks | Teaser line. Always the last line of the slide. Never on CTA. |
+| `*text*` (end of slide) | Asterisks | Teaser line. Always the last line of the slide, on its own line. Never on CTA. Renders as `.teaser` class. |
+| `*text*` (mid-sentence) | Asterisks | Inline italic emphasis. Secondary emphasis within a body line. Max 1–2 per slide, no minimum. Renders as `<em>` within `.line`. |
 
 Plain body text (no tag) is the default. Only use tags when the design layer needs to treat something differently.
 

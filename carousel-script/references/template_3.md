@@ -49,26 +49,26 @@ All drugs in the dataset.
      <topicName>Low Dose — D1 Receptors</topicName>
      At low doses, dopamine primarily activates [blue: D1 dopaminergic receptors] in the renal and mesenteric vasculature.
      This causes vasodilation in those beds, which was historically called "renal-dose dopamine."
-     That theory has been debunked — there is no proven renal protection at low doses. This range is no longer clinically targeted.
+     That theory has been debunked — *there is no proven renal protection* at low doses. This range is no longer clinically targeted.
      *As the dose climbs, you hit a different receptor entirely...*
 
 [4]  <sectionLabel>Mechanism</sectionLabel>
      <topicName>Mid Dose — Beta-1 Receptors</topicName>
      In the mid range, [blue: β-1 adrenergic receptors] dominate — this is the inotropic range.
      HR goes up. Contractility increases. Cardiac output improves.
-     This is the range used for cardiogenic shock and symptomatic bradycardia when atropine has failed.
+     This is the range used for cardiogenic shock and symptomatic bradycardia *when atropine has failed*.
      *Push the dose higher and you activate a third receptor...*
 
 [5]  <sectionLabel>Mechanism</sectionLabel>
      <topicName>High Dose — Alpha-1 Receptors</topicName>
      At high doses, [blue: α-1 adrenergic receptors] take over and cause peripheral vasoconstriction.
      SVR rises, BP rises — but so does the afterload the heart has to pump against.
-     At very high doses, α-1 vasoconstriction can actually override the dopaminergic dilation and reduce renal perfusion.
+     At very high doses, α-1 vasoconstriction can *actually override* the dopaminergic dilation and reduce renal perfusion.
      *Here's what that means clinically...*
 
 [6]  <sectionLabel>Synthesis</sectionLabel>
      Understanding the dose-receptor relationship explains why dopamine is now [amber: third-line] for shock.
-     The [lavender: tachyarrhythmia] risk is real at every range — and norepinephrine and epinephrine produce more predictable effects without the dose-dependent receptor shifting.
+     The [lavender: tachyarrhythmia] risk is real at *every range* — and norepinephrine and epinephrine produce more predictable effects without the dose-dependent receptor shifting.
      When you do use it, titrate to MAP ≥65 mmHg and watch the rhythm continuously.
      *Save this one...*
 
@@ -97,7 +97,7 @@ All drugs in the dataset.
 [4]  <sectionLabel>Mechanism</sectionLabel>
      Naloxone has a higher affinity for [blue: mu receptors] than most opioids do.
      It displaces the opioid from the receptor and takes its place.
-     But it doesn't activate the receptor — it just occupies it.
+     But it doesn't activate the receptor — *it just occupies it*.
      *That's the key difference: binding without activation.*
 
 [5]  <sectionLabel>Mechanism</sectionLabel>
@@ -109,13 +109,13 @@ All drugs in the dataset.
 [6]  <sectionLabel>Mechanism</sectionLabel>
      There's one catch: naloxone's [amber: half-life] is shorter than most opioids.
      When it wears off, the opioid is still in circulation and can rebind.
-     [lavender: Re-sedation] is a real risk — that's why you monitor after administration and may need to redose.
+     [lavender: Re-sedation] is a real risk — *that's why you monitor* after administration and may need to redose.
      *And that's exactly why technique matters...*
 
 [7]  <sectionLabel>Synthesis</sectionLabel>
      This is also why technique matters.
      Too much naloxone too fast displaces everything at once and precipitates [lavender: acute withdrawal].
-     The goal is to restore [amber: respiratory effort] — not flip a switch and cause a crisis.
+     The goal is to restore [amber: respiratory effort] — *not flip a switch* and cause a crisis.
      *Save this one...*
 
 [8]  Save this to your study deck.

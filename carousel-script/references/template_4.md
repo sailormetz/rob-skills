@@ -56,20 +56,20 @@ A post-administration concern is anything the medic needs to be aware of, watch 
 
 [2]  <sectionLabel>Overview</sectionLabel>
      You gave it for [green: pain management] — and it will work.
-     But morphine is a [blue: mu-opioid agonist] with downstream effects beyond analgesia.
+     But morphine is a [blue: mu-opioid agonist] with *downstream effects beyond analgesia*.
      *The big ones are cardiovascular and respiratory...*
 
 [3]  <sectionLabel>After Administration</sectionLabel>
      <topicName>Hypotension</topicName>
      The most common adverse effect to manage.
-     Morphine causes [blue: histamine release], which vasodilates — BP can drop, especially if the patient is volume-depleted.
+     Morphine causes [blue: histamine release], which vasodilates — BP can drop, *especially if the patient is volume-depleted*.
      Check BP after each dose. This is the primary reason fentanyl gets picked instead in many protocols.
      *Next up — the one that can sneak up on you...*
 
 [4]  <sectionLabel>After Administration</sectionLabel>
      <topicName>Respiratory Depression</topicName>
      The risk you can't ignore.
-     Morphine suppresses the brainstem's [lavender: respiratory drive], and it builds gradually — slower onset than fentanyl means it can creep up on you.
+     Morphine suppresses the brainstem's [lavender: respiratory drive], and it builds gradually — *slower onset than fentanyl means it can creep up on you*.
      Monitor RR and etCO₂ continuously. Have naloxone drawn and ready.
      *One more...*
 
@@ -87,7 +87,7 @@ A post-administration concern is anything the medic needs to be aware of, watch 
 
 [7]  <sectionLabel>Bottom Line</sectionLabel>
      BP after every dose. RR and SpO₂ continuously.
-     If RR drops below 12 or SpO₂ trends down despite O₂, you're watching [lavender: respiratory depression] develop.
+     If RR drops below 12 or SpO₂ trends down despite O₂, *you're watching [lavender: respiratory depression] develop*.
      Naloxone drawn and ready. That's the bottom line.
      *Save this one...*
 
@@ -104,7 +104,7 @@ A post-administration concern is anything the medic needs to be aware of, watch 
 
 [2]  <sectionLabel>Overview</sectionLabel>
      You gave it for [green: chest pain] or [green: acute CHF] — it works by [blue: vasodilation].
-     Fast onset, fast drop in preload. That's the mechanism and the risk.
+     Fast onset, *fast drop in preload*. That's the mechanism and the risk.
      *Most of what you're watching for traces back to that drop in preload...*
 
 [3]  <sectionLabel>After Administration</sectionLabel>
@@ -117,12 +117,12 @@ A post-administration concern is anything the medic needs to be aware of, watch 
      <topicName>Right-Sided MI</topicName>
      The [blue: right ventricle] is preload-dependent — take away preload with nitro and BP can crash.
      If you haven't confirmed it's not a right-sided infarction, check leads before giving.
-     If it's already on board and BP is dropping, treat aggressively.
+     If it's already on board and BP is dropping, *treat aggressively*.
      *And one drug interaction that can be life-threatening...*
 
 [5]  <sectionLabel>After Administration</sectionLabel>
      <topicName>PDE Inhibitors</topicName>
-     [amber: Sildenafil], [amber: tadalafil], or similar drugs in the last 24–48 hours — combined with nitro, the result is profound, potentially life-threatening hypotension.
+     [amber: Sildenafil], [amber: tadalafil], or similar drugs in the last 24–48 hours — combined with nitro, the result is *profound, potentially life-threatening hypotension*.
      Ask before the first dose. If you find out after, prepare for aggressive fluid resuscitation.
      *Let's recap...*
 
@@ -157,13 +157,13 @@ A post-administration concern is anything the medic needs to be aware of, watch 
 [3]  <sectionLabel>After Administration</sectionLabel>
      [lavender: QT prolongation] is dose-dependent.
      Higher doses and repeat dosing extend the QT interval.
-     Use caution if the patient is on other QT-prolonging drugs. Contraindicated in congenital long QT.
+     Use caution if the patient is on other QT-prolonging drugs. *Contraindicated in congenital long QT.*
      Monitor rhythm if giving repeat doses or if the patient has known QT risk factors.
      *So what does that mean practically...*
 
 [4]  <sectionLabel>Bottom Line</sectionLabel>
      BP and [amber: rhythm]. That's the monitor.
-     Single dose in a healthy patient — low risk. Repeat dosing in a cardiac patient — think before you give it again.
+     Single dose in a healthy patient — low risk. *Repeat dosing in a cardiac patient* — think before you give it again.
      *Save this one...*
 
 [5]  Save this for your next clinical rotation.

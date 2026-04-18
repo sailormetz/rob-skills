@@ -44,18 +44,18 @@ Do not use: "Stop." as an opener (too dramatic), or parenthetical asides like "(
 
 [2]  <sectionLabel>Overview</sectionLabel>
      It's a [blue: depolarizing neuromuscular blocker] — fastest onset of anything you'll use for [green: RSI].
-     But that depolarization is exactly what makes it dangerous in the wrong patient.
+     But *that depolarization* is exactly what makes it dangerous in the wrong patient.
      *The risks all trace back to one mechanism...*
 
 [3]  <sectionLabel>Mechanism</sectionLabel>
      Every dose causes a transient [blue: potassium shift] out of muscle cells.
-     In a healthy patient, that's manageable — but if K+ is already elevated, that bump can push them into [lavender: cardiac arrest].
+     In a healthy patient, that's manageable — but *if K+ is already elevated*, that bump can push them into [lavender: cardiac arrest].
      Several conditions amplify that release dramatically.
      *Here's the first one...*
 
 [4]  <sectionLabel>Contraindications</sectionLabel>
      <topicName>Hyperkalemia</topicName>
-     [coral: Hyperkalemia] is the primary contraindication — and it's not always obvious you're dealing with it.
+     [coral: Hyperkalemia] is the primary contraindication — and *it's not always obvious* you're dealing with it.
      Any patient with known or suspected elevated K+ is at risk from that potassium shift.
      *Burns and crush injuries take this further...*
 
@@ -76,13 +76,13 @@ Do not use: "Stop." as an opener (too dramatic), or parenthetical asides like "(
      <topicName>Malignant Hyperthermia</topicName>
      [coral: Personal or family history of malignant hyperthermia] is an absolute contraindication.
      Succinylcholine is a known trigger — it can initiate the cascade even without prior personal exposure.
-     Classic board question. Know it cold.
+     *Classic board question.* Know it cold.
      *Last one...*
 
 [8]  <sectionLabel>Contraindications</sectionLabel>
      <topicName>Penetrating Eye Injury</topicName>
      [coral: Penetrating eye injury] is the last one.
-     The fasciculations succinylcholine causes raise intraocular pressure, which can worsen a globe rupture.
+     The fasciculations succinylcholine causes raise intraocular pressure, which can *worsen a globe rupture*.
      Use a non-depolarizing agent if you have one available.
      *Let's put them all together...*
 
@@ -113,7 +113,7 @@ Do not use: "Stop." as an opener (too dramatic), or parenthetical asides like "(
 [3]  <sectionLabel>Cautions</sectionLabel>
      Push it too fast or at too high a dose and you precipitate [lavender: acute opioid withdrawal].
      That means combativeness, vomiting, and in severe cases, pulmonary edema.
-     This isn't a contraindication — it's a dosing and technique issue. But it's what actually hurts people.
+     This isn't a contraindication — it's a dosing and technique issue. But *it's what actually hurts people*.
      *So what does that mean in practice...*
 
 [4]  <sectionLabel>Cautions</sectionLabel>
