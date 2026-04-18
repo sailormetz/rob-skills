@@ -78,7 +78,7 @@ Three typefaces — all locked to their assigned roles. Do not mix.
 | Hook drug name (`.hook-title`) | `13cqw` | 800 | Line height `.95`, letter-spacing `-0.02em` |
 | Topic header (`.dose-name`) | `8.5cqw` | 700 | Letter-spacing `-0.015em`, line-height `1` |
 | CTA save prompt (`.cta-line1`) | `10cqw` | 700 | Letter-spacing `-0.015em` |
-| Body line (`.line`) | `5.1cqw` | 500 | Line height `1.35` |
+| Body line (`.line`) | `5.1cqw` | 400 | Line height `1.35` |
 | Teaser (`.teaser`) | `5.1cqw` | 400 | Italic, `--teaser-color` |
 | Hook line (`.hook-sub`) | `5.1cqw` | 500 | Max-width 88% |
 | Section label (`.slide-title.subtle`) | `3.4cqw` | 600 | Uppercase, letter-spacing `.26em`, color `#6a6a6a` |
@@ -288,7 +288,7 @@ Full-bleed, vertically centered. No frame or top-row.
 
 ## Inline Color Tags
 
-Applied as `<span class="c-[color]">` within body text. All colored spans are `font-weight: 600`.
+Applied as `<span class="c-[color]">` within body text. All colored spans are `font-weight: 500` — one step above the body text weight of 400.
 
 | Class | Color | Maps from script tag |
 |-------|-------|---------------------|
