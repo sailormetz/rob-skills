@@ -190,14 +190,14 @@ The `combo_hash` is **required** — it identifies which run to finalize. If Sai
    ```json
    { "[combo_hash]": { "last_used": "<ISO 8601 timestamp>" } }
    ```
-2. Delete the entire `runs/{combo_hash}/` folder and its contents.
-3. Confirm to Sailor: `"✅ [combo_hash] finalized and logged. Run folder cleaned up."`
-4. Push the workspace to GitHub to save the updated `carousel_usage_log.json` — run: `cd /data/.openclaw/workspace && git add -A && git commit -m "approve [combo_hash]" && git push`
+2. Move the entire `runs/{combo_hash}/` folder to `carousel-pipeline/finished_runs/{combo_hash}/`. Create `finished_runs/` if it doesn't exist.
+3. Confirm to Sailor: `"✅ [combo_hash] finalized and archived to finished_runs/."`
+4. Push the workspace to GitHub to save the updated `carousel_usage_log.json` and the archived run — run: `cd /data/.openclaw/workspace && git add -A && git commit -m "approve [combo_hash]" && git push`
 
 **Rules:**
 - NEVER run Phase 4 without an explicit approval phrase from Sailor.
 - NEVER write to `carousel_usage_log.json` outside of Phase 4.
-- NEVER delete a run folder outside of Phase 4.
+- NEVER delete or move a run folder outside of Phase 4.
 - If in doubt whether Sailor intended to approve, ASK. Do not infer.
 
 ---
