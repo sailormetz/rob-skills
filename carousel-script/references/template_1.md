@@ -66,7 +66,7 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
      <text>0.3–0.5 mg IM (1:1,000) into the anterolateral thigh.</text>
      <text>That's ten times more concentrated than the arrest dose — the concentration matters as much as the dose.</text>
      <text>Repeat every 5–15 min if there's no improvement.</text>
-     *Think twice before giving it in these situations...*
+     *But think twice before giving it in these situations...*
 
 [6]  The main concern is the cardiovascular load it creates.
      [coral: Coronary insufficiency] is a relative contraindication — epi increases myocardial O₂ demand, which can worsen ischemia.
