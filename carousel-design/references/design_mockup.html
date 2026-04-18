@@ -1,352 +1,402 @@
-<!DOCTYPE html><html lang="en" style="--bg-h: 9; --bg-s: 9%; --bg-l: 10.5%; --ink: #ececec;"><head>
-
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
 <meta charset="utf-8">
 <title>Epinephrine — Rob the Paramedic</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<!-- Fonts: Barlow Semi Condensed (titles/headers), IBM Plex Sans (body), JetBrains Mono (receptor names/monospace) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&amp;family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --bg-h:0;
-    --bg-s:0%;
-    --bg-l:4.7%;
-    --bg:hsl(var(--bg-h), var(--bg-s), var(--bg-l));
-    --panel:hsl(var(--bg-h), var(--bg-s), var(--bg-l));
-    --panel-raise:hsl(var(--bg-h), var(--bg-s), calc(var(--bg-l) + 2.5%));
-    --panel-border:hsl(var(--bg-h), var(--bg-s), calc(var(--bg-l) + 7%));
-    --ink:#ececec;
-    --teaser-h:0;
-    --teaser-s:0%;
-    --teaser-l:92%;
-    --teaser-color:hsl(var(--teaser-h), var(--teaser-s), var(--teaser-l));
-    --ink-dim:#8a8a8a;
-    --ink-faint:#4a4a4a;
-    --amber:#daa040;
-    --blue:#5e9be8;
-    --green:#52d693;
-    --coral:#e86363;
-    --lavender:#7c6ddd;
-    --slide-w:1080px;
-    --slide-h:1920px;
-    /* TikTok safe zone: 1/10th of slide height on top and bottom.
-       In cqw units for a 1080×1920 slide, 1/10th of height = 17.78cqw. */
+
+  /* ============================================================
+     DESIGN TOKENS
+     Background is a warm near-black (hue 9, low saturation).
+     Override --bg-h / --bg-s / --bg-l on <html> to adjust tone.
+     ============================================================ */
+  :root {
+    --bg-h: 9;
+    --bg-s: 9%;
+    --bg-l: 10.5%;
+    --bg:           hsl(var(--bg-h), var(--bg-s), var(--bg-l));
+    --panel:        hsl(var(--bg-h), var(--bg-s), var(--bg-l));
+    --panel-raise:  hsl(var(--bg-h), var(--bg-s), calc(var(--bg-l) + 2.5%));
+    --panel-border: hsl(var(--bg-h), var(--bg-s), calc(var(--bg-l) + 7%));
+
+    --ink:      #ececec;  /* primary body text */
+    --ink-dim:  #8a8a8a;  /* de-emphasized text */
+
+    /* Teaser text color — controlled separately from body ink */
+    --teaser-h: 0;
+    --teaser-s: 0%;
+    --teaser-l: 92%;
+    --teaser-color: hsl(var(--teaser-h), var(--teaser-s), var(--teaser-l));
+
+    /* Semantic color palette — matches drug cards app exactly */
+    --amber:    #daa040;  /* trade names, warnings */
+    --blue:     #5e9be8;  /* drug classes, receptors, mechanism terms */
+    --green:    #52d693;  /* indications */
+    --coral:    #e86363;  /* contraindications */
+    --lavender: #7c6ddd;  /* adverse effects */
+
+    /* TikTok safe zone: top and bottom 1/10th of slide height.
+       In cqw units for a 1080×1920 slide: 192/1080 ≈ 17.78cqw. */
     --safe-y: 17.8cqw;
   }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:#000;color:var(--ink);
-    font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
-    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
-  .title-face{font-family:'Barlow Semi Condensed','IBM Plex Sans',sans-serif; letter-spacing:-0.01em;}
-  .mono{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;}
 
-  /* Titles always use Barlow Semi Condensed — immune to body-font tweaks */
+  /* ============================================================
+     RESET + BASE
+     ============================================================ */
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0; padding: 0;
+    background: #000;
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Font locks — these elements always use their assigned typeface regardless of cascade */
   .slide-title,
   .hook-title,
   .dose-name,
+  .hook-eyebrow,
   .cta-line1,
   .cta-eyebrow,
-  .sub-header,
-  .hook-eyebrow,
-  .pearl-tag,
-  .route,
-  .vs-card .use,
   .counter,
-  .footer{
-    font-family:'Barlow Semi Condensed','IBM Plex Sans',sans-serif !important;
+  .footer {
+    font-family: 'Barlow Semi Condensed', 'IBM Plex Sans', sans-serif !important;
   }
 
-  /* Monospace elements also locked */
-  .dose-value,
-  .mech-rcpt,
-  .vs-card .conc{
-    font-family:'JetBrains Mono',ui-monospace,Menlo,monospace !important;
-  }
-  body{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 16px 120px;}
-
-  .app-header{
-    width:100%; max-width:1400px; display:flex; align-items:baseline; justify-content:space-between;
-    color:#bdbdbd; font-size:13px; letter-spacing:.14em; text-transform:uppercase;
-    margin-bottom:24px;
-  }
-  .app-header h1{font-size:13px; margin:0; font-weight:600; color:#ddd}
-  .app-header .meta{color:#888}
-
-  .stage{
-    display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(360px, 1fr));
-    gap:28px;
-    width:100%; max-width:1400px;
+  /* Monospace lock — receptor names and inline code */
+  .mech-inline {
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace !important;
   }
 
-  .slide{
-    position:relative;
-    width:100%;
+  /* ============================================================
+     PAGE WRAPPER — dev preview only, not part of slide design
+     ============================================================ */
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 16px 120px;
+  }
+
+  /* Header bar showing drug name and carousel metadata */
+  .app-header {
+    width: 100%; max-width: 1400px;
+    display: flex; align-items: baseline; justify-content: space-between;
+    color: #bdbdbd; font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .app-header h1 { font-size: 13px; margin: 0; font-weight: 600; color: #ddd; }
+  .app-header .meta { color: #888; }
+
+  /* Grid that displays all slides side by side for preview */
+  .stage {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 28px;
+    width: 100%; max-width: 1400px;
+  }
+
+  /* ============================================================
+     SLIDE SHELL
+     Aspect ratio locked to 1080×1920 (TikTok portrait).
+     All internal sizing uses cqw (container query width units)
+     so the slide scales correctly at any rendered width.
+     ============================================================ */
+  .slide {
+    position: relative;
+    width: 100%;
     aspect-ratio: 1080 / 1920;
-    background:var(--panel);
-    border-radius:22px;
-    overflow:hidden;
+    background: var(--panel);
+    border-radius: 22px;
+    overflow: hidden;
     container-type: inline-size;
-    box-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 20px 50px rgba(0,0,0,.55);
+    box-shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 20px 50px rgba(0,0,0,.55);
   }
 
-  /* All spacing in container query units so every slide scales from its own width */
-  .frame{
-    position:absolute; inset:0;
-    padding: var(--safe-y) 6.5cqw var(--safe-y) 6.5cqw;
-    display:flex; flex-direction:column;
+  /* ============================================================
+     PROGRESS BAR
+     Rendered automatically by the JS below — script authors
+     never write this. N thin pill-segments span the slide width;
+     prior slides = dim blue, current slide = bright blue.
+     ============================================================ */
+  .progress {
+    position: absolute;
+    left: 6.5cqw; right: 6.5cqw;
+    top: var(--safe-y);
+    display: flex; gap: 1.2cqw;
+  }
+  .progress .seg {
+    flex: 1; height: 0.9cqw; border-radius: 999px;
+    background: #2a2a2a;
+    transition: background .2s ease;
+  }
+  .progress .seg.done   { background: rgba(94,155,232,.35); }
+  .progress .seg.active { background: var(--blue); }
+
+  /* ============================================================
+     LAYOUT: STANDARD BODY FRAME
+     Used on all slides except hook and CTA.
+     Extra top padding clears the progress bar.
+     ============================================================ */
+  .frame {
+    position: absolute; inset: 0;
+    padding: calc(var(--safe-y) + 5cqw) 6.5cqw var(--safe-y) 6.5cqw;
+    display: flex; flex-direction: column;
   }
 
-  .top-row{
-    display:flex; align-items:flex-start; justify-content:space-between;
-    gap:4cqw;
-  }
-  .slide-title{
-    font-size:9.5cqw; line-height:1.02; font-weight:800; letter-spacing:-0.02em;
-    color:#fafafa; margin:0;
-  }
-  .slide-title.subtle{
-    font-size:3.4cqw; line-height:1; font-weight:600; letter-spacing:.26em;
-    text-transform:uppercase;
-    color:#6a6a6a;
-    padding-top:1.8cqw;
-  }
-  .counter{
-    font-size:3.2cqw; color:#6a6a6a; font-weight:500; letter-spacing:.04em;
-    padding-top:1.8cqw; white-space:nowrap;
+  /* Section label (top-left) + slide counter (top-right) */
+  .top-row {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 4cqw;
   }
 
-  /* Progress indicator: 9 thin pills spanning the card width.
-     Positioned absolutely at the top of every slide inside the safe zone
-     so it sits at the same vertical location whether or not a title exists. */
-  .progress{
-    position:absolute; left:6.5cqw; right:6.5cqw; top: var(--safe-y);
-    display:flex; gap:1.2cqw;
+  /* .slide-title.subtle — the section label (e.g. "Mechanism", "Dose", "Cautions")
+     Small, dim, uppercase, letter-spaced. Always top-left on body slides. */
+  .slide-title.subtle {
+    font-size: 3.4cqw; line-height: 1; font-weight: 600;
+    letter-spacing: .26em; text-transform: uppercase;
+    color: #6a6a6a;
+    padding-top: 1.8cqw;
+    margin: 0;
   }
-  .progress .seg{
-    flex:1; height:0.9cqw; border-radius:999px;
-    background:#2a2a2a;
-    transition:background .2s ease;
-  }
-  .progress .seg.done{ background:rgba(94,155,232,.35); }
-  .progress .seg.active{ background:var(--blue); }
 
-  /* When a slide has a title-row, push the frame's content down so the
-     title clears the progress bar that sits above it. */
-  .frame{ padding-top: calc(var(--safe-y) + 5cqw); }
-  .hook-wrap, .cta-wrap{ padding-top: calc(var(--safe-y) + 5cqw); }
-
-  .body{
-    margin-top: auto;
-    margin-bottom: auto;
-    display:flex; flex-direction:column; gap:3.2cqw;
+  /* Slide counter — replaced at runtime by the progress bar JS */
+  .counter {
+    font-size: 3.2cqw; color: #6a6a6a; font-weight: 500;
+    letter-spacing: .04em; padding-top: 1.8cqw; white-space: nowrap;
   }
-  .body.top { margin-top: 10cqw; margin-bottom: auto; }
+
+  /* Body container — vertically centered by default */
+  .body {
+    margin-top: auto; margin-bottom: auto;
+    display: flex; flex-direction: column; gap: 3.2cqw;
+  }
+  .body.center { margin-top: auto; margin-bottom: auto; justify-content: center; }
+  .body.top    { margin-top: 10cqw; margin-bottom: auto; }
   .body.bottom { margin-top: auto; margin-bottom: 9cqw; }
-  .body.center { margin-top: auto; margin-bottom: auto; justify-content:center; }
 
-  .lead, p.line, .line{
-    font-size:5.1cqw;
-    line-height:1.35;
-    font-weight:500;
-    color:var(--ink);
-    margin:0;
-    text-wrap:pretty;
-  }
-  .small{ font-size:4.2cqw; color:var(--ink-dim); font-weight:500 }
+  /* ============================================================
+     TYPOGRAPHY
+     ============================================================ */
 
-  .teaser{
-    font-style:italic; color:var(--teaser-color); font-weight:400;
-    font-size:5.1cqw; line-height:1.35; margin:0;
-  }
-  /* Teaser inherits the same flex gap as body lines \u2014 no extra top spacing. */
-  .body > .teaser{ margin-top: 0; }
-
-  .footer{
-    position:absolute; left:0; right:0; bottom: calc(var(--safe-y) - 13cqw);
-    text-align:center; color:#5a5a5a; letter-spacing:.26em; font-size:2.7cqw;
-    font-weight:600;
+  /* Standard body line */
+  p.line, .line {
+    font-size: 5.1cqw; line-height: 1.35;
+    font-weight: 500; color: var(--ink);
+    margin: 0; text-wrap: pretty;
   }
 
-  /* color tags */
-  .c-blue{color:var(--blue); font-weight:600}
-  .c-amber{color:var(--amber); font-weight:600}
-  .c-green{color:var(--green); font-weight:600}
-  .c-coral{color:var(--coral); font-weight:600}
-  .c-lavender{color:var(--lavender); font-weight:600}
-
-  /* Hook slide */
-  .hook-wrap{
-    position:absolute; inset:0;
-    padding: var(--safe-y) 6.5cqw var(--safe-y) 6.5cqw;
-    display:flex; flex-direction:column; justify-content:center;
-  }
-  .hook-eyebrow{
-    position:static;
-    z-index:2;
-    display:flex; align-items:center; gap:2cqw;
-    font-size:4.4cqw; letter-spacing:.22em; text-transform:uppercase;
-    color:var(--amber); font-weight:700;
-    margin:0 0 5cqw 0;
-  }
-  .hook-eyebrow::after{ display:none; }
-  .hook-eyebrow .dot{ display:none; }
-  .hook-title{
-    font-family:'Barlow Semi Condensed','IBM Plex Sans',sans-serif;
-    font-size:13cqw; line-height:.95; font-weight:800;
-    letter-spacing:-0.02em; color:#fafafa; margin:0 0 4cqw 0;
-  }
-  .hook-sub{
-    font-size:5.1cqw; color:var(--ink); max-width:88%; line-height:1.35; font-weight:500;
-    font-family:'IBM Plex Sans',-apple-system,sans-serif;
-    margin:0 0 2cqw 0;
-  }
-  .hook-teaser{
-    margin-top:1.4cqw;
+  /* Teaser — italic, slightly lighter, always last line of a slide */
+  .teaser {
+    font-style: italic; color: var(--teaser-color);
+    font-weight: 400; font-size: 5.1cqw;
+    line-height: 1.35; margin: 0;
   }
 
-  /* Dose slides */
-  .sub-header{
-    font-size:3.4cqw; letter-spacing:.26em; text-transform:uppercase;
-    color:#8a8a8a; font-weight:600; margin-bottom:2.6cqw;
-  }
-  .dose-name{
-    font-family:'Barlow Semi Condensed','IBM Plex Sans',sans-serif;
-    font-size:8.5cqw; font-weight:700; letter-spacing:-0.015em;
-    color:#fafafa; line-height:1; margin:0 0 1.6cqw 0;
-  }
-  .dose-value{
-    font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;
-    font-size:6.6cqw; font-weight:600; color:#fafafa; line-height:1.1;
-    letter-spacing:-0.01em; margin:0 0 2.2cqw 0;
-    white-space:nowrap;
-  }
-  .dose-value .conc{ color:var(--blue); font-weight:600 }
-  .route{
-    display:inline-block;
-    font-size:4.6cqw; letter-spacing:.02em; text-transform:none;
-    color:#ededed; font-weight:500;
-    margin-bottom:0.8cqw;
+  /* Topic header — large Barlow, used when a slide has one named subject
+     (e.g. "Cardiac Arrest", "Anaphylaxis", "The essentials.") */
+  .dose-name {
+    font-size: 8.5cqw; font-weight: 700; letter-spacing: -0.015em;
+    color: #fafafa; line-height: 1;
+    margin: 0 0 1.6cqw 0;
   }
 
-  /* Receptor list (mechanism slide) — sentences */
-  .mech-list{ display:flex; flex-direction:column; gap:3cqw; margin-top:1cqw }
-  .mech-inline{
-    font-family:'JetBrains Mono',ui-monospace,Menlo,monospace !important;
-    font-weight:700;
+  /* ============================================================
+     INLINE COLOR TAGS
+     Applied to <span> elements within body text.
+     Matches the semantic color system in global_rules.md.
+     ============================================================ */
+  .c-blue     { color: var(--blue);     font-weight: 600; }
+  .c-amber    { color: var(--amber);    font-weight: 600; }
+  .c-green    { color: var(--green);    font-weight: 600; }
+  .c-coral    { color: var(--coral);    font-weight: 600; }
+  .c-lavender { color: var(--lavender); font-weight: 600; }
+
+  /* ============================================================
+     FOOTER
+     "ROB THE PARAMEDIC" — auto-rendered on every slide.
+     Positioned below the safe zone.
+     ============================================================ */
+  .footer {
+    position: absolute; left: 0; right: 0;
+    bottom: calc(var(--safe-y) - 13cqw);
+    text-align: center; color: #5a5a5a;
+    letter-spacing: .26em; font-size: 2.7cqw; font-weight: 600;
   }
 
-  /* Contraindications */
-  .ci-list{ display:flex; flex-direction:column; gap:4.2cqw; }
-  .ci-item .nm{ font-size:5.4cqw; font-weight:700 }
-  .ci-item .why{
-    font-size:4.2cqw; color:#b4b4b4; font-weight:400;
-    line-height:1.35; margin-top:1cqw;
+  /* ============================================================
+     LAYOUT: HOOK SLIDE (slide 1)
+     Centered column layout with eyebrow, drug name, hook line,
+     and optional teaser. Extra top padding clears progress bar.
+     ============================================================ */
+  .hook-wrap {
+    position: absolute; inset: 0;
+    padding: calc(var(--safe-y) + 5cqw) 6.5cqw var(--safe-y) 6.5cqw;
+    display: flex; flex-direction: column; justify-content: center;
   }
 
-  /* Pearl callout */
-  .pearl-tag{
-    display:inline-block;
-    font-size:3cqw; letter-spacing:.26em; text-transform:uppercase;
-    color:var(--amber); font-weight:700;
-    padding:1.2cqw 2.4cqw;
-    border:1px solid rgba(218,160,64,.35);
-    border-radius:999px; margin-bottom:5cqw;
-  }
-  .vs-row{
-    display:grid; grid-template-columns:1fr 1fr; gap:3cqw;
-    margin-top:3cqw;
-  }
-  .vs-card{
-    padding:4.4cqw 3.6cqw;
-    border:1px solid var(--panel-border);
-    border-radius:3cqw;
-    background:var(--panel-raise);
-  }
-  .vs-card .conc{
-    font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;
-    font-size:6.4cqw; font-weight:600; color:#fafafa; letter-spacing:-0.01em;
-    padding-bottom:2.6cqw; border-bottom:1px solid var(--panel-border);
-  }
-  .vs-card .use{
-    font-size:4.2cqw; color:#ededed; margin-top:2.6cqw;
-    font-weight:600; line-height:1.25;
-  }
-  .vs-card .use b{ color:#fafafa; font-weight:700 }
-
-  /* Pearl slide concentration statements */
-  .conc-statements{ display:flex; flex-direction:column; gap:1.6cqw; margin:2cqw 0; }
-  .conc-line{
-    font-size:5.6cqw; line-height:1.25; color:var(--ink); font-weight:500; margin:0;
-  }
-  .conc-num{
-    font-family:'JetBrains Mono',ui-monospace,Menlo,monospace !important;
-    font-weight:700; letter-spacing:-0.01em;
+  /* Eyebrow — template label (e.g. "Drug Breakdown") in amber above the drug name */
+  .hook-eyebrow {
+    font-size: 4.4cqw; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--amber); font-weight: 700;
+    margin: 0 0 5cqw 0;
   }
 
-  /* Recap section list (slide 8) */
-  .recap-list{ display:flex; flex-direction:column; gap:5cqw; margin-top:1cqw }
-  .recap-item{ display:flex; flex-direction:column; gap:1.2cqw; }
-  .recap-item .label{
-    font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
-    font-size:4.4cqw; font-weight:600; letter-spacing:0; text-transform:none;
-    line-height:1;
+  /* Drug name — large display type */
+  .hook-title {
+    font-size: 13cqw; line-height: .95; font-weight: 800;
+    letter-spacing: -0.02em; color: #fafafa;
+    margin: 0 0 4cqw 0;
   }
-  .recap-item .desc{
-    font-size:4.8cqw; color:var(--ink); font-weight:400; line-height:1.35;
-  }
-  .pill b.c-blue{ color:var(--blue) }
-  .pill b.c-green{ color:var(--green) }
-  .pill b.c-coral{ color:var(--coral) }
-  .pill b.c-amber{ color:var(--amber) }
-  .pill b.c-lavender{ color:var(--lavender) }
 
-  /* CTA */
-  .cta-wrap{
-    position:absolute; inset:0;
-    padding: var(--safe-y) 6.5cqw var(--safe-y) 6.5cqw;
-    display:flex; flex-direction:column; justify-content:center;
+  /* Hook line — the hook question or statement */
+  .hook-sub {
+    font-size: 5.1cqw; color: var(--ink); max-width: 88%;
+    line-height: 1.35; font-weight: 500;
+    margin: 0 0 2cqw 0;
   }
-  .cta-eyebrow{
-    font-size:3.1cqw; letter-spacing:.26em; text-transform:uppercase;
-    color:#8a8a8a; font-weight:600; margin-bottom:4cqw;
+
+  /* Teaser on the hook slide — slight extra top spacing */
+  .hook-teaser { margin-top: 1.4cqw; }
+
+  /* ============================================================
+     MECHANISM SLIDE
+     .mech-list groups receptor lines with tighter spacing.
+     .mech-inline applies monospace to receptor name labels (α-1, β-1, etc.)
+     ============================================================ */
+  .mech-list {
+    display: flex; flex-direction: column; gap: 3cqw;
+    margin-top: 1cqw;
   }
-  .cta-line1{
-    font-family:'Barlow Semi Condensed','IBM Plex Sans',sans-serif;
-    font-size:10cqw; font-weight:700; letter-spacing:-0.015em;
-    color:#fafafa; line-height:1.02; margin:0 0 5cqw 0;
+
+  /* ============================================================
+     CONTRAINDICATIONS SLIDE
+     .ci-list groups CI items. Each .ci-item has a colored name
+     (.nm) and a smaller rationale line (.why).
+     ============================================================ */
+  .ci-list { display: flex; flex-direction: column; gap: 4.2cqw; }
+
+  .ci-item .nm {
+    font-size: 5.4cqw; font-weight: 700;
   }
-  .cta-line2{
-    font-size:4.6cqw; color:#c8c8c8; line-height:1.35; font-weight:500; margin:0;
+  .ci-item .why {
+    font-size: 4.2cqw; color: #b4b4b4; font-weight: 400;
+    line-height: 1.35; margin-top: 1cqw;
   }
-  .cta-link{ color:var(--amber); font-weight:600 }
+
+  /* ============================================================
+     PEARL SLIDE
+     .conc-statements is a stacked block for side-by-side
+     numerical comparisons (e.g. 1:10,000 vs 1:1,000).
+     .conc-num applies monospace to the numeric values.
+     ============================================================ */
+  .conc-statements {
+    display: flex; flex-direction: column; gap: 1.6cqw; margin: 2cqw 0;
+  }
+  .conc-line {
+    font-size: 5.6cqw; line-height: 1.25;
+    color: var(--ink); font-weight: 500; margin: 0;
+  }
+  .conc-num {
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace !important;
+    font-weight: 700; letter-spacing: -0.01em;
+  }
+
+  /* ============================================================
+     RECAP SLIDE
+     .recap-list holds one .recap-item per topic covered.
+     Each item has a colored .label and a plain .desc below it.
+     ============================================================ */
+  .recap-list { display: flex; flex-direction: column; gap: 5cqw; margin-top: 1cqw; }
+
+  .recap-item { display: flex; flex-direction: column; gap: 1.2cqw; }
+
+  .recap-item .label {
+    font-size: 4.4cqw; font-weight: 600; line-height: 1;
+  }
+  .recap-item .desc {
+    font-size: 4.8cqw; color: var(--ink); font-weight: 400; line-height: 1.35;
+  }
+
+  /* ============================================================
+     LAYOUT: CTA SLIDE (last slide)
+     Centered column, large save prompt, amber link.
+     Extra top padding clears progress bar.
+     ============================================================ */
+  .cta-wrap {
+    position: absolute; inset: 0;
+    padding: calc(var(--safe-y) + 5cqw) 6.5cqw var(--safe-y) 6.5cqw;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+
+  /* Optional small label above the save line */
+  .cta-eyebrow {
+    font-size: 3.1cqw; letter-spacing: .26em; text-transform: uppercase;
+    color: #8a8a8a; font-weight: 600; margin-bottom: 4cqw;
+  }
+
+  /* Save prompt — large Barlow display */
+  .cta-line1 {
+    font-size: 10cqw; font-weight: 700; letter-spacing: -0.015em;
+    color: #fafafa; line-height: 1.02;
+    margin: 0 0 5cqw 0;
+  }
+
+  /* App reference line */
+  .cta-line2 {
+    font-size: 4.6cqw; color: #c8c8c8; line-height: 1.35;
+    font-weight: 500; margin: 0;
+  }
+
+  /* "Link in bio" — amber highlight */
+  .cta-link { color: var(--amber); font-weight: 600; }
 
 </style>
 </head>
-<body data-cc-id="cc-1" style="font-family: &quot;IBM Plex Sans&quot;; cursor: crosshair;">
 
+<body>
+
+<!-- Dev preview header — not part of slide design -->
 <div class="app-header">
   <h1>Epinephrine · Drug Breakdown</h1>
   <div class="meta">TikTok Carousel · 1080 × 1920 · 9 slides</div>
 </div>
 
+<!-- Dev preview grid — lays all slides out side by side for review -->
 <div class="stage">
 
-  <!-- 1 · HOOK -->
+  <!-- ==================== SLIDE 1 — HOOK ==================== -->
+  <!-- Layout: .hook-wrap centered column. Eyebrow = template title.
+       Drug name in large Barlow. Hook line in body type. Optional teaser. -->
   <div class="slide" data-screen-label="01 Hook">
     <div class="hook-wrap">
-      <div class="hook-eyebrow"><span class="dot"></span>Drug Breakdown</div>
+      <!-- Eyebrow: auto-generated from template. See template_eyebrows.md. -->
+      <div class="hook-eyebrow">Drug Breakdown</div>
+      <!-- Drug generic name — large display -->
       <h1 class="hook-title">Epinephrine.</h1>
+      <!-- Hook line — the question or framing statement -->
       <p class="hook-sub">How well do you really know this drug?</p>
+      <!-- Teaser — italic, points to slide 2 -->
       <p class="hook-teaser teaser">It does three jobs at once. Here's all of them…</p>
     </div>
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
-  <!-- 2 · IDENTITY -->
+  <!-- ==================== SLIDE 2 — IDENTITY ==================== -->
+  <!-- sectionLabel: "Epinephrine" (drug name as label on identity slides)
+       body.center: vertically centered content block -->
   <div class="slide" data-screen-label="02 Identity">
     <div class="frame">
       <div class="top-row">
@@ -363,7 +413,9 @@
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
-  <!-- 3 · MECHANISM -->
+  <!-- ==================== SLIDE 3 — MECHANISM ==================== -->
+  <!-- .mech-list groups receptor lines. .mech-inline = monospace font lock
+       on receptor labels (α-1, β-1, β-2). -->
   <div class="slide" data-screen-label="03 Mechanism">
     <div class="frame">
       <div class="top-row">
@@ -383,7 +435,9 @@
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
-  <!-- 4 · CARDIAC ARREST -->
+  <!-- ==================== SLIDE 4 — DOSE: CARDIAC ARREST ==================== -->
+  <!-- .dose-name = topicName — large Barlow header naming the indication.
+       Body lines follow directly below. -->
   <div class="slide" data-screen-label="04 Cardiac Arrest Dose">
     <div class="frame">
       <div class="top-row">
@@ -392,7 +446,7 @@
       </div>
       <div class="body">
         <h3 class="dose-name">Cardiac Arrest</h3>
-        <p class="line"><span class="c-amber">1 mg IV/IO</span> <span class="conc">(1:10,000)</span> every 3–5 min.</p>
+        <p class="line"><span class="c-amber">1 mg IV/IO</span> (1:10,000) every 3–5 min.</p>
         <p class="line">Push fast and flush with 20 mL NS after each dose to move it centrally.</p>
         <p class="teaser">Anaphylaxis is a different situation entirely…</p>
       </div>
@@ -400,7 +454,7 @@
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
-  <!-- 5 · ANAPHYLAXIS -->
+  <!-- ==================== SLIDE 5 — DOSE: ANAPHYLAXIS ==================== -->
   <div class="slide" data-screen-label="05 Anaphylaxis Dose">
     <div class="frame">
       <div class="top-row">
@@ -409,16 +463,18 @@
       </div>
       <div class="body">
         <h3 class="dose-name">Anaphylaxis</h3>
-        <p class="line"><span class="c-amber">0.3–0.5 mg IM</span> <span class="conc">(1:1,000)</span> into the anterolateral thigh.</p>
+        <p class="line"><span class="c-amber">0.3–0.5 mg IM</span> (1:1,000) into the anterolateral thigh.</p>
         <p class="line">That's ten times more concentrated than the arrest dose — the concentration matters as much as the dose.</p>
-        <p class="line small"><span class="c-amber">Repeat every 5–15 min</span> if there's no improvement.</p>
+        <p class="line"><span class="c-amber">Repeat every 5–15 min</span> if there's no improvement.</p>
         <p class="teaser">Before you give it — know the contraindications…</p>
       </div>
     </div>
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
-  <!-- 6 · CONTRAINDICATIONS -->
+  <!-- ==================== SLIDE 6 — CAUTIONS ==================== -->
+  <!-- .ci-list groups contraindication items. Each .ci-item has:
+       .nm = contraindication name (colored), .why = rationale (smaller, dimmer) -->
   <div class="slide" data-screen-label="06 Contraindications">
     <div class="frame">
       <div class="top-row">
@@ -437,14 +493,16 @@
             <div class="why">Carries the same concern.</div>
           </div>
         </div>
-        <p class="line small">There are no absolute contraindications in cardiac arrest.</p>
+        <p class="line">There are no absolute contraindications in cardiac arrest.</p>
         <p class="teaser">One more thing — and it trips people up every time…</p>
       </div>
     </div>
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
-  <!-- 7 · PEARL -->
+  <!-- ==================== SLIDE 7 — CLINICAL PEARL ==================== -->
+  <!-- .conc-statements: stacked block for numerical comparisons.
+       .conc-num: monospace font on the numeric values (1:10,000 / 1:1,000). -->
   <div class="slide" data-screen-label="07 Pearl">
     <div class="frame">
       <div class="top-row">
@@ -464,7 +522,10 @@
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
-  <!-- 8 · RECAP -->
+  <!-- ==================== SLIDE 8 — RECAP ==================== -->
+  <!-- .dose-name = topicName (e.g. "The essentials.")
+       .recap-list: one .recap-item per topic. Each item has:
+       .label (colored, topic name) + .desc (plain summary text) -->
   <div class="slide" data-screen-label="08 Recap">
     <div class="frame">
       <div class="top-row">
@@ -497,249 +558,43 @@
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
-  <!-- 9 · CTA -->
+  <!-- ==================== SLIDE 9 — CTA ==================== -->
+  <!-- .cta-line1: large save prompt. .cta-line2: app reference.
+       .cta-link: amber "Link in bio" on its own line. -->
   <div class="slide" data-screen-label="09 CTA">
     <div class="cta-wrap" style="justify-content:center; text-align:left;">
       <h2 class="cta-line1">Save this for<br>your next exam.</h2>
-      <p class="cta-line2">All paramedics drugs, one app.<br><span class="cta-link">Link in bio</span></p>
+      <p class="cta-line2">All paramedic drugs, one app.<br><span class="cta-link">Link in bio</span></p>
     </div>
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
 </div>
 
-<!-- Tweaks panel -->
-<div id="tweaks" style="display: none;" class="">
-  <div class="tw-card">
-    <div class="tw-head">
-      <div class="tw-title">Tweaks</div>
-      <div class="tw-swatch" id="tw-swatch" style="background: rgb(29, 25, 24);"></div>
-    </div>
-
-    <div class="tw-row">
-      <label>Hue <span id="tw-h-val">9°</span></label>
-      <input id="tw-h" type="range" min="0" max="360" step="1">
-      <div class="tw-hue-track"></div>
-    </div>
-
-    <div class="tw-row">
-      <label>Saturation <span id="tw-s-val">9%</span></label>
-      <input id="tw-s" type="range" min="0" max="100" step="1">
-    </div>
-
-    <div class="tw-row">
-      <label>Lightness <span id="tw-l-val">10.5%</span></label>
-      <input id="tw-l" type="range" min="0" max="100" step="0.5">
-    </div>
-
-    <div class="tw-row tw-ink-row">
-      <label>Body text <span id="tw-ink-val">#ececec</span></label>
-      <div class="tw-ink-swatches" id="tw-ink-swatches">
-        <button class="tw-ink active" data-c="#ececec" style="background:#ececec" title="Soft white"></button>
-        <button class="tw-ink" data-c="#ffffff" style="background:#ffffff" title="Pure white"></button>
-        <button class="tw-ink" data-c="#e7d9b8" style="background:#e7d9b8" title="Warm cream"></button>
-        <button class="tw-ink" data-c="#d5e5ff" style="background:#d5e5ff" title="Cool blue"></button>
-        <button class="tw-ink" data-c="#f4c89c" style="background:#f4c89c" title="Peach"></button>
-        <button class="tw-ink" data-c="#b7e4c7" style="background:#b7e4c7" title="Sage"></button>
-        <label class="tw-ink tw-ink-custom" title="Custom">
-          <input id="tw-ink-picker" type="color" value="#ececec">
-        </label>
-      </div>
-    </div>
-
-    <div class="tw-divider"></div>
-    <div class="tw-group-label">Teaser text <span class="tw-swatch-sm" id="tw-teaser-swatch"></span></div>
-
-    <div class="tw-row">
-      <label>Hue <span id="tw-th-val">0°</span></label>
-      <input id="tw-th" type="range" min="0" max="360" step="1">
-      <div class="tw-hue-track"></div>
-    </div>
-
-    <div class="tw-row">
-      <label>Saturation <span id="tw-ts-val">0%</span></label>
-      <input id="tw-ts" type="range" min="0" max="100" step="1">
-    </div>
-
-    <div class="tw-row">
-      <label>Lightness <span id="tw-tl-val">92%</span></label>
-      <input id="tw-tl" type="range" min="0" max="100" step="0.5">
-    </div>
-
-    <button class="tw-reset" id="tw-reset">Reset to black</button>
-  </div>
-</div>
-
-<style>
-  #tweaks{
-    position:fixed; right:20px; bottom:20px; z-index:9999;
-    font-family:'IBM Plex Sans',system-ui,sans-serif;
-  }
-  #tweaks.open{ display:block; }
-  .tw-card{
-    width:280px; background:#141414; color:#ececec;
-    border:1px solid #262626; border-radius:14px;
-    padding:16px; box-shadow:0 20px 60px rgba(0,0,0,.6);
-  }
-  .tw-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
-  .tw-title{ font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#aaa; font-weight:600; }
-  .tw-swatch{ width:28px; height:28px; border-radius:50%; border:1px solid #2a2a2a; }
-  .tw-row{ margin-bottom:14px; }
-  .tw-row label{ display:flex; justify-content:space-between; font-size:11px; color:#aaa; margin-bottom:6px; letter-spacing:.06em; text-transform:uppercase; font-weight:500;}
-  .tw-row label span{ color:#ececec; font-variant-numeric:tabular-nums; font-family:'JetBrains Mono',monospace; font-size:10.5px; }
-  #tweaks input[type=range]{ width:100%; accent-color:#daa040; }
-  .tw-hue-track{
-    height:4px; border-radius:2px; margin-top:-2px;
-    background:linear-gradient(to right, #f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00);
-    opacity:.55;
-  }
-  .tw-reset{
-    width:100%; padding:8px 10px; background:transparent; color:#c8c8c8;
-    border:1px solid #2a2a2a; border-radius:8px; font-size:12px; cursor:pointer;
-    font-family:inherit;
-  }
-  .tw-reset:hover{ background:#1c1c1c; color:#fff; }
-  .tw-divider{ height:1px; background:#262626; margin:4px 0 14px 0; }
-  .tw-group-label{
-    display:flex; align-items:center; justify-content:space-between;
-    font-size:11px; letter-spacing:.18em; text-transform:uppercase;
-    color:#aaa; font-weight:600; margin-bottom:10px;
-  }
-  .tw-swatch-sm{ width:18px; height:18px; border-radius:50%; border:1px solid #2a2a2a; }
-</style>
-
+<!-- Progress bar: replaces .counter divs with N-segment pill bars.
+     Reads "N / TOTAL" from each .counter, builds the bar, removes the counter.
+     Prior segments = dim blue (.done), current = bright blue (.active). -->
 <script>
-// Replace per-slide counters with a 9-segment progress indicator.
-// The bar is always positioned absolutely at the top of the slide inside
-// the safe zone — identical vertical placement on every slide.
-(function(){
+(function() {
   const TOTAL = 9;
   document.querySelectorAll('.counter').forEach(el => {
     const m = el.textContent.match(/(\d+)\s*\/\s*(\d+)/);
-    if(!m) return;
-    const idx = parseInt(m[1], 10);
+    if (!m) return;
+    const idx   = parseInt(m[1], 10);
     const total = parseInt(m[2], 10) || TOTAL;
-    const bar = document.createElement('div');
+    const bar   = document.createElement('div');
     bar.className = 'progress';
-    for(let i = 1; i <= total; i++){
-      const s = document.createElement('div');
-      s.className = 'seg' + (i < idx ? ' done' : i === idx ? ' active' : '');
-      bar.appendChild(s);
+    for (let i = 1; i <= total; i++) {
+      const seg = document.createElement('div');
+      seg.className = 'seg' + (i < idx ? ' done' : i === idx ? ' active' : '');
+      bar.appendChild(seg);
     }
-    // Mount the progress bar at the slide root so it's absolute to the slide.
     const slide = el.closest('.slide');
-    if(slide) slide.prepend(bar);
+    if (slide) slide.prepend(bar);
     el.remove();
   });
 })();
 </script>
 
-<script>
-(function(){
-  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-    "bgHue": 3,
-    "bgSat": 5,
-    "bgLight": 10,
-    "inkColor": "#ececec",
-    "teaserHue": 3,
-    "teaserSat": 0,
-    "teaserLight": 55
-  }/*EDITMODE-END*/;
-
-  const root = document.documentElement;
-  const panel = document.getElementById('tweaks');
-  const hEl = document.getElementById('tw-h');
-  const sEl = document.getElementById('tw-s');
-  const lEl = document.getElementById('tw-l');
-  const hVal = document.getElementById('tw-h-val');
-  const sVal = document.getElementById('tw-s-val');
-  const lVal = document.getElementById('tw-l-val');
-  const sw = document.getElementById('tw-swatch');
-  const resetBtn = document.getElementById('tw-reset');
-  const inkSwatches = document.getElementById('tw-ink-swatches');
-  const inkPicker = document.getElementById('tw-ink-picker');
-  const inkVal = document.getElementById('tw-ink-val');
-  const thEl = document.getElementById('tw-th');
-  const tsEl = document.getElementById('tw-ts');
-  const tlEl = document.getElementById('tw-tl');
-  const thVal = document.getElementById('tw-th-val');
-  const tsVal = document.getElementById('tw-ts-val');
-  const tlVal = document.getElementById('tw-tl-val');
-  const teaserSw = document.getElementById('tw-teaser-swatch');
-
-  let state = Object.assign({}, TWEAK_DEFAULTS);
-
-  function apply(){
-    root.style.setProperty('--bg-h', state.bgHue);
-    root.style.setProperty('--bg-s', state.bgSat + '%');
-    root.style.setProperty('--bg-l', state.bgLight + '%');
-    root.style.setProperty('--ink', state.inkColor);
-    root.style.setProperty('--teaser-h', state.teaserHue);
-    root.style.setProperty('--teaser-s', state.teaserSat + '%');
-    root.style.setProperty('--teaser-l', state.teaserLight + '%');
-    hVal.textContent = Math.round(state.bgHue) + '°';
-    sVal.textContent = Math.round(state.bgSat) + '%';
-    lVal.textContent = state.bgLight.toFixed(1) + '%';
-    inkVal.textContent = state.inkColor.toLowerCase();
-    thVal.textContent = Math.round(state.teaserHue) + '°';
-    tsVal.textContent = Math.round(state.teaserSat) + '%';
-    tlVal.textContent = state.teaserLight.toFixed(1) + '%';
-    sw.style.background = `hsl(${state.bgHue}, ${state.bgSat}%, ${state.bgLight}%)`;
-    teaserSw.style.background = `hsl(${state.teaserHue}, ${state.teaserSat}%, ${state.teaserLight}%)`;
-    hEl.value = state.bgHue;
-    sEl.value = state.bgSat;
-    lEl.value = state.bgLight;
-    thEl.value = state.teaserHue;
-    tsEl.value = state.teaserSat;
-    tlEl.value = state.teaserLight;
-    inkPicker.value = state.inkColor;
-    inkSwatches.querySelectorAll('.tw-ink[data-c]').forEach(b => {
-      b.classList.toggle('active', b.dataset.c.toLowerCase() === state.inkColor.toLowerCase());
-    });
-  }
-
-  function persist(edits){
-    try{
-      window.parent.postMessage({type:'__edit_mode_set_keys', edits}, '*');
-    }catch(e){}
-  }
-
-  hEl.addEventListener('input', e => { state.bgHue = +e.target.value; apply(); persist({bgHue: state.bgHue}); });
-  sEl.addEventListener('input', e => { state.bgSat = +e.target.value; apply(); persist({bgSat: state.bgSat}); });
-  lEl.addEventListener('input', e => { state.bgLight = +e.target.value; apply(); persist({bgLight: state.bgLight}); });
-
-  thEl.addEventListener('input', e => { state.teaserHue = +e.target.value; apply(); persist({teaserHue: state.teaserHue}); });
-  tsEl.addEventListener('input', e => { state.teaserSat = +e.target.value; apply(); persist({teaserSat: state.teaserSat}); });
-  tlEl.addEventListener('input', e => { state.teaserLight = +e.target.value; apply(); persist({teaserLight: state.teaserLight}); });
-
-  inkSwatches.querySelectorAll('.tw-ink[data-c]').forEach(b => {
-    b.addEventListener('click', () => {
-      state.inkColor = b.dataset.c;
-      apply(); persist({inkColor: state.inkColor});
-    });
-  });
-  inkPicker.addEventListener('input', e => {
-    state.inkColor = e.target.value;
-    apply(); persist({inkColor: state.inkColor});
-  });
-
-  resetBtn.addEventListener('click', () => {
-    state = {bgHue:0, bgSat:0, bgLight:4.7, inkColor:'#ececec', teaserHue:0, teaserSat:0, teaserLight:92};
-    apply();
-    persist(state);
-  });
-
-  window.addEventListener('message', (ev) => {
-    const d = ev.data || {};
-    if(d.type === '__activate_edit_mode'){ panel.classList.add('open'); panel.style.display='block'; }
-    if(d.type === '__deactivate_edit_mode'){ panel.classList.remove('open'); panel.style.display='none'; }
-  });
-
-  apply();
-  try{ window.parent.postMessage({type:'__edit_mode_available'}, '*'); }catch(e){}
-})();
-</script>
-
-
-
-</body></html>
+</body>
+</html>
