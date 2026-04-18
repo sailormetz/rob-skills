@@ -61,25 +61,30 @@ A post-administration concern is anything the medic needs to be aware of, watch 
      <text>The most common adverse effect to manage.</text>
      <text>Morphine causes histamine release, which vasodilates — BP can drop, especially if the patient is volume-depleted.</text>
      <text>Check BP after each dose. This is the primary reason fentanyl gets picked instead in many protocols.</text>
+     *Next up — the one that can sneak up on you...*
 
 [4]  <subtleHeader>Respiratory Depression</subtleHeader>
      <text>The risk you can't ignore.</text>
      <text>Morphine suppresses the brainstem's respiratory drive, and it builds gradually — slower onset than fentanyl means it can creep up on you.</text>
      <text>Monitor RR and etCO₂ continuously. Have naloxone drawn and ready.</text>
+     *One more...*
 
 [5]  <subtleHeader>Nausea & Vomiting</subtleHeader>
      <text>Common and predictable — opioids stimulate the chemoreceptor trigger zone.</text>
      <text>Some protocols pair morphine with an antiemetic upfront. Position the patient to protect the airway if vomiting occurs.</text>
+     *Let's recap...*
 
 [6]  <subtleHeader>Recap</subtleHeader>
      <text>After morphine, watch for:</text>
      <pill>Hypotension</pill>
      <pill>Respiratory Depression</pill>
      <pill>Nausea & Vomiting</pill>
+     *Bottom line...*
 
 [7]  BP after every dose. RR and SpO₂ continuously.
      If RR drops below 12 or SpO₂ trends down despite O₂, you're watching respiratory depression develop.
      Naloxone drawn and ready. That's the bottom line.
+     *Save this one...*
 
 [8]  Save this for your next shift.
      Full doses, MOA, and contraindications for every drug → link in bio.
@@ -98,25 +103,30 @@ A post-administration concern is anything the medic needs to be aware of, watch 
 [3]  <subtleHeader>Hypotension</subtleHeader>
      <text>BP can fall quickly, especially after repeat doses or in a volume-depleted patient.</text>
      <text>Check BP before every dose. Hold if systolic drops below 90.</text>
+     *There's one specific patient population where this gets much worse...*
 
 [4]  <subtleHeader>Right-Sided MI</subtleHeader>
      <text>The right ventricle is preload-dependent — take away preload with nitro and BP can crash.</text>
      <text>If you haven't confirmed it's not a right-sided infarction, check leads before giving.</text>
      <text>If it's already on board and BP is dropping, treat aggressively.</text>
+     *And one drug interaction that can be life-threatening...*
 
 [5]  <subtleHeader>PDE Inhibitors</subtleHeader>
      <text>[amber: Sildenafil], [amber: tadalafil], or similar drugs in the last 24–48 hours — combined with nitro, the result is profound, potentially life-threatening hypotension.</text>
      <text>Ask before the first dose. If you find out after, prepare for aggressive fluid resuscitation.</text>
+     *Let's recap...*
 
 [6]  <subtleHeader>Recap</subtleHeader>
      <text>After nitro, watch for:</text>
      <pill>Hypotension</pill>
      <pill>Right-Sided MI</pill>
      <pill>PDE Inhibitor Interaction</pill>
+     *Bottom line...*
 
 [7]  BP before every dose. Ask about PDE inhibitors before the first.
      [lavender: Headache] is expected — it's the vasodilation — warn the patient so they don't think it's worsening.
      Everything else traces back to hypotension.
+     *Save this one...*
 
 [8]  Save this for your next chest pain call.
      All 70 drugs, one app → link in bio.
@@ -134,9 +144,11 @@ A post-administration concern is anything the medic needs to be aware of, watch 
      Higher doses and repeat dosing extend the QT interval.
      Use caution if the patient is on other QT-prolonging drugs. Contraindicated in congenital long QT.
      Monitor rhythm if giving repeat doses or if the patient has known QT risk factors.
+     *So what does that mean practically...*
 
 [4]  BP and rhythm. That's the monitor.
      Single dose in a healthy patient — low risk. Repeat dosing in a cardiac patient — think before you give it again.
+     *Save this one...*
 
 [5]  Save this for your next clinical rotation.
      The complete drug reference is in the bio.

@@ -59,20 +59,24 @@ Do not use: "Stop." as an opener (too dramatic), or parenthetical asides like "(
      <text>Major tissue damage upregulates [blue: acetylcholine receptors] along the muscle membrane.</text>
      <text>Succinylcholine hits all of them at once — the K+ release becomes massive.</text>
      <text>[coral: Major burns] and [coral: crush injuries >48 hrs] are absolute contraindications for this reason.</text>
+     *Neuromuscular disease follows the same pattern...*
 
 [6]  <subtleHeader>Neuromuscular Disease</subtleHeader>
      <text>[coral: Muscular dystrophy] and [coral: denervation injuries] — spinal cord injury, prolonged immobility — carry the same receptor upregulation risk.</text>
      <text>The mechanism is identical to burns. The outcome can be the same.</text>
+     *Two more — and one of them is a classic board question...*
 
 [7]  <subtleHeader>Malignant Hyperthermia</subtleHeader>
      <text>[coral: Personal or family history of malignant hyperthermia] is an absolute contraindication.</text>
      <text>Succinylcholine is a known trigger — it can initiate the cascade even without prior personal exposure.</text>
      <text>Classic board question. Know it cold.</text>
+     *Last one...*
 
 [8]  <subtleHeader>Penetrating Eye Injury</subtleHeader>
      <text>[coral: Penetrating eye injury] is the last one.</text>
      <text>The fasciculations succinylcholine causes raise intraocular pressure, which can worsen a globe rupture.</text>
      <text>Use a non-depolarizing agent if you have one available.</text>
+     *Let's put them all together...*
 
 [9]  <subtleHeader>Recap</subtleHeader>
      <text>Hold succinylcholine when you see any of these:</text>
@@ -81,6 +85,7 @@ Do not use: "Stop." as an opener (too dramatic), or parenthetical asides like "(
      <pill>Neuromuscular Disease</pill>
      <pill>Malignant Hyperthermia Hx</pill>
      <pill>Penetrating Eye Injury</pill>
+     *One more slide...*
 
 [10] Save this for your next exam.
      All 70 drugs, one app → link in bio.
@@ -99,10 +104,12 @@ Do not use: "Stop." as an opener (too dramatic), or parenthetical asides like "(
 [3]  Push it too fast or at too high a dose and you precipitate acute opioid withdrawal.
      That means combativeness, vomiting, and in severe cases, [lavender: pulmonary edema].
      This isn't a contraindication — it's a dosing and technique issue. But it's what actually hurts people.
+     *So what does that mean in practice...*
 
 [4]  Titrate to respiratory effort, not consciousness.
      The goal is adequate breathing — not a wide-awake patient in full withdrawal.
      Start low, go slow, and monitor continuously after administration.
+     *Save this one...*
 
 [5]  Save this for your next shift.
      Full doses, MOA, and contraindications for every drug → link in bio.

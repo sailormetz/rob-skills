@@ -66,16 +66,19 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
      <text>0.3–0.5 mg IM (1:1,000) into the anterolateral thigh.</text>
      <text>That's ten times more concentrated than the arrest dose — the concentration matters as much as the dose.</text>
      <text>Repeat every 5–15 min if there's no improvement.</text>
+     *There are a couple of situations where you need to think twice before giving it...*
 
 [6]  The main concern is the cardiovascular load it creates.
      [coral: Coronary insufficiency] is a relative contraindication — epi increases myocardial O₂ demand, which can worsen ischemia.
      [coral: Uncontrolled HTN] carries the same concern.
      There are no absolute contraindications in cardiac arrest.
+     *One more thing — and it trips people up every time...*
 
 [7]  The concentration mix-up is one of the most common errors with this drug.
      1:10,000 is for IV push in arrest. 1:1,000 is for IM in anaphylaxis.
      Getting them reversed means a tenfold dosing error.
      Know which is which before you reach for it.
+     *Let's recap...*
 
 [8]  <subtleHeader>Recap</subtleHeader>
      <text>Epinephrine — the essentials:</text>
@@ -83,6 +86,7 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
      <pill>Cardiac Arrest: 1 mg IV/IO (1:10,000)</pill>
      <pill>Anaphylaxis: 0.3–0.5 mg IM (1:1,000)</pill>
      <pill>Relative CI: Coronary Insufficiency, Uncontrolled HTN</pill>
+     *One more slide...*
 
 [9]  Save this for your next exam.
      All 70 drugs, one app → link in bio.

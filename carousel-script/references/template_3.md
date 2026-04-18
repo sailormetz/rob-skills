@@ -60,10 +60,12 @@ All drugs in the dataset.
      <text>At high doses, [blue: α-1 adrenergic receptors] take over and cause peripheral vasoconstriction.</text>
      <text>SVR rises, BP rises — but so does the afterload the heart has to pump against.</text>
      <text>At very high doses, α-1 vasoconstriction can actually override the dopaminergic dilation and reduce renal perfusion.</text>
+     *Here's what that means clinically...*
 
 [6]  Understanding the dose-receptor relationship explains why dopamine is now third-line for shock.
      The tachyarrhythmia risk is real at every range — and norepinephrine and epinephrine produce more predictable effects without the dose-dependent receptor shifting.
      When you do use it, titrate to MAP ≥65 mmHg and watch the rhythm continuously.
+     *Save this one...*
 
 [7]  Save this to your study deck.
      The complete drug reference is in the bio.
@@ -92,14 +94,17 @@ All drugs in the dataset.
 [5]  With the mu receptor blocked and unactivated, the opioid effects reverse.
      Respiratory drive returns. Level of consciousness improves. Pupils dilate.
      The patient wakes up because the signal was cut off at the receptor level.
+     *But there's a catch...*
 
 [6]  There's one catch: naloxone's half-life is shorter than most opioids.
      When it wears off, the opioid is still in circulation and can rebind.
      Re-sedation is a real risk — that's why you monitor after administration and may need to redose.
+     *And that's exactly why technique matters...*
 
 [7]  This is also why technique matters.
      Too much naloxone too fast displaces everything at once and precipitates acute withdrawal.
      The goal is to restore respiratory effort — not flip a switch and cause a crisis.
+     *Save this one...*
 
 [8]  Save this to your study deck.
      The complete drug reference is in the bio.

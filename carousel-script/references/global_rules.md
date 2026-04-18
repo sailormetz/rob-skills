@@ -152,17 +152,28 @@ That's a story. Each slide sets up the next.
 
 ### Teasers
 
-End body slides with a brief teaser when the next slide naturally follows from it. A teaser is a short italicized line — one sentence or a fragment — that creates curiosity about what's coming.
+Every body slide ends with a teaser. The reader needs a reason to swipe on every single slide — not just where the transition is dramatic.
 
-Teasers should feel like the natural next thing you'd say in a conversation, not a forced cliffhanger. Use them where the transition earns it. Not every slide needs one — the last body slide before the CTA never gets a teaser.
+A teaser is a short italicized line — one sentence or a fragment — that creates a reason to keep going. It doesn't have to be a cliffhanger. A quiet handoff is fine. The only requirement is that it points forward.
 
-**Examples:**
-- *"The reason it works for both comes down to how it hits the body..."*
+**The teaser rule:**
+- Every body slide gets one — no exceptions.
+- The recap slide gets one: something like *"One more slide..."* or *"Let's wrap it up..."*
+- The CTA slide never gets a teaser — it's the end.
+- The hook slide can carry a teaser (see Hook Rules).
+
+**Calibrate to the transition, not to a formula.** A dramatic reveal gets a dramatic teaser. A routine handoff gets a quiet one. Both are valid — what's not valid is skipping it entirely.
+
+**Teaser spectrum — from quiet to pointed:**
+- *"Next up..."*
+- *"But there's a catch..."*
+- *"Let's recap..."*
+- *"One more thing..."*
 - *"Anaphylaxis is a different situation entirely..."*
-- *"Just don't make these mistakes..."*
-- *"One more thing that trips people up every time..."*
+- *"The concentration is where people get into trouble..."*
+- *"The reason it works for both comes down to how it hits the body..."*
 
-Format teasers in the script as italic text on their own line at the bottom of the slide.
+Format teasers in the script as italic text on their own line at the bottom of the slide. When a slide uses `<subtleHeader>` and `<text>` tags, the teaser sits outside those tags, after the last `<text>` line.
 
 ---
 

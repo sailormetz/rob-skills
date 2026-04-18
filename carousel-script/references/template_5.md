@@ -56,14 +56,17 @@ All drugs in the dataset.
      <text>[blue: α-1] restores BP. [blue: β-2] opens the airway. Both are in crisis during anaphylaxis.</text>
      <text>0.3–0.5 mg IM (1:1,000) into the anterolateral thigh. Repeat every 5–15 min if no improvement.</text>
      <text>IM is the correct route in a patient with a pulse — IV push carries a high risk of fatal arrhythmia.</text>
+     *Two more uses — these come up less often but still get tested...*
 
 [5]  <subtleHeader>Vasopressor Infusion</subtleHeader>
      <text>For refractory shock, [blue: α-1] vasoconstriction maintains MAP when other pressors have failed.</text>
      <text>0.05–0.3 mcg/kg/min IV, titrated to MAP ≥65 mmHg.</text>
+     *Last one...*
 
 [6]  <subtleHeader>Croup / Bronchospasm</subtleHeader>
      <text>The [blue: α-agonist] effect reduces subglottic edema when given nebulized.</text>
      <text>5 mg nebulized (5 mL of 1:1,000). May repeat in 20 min if needed.</text>
+     *Let's recap...*
 
 [7]  <subtleHeader>Recap</subtleHeader>
      <text>Epinephrine works for:</text>
@@ -71,6 +74,7 @@ All drugs in the dataset.
      <pill>Anaphylaxis</pill>
      <pill>Vasopressor Infusion</pill>
      <pill>Croup / Bronchospasm</pill>
+     *One more slide...*
 
 [8]  Save this for your next exam.
      All 70 drugs, one app → link in bio.
@@ -87,10 +91,12 @@ All drugs in the dataset.
 [3]  For [green: nausea and vomiting], ondansetron blocks the serotonin signal before it triggers the vomiting reflex.
      4 mg IV or ODT. Can repeat once in 15 min.
      Pedi (6 mo–12 yrs): 0.1 mg/kg IV, max 4 mg.
+     *But there's a nuance on repeat dosing...*
 
 [4]  The nuance is the QT risk.
      Repeat dosing prolongs the QT interval in a dose-dependent way.
      Use caution in patients on other QT-prolonging drugs. Contraindicated in congenital long QT.
+     *Save this one...*
 
 [5]  Save this for your next clinical rotation.
      The complete drug reference is in the bio.
