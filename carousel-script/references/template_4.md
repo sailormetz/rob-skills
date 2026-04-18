@@ -16,7 +16,8 @@ All drugs in the dataset.
 |-------|------|---------------|
 | 1 | Hook | Drug name + post-administration framing. Max 15 words. See global_rules for hook and teaser guidance. |
 | 2 | Context | What the drug is and what you gave it for. One or two lines. Anchors everything that follows to the intended use. Use `[blue: ...]` for class terms and `[green: ...]` for the indication you gave it for. |
-| 3–6 | Post-administration concerns | Each slide covers one thing that can happen after giving the drug. Start with a lead line that names or frames the concern. Follow with why it happens and what to do about it. Use `[lavender: ...]` for adverse effects, `[amber: ...]` for warnings. **If the drug has 3+ concerns:** One per slide. **If the drug has 1–2 concerns:** Go deeper across multiple slides: what it is, why the pharmacology creates the risk, what it looks like clinically, and how you respond. |
+| 3–6 | Post-administration concerns | Each slide covers one thing that can happen after giving the drug. Use `<sectionLabel>After Administration</sectionLabel>` and `<topicName>` naming the concern. Start with a lead line that names or frames the concern. Follow with why it happens and what to do about it. Use `[lavender: ...]` for adverse effects, `[amber: ...]` for warnings. **If the drug has 3+ concerns:** One per slide. **If the drug has 1–2 concerns:** Go deeper across multiple slides without `<topicName>` — just `<sectionLabel>After Administration</sectionLabel>` and narrative flow. |
+| 7 | Recap | Labeled summary of concerns covered. Use `<sectionLabel>Recap</sectionLabel>`. One `[lavender: ...]` or `[amber: ...]` line per concern — label and key action. |
 | 7 | Bottom line | Quick-reference version: what to monitor, how often, and what crosses the line from expected to dangerous. 1–3 lines. Practical enough to use on scene. |
 | Last | CTA | Save + app reference. Use one of the standard CTA options from global_rules. |
 
@@ -57,28 +58,30 @@ A post-administration concern is anything the medic needs to be aware of, watch 
      But morphine is a [blue: mu-opioid agonist] with downstream effects beyond analgesia.
      *The big ones are cardiovascular and respiratory...*
 
-[3]  <subtleHeader>Hypotension</subtleHeader>
-     <text>The most common adverse effect to manage.</text>
-     <text>Morphine causes histamine release, which vasodilates — BP can drop, especially if the patient is volume-depleted.</text>
-     <text>Check BP after each dose. This is the primary reason fentanyl gets picked instead in many protocols.</text>
+[3]  <sectionLabel>After Administration</sectionLabel>
+     <topicName>Hypotension</topicName>
+     The most common adverse effect to manage.
+     Morphine causes histamine release, which vasodilates — BP can drop, especially if the patient is volume-depleted.
+     Check BP after each dose. This is the primary reason fentanyl gets picked instead in many protocols.
      *Next up — the one that can sneak up on you...*
 
-[4]  <subtleHeader>Respiratory Depression</subtleHeader>
-     <text>The risk you can't ignore.</text>
-     <text>Morphine suppresses the brainstem's respiratory drive, and it builds gradually — slower onset than fentanyl means it can creep up on you.</text>
-     <text>Monitor RR and etCO₂ continuously. Have naloxone drawn and ready.</text>
+[4]  <sectionLabel>After Administration</sectionLabel>
+     <topicName>Respiratory Depression</topicName>
+     The risk you can't ignore.
+     Morphine suppresses the brainstem's respiratory drive, and it builds gradually — slower onset than fentanyl means it can creep up on you.
+     Monitor RR and etCO₂ continuously. Have naloxone drawn and ready.
      *One more...*
 
-[5]  <subtleHeader>Nausea & Vomiting</subtleHeader>
-     <text>Common and predictable — opioids stimulate the chemoreceptor trigger zone.</text>
-     <text>Some protocols pair morphine with an antiemetic upfront. Position the patient to protect the airway if vomiting occurs.</text>
+[5]  <sectionLabel>After Administration</sectionLabel>
+     <topicName>Nausea & Vomiting</topicName>
+     Common and predictable — opioids stimulate the chemoreceptor trigger zone.
+     Some protocols pair morphine with an antiemetic upfront. Position the patient to protect the airway if vomiting occurs.
      *Let's recap...*
 
-[6]  <subtleHeader>Recap</subtleHeader>
-     <text>After morphine, watch for:</text>
-     <pill>Hypotension</pill>
-     <pill>Respiratory Depression</pill>
-     <pill>Nausea & Vomiting</pill>
+[6]  <sectionLabel>Recap</sectionLabel>
+     [lavender: Hypotension] — check BP after each dose; primary reason fentanyl gets chosen instead
+     [lavender: Respiratory Depression] — monitor RR and etCO₂ continuously; naloxone drawn and ready
+     [lavender: Nausea & Vomiting] — position airway; consider antiemetic
      *Bottom line...*
 
 [7]  BP after every dose. RR and SpO₂ continuously.
@@ -100,27 +103,29 @@ A post-administration concern is anything the medic needs to be aware of, watch 
      Fast onset, fast drop in preload. That's the mechanism and the risk.
      *Most of what you're watching for traces back to that drop in preload...*
 
-[3]  <subtleHeader>Hypotension</subtleHeader>
-     <text>BP can fall quickly, especially after repeat doses or in a volume-depleted patient.</text>
-     <text>Check BP before every dose. Hold if systolic drops below 90.</text>
+[3]  <sectionLabel>After Administration</sectionLabel>
+     <topicName>Hypotension</topicName>
+     BP can fall quickly, especially after repeat doses or in a volume-depleted patient.
+     Check BP before every dose. Hold if systolic drops below 90.
      *There's one specific patient population where this gets much worse...*
 
-[4]  <subtleHeader>Right-Sided MI</subtleHeader>
-     <text>The right ventricle is preload-dependent — take away preload with nitro and BP can crash.</text>
-     <text>If you haven't confirmed it's not a right-sided infarction, check leads before giving.</text>
-     <text>If it's already on board and BP is dropping, treat aggressively.</text>
+[4]  <sectionLabel>After Administration</sectionLabel>
+     <topicName>Right-Sided MI</topicName>
+     The right ventricle is preload-dependent — take away preload with nitro and BP can crash.
+     If you haven't confirmed it's not a right-sided infarction, check leads before giving.
+     If it's already on board and BP is dropping, treat aggressively.
      *And one drug interaction that can be life-threatening...*
 
-[5]  <subtleHeader>PDE Inhibitors</subtleHeader>
-     <text>[amber: Sildenafil], [amber: tadalafil], or similar drugs in the last 24–48 hours — combined with nitro, the result is profound, potentially life-threatening hypotension.</text>
-     <text>Ask before the first dose. If you find out after, prepare for aggressive fluid resuscitation.</text>
+[5]  <sectionLabel>After Administration</sectionLabel>
+     <topicName>PDE Inhibitors</topicName>
+     [amber: Sildenafil], [amber: tadalafil], or similar drugs in the last 24–48 hours — combined with nitro, the result is profound, potentially life-threatening hypotension.
+     Ask before the first dose. If you find out after, prepare for aggressive fluid resuscitation.
      *Let's recap...*
 
-[6]  <subtleHeader>Recap</subtleHeader>
-     <text>After nitro, watch for:</text>
-     <pill>Hypotension</pill>
-     <pill>Right-Sided MI</pill>
-     <pill>PDE Inhibitor Interaction</pill>
+[6]  <sectionLabel>Recap</sectionLabel>
+     [lavender: Hypotension] — check BP before every dose; hold if systolic below 90
+     [amber: Right-Sided MI] — preload-dependent RV; confirm before giving
+     [amber: PDE Inhibitors] — sildenafil/tadalafil within 24–48 hrs; profound hypotension risk
      *Bottom line...*
 
 [7]  BP before every dose. Ask about PDE inhibitors before the first.

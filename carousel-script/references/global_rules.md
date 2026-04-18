@@ -73,38 +73,35 @@ The first version is a label and bullets. The second is a sentence that leads so
 
 ---
 
-## Subtle Headers
+## Slide Labels and Topic Headers
 
-When a carousel covers multiple distinct sub-topics within a section — separate contraindications, separate indications, separate adverse effects — use a subtle header to name each one. Headers let the reader scan at a glance without reading every line to figure out what a slide is about.
+Every body slide (everything except hook and CTA) has two positional elements the script can specify:
 
-**Format:**
-```
-[3]  <subtleHeader>Hyperkalemia</subtleHeader>
-     <text>Lead line goes here.</text>
-     <text>Supporting detail.</text>
-     *teaser*
-```
+**`<sectionLabel>`** — a subtle uppercase label in the top-left corner naming the slide's role or section. The design layer renders this small and dim. Always provide one on body slides.
 
-When a slide uses a `<subtleHeader>`, all body text lines are wrapped in `<text>` tags. Color tags go inside `<text>` tags. Teasers remain as italic lines outside the tags.
+Common values: `Mechanism`, `Dose`, `Contraindications`, `Cautions`, `Clinical Pearl`, `Recap`, `Indications`, `Adverse Effects`, `Post-Administration`, `Identity`
+
+**`<topicName>`** — a large prominent header beneath the section label, used when a slide has one specific named subject (an indication, a contraindication, a drug being compared, etc.). Optional — only use when the slide is clearly about one named thing.
 
 ```
-<subtleHeader>Hypotension</subtleHeader>
-<text>[lavender: Hypotension] is the most common adverse effect to manage.</text>
-<text>Morphine causes histamine release, which vasodilates — BP can drop especially if volume depleted.</text>
+[4]  <sectionLabel>Dose</sectionLabel>
+     <topicName>Cardiac Arrest</topicName>
+     1 mg IV/IO (1:10,000) every 3–5 min.
+     Push fast and flush with 20 mL NS after each dose to move it centrally.
+     *Anaphylaxis is a different situation entirely...*
 ```
 
-**Use subtle headers when:**
-- Multiple contraindications are each getting their own slide (Template 2)
-- Multiple indications are each getting their own slide (Template 5)
-- Multiple adverse effects or post-administration concerns are each getting their own slide (Template 4)
-- Any repeating structural pattern where each slide covers one item from a set
+**Use `<sectionLabel>` on every body slide.** It orients the reader instantly.
 
-**Do not use subtle headers when:**
-- The carousel is one continuous narrative chain (e.g., a step-by-step mechanism walkthrough in Template 3)
-- A slide naturally flows from the previous one and a header would interrupt rather than orient
-- The slide only has 1–2 lines of content — a header would dominate
+**Use `<topicName>` when:**
+- Multiple indications each get their own slide
+- Multiple contraindications each get their own slide
+- Multiple adverse effects each get their own slide
+- Any repeating structure where each slide covers one named item from a set
 
-When no `<subtleHeader>` is present, keep the plain slide format from the Slide Numbering Format section.
+**Do not use `<topicName>` when:**
+- The slide is a continuous narrative — a header would interrupt rather than orient
+- The slide has 1–2 lines of content — the lead line carries it on its own
 
 ---
 
@@ -114,23 +111,23 @@ When a carousel covers multiple distinct items (contraindications, adverse effec
 
 **Format:**
 ```
-[N]  <subtleHeader>Recap</subtleHeader>
-     <text>One framing sentence — what to do with this list.</text>
-     <pill>Item one</pill>
-     <pill>Item two</pill>
-     <pill>Item three</pill>
+[N]  <sectionLabel>Recap</sectionLabel>
+     [color: Category] — brief summary of what was covered
+     [color: Category] — brief summary
+     [color: Category] — brief summary
+     *One more slide...*
 ```
 
-The `<text>` line frames the pills — "watch for," "hold for," "works for," etc. The `<pill>` tags render as compact visual chips, not body text. Keep each pill to 1–4 words.
+Each line is a colored label followed by a dash and the key takeaway — dose, mechanism, caveat, whatever matters most for that category. Match the color to the content type (green for indications, coral for contraindications, blue for mechanism, etc.). No framing sentence needed. No pills.
 
 **Use a recap slide when:**
-- The carousel has 3+ distinct named items (contraindications, adverse effects, indications, receptor targets)
+- The carousel has 3+ distinct named items
 - The viewer would benefit from seeing all items in one place after walking through them one by one
 
 **Do not use a recap slide when:**
 - The carousel is a continuous narrative chain (e.g., step-by-step mechanism in Template 3)
 - The carousel only covers 1–2 items — a recap would just repeat the whole carousel
-- The content is already self-summarizing (e.g., a bottom line slide that already functions as a recap)
+- The content is already self-summarizing
 
 The recap slide goes immediately before the CTA. The CTA is always the final slide.
 
@@ -226,34 +223,51 @@ These match the drug cards app palette exactly.
 
 ---
 
+## Auto-Generated Elements
+
+These appear on every slide automatically. The script author does not write them.
+
+- **Progress bar** — a row of N pill-shaped segments across the top of every slide. Completed segments are dim blue; the active segment is bright blue. Generated from slide count.
+- **Footer** — "ROB THE PARAMEDIC" in small caps at the bottom of every slide.
+- **Hook layout** — the hook slide has its own fixed structure (eyebrow label, large drug name, hook line, optional teaser). Write the content; the design layer handles the layout.
+- **CTA layout** — same as hook: fixed structure, write the content only.
+
+---
+
 ## Slide Numbering Format
 
 Output each carousel as a numbered slide sequence. Teasers appear as italic lines at the bottom of their slide.
 
-**Plain slide (no header):**
+**Hook slide:**
 ```
-[1]  <hook text>
-
-[2]  <lead line>
-     <supporting lines>
+[1]  <hook line>
      *<teaser>*
 ```
 
-**Slide with subtle header:**
+**Plain body slide:**
 ```
-[3]  <subtleHeader>Section Name</subtleHeader>
-     <text>Lead line goes here.</text>
-     <text>Supporting detail.</text>
+[2]  <sectionLabel>Identity</sectionLabel>
+     Lead line goes here.
+     Supporting lines.
+     *<teaser>*
+```
+
+**Body slide with named topic:**
+```
+[3]  <sectionLabel>Dose</sectionLabel>
+     <topicName>Cardiac Arrest</topicName>
+     Lead line goes here.
+     Supporting lines.
      *<teaser>*
 ```
 
 **Recap slide (when applicable — goes before CTA):**
 ```
-[N]  <subtleHeader>Recap</subtleHeader>
-     <text>Framing sentence.</text>
-     <pill>Item one</pill>
-     <pill>Item two</pill>
-     <pill>Item three</pill>
+[N]  <sectionLabel>Recap</sectionLabel>
+     [blue: Mechanism] — key fact
+     [green: Indication] — key dose
+     [coral: Contraindications] — key caveat
+     *One more slide...*
 ```
 
 **CTA slide (always last):**
@@ -262,21 +276,22 @@ Output each carousel as a numbered slide sequence. Teasers appear as italic line
      <CTA line 2>
 ```
 
-Example — plain slide with color tags and teaser:
+Example — plain body slide with color tags and teaser:
 ```
-[2]  Also called [amber: Adrenalin], or [amber: EpiPen].
+[2]  <sectionLabel>Identity</sectionLabel>
+     Also called [amber: Adrenalin], or [amber: EpiPen].
      It's a [blue: sympathomimetic], [blue: catecholamine], and [blue: vasopressor]. It mimics your body's natural stress response.
      It's the first-line drug for both [green: anaphylaxis] and [green: cardiac arrest].
      *The reason it works for both comes down to how it hits the body...*
 ```
 
-Example — slide with subtle header, color tags, and teaser:
+Example — slide with topic header, color tags, and teaser:
 ```
-[4]  <subtleHeader>Hyperkalemia</subtleHeader>
-     <text>Every dose causes a transient [blue: potassium shift] out of muscle cells.</text>
-     <text>In a patient with already-elevated K+, that bump can push them into [lavender: cardiac arrest].</text>
-     <text>[coral: Hyperkalemia] is the big one — and it's not always obvious you're dealing with it.</text>
-     *Several conditions amplify that K+ release dramatically...*
+[4]  <sectionLabel>Dose</sectionLabel>
+     <topicName>Cardiac Arrest</topicName>
+     1 mg IV/IO (1:10,000) every 3–5 min.
+     Push fast and flush with 20 mL NS after each dose to move it centrally.
+     *Anaphylaxis is a different situation entirely...*
 ```
 
 ---

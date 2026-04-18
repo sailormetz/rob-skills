@@ -14,7 +14,7 @@ All drugs in the dataset.
 |-------|------|---------------|
 | 1 | Hook | Drug name + framing around understanding the mechanism. Max 15 words. See global_rules for hook and teaser guidance. |
 | 2 | Context | Drug name, class, and what it is used for. Brief — just enough to ground the mechanism explanation. Use `[blue: ...]` for class terms and `[green: ...]` for indications. |
-| 3–6 | Mechanism | **Two approaches — choose based on the drug:** **Multi-target drugs** (2+ MOA targets): One receptor/target per slide. Start with a lead line naming the receptor and its action. Follow with the clinical result. Use `[blue: ...]` for receptor names and mechanism terms. **Single-target or sequential-mechanism drugs**: One step per slide. Walk through the mechanism as a causal chain. Each slide is one link in the chain — what the drug binds → what that does → what the patient experiences. |
+| 3–6 | Mechanism | **Two approaches — choose based on the drug:** **Multi-target drugs** (2+ MOA targets): One receptor/target per slide. Use `<sectionLabel>Mechanism</sectionLabel>` and `<topicName>` naming the receptor range or target. Start with a lead line naming the receptor and its action. Follow with the clinical result. Use `[blue: ...]` for receptor names and mechanism terms. **Single-target or sequential-mechanism drugs**: One step per slide. Walk through the mechanism as a causal chain. Use `<sectionLabel>Mechanism</sectionLabel>` throughout, no `<topicName>` needed. Each slide is one link in the chain — what the drug binds → what that does → what the patient experiences. |
 | 7 | Synthesis | Connect the mechanism back to clinical use. "This is why it works for [indication]" or "This is also why [adverse effect] happens." Ties mechanism to something the student already cares about. |
 | 8 | CTA | Save + app reference. Use one of the standard CTA options from global_rules. |
 
@@ -44,22 +44,25 @@ All drugs in the dataset.
      Used for [green: shock] and [green: symptomatic bradycardia].
      *Start at the bottom of the dose range...*
 
-[3]  <subtleHeader>Low Dose — D1 Receptors</subtleHeader>
-     <text>At low doses, dopamine primarily activates [blue: D1 dopaminergic receptors] in the renal and mesenteric vasculature.</text>
-     <text>This causes vasodilation in those beds, which was historically called "renal-dose dopamine."</text>
-     <text>That theory has been debunked — there is no proven renal protection at low doses. This range is no longer clinically targeted.</text>
+[3]  <sectionLabel>Mechanism</sectionLabel>
+     <topicName>Low Dose — D1 Receptors</topicName>
+     At low doses, dopamine primarily activates [blue: D1 dopaminergic receptors] in the renal and mesenteric vasculature.
+     This causes vasodilation in those beds, which was historically called "renal-dose dopamine."
+     That theory has been debunked — there is no proven renal protection at low doses. This range is no longer clinically targeted.
      *As the dose climbs, you hit a different receptor entirely...*
 
-[4]  <subtleHeader>Mid Dose — Beta-1 Receptors</subtleHeader>
-     <text>In the mid range, [blue: β-1 adrenergic receptors] dominate — this is the inotropic range.</text>
-     <text>HR goes up. Contractility increases. Cardiac output improves.</text>
-     <text>This is the range used for cardiogenic shock and symptomatic bradycardia when atropine has failed.</text>
+[4]  <sectionLabel>Mechanism</sectionLabel>
+     <topicName>Mid Dose — Beta-1 Receptors</topicName>
+     In the mid range, [blue: β-1 adrenergic receptors] dominate — this is the inotropic range.
+     HR goes up. Contractility increases. Cardiac output improves.
+     This is the range used for cardiogenic shock and symptomatic bradycardia when atropine has failed.
      *Push the dose higher and you activate a third receptor...*
 
-[5]  <subtleHeader>High Dose — Alpha-1 Receptors</subtleHeader>
-     <text>At high doses, [blue: α-1 adrenergic receptors] take over and cause peripheral vasoconstriction.</text>
-     <text>SVR rises, BP rises — but so does the afterload the heart has to pump against.</text>
-     <text>At very high doses, α-1 vasoconstriction can actually override the dopaminergic dilation and reduce renal perfusion.</text>
+[5]  <sectionLabel>Mechanism</sectionLabel>
+     <topicName>High Dose — Alpha-1 Receptors</topicName>
+     At high doses, [blue: α-1 adrenergic receptors] take over and cause peripheral vasoconstriction.
+     SVR rises, BP rises — but so does the afterload the heart has to pump against.
+     At very high doses, α-1 vasoconstriction can actually override the dopaminergic dilation and reduce renal perfusion.
      *Here's what that means clinically...*
 
 [6]  Understanding the dose-receptor relationship explains why dopamine is now third-line for shock.

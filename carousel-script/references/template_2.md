@@ -14,7 +14,8 @@ All drugs in the dataset.
 |-------|------|---------------|
 | 1 | Hook | Drug name + danger/stakes framing. Max 15 words. See global_rules for hook and teaser guidance. |
 | 2 | Context | What the drug is and what it does, in one or two lines. The contraindications need this context to make sense. Use `[blue: ...]` for drug class terms. |
-| 3–7 | Contraindications | **If the drug has 3+ contraindications:** One per slide. Start with a lead line that names or frames the contraindication. Follow with rationale connecting the drug's pharmacology to why this condition makes it dangerous. Use `[coral: ...]` for named contraindications. **If the drug has 1–2 contraindications:** Go deeper. Spend multiple slides per contraindication: one for what the contraindication is, one for why the pharmacology makes it dangerous, one for what happens clinically if you give it anyway. |
+| 3–7 | Contraindications | **If the drug has 3+ contraindications:** One per slide. Use `<sectionLabel>Contraindications</sectionLabel>` and `<topicName>` to name each one. Start with a lead line framing the contraindication. Follow with rationale connecting the drug's pharmacology to why this condition makes it dangerous. Use `[coral: ...]` for named contraindications. **If the drug has 1–2 contraindications:** Go deeper across multiple slides: what it is, why the pharmacology makes it dangerous, what happens if you give it anyway. |
+| 8 | Recap | Labeled summary of all contraindications covered. Use `<sectionLabel>Recap</sectionLabel>`. One `[coral: ...]` line per contraindication — label and key reason. |
 | Last | CTA | Save + app reference. Use one of the standard CTA options from global_rules. |
 
 **Total slides:** 5–9
@@ -50,41 +51,45 @@ Do not use: "Stop." as an opener (too dramatic), or parenthetical asides like "(
      Several conditions amplify that release dramatically.
      *Here's the first one...*
 
-[4]  <subtleHeader>Hyperkalemia</subtleHeader>
-     <text>[coral: Hyperkalemia] is the primary contraindication — and it's not always obvious you're dealing with it.</text>
-     <text>Any patient with known or suspected elevated K+ is at risk from that potassium shift.</text>
+[4]  <sectionLabel>Contraindications</sectionLabel>
+     <topicName>Hyperkalemia</topicName>
+     [coral: Hyperkalemia] is the primary contraindication — and it's not always obvious you're dealing with it.
+     Any patient with known or suspected elevated K+ is at risk from that potassium shift.
      *Burns and crush injuries take this further...*
 
-[5]  <subtleHeader>Burns / Crush Injuries</subtleHeader>
-     <text>Major tissue damage upregulates [blue: acetylcholine receptors] along the muscle membrane.</text>
-     <text>Succinylcholine hits all of them at once — the K+ release becomes massive.</text>
-     <text>[coral: Major burns] and [coral: crush injuries >48 hrs] are absolute contraindications for this reason.</text>
+[5]  <sectionLabel>Contraindications</sectionLabel>
+     <topicName>Burns / Crush Injuries</topicName>
+     Major tissue damage upregulates [blue: acetylcholine receptors] along the muscle membrane.
+     Succinylcholine hits all of them at once — the K+ release becomes massive.
+     [coral: Major burns] and [coral: crush injuries >48 hrs] are absolute contraindications for this reason.
      *Neuromuscular disease follows the same pattern...*
 
-[6]  <subtleHeader>Neuromuscular Disease</subtleHeader>
-     <text>[coral: Muscular dystrophy] and [coral: denervation injuries] — spinal cord injury, prolonged immobility — carry the same receptor upregulation risk.</text>
-     <text>The mechanism is identical to burns. The outcome can be the same.</text>
+[6]  <sectionLabel>Contraindications</sectionLabel>
+     <topicName>Neuromuscular Disease</topicName>
+     [coral: Muscular dystrophy] and [coral: denervation injuries] — spinal cord injury, prolonged immobility — carry the same receptor upregulation risk.
+     The mechanism is identical to burns. The outcome can be the same.
      *Two more — and one of them is a classic board question...*
 
-[7]  <subtleHeader>Malignant Hyperthermia</subtleHeader>
-     <text>[coral: Personal or family history of malignant hyperthermia] is an absolute contraindication.</text>
-     <text>Succinylcholine is a known trigger — it can initiate the cascade even without prior personal exposure.</text>
-     <text>Classic board question. Know it cold.</text>
+[7]  <sectionLabel>Contraindications</sectionLabel>
+     <topicName>Malignant Hyperthermia</topicName>
+     [coral: Personal or family history of malignant hyperthermia] is an absolute contraindication.
+     Succinylcholine is a known trigger — it can initiate the cascade even without prior personal exposure.
+     Classic board question. Know it cold.
      *Last one...*
 
-[8]  <subtleHeader>Penetrating Eye Injury</subtleHeader>
-     <text>[coral: Penetrating eye injury] is the last one.</text>
-     <text>The fasciculations succinylcholine causes raise intraocular pressure, which can worsen a globe rupture.</text>
-     <text>Use a non-depolarizing agent if you have one available.</text>
+[8]  <sectionLabel>Contraindications</sectionLabel>
+     <topicName>Penetrating Eye Injury</topicName>
+     [coral: Penetrating eye injury] is the last one.
+     The fasciculations succinylcholine causes raise intraocular pressure, which can worsen a globe rupture.
+     Use a non-depolarizing agent if you have one available.
      *Let's put them all together...*
 
-[9]  <subtleHeader>Recap</subtleHeader>
-     <text>Hold succinylcholine when you see any of these:</text>
-     <pill>Hyperkalemia</pill>
-     <pill>Burns / Crush >48 hrs</pill>
-     <pill>Neuromuscular Disease</pill>
-     <pill>Malignant Hyperthermia Hx</pill>
-     <pill>Penetrating Eye Injury</pill>
+[9]  <sectionLabel>Recap</sectionLabel>
+     [coral: Hyperkalemia] — K+ shift can push an already-elevated patient into arrest
+     [coral: Burns / Crush >48 hrs] — receptor upregulation causes massive K+ release
+     [coral: Neuromuscular Disease] — same mechanism as burns
+     [coral: Malignant Hyperthermia Hx] — known trigger, absolute contraindication
+     [coral: Penetrating Eye Injury] — fasciculations raise intraocular pressure
      *One more slide...*
 
 [10] Save this for your next exam.

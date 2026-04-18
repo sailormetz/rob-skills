@@ -15,8 +15,8 @@ All drugs in the dataset.
 | 1 | Hook | Drug name + hook that frames the value of knowing this drug. Max 15 words. Lead with the drug name. See global_rules for hook and teaser guidance. |
 | 2 | Identity | Generic name, trade name(s), pharmacological class(es). One-sentence summary of what the drug does in plain language. Use `[amber: ...]` for trade names, `[blue: ...]` for drug classes. Source fields: `genericName`, `tradeNames`, `classes`, `summary`. |
 | 3 | Mechanism | Simplified MOA. For multi-target drugs: explain each relevant receptor, its action, and the clinical result. For single-target drugs: cover the mechanism in 2–3 lines. Source field: `moa[].target`. Pick the 1–3 most clinically relevant targets. Use `[blue: ...]` for receptor names and mechanism terms. |
-| 4–5 | Indications | Top 2–3 indications, each with the most testable dose/route. If doses differ significantly between indications, use one slide per indication. If doses are similar, combine onto one slide. Use `[green: ...]` for indication names. Use `<subtleHeader>` to name each indication when indications get separate slides. Source fields: `indications[].name`, `indications[].doses`. |
-| 6 | Contraindications | Top 2–4 contraindications, one per line. Include a brief rationale connecting each to the drug's mechanism. Use `[coral: ...]` for named contraindications. If the contraindications are distinct enough to warrant separate slides (Template 2 territory), use `<subtleHeader>` per contraindication. Source field: `contraindications`. |
+| 4–5 | Indications | Top 2–3 indications, each with the most testable dose/route. If doses differ significantly between indications, use one slide per indication with `<sectionLabel>Dose</sectionLabel>` and `<topicName>` naming the indication. If doses are similar, combine onto one slide. Use `[green: ...]` for indication names. Source fields: `indications[].name`, `indications[].doses`. |
+| 6 | Contraindications | Top 2–4 contraindications, one per line. Include a brief rationale connecting each to the drug's mechanism. Use `[coral: ...]` for named contraindications. Use `<sectionLabel>Cautions</sectionLabel>`. Source field: `contraindications`. |
 | 7 | Pearl | One high-yield clinical detail: a common mistake, a test-day trap, a field tip, or a critical nuance. Must be specific to this drug. Use `[amber: ...]` for warnings or `[lavender: ...]` for named adverse effects if relevant. |
 | 8 | Recap | Brief summary of the N major ideas covered in the carousel — one line per concept, no pills. Use the same color tags as the body slides (e.g. `[blue: ...]` for mechanism, `[green: ...]` for indications, `[coral: ...]` for contraindications). Each line: colored label — key fact or dose. Do not introduce new information. |
 | 9 | CTA | Save + app reference. Use one of the standard CTA options from global_rules. |
@@ -47,40 +47,47 @@ Do not use: "do you actually know this drug?" (too vague), "Everything you need 
 [1]  Epinephrine — how well do you really know this drug?
      *It does three jobs at once. Here's all of them...*
 
-[2]  Also called [amber: Adrenalin] and [amber: EpiPen].
+[2]  <sectionLabel>Identity</sectionLabel>
+     Also called [amber: Adrenalin] and [amber: EpiPen].
      It's a [blue: sympathomimetic], [blue: catecholamine], and [blue: vasopressor] — it mimics your body's own stress response.
      First-line for both [green: anaphylaxis] and [green: cardiac arrest].
      *The reason it works for both comes down to which receptors it hits...*
 
-[3]  It hits three receptors at once, and each one does something different.
+[3]  <sectionLabel>Mechanism</sectionLabel>
+     It hits three receptors at once, and each one does something different.
      [blue: α-1] causes vasoconstriction, which brings BP back up.
      [blue: β-1] increases HR and contractility.
      [blue: β-2] relaxes the airways.
      *Which receptor matters most depends on why you're giving it...*
 
-[4]  <subtleHeader>Cardiac Arrest</subtleHeader>
-     <text>1 mg IV/IO (1:10,000) every 3–5 min.</text>
-     <text>Push fast and flush with 20 mL NS after each dose to move it centrally.</text>
+[4]  <sectionLabel>Dose</sectionLabel>
+     <topicName>Cardiac Arrest</topicName>
+     1 mg IV/IO (1:10,000) every 3–5 min.
+     Push fast and flush with 20 mL NS after each dose to move it centrally.
      *Anaphylaxis is a different situation entirely...*
 
-[5]  <subtleHeader>Anaphylaxis</subtleHeader>
-     <text>0.3–0.5 mg IM (1:1,000) into the anterolateral thigh.</text>
-     <text>That's ten times more concentrated than the arrest dose — the concentration matters as much as the dose.</text>
-     <text>Repeat every 5–15 min if there's no improvement.</text>
+[5]  <sectionLabel>Dose</sectionLabel>
+     <topicName>Anaphylaxis</topicName>
+     0.3–0.5 mg IM (1:1,000) into the anterolateral thigh.
+     That's ten times more concentrated than the arrest dose — the concentration matters as much as the dose.
+     [amber: Repeat every 5–15 min] if there's no improvement.
      *Before you give it — know the contraindications...*
 
-[6]  Epi has [coral: relative contraindications] — not hard stops, but situations where the cardiovascular load becomes a real concern.
+[6]  <sectionLabel>Cautions</sectionLabel>
+     Epi has [coral: relative contraindications] — not hard stops, but situations where the cardiovascular load becomes a real concern.
      [coral: Coronary insufficiency] — epi increases myocardial O₂ demand, which can worsen ischemia.
      [coral: Uncontrolled HTN] carries the same concern.
      There are no absolute contraindications in cardiac arrest.
      *One more thing — and it trips people up every time...*
 
-[7]  The concentration mix-up is one of the most common errors with this drug.
+[7]  <sectionLabel>Clinical Pearl</sectionLabel>
+     The concentration mix-up is one of the most common errors with this drug.
      1:10,000 is for IV push in arrest. 1:1,000 is for IM in anaphylaxis.
      Getting them reversed means a tenfold dosing error.
      *Let's recap...*
 
-[8]  <subtleHeader>The essentials.</subtleHeader>
+[8]  <sectionLabel>Recap</sectionLabel>
+     <topicName>The essentials.</topicName>
      [blue: Mechanism] — α-1, β-1, β-2 stimulation
      [green: Cardiac Arrest] — 1 mg IV/IO (1:10,000) every 3–5 min
      [green: Anaphylaxis] — 0.3–0.5 mg IM (1:1,000) into the anterolateral thigh
