@@ -1,6 +1,7 @@
 /**
  * screenshot.js
- * Screenshots each .slide element in a carousel HTML file at 1080×1920.
+ * Screenshots each .slide element at true 1080×1920.
+ * Overrides the dev preview layout so slides render full-width before capture.
  * Saves as slide_01.jpg, slide_02.jpg, etc. in the output directory.
  *
  * Usage:
@@ -12,14 +13,8 @@ const path = require('path');
 const fs = require('fs');
 
 const args = process.argv.slice(2);
-const htmlArg = args[indexOf('--html') + 1];
-const outArg  = args[indexOf('--out')  + 1];
-
-function indexOf(flag) {
-  const i = args.indexOf(flag);
-  if (i === -1) { console.error(`Missing flag: ${flag}`); process.exit(1); }
-  return i;
-}
+const htmlArg = args[args.indexOf('--html') + 1];
+const outArg  = args[args.indexOf('--out')  + 1];
 
 if (!htmlArg || !outArg) {
   console.error('Usage: node screenshot.js --html <file> --out <dir>');
@@ -30,7 +25,7 @@ const htmlPath = path.resolve(htmlArg);
 const outDir   = path.resolve(outArg);
 
 if (!fs.existsSync(htmlPath)) {
-  console.error(`HTML file not found: ${htmlPath}`);
+  console.error('HTML file not found: ' + htmlPath);
   process.exit(1);
 }
 
@@ -44,47 +39,57 @@ fs.mkdirSync(outDir, { recursive: true });
 
   const page = await browser.newPage();
 
-  // Viewport wide enough to render slides at reference size
-  await page.setViewport({ width: 1400, height: 900, deviceScaleFactor: 1 });
-  await page.goto(`file://${htmlPath}`, { waitUntil: 'networkidle0' });
-
-  // Wait for fonts to load
+  // 1080px wide viewport — slides fill full width via aspect-ratio 1080/1920
+  await page.setViewport({ width: 1080, height: 1920, deviceScaleFactor: 1 });
+  await page.goto('file://' + htmlPath, { waitUntil: 'networkidle0' });
   await page.evaluate(() => document.fonts.ready);
 
-  const slideHandles = await page.$$('.slide');
+  // Strip the dev preview wrapper layout so slides stack single-column at full width
+  await page.addStyleTag({ content: `
+    body { padding: 0 !important; }
+    .app-header { display: none !important; }
+    .stage {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0 !important;
+      width: 1080px !important;
+      max-width: 1080px !important;
+    }
+  ` });
 
-  if (slideHandles.length === 0) {
+  const slides = await page.$$('.slide');
+
+  if (slides.length === 0) {
     console.error('No .slide elements found in HTML.');
     process.exit(1);
   }
 
-  for (let i = 0; i < slideHandles.length; i++) {
-    const slide = slideHandles[i];
-    const box = await slide.boundingBox();
+  for (let i = 0; i < slides.length; i++) {
+    const box = await slides[i].boundingBox();
 
     if (!box) {
-      console.error(`Could not get bounding box for slide ${i + 1}`);
+      console.error('Could not get bounding box for slide ' + (i + 1));
       process.exit(1);
     }
 
-    const filename = `slide_${String(i + 1).padStart(2, '0')}.jpg`;
+    const filename = 'slide_' + String(i + 1).padStart(2, '0') + '.jpg';
     const outPath  = path.join(outDir, filename);
 
     await page.screenshot({
       path: outPath,
       type: 'jpeg',
-      quality: 92,
+      quality: 95,
       clip: {
-        x: box.x,
-        y: box.y,
-        width: box.width,
-        height: box.height,
+        x: Math.round(box.x),
+        y: Math.round(box.y),
+        width: Math.round(box.width),
+        height: Math.round(box.height),
       },
     });
 
-    console.log(`✓ ${filename}`);
+    console.log('✓ ' + filename + ' (' + Math.round(box.width) + 'x' + Math.round(box.height) + ')');
   }
 
   await browser.close();
-  console.log(`Done. ${slideHandles.length} slides written to ${outDir}`);
+  console.log('Done. ' + slides.length + ' slides written to ' + outDir);
 })();
