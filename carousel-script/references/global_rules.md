@@ -35,7 +35,7 @@ Narrative doesn't require breadth. A carousel entirely about contraindications c
 - Use complete sentences. Not cryptic shorthand. Not noun-only fragments.
 - Be direct and confident. No hedging, no "you might want to consider." State the information.
 - Do not talk down to the audience. No "did you know?" phrasing. No "fun fact." No exclamation-heavy enthusiasm.
-- Do not over-explain. If a point is already clear from context, don't restate it. Move forward.
+- Do not over-explain. If a point is already clear from context, don't restate it. Move forward. This includes pharmacokinetic details (onset, duration) already established on the context or overview slide — don't repeat them on post-admin or indication slides unless the timing is clinically actionable on that specific slide.
 - One emoji maximum per carousel, and only on the hook or CTA slide. Never in body slides.
 
 ### Em Dashes
@@ -189,7 +189,7 @@ These match the drug cards app palette exactly.
 | Tag | Color | Hex | Use for |
 |-----|-------|-----|---------|
 | `[blue: ...]` | Blue | `#5e9be8` | Drug class terms, mechanism words, receptor names, technical concepts. The default highlight when no more specific category applies. |
-| `[amber: ...]` | Amber | `#daa040` | Trade and brand names. Also used for warnings and precautions that don't rise to the level of a named contraindication. Flexible — can serve as a second general highlight alongside blue when content warrants it. |
+| `[amber: ...]` | Amber | `#daa040` | Trade and brand names. Also used for warnings, precautions, and key clinical actions — things the medic needs to actively do (e.g. "Monitor RR and etCO₂", "Have naloxone drawn", "Push slowly"). Flexible — can serve as a second general highlight alongside blue when content warrants it. |
 | `[green: ...]` | Green | `#52d693` | Indications and clinical uses. Any named condition the drug is used to treat. |
 | `[coral: ...]` | Coral | `#e86363` | Contraindications. Named contraindications and situations to avoid. Not for general caution language. |
 | `[lavender: ...]` | Lavender | `#7c6ddd` | Adverse effects and side effects. Named adverse outcomes the drug can cause. |
@@ -215,7 +215,7 @@ Every tag in the script system. Untagged lines are treated as plain body text by
 | `<sectionLabel>Name</sectionLabel>` | XML-style | Top-left slide label (e.g. "Dose", "Mechanism", "Cautions"). Required on every body slide. |
 | `<topicName>Name</topicName>` | XML-style | Large prominent subject header beneath the section label. Use when a slide has one specific named topic (an indication, a contraindication, etc.). Optional. |
 | `[blue: ...]` | Bracket | Inline color: drug classes, receptors, mechanism terms, technical concepts. |
-| `[amber: ...]` | Bracket | Inline color: trade/brand names, warnings, precautions. |
+| `[amber: ...]` | Bracket | Inline color: trade/brand names, warnings, precautions, key clinical actions. |
 | `[green: ...]` | Bracket | Inline color: indications and clinical uses. |
 | `[coral: ...]` | Bracket | Inline color: contraindications. |
 | `[lavender: ...]` | Bracket | Inline color: adverse effects and side effects. |
