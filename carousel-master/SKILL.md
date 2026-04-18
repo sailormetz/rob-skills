@@ -43,6 +43,7 @@ All writable files live under `/data/.openclaw/workspace/carousel-pipeline/`.
 | File | Path | Purpose |
 |------|------|---------|
 | Usage log | `carousel-pipeline/carousel_usage_log.json` | Permanent ledger of every completed combo. Never delete. |
+| Finished runs | `carousel-pipeline/finished_runs/{combo_hash}/` | Approved run archives. All assets preserved after approval. |
 
 ### Run data (`runs/{combo_hash}/`)
 
@@ -56,9 +57,10 @@ Each run gets its own folder at `carousel-pipeline/runs/{combo_hash}/`. Multiple
 | `slides/slide_01.jpg`, etc. | `carousel-design` (step 2) | Finished JPEG slides |
 
 **Cleanup rules:**
-- Run folders are NOT deleted automatically on success. They persist until Sailor explicitly approves.
-- On failure, the run folder is always kept for debugging.
-- Only delete a run folder after Sailor approves it in Phase 4.
+- Run folders are NOT moved or deleted automatically on success. They persist in `runs/` until Sailor explicitly approves.
+- On approval, the run folder is moved to `carousel-pipeline/finished_runs/{combo_hash}/` — never deleted.
+- On failure, the run folder stays in `runs/` for debugging. Never move or delete it.
+- Do not touch `finished_runs/` outside of Phase 4.
 
 ---
 
