@@ -171,7 +171,7 @@ A teaser is a short italicized line — one sentence or a fragment — that crea
 - *"The concentration is where people get into trouble..."*
 - *"The reason it works for both comes down to how it hits the body..."*
 
-Format teasers in the script as italic text on their own line at the bottom of the slide. When a slide uses `<subtleHeader>` and `<text>` tags, the teaser sits outside those tags, after the last `<text>` line.
+Format teasers using asterisks: `*Like this.*` — one line, at the bottom of the slide, after all body content and any `<topicName>` or `<sectionLabel>` tags. No separate tag needed. Asterisks are the teaser syntax.
 
 ---
 
@@ -203,6 +203,25 @@ These match the drug cards app palette exactly.
 - A slide with no highlights is fine. A slide where every third word is colored is not.
 - Doses and routes are never tagged. The design layer renders doses in large display type automatically.
 - Teasers are never highlighted.
+
+---
+
+## Tag Reference
+
+Every tag in the script system. Untagged lines are treated as plain body text by default — you do not need to wrap ordinary prose in anything.
+
+| Tag | Format | Purpose |
+|-----|--------|---------|
+| `<sectionLabel>Name</sectionLabel>` | XML-style | Top-left slide label (e.g. "Dose", "Mechanism", "Cautions"). Required on every body slide. |
+| `<topicName>Name</topicName>` | XML-style | Large prominent subject header beneath the section label. Use when a slide has one specific named topic (an indication, a contraindication, etc.). Optional. |
+| `[blue: ...]` | Bracket | Inline color: drug classes, receptors, mechanism terms, technical concepts. |
+| `[amber: ...]` | Bracket | Inline color: trade/brand names, warnings, precautions. |
+| `[green: ...]` | Bracket | Inline color: indications and clinical uses. |
+| `[coral: ...]` | Bracket | Inline color: contraindications. |
+| `[lavender: ...]` | Bracket | Inline color: adverse effects and side effects. |
+| `*text*` | Asterisks | Teaser line. Always the last line of the slide. Never on CTA. |
+
+Plain body text (no tag) is the default. Only use tags when the design layer needs to treat something differently.
 
 ---
 
