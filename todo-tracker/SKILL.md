@@ -59,20 +59,23 @@ If ambiguous (multiple matches), list them and ask which one.
 Trigger: "show todos", "my todos", "what's on my list", "todo list", or similar.
 
 1. Read `todos.json`.
-2. Sort: priority 1 first (ordered by date ascending, nulls last), then priority 0 (ordered by date ascending, nulls last).
-3. Reply with a numbered list.
+2. Group by priority: HIGH first, then LOW. Within each group, sort by date ascending (nulls last).
+3. Reply with a bulleted list grouped by section. Only show due dates if they exist.
 
 Format:
 ```
 📋 Todos
 
-🔴 [date or "no date"] — description
-🔴 [date or "no date"] — description
-⚪ [date or "no date"] — description
-⚪ [date or "no date"] — description
+HIGH
+• [due date] description
+• description (no date)
+
+LOW
+• description
+• [due date] description
 ```
 
-`🔴` = HIGH, `⚪` = LOW.
+If a section is empty, show "(none)" under it. Bold the section headers.
 
 ## Rules
 
