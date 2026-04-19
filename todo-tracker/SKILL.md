@@ -67,12 +67,12 @@ Format:
 📋 Todos
 
 HIGH
-01. description
-02. [due date] description
+[01] description
+[02] description (2026-04-20)
 
 LOW
-03. description
-04. description
+[03] description
+[04] description
 ```
 
 If a section is empty, show "(none)" under it. Bold the section headers. IDs are always zero-padded to two digits. Due dates shown only when present — append after the description in parentheses.
