@@ -20,7 +20,7 @@ Manages a simple todo list stored in `todos.json` at the workspace root.
     "id": 1,
     "date": "2026-04-19",
     "text": "Research neck hypertrophy exercises",
-    "priority": 0
+    "priority": "LOW"
   }
 ]
 ```
@@ -28,7 +28,7 @@ Manages a simple todo list stored in `todos.json` at the workspace root.
 - `id` — auto-incrementing integer. Use max existing id + 1.
 - `date` — `YYYY-MM-DD` or `null` if no date given.
 - `text` — the todo description.
-- `priority` — `0` (default) or `1` (high). All todos are 0 unless Sailor says otherwise.
+- `priority` — `"LOW"` (default) or `"HIGH"`. All todos are LOW unless Sailor says otherwise.
 
 ## Add a Todo
 
@@ -37,7 +37,7 @@ Trigger: "add todo", "add this to my list", "new todo", "remind me to", "put [X]
 1. Read `todos.json` (create with `[]` if missing).
 2. Parse the description and optional date from the message.
 3. If no date provided, set `date` to `null`.
-4. If no priority mentioned, set `priority` to `0`. If Sailor says "priority 1", "high priority", or "important", set to `1`.
+4. If no priority mentioned, set `priority` to `"LOW"`. If Sailor says "high priority", "important", or "priority high", set to `"HIGH"`.
 5. Append the new item with the next available `id`.
 6. Write the file.
 7. Reply: `✅ Added: "[text]"`
@@ -72,7 +72,7 @@ Format:
 ⚪ [date or "no date"] — description
 ```
 
-`🔴` = priority 1, `⚪` = priority 0.
+`🔴` = HIGH, `⚪` = LOW.
 
 ## Rules
 
