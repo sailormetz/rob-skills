@@ -25,7 +25,7 @@ Manages a simple todo list stored in `todos.json` at the workspace root.
 ]
 ```
 
-- `id` — auto-incrementing integer. Use max existing id + 1.
+- `id` — two-digit integer (1–99). Display zero-padded (01, 02, etc.). Use max existing id + 1.
 - `date` — `YYYY-MM-DD` or `null` if no date given.
 - `text` — the todo description.
 - `priority` — `"LOW"` (default) or `"HIGH"`. All todos are LOW unless Sailor says otherwise.
@@ -67,15 +67,15 @@ Format:
 📋 Todos
 
 HIGH
-• [due date] description
-• description (no date)
+01. description
+02. [due date] description
 
 LOW
-• description
-• [due date] description
+03. description
+04. description
 ```
 
-If a section is empty, show "(none)" under it. Bold the section headers.
+If a section is empty, show "(none)" under it. Bold the section headers. IDs are always zero-padded to two digits. Due dates shown only when present — append after the description in parentheses.
 
 ## Rules
 
