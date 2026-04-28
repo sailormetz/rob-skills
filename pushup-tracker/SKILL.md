@@ -67,14 +67,19 @@ When Sailor says "daily goal [N]" or similar:
 
 ## Evening Cron Message
 
-The cron job at 7pm CT sends exactly ONE message to Sailor. No other messages, no status confirmations, no summaries.
+The cron job at 7pm CT does TWO things:
 
-- Normal day (total < 100): `[total]/100 pushups done today. [100-total] more to go.`
-- Hit goal (total >= 100): `[total]/100 pushups done today. Goal hit ✅`
+### 1. Auto-log rest day for YESTERDAY (not today)
+If there is NO entry for **yesterday's** date in `days`, create one as a rest day:
+`{ "total": 0, "entries": [], "rest": true, "dailyGoal": [top-level dailyGoal], "setGoal": [top-level setGoal] }`
+Write the updated JSON back to the file. Do NOT touch today's entry — Sailor may still log pushups after 7pm.
+
+### 2. Send exactly ONE message to Sailor
+- Normal day (total > 0, total < dailyGoal): `[total]/[dailyGoal] pushups done today. [dailyGoal-total] more to go.`
+- Hit goal (total >= dailyGoal): `[total]/[dailyGoal] pushups done today. Goal hit ✅`
 - Rest day (rest=true): `Rest day — back at it tomorrow 💪`
-- No entry for today: `No pushups logged today. 100 to go.`
 
-Send the message and reply NO_REPLY. Do not send any additional messages.
+No other messages, no status confirmations, no summaries. Send the message and reply NO_REPLY.
 
 ## Logging a Rest Day
 
