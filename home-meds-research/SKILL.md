@@ -74,7 +74,14 @@ Write the updated file.
 ### 6. Update progress
 Read `progress.json`. Add the drug's `id` to `completed`, increment `totalCompleted`, set `lastRun` to today's date (YYYY-MM-DD). Write the file.
 
-### 7. Notify
+### 7. Commit and push
+Commit the updated `home_meds.js` and `progress.json` to the workspace repo:
+
+```bash
+cd /data/.openclaw/workspace && git add home-meds/home_meds.js home-meds/progress.json && git commit -m "data: [generic-name] — home med #[totalCompleted]/86" && git push
+```
+
+### 8. Notify
 Send a Telegram message to `8531672710`:
 
 ```
