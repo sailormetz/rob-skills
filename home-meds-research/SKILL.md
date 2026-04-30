@@ -81,12 +81,14 @@ Commit the updated `home_meds.js` and `progress.json` to the workspace repo:
 cd /data/.openclaw/workspace && git add home-meds/home_meds.js home-meds/progress.json && git commit -m "data: [generic-name] — home med #[totalCompleted]/86" && git push
 ```
 
-### 8. Notify
-Send a Telegram message to `8531672710`:
+### 8. Notify and send for review
+Send a Telegram message to `8531672710` with the full JS object so Sailor can review it:
 
 ```
 ✅ Home med researched: [Generic Name] ([Trade Names])
 [totalCompleted]/86 complete
+
+[full JS object formatted as a code block]
 ```
 
 Then reply NO_REPLY.
