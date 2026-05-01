@@ -55,7 +55,7 @@ All text in this dataset is written for a paramedic audience. Follow these rules
 ```js
 {
   id: "lisinopril",              // lowercase, hyphenated generic name — must be unique
-  summary: "",                   // 2–4 sentences covering the full clinical picture (see Summary section)
+  summary: "",                   // 1–2 sentences: what it is + why patients take it (see Summary section)
   genericName: "",               // Proper-case generic name as it appears on labeling
   tradeNames: [],                // Array of trade name strings — critical, medics read bottle labels
   category: [],                  // Clinical groupings for filtering (see Category Enums)
@@ -99,25 +99,20 @@ Lowercase, hyphenated generic name. This is the primary key for the dataset.
 | **Type** | `string` |
 | **Required** | Yes |
 
-**This is the most important field.** A medic should be able to read the summary alone and come away with ~75% of what they need to know about this drug.
+A quick-recognition field. 1–2 sentences: what the drug is (class) and what patients take it for. No mechanism (that belongs in `moa`). No EMS flags or adverse effects (that belongs in `considerations`). No HTML. Plain text only.
 
-Write 2–4 sentences that cover:
-1. What the drug is (class + mechanism in plain terms)
-2. What patients take it for (primary indications)
-3. What it does to physiology that a medic needs to understand on a call
-4. Any major EMS flag (hypotension risk, bleeding risk, overdose concern, narrow therapeutic index, etc.)
-
-The summary is a condensed clinical picture — not a one-liner. Write it for someone who knows pharmacology but may not have encountered this specific drug before. No HTML. Plain text only.
+The summary should match the style of the EMS drug summaries — concise and direct.
 
 **Do:**
-- `"Lisinopril is an ACE inhibitor used for hypertension, heart failure, and diabetic nephropathy. It blocks the conversion of angiotensin I to angiotensin II, reducing vasoconstriction and aldosterone secretion — lowering both preload and afterload. Patients on lisinopril may present with hypotension, especially if volume-depleted or taking other antihypertensives. Angioedema is a rare but serious adverse effect that can cause life-threatening airway compromise."`
-- `"Metoprolol is a selective beta-1 blocker used for hypertension, angina, heart failure, and rate control in atrial fibrillation. It slows heart rate and reduces myocardial oxygen demand by blocking beta-1 adrenergic receptors. In the field, expect bradycardia and hypotension — particularly in overdose or when combined with calcium channel blockers. Overdose is managed with atropine, glucagon, and calcium; standard ACLS pacing for refractory bradycardia."`
+- `"An ACE inhibitor used for hypertension, heart failure, and diabetic nephropathy. One of the most commonly prescribed blood pressure medications."`
+- `"A cardioselective beta-1 blocker used for hypertension, angina, heart failure, and rate control in atrial fibrillation."`
+- `"An atypical antipsychotic used for schizophrenia, bipolar disorder, and as an off-label sleep aid. Very commonly seen on home med lists."`
 
 **Don't:**
-- One-liners that just name the class: `"A beta-blocker used for hypertension."` — too thin
-- Vague clinical language: `"May cause cardiovascular effects."` — be specific about which effects
-- Dosing information or in-hospital management beyond EMS scope
-- Figurative language or hype words
+- Mechanism in the summary: `"Blocks the conversion of angiotensin I to angiotensin II..."` — that's what `moa` is for
+- EMS flags in the summary: `"Expect hypotension in the field..."` — that's what `considerations` is for
+- Vague clinical language: `"May cause cardiovascular effects."`
+- Dosing information
 
 ---
 
@@ -354,8 +349,11 @@ This tells the medic what the patient's underlying medical history likely includ
 |---|---|
 | **Type** | `string[]` |
 | **Required** | Yes (use `[]` if none) |
+| **Max length** | 5 |
 
-Array of HTML strings. This is where adverse effects, EMS precautions, and overdose information live — merged into one field because the distinction between "adverse effect" and "precaution" doesn't hold up well in the prehospital context. A medic needs to know what can go wrong and why it matters on a call.
+Array of HTML strings. **Maximum 5 entries.** These are the 5 most important things a medic needs to know about this drug on a call. This is where adverse effects, EMS precautions, and overdose information live — merged into one field because the distinction between "adverse effect" and "precaution" doesn't hold up well in the prehospital context.
+
+Prioritize ruthlessly. If a drug has 10 possible considerations, pick the 5 that are most likely to matter on a prehospital call. The goal is signal, not completeness.
 
 #### What belongs here
 
@@ -420,12 +418,13 @@ considerations: [
   'Does not cause reflex tachycardia — heart rate will not reliably compensate for hypotension.'
 ]
 
-// Metoprolol — includes overdose (beta blocker OD is a known prehospital emergency)
+// Metoprolol — 5 entries max, overdose included (beta blocker OD is a known prehospital emergency)
 considerations: [
-  'Causes <span class="hl hl--ci">bradycardia</span> and <span class="hl hl--ci">hypotension</span> — both dose-dependent and worsened by other rate-limiting drugs.',
-  'Masks tachycardia in <span class="hl hl--warn">hypoglycemia</span>, <span class="hl hl--warn">hypovolemia</span>, and <span class="hl hl--warn">anaphylaxis</span> — a normal heart rate in these patients does not mean they are stable.',
-  'Beta blocker <span class="hl hl--ci">overdose</span> presents with severe bradycardia, hypotension, and heart block. Prehospital management: atropine, glucagon, calcium, transcutaneous pacing for refractory bradycardia.',
-  'Abrupt discontinuation can cause <span class="hl hl--warn">rebound hypertension</span> and tachycardia — ask about medication compliance.'
+  'Causes <span class="hl hl--ci">bradycardia</span> and <span class="hl hl--ci">hypotension</span> — worsened by calcium channel blockers, digoxin, or clonidine.',
+  'Masks <span class="hl hl--warn">tachycardia</span> in hypoglycemia, hypovolemia, and anaphylaxis — a normal heart rate does not mean stable.',
+  'Patients may be <span class="hl hl--warn">unresponsive to standard epi doses</span> during anaphylaxis.',
+  'Abrupt discontinuation causes <span class="hl hl--ci">rebound hypertension</span> and can precipitate angina or MI.',
+  '<span class="hl hl--ci">Overdose</span>: severe bradycardia, hypotension, heart block. Prehospital: atropine, glucagon, calcium, transcutaneous pacing.'
 ]
 ```
 
@@ -440,10 +439,8 @@ function validateHomeMed(entry) {
     error(`Invalid id: "${entry.id}"`);
   }
 
-  // Rule 2: summary is required, 2+ sentences
-  if (!entry.summary || entry.summary.split('. ').length < 2) {
-    error(`Summary too short for ${entry.id} — need 2-4 sentences`);
-  }
+  // Rule 2: summary is required
+  if (!entry.summary) error(`Missing summary for ${entry.id}`);
 
   // Rule 3: genericName is required
   if (!entry.genericName) error(`Missing genericName for ${entry.id}`);
@@ -487,9 +484,12 @@ function validateHomeMed(entry) {
     error(`patientIndications must be non-empty array for ${entry.id}`);
   }
 
-  // Rule 10: considerations must be an array
+  // Rule 10: considerations must be an array, max 5 entries
   if (!Array.isArray(entry.considerations)) {
     error(`considerations must be array for ${entry.id}`);
+  }
+  if (entry.considerations.length > 5) {
+    error(`considerations exceeds 5-entry max for ${entry.id}`);
   }
 }
 ```
@@ -501,7 +501,7 @@ function validateHomeMed(entry) {
 ```js
 {
   id: "lisinopril",
-  summary: "Lisinopril is an ACE inhibitor used for hypertension, heart failure, and diabetic nephropathy. It works by blocking the conversion of angiotensin I to angiotensin II, reducing vasoconstriction and aldosterone secretion — lowering blood pressure and decreasing cardiac preload and afterload. In the field, expect hypotension in volume-depleted patients or those on multiple antihypertensives. The most dangerous adverse effect is angioedema — rapid airway swelling that can be life-threatening and does not always respond to epinephrine.",
+  summary: "An ACE inhibitor used for hypertension, heart failure, and diabetic nephropathy. One of the most commonly prescribed blood pressure medications.",
   genericName: "Lisinopril",
   tradeNames: ["Zestril", "Prinivil"],
   category: ["Cardiovascular"],
@@ -514,10 +514,11 @@ function validateHomeMed(entry) {
   ],
   patientIndications: ["Hypertension", "Heart failure", "Diabetic nephropathy", "Post-MI"],
   considerations: [
-    'Can cause significant <span class="hl hl--ci">hypotension</span>, especially in volume-depleted patients or those on multiple antihypertensives — a dry, hot patient on lisinopril is at high risk.',
-    '<span class="hl hl--ci">Angioedema</span> is a rare but life-threatening adverse effect — rapid swelling of the lips, tongue, or airway. Manage as an airway emergency. More common in Black patients.',
-    'A persistent dry cough is the most common adverse effect — patients often report it. Not dangerous, but important for history-taking.',
-    'Does not cause reflex tachycardia — heart rate will not reliably compensate for hypotension.'
+    'Can cause significant <span class="hl hl--ci">hypotension</span>, especially in volume-depleted patients or those on multiple antihypertensives.',
+    '<span class="hl hl--ci">Angioedema</span> is a rare but life-threatening adverse effect — rapid swelling of the lips, tongue, or airway. Manage as an airway emergency.',
+    'A persistent dry cough is the most common adverse effect — not dangerous, but useful for history-taking.',
+    'Does not cause reflex tachycardia — heart rate will not reliably compensate for hypotension.',
+    'Hyperkalemia risk, especially in renal impairment or when combined with potassium-sparing diuretics.'
   ]
 }
 ```
@@ -529,7 +530,7 @@ function validateHomeMed(entry) {
 ```
 {
   id                    // lowercase, hyphenated — unique key
-  summary               // 2–4 sentences — the full clinical picture (plain text, no HTML)
+  summary               // 1–2 sentences — what it is + why patients take it (plain text, no HTML)
   genericName           // proper-case generic name
   tradeNames[]          // brand names found on bottles
   category[]            // clinical grouping enums (8 values — see Category Enums)
@@ -537,6 +538,6 @@ function validateHomeMed(entry) {
   source                // "DailyMed" | "StatPearls" | "Mixed"
   moa[]                 // { brief: "" } — mechanism in 1–2 sentences
   patientIndications[]  // why patients take it — condition name strings
-  considerations[]      // HTML strings — adverse effects + precautions + overdose when relevant
+  considerations[]      // HTML strings — max 5, the most important things a medic needs to know
 }
 ```
