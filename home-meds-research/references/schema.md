@@ -256,15 +256,28 @@ Primary data source for this entry. Gives credibility and audit trail.
 | **Required** | Yes |
 | **Min length** | 1 |
 
-Array of mechanism-of-action entries. Each entry describes one mechanism by which the drug produces its clinical effects.
+Array of mechanism-of-action entries. Each entry describes one mechanism by which the drug produces its clinical effects. Uses the same MOA structure as the EMS drug schema for front-end compatibility.
 
 #### MOA Entry Object
 
 ```js
 {
-  brief: ""   // Required — plain text or HTML string describing the mechanism
+  brief: "",      // Required — HTML string rendered as body text on the card
+  target: {       // Required — structured data rendered as scannable elements
+    name: "",     // What the drug binds to / acts on
+    action: "",   // How it acts on the target (see Action Enum)
+    result: "",   // Clinical effect — rendered bold green, most prominent element
+    system: ""    // Biological system (see System Enum)
+  }
 }
 ```
+
+#### Front-End Rendering (how it displays on the card)
+
+Each MOA entry renders top-to-bottom:
+1. **Target name** — highlighted mono-font tag (color-coded by system) + **action badge** — uppercase label next to it (e.g. "BLOCKS", "INHIBITS")
+2. **Result** — bold green text, 15px, font-weight 700. The most visually prominent line.
+3. **Brief** — smaller body text (14px, regular weight). The prose explanation.
 
 #### `brief`
 
@@ -273,43 +286,108 @@ Array of mechanism-of-action entries. Each entry describes one mechanism by whic
 | **Type** | `string` |
 | **Required** | Yes |
 
-A concise explanation of the drug's mechanism. One to two sentences. Written for a reader who understands pharmacology — don't define basic terms (receptor, agonist, antagonist). Do connect the mechanism to the clinical effect when it adds value.
+One to two sentences tying the mechanism together in prose. This renders as supporting body text below the target and result. Written for a reader who understands pharmacology — don't define basic terms.
 
 **Style rules:**
-- Clinical and direct. State the mechanism plainly, then connect it to the patient outcome.
+- Clinical and direct. State the mechanism plainly, connect it to the patient outcome.
 - No figurative language. No hype words.
-- Target data (receptor names, enzyme names, pathways) can appear when used conversationally — e.g. "Blocks beta-1 adrenergic receptors, reducing heart rate and myocardial oxygen demand." Don't mechanically list every receptor subtype.
-- Plain text is preferred. HTML is allowed only when a highlight span genuinely adds clarity (rare for MOA).
+- HTML is allowed but rarely needed — the target/result structure already provides visual emphasis.
 
-**Do:**
-- `"Inhibits angiotensin-converting enzyme (ACE), blocking the conversion of angiotensin I to angiotensin II — reducing vasoconstriction and aldosterone release, which lowers blood pressure and decreases cardiac preload and afterload."`
-- `"Selectively blocks beta-1 adrenergic receptors, slowing heart rate and reducing myocardial contractility and oxygen demand."`
-- `"Irreversibly inhibits cyclooxygenase-1 (COX-1) in platelets, preventing thromboxane A2 synthesis and platelet aggregation for the life of the platelet (~10 days)."`
+#### `target`
 
-**Don't:**
-- `"Works on the heart."` — too vague
-- `"This powerful medication leverages receptor antagonism to achieve blood pressure reduction."` — hype language
-- Multi-paragraph mechanism descriptions — save detail for `considerations` or `summary`
+| | |
+|---|---|
+| **Type** | `object` |
+| **Required** | Yes |
+
+Structured metadata about what the drug acts on and what happens.
+
+##### `target.name`
+What the drug binds to or acts on. Free text.
+- `"Beta-1 adrenergic receptors"`, `"Angiotensin-converting enzyme (ACE)"`, `"HMG-CoA reductase"`, `"COX-1 & COX-2"`, `"Mu-opioid receptors"`
+
+##### `target.action`
+How the drug acts on the target. Use the Action Enum below.
+
+##### `target.result`
+The clinical effect for the patient. This is the most visually prominent text on the card (bold green). Keep it short and scannable — use ↓/↑ arrows for physiological changes.
+- `"↓ HR, ↓ contractility, ↓ BP"`, `"↓ Vasoconstriction, ↓ aldosterone, ↓ preload/afterload"`, `"Bronchodilation"`
+
+##### `target.system`
+Biological system classification. Use the System Enum below.
+
+#### Action Enum
+
+| Value | Meaning | Example |
+|-------|---------|--------|
+| `"agonist"` | Activates the receptor | Albuterol → β-2 |
+| `"antagonist"` | Blocks by competing for the receptor | Losartan → AT1 |
+| `"blocker"` | Blocks an ion channel or transporter | Amlodipine → Ca²⁺ channels |
+| `"enhancer"` | Potentiates existing activity | Gabapentin → GABA (indirect) |
+| `"inhibitor"` | Inhibits an enzyme | Lisinopril → ACE |
+| `"stimulator"` | Triggers a biological process | Semaglutide → GLP-1 |
+| `"stabilizer"` | Stabilizes cell membranes | Phenytoin → Na⁺ channels |
+| `"donor"` | Provides a substrate | Levothyroxine → T4 |
+| `"modulator"` | Modulates receptor/channel activity without simple on/off | Lithium → multiple second messengers |
+
+#### System Enum
+
+| Value | Covers |
+|-------|--------|
+| `"adrenergic"` | α and β receptors — metoprolol, carvedilol, clonidine, tamsulosin |
+| `"cholinergic"` | Muscarinic / nicotinic receptors — ipratropium, donepezil |
+| `"opioid"` | μ, κ, δ receptors — hydrocodone, oxycodone, tramadol |
+| `"GABAergic"` | GABA-A receptors — alprazolam, clonazepam, zolpidem, gabapentin |
+| `"serotonergic"` | 5-HT receptors — SSRIs, SNRIs, trazodone |
+| `"dopaminergic"` | D1/D2 receptors — aripiprazole, haloperidol, quetiapine |
+| `"glutamatergic"` | NMDA receptors — memantine |
+| `"ion-channel"` | Na⁺/K⁺/Ca²⁺ channels — amlodipine, diltiazem, phenytoin |
+| `"enzymatic"` | COX, PDE, HMG-CoA reductase, ACE, etc. — aspirin, statins, lisinopril, omeprazole |
+| `"metabolic"` | Glucose / glycogen / thyroid pathways — insulin, metformin, levothyroxine |
+| `"inflammatory"` | Glucocorticoid receptors — prednisone |
+| `"coagulation"` | Clotting cascade — warfarin, apixaban, clopidogrel |
+| `"histaminergic"` | H1/H2 receptors — diphenhydramine, cetirizine, loratadine |
+| `"hormonal"` | Hormone receptors — oral contraceptives, testosterone |
+| `"purinergic"` | Adenosine / uric acid pathways — allopurinol, colchicine |
+| `"other"` | Mechanisms that don't fit above — hydroxychloroquine, methotrexate |
 
 #### When to use multiple MOA entries
 
-For most home meds, **a single MOA entry is sufficient.** Use multiple entries only when the drug acts through genuinely distinct mechanisms that produce different clinical effects (rare for home meds).
+For most home meds, **a single MOA entry is sufficient.** Use multiple entries only when the drug acts through genuinely distinct mechanisms that produce different clinical effects.
 
 ```js
 // Single mechanism — most drugs
 moa: [
   {
-    brief: "Inhibits HMG-CoA reductase, the rate-limiting enzyme in cholesterol synthesis, reducing hepatic cholesterol production and increasing LDL receptor expression."
+    brief: "Inhibits HMG-CoA reductase, the rate-limiting enzyme in cholesterol synthesis, reducing hepatic cholesterol production and increasing LDL receptor expression.",
+    target: {
+      name: "HMG-CoA reductase",
+      action: "inhibitor",
+      result: "↓ Hepatic cholesterol synthesis, ↑ LDL receptor expression",
+      system: "enzymatic"
+    }
   }
 ]
 
-// Multiple mechanisms — only when distinct pathways matter
+// Multiple mechanisms — carvedilol (alpha + beta blocker)
 moa: [
   {
-    brief: "Blocks alpha-1 adrenergic receptors, causing vasodilation and reducing peripheral vascular resistance."
+    brief: "Blocks alpha-1 adrenergic receptors, causing vasodilation and reducing peripheral vascular resistance.",
+    target: {
+      name: "Alpha-1 adrenergic receptors",
+      action: "antagonist",
+      result: "Vasodilation, ↓ SVR",
+      system: "adrenergic"
+    }
   },
   {
-    brief: "Non-selectively blocks beta-1 and beta-2 adrenergic receptors, slowing heart rate and reducing myocardial contractility."
+    brief: "Non-selectively blocks beta-1 and beta-2 adrenergic receptors, slowing heart rate and reducing myocardial contractility.",
+    target: {
+      name: "Beta-1 & Beta-2 adrenergic receptors",
+      action: "antagonist",
+      result: "↓ HR, ↓ contractility",
+      system: "adrenergic"
+    }
   }
 ]
 ```
@@ -471,12 +549,19 @@ function validateHomeMed(entry) {
     error(`Invalid source "${entry.source}" for ${entry.id}`);
   }
 
-  // Rule 8: moa must be non-empty array, each entry must have brief
+  // Rule 8: moa must be non-empty array, each entry must have brief + target
   if (!Array.isArray(entry.moa) || entry.moa.length === 0) {
     error(`moa must be non-empty array for ${entry.id}`);
   }
   entry.moa.forEach((m, i) => {
     if (!m.brief) error(`moa entry ${i} missing brief for ${entry.id}`);
+    if (!m.target) error(`moa entry ${i} missing target for ${entry.id}`);
+    if (m.target) {
+      if (!m.target.name) error(`moa entry ${i} target missing name for ${entry.id}`);
+      if (!m.target.action) error(`moa entry ${i} target missing action for ${entry.id}`);
+      if (!m.target.result) error(`moa entry ${i} target missing result for ${entry.id}`);
+      if (!m.target.system) error(`moa entry ${i} target missing system for ${entry.id}`);
+    }
   });
 
   // Rule 9: patientIndications must be non-empty array of strings
@@ -509,7 +594,13 @@ function validateHomeMed(entry) {
   source: "DailyMed",
   moa: [
     {
-      brief: "Inhibits angiotensin-converting enzyme (ACE), blocking the conversion of angiotensin I to angiotensin II — reducing vasoconstriction and aldosterone release, which lowers blood pressure and decreases cardiac preload and afterload."
+      brief: "Inhibits ACE, blocking the conversion of angiotensin I to angiotensin II — reducing vasoconstriction and aldosterone release, which lowers blood pressure and decreases cardiac preload and afterload.",
+      target: {
+        name: "Angiotensin-converting enzyme (ACE)",
+        action: "inhibitor",
+        result: "↓ Vasoconstriction, ↓ aldosterone, ↓ preload/afterload",
+        system: "enzymatic"
+      }
     }
   ],
   patientIndications: ["Hypertension", "Heart failure", "Diabetic nephropathy", "Post-MI"],
@@ -536,7 +627,7 @@ function validateHomeMed(entry) {
   category[]            // clinical grouping enums (8 values — see Category Enums)
   classes[]             // pharmacological classes (see Preferred Class Spellings)
   source                // "DailyMed" | "StatPearls" | "Mixed"
-  moa[]                 // { brief: "" } — mechanism in 1–2 sentences
+  moa[]                 // { brief, target: { name, action, result, system } }
   patientIndications[]  // why patients take it — condition name strings
   considerations[]      // HTML strings — max 5, the most important things a medic needs to know
 }
