@@ -139,27 +139,52 @@ Format: `*Like this.*` — own line, bottom of slide, after all body content. Te
 
 ## Inline Emphasis and Color Coding
 
-The design layer applies color to specific words. The script signals what gets highlighted using bracket tags. The design skill reads these and renders the correct color.
+The design layer applies color to specific words and phrases. The script signals what gets highlighted using bracket tags.
 
 **Tagging format:** `[color: word or phrase]`
-Example: `It's a [blue: sympathomimetic], [blue: catecholamine], and [blue: vasopressor].`
 
 ### Color Definitions
 
-These match the drug cards app palette exactly.
+| Tag | Hex | What to tag |
+|-----|-----|-------------|
+| `[blue: ...]` | `#5e9be8` | **How the drug works.** Mechanism phrases, receptor names, drug classes, physiological concepts. Tag the complete mechanism thought, not individual words in isolation. Blue is the default — use it when no stricter category applies. |
+| `[amber: ...]` | `#daa040` | **What the medic needs to recognize or do.** Two patterns: trade/brand names (`[amber: Versed]`) and clinical directives (`[amber: Hold if HR is below 60]`). The common thread is actionable awareness. |
+| `[green: ...]` | `#52d693` | **What the drug treats.** Named indications and clinical uses only. |
+| `[coral: ...]` | `#e86363` | **When not to give it.** Named contraindications — specific conditions or situations, not general caution language. |
+| `[lavender: ...]` | `#7c6ddd` | **What the drug can cause.** Tag the clinically significant adverse effects, not every side effect. Highlight the ones worth remembering. |
 
-| Tag | Color | Hex | Use for |
-|-----|-------|-----|---------|
-| `[blue: ...]` | Blue | `#5e9be8` | Drug class terms, mechanism words, receptor names, technical concepts. The default highlight when no more specific category applies. |
-| `[amber: ...]` | Amber | `#daa040` | Trade and brand names. Also used for warnings, precautions, and key clinical actions - things the medic needs to actively do (e.g. "Monitor RR and etCO2", "Have naloxone drawn", "Push slowly"). Flexible - can serve as a second general highlight alongside blue when content warrants it. |
-| `[green: ...]` | Green | `#52d693` | Indications and clinical uses. Any named condition the drug is used to treat. |
-| `[coral: ...]` | Coral | `#e86363` | Contraindications. Named contraindications and situations to avoid. Not for general caution language. |
-| `[lavender: ...]` | Lavender | `#7c6ddd` | Adverse effects and side effects. Named adverse outcomes the drug can cause. |
+### Examples
+
+**Blue:**
+`Adenosine works by [blue: slowing conduction through the AV node].`
+`It's a [blue: calcium channel blocker] that reduces [blue: afterload] by relaxing vascular smooth muscle.`
+
+**Amber:**
+`Also known as [amber: Lopressor]. [amber: Hold if HR is below 60.]`
+`[amber: Titrate to effect] — start low and reassess before repeating.`
+
+**Green:**
+`The go-to for [green: symptomatic bradycardia] in the field.`
+`Indicated for [green: acute pulmonary edema] and [green: hypertensive emergency].`
+
+**Coral:**
+`[coral: Hypersensitivity to sulfas] is an absolute contraindication.`
+`Do not give in [coral: second- or third-degree heart block] without a pacemaker.`
+
+**Lavender:**
+`Watch for [lavender: bronchospasm] in patients with reactive airway disease.`
+`Rapid infusion can cause [lavender: a sense of impending doom] and flushing.`
+
+**Wrong vs right:**
+❌ `[green: The go-to drug for treating symptomatic bradycardia in the field]`
+✅ `The go-to drug for [green: symptomatic bradycardia] in the field.`
+❌ `[amber: You should always monitor the blood pressure after giving this drug]`
+✅ `[amber: Monitor BP after each dose] — especially in volume-depleted patients.`
 
 ### Rules
 
 - Green, coral, and lavender are strict — use only for their defined category. Blue and amber are discretionary; when in doubt, default to blue.
-- **Color the key word or phrase, not the surrounding context.** Named entities get colored (`[coral: Bradycardia]`), clinical actions get colored (`[amber: Push slowly]`), explanatory text stays plain.
+- **Color the complete meaningful unit** — the full clinical entity or action phrase — but stop before you're coloring filler words and connector text. `[blue: slowing conduction through the AV node]` ✅. `[blue: It works by slowing conduction through the AV node]` ❌.
 - Every slide needs ≥1 color tag. Don't over-highlight — if every third word is colored, it loses effect.
 - Doses and routes are never tagged (design layer handles them). Teasers are never tagged.
 
