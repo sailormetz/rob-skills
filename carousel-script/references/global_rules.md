@@ -157,36 +157,45 @@ The design layer applies color to specific words and phrases. The script signals
 
 ### Examples
 
+**Blue** (mechanism, receptors, drug class):
 ```
-Blue (mechanism, receptors, drug class):
-  Adenosine works by [blue: slowing conduction through the AV node].
-  It's a [blue: calcium channel blocker] that reduces [blue: afterload] by relaxing vascular smooth muscle.
+Adenosine works by [blue: slowing conduction through the AV node].       // full mechanism phrase, not just "AV node"
+It's a [blue: calcium channel blocker] that reduces [blue: afterload].   // class term + physiological concept
+```
 
-Amber (trade names, clinical directives):
-  Also known as [amber: Lopressor]. [amber: Hold if HR is below 60.]
-  [amber: Titrate to effect] — start low and reassess before repeating.
+**Amber** (trade names, clinical directives):
+```
+Also known as [amber: Lopressor]. [amber: Hold if HR is below 60.]      // trade name + actionable directive
+[amber: Titrate to effect] — start low and reassess before repeating.    // clinical action the medic needs to do
+```
 
-Green (indications):
-  The go-to for [green: symptomatic bradycardia] in the field.
-  Indicated for [green: acute pulmonary edema] and [green: hypertensive emergency].
+**Green** (indications):
+```
+The go-to for [green: symptomatic bradycardia] in the field.             // named condition treated
+Indicated for [green: acute pulmonary edema] and [green: hypertensive emergency].  // multiple indications
+```
 
-Coral (contraindications):
-  [coral: Hypersensitivity to sulfas] is an absolute contraindication.
-  Do not give in [coral: second- or third-degree heart block] without a pacemaker.
+**Coral** (contraindications):
+```
+[coral: Hypersensitivity to sulfas] is an absolute contraindication.     // specific named CI
+Do not give in [coral: second- or third-degree heart block] without a pacemaker.   // full clinical entity
+```
 
-Lavender (adverse effects):
-  Watch for [lavender: bronchospasm] in patients with reactive airway disease.
-  Rapid infusion can cause [lavender: a sense of impending doom] and flushing.
+**Lavender** (adverse effects):
+```
+Watch for [lavender: bronchospasm] in patients with reactive airway disease.       // clinically significant effect
+Rapid infusion can cause [lavender: a sense of impending doom] and flushing.       // notable effect tagged, minor one plain
 ```
 
 **Wrong vs right:**
 ```
-❌  [green: The go-to drug for treating symptomatic bradycardia in the field]
-✅  The go-to drug for [green: symptomatic bradycardia] in the field.
+❌  [green: The go-to drug for treating symptomatic bradycardia in the field]      // too much — filler words colored
+✅  The go-to drug for [green: symptomatic bradycardia] in the field.              // just the meaningful unit
 
-❌  [amber: You should always monitor the blood pressure after giving this drug]
-✅  [amber: Monitor BP after each dose] — especially in volume-depleted patients.
+❌  [amber: You should always monitor the blood pressure after giving this drug]   // whole sentence colored
+✅  [amber: Monitor BP after each dose] — especially in volume-depleted patients.  // just the directive
 ```
+
 
 - Every slide needs ≥1 color tag. Don't over-highlight — if every third word is colored, it loses effect.
 - Doses and routes are never tagged (design layer handles them). Teasers are never tagged.
