@@ -1,50 +1,34 @@
 ---
 name: carousel-init
-description: "Handles all pipeline preparation for a carousel run: selects the next drug×template combo, validates against the usage log, pulls the latest drug data, extracts the drug object, and writes the pipeline state file into a run folder keyed by combo_hash. Called only by carousel-master — never trigger directly."
-version: "1.1.0"
+description: "Handles pipeline preparation for a carousel run: selects the next topic from carousel_topics.json, validates it, pulls fresh drug data, extracts the drug object, and writes the pipeline state file into a run folder keyed by topic_id. Called only by carousel-master — never trigger directly."
+version: "2.0.0"
 author: rob
 tags: [carousel, pipeline, init]
 ---
 
 # Carousel Init — Pipeline Preparation
 
-You are setting up a new carousel run. This skill handles everything before creative work begins: combo selection, duplicate checking, drug data extraction, and pipeline state file creation.
+You are setting up a new carousel run. This skill handles everything before creative work begins: topic selection, drug data extraction, and pipeline state file creation.
 
-All run files are written to `carousel-pipeline/runs/{combo_hash}/` — one folder per run.
-
----
-
-## Step 1 — Combo Selection
-
-Run the combo selector:
-
-```
-node /data/.openclaw/workspace/skills/carousel-init/references/carousel_next.js
-```
-
-Parse the JSON output from stdout:
-
-```json
-{
-  "template": "3",
-  "key": "ketamine",
-  "combo_hash": "ketamine::3"
-}
-```
-
-**If the script fails** (non-zero exit, invalid JSON, missing fields), stop and report what went wrong to carousel-master. Do not proceed.
+All run files are written to `carousel-pipeline/runs/{topic_id}/` — one folder per run.
 
 ---
 
-## Step 2 — Duplicate Check
+## Step 1 — Topic Selection
 
-Read `carousel-pipeline/carousel_usage_log.json`. If the file doesn't exist, treat as empty (first run).
+Read `carousel-pipeline/carousel_topics.json`.
 
-- **If `combo_hash` exists in the log:** Stop. Tell carousel-master this combo has already been completed.
-- **If not found:** Proceed.
+Find the first topic where `status` is `"idea"`. If no topics have status `"idea"`, stop and tell carousel-master the topic queue is empty.
 
-Also check if `carousel-pipeline/runs/{combo_hash}/` already exists:
-- **If it exists:** A run for this combo is already in progress or pending approval. Stop. Tell carousel-master the run folder already exists.
+Hold the topic's `id`, `drug`, and `pitch` — these drive the rest of init.
+
+---
+
+## Step 2 — Validate
+
+Check that a run folder doesn't already exist for this topic:
+
+- **If `carousel-pipeline/runs/{topic_id}/` exists:** A run is already in progress or pending approval. Stop. Tell carousel-master.
 - **If it doesn't exist:** Proceed.
 
 ---
@@ -63,12 +47,12 @@ If the pull fails, stop and report the error. Do not proceed with stale data.
 
 Create the run folder:
 ```
-mkdir -p /data/.openclaw/workspace/carousel-pipeline/runs/{combo_hash}
+mkdir -p /data/.openclaw/workspace/carousel-pipeline/runs/{topic_id}
 ```
 
-Read `cards/data/drugs.js`. Find the drug object where `id` matches `selection.key`.
+Read `cards/data/drugs.js`. Find the drug object where `id` matches the topic's `drug` field.
 
-- **If found:** Write the raw drug object to `carousel-pipeline/runs/{combo_hash}/carousel_working_data.json`
+- **If found:** Write the raw drug object to `carousel-pipeline/runs/{topic_id}/carousel_working_data.json`
 - **If not found:** Stop. Tell carousel-master the drug id wasn't found in drugs.js.
 
 Write the object exactly as it exists — no transformations.
@@ -77,15 +61,15 @@ Write the object exactly as it exists — no transformations.
 
 ## Step 5 — Write Pipeline State
 
-Create `carousel-pipeline/runs/{combo_hash}/carousel_pipeline_state.json`:
+Create `carousel-pipeline/runs/{topic_id}/carousel_pipeline_state.json`:
 
 ```json
 {
   "run_id": "<ISO 8601 timestamp>",
   "selection": {
-    "template": "<template>",
-    "key": "<key>",
-    "combo_hash": "<combo_hash>"
+    "topic_id": "<id>",
+    "drug": "<drug>",
+    "pitch": "<pitch>"
   },
   "steps": [
     { "id": 1, "subskill": "carousel-script",  "status": "pending" },
@@ -96,16 +80,21 @@ Create `carousel-pipeline/runs/{combo_hash}/carousel_pipeline_state.json`:
 }
 ```
 
-Note: init work is not tracked as a step — the state file only tracks the three subskills that run after init.
+---
+
+## Step 6 — Update Topic Status
+
+In `carousel-pipeline/carousel_topics.json`, set the selected topic's `status` to `"draft"`.
 
 ---
 
-## Step 6 — Confirm
+## Step 7 — Confirm
 
 Report back to carousel-master:
-- Combo selected: `[combo_hash]`
-- Drug data extracted: `[drug genericName]`
-- Run folder created: `runs/{combo_hash}/`
+- Topic selected: `{topic_id}`
+- Drug: `{drug}`
+- Pitch: `{pitch}`
+- Run folder created: `runs/{topic_id}/`
 - Pipeline state written
 - Ready for carousel-script
 
@@ -114,6 +103,6 @@ Report back to carousel-master:
 ## Rules
 - Do not proceed past any failed step
 - Do not modify drug data — write it exactly as found
-- Do not write to `carousel_usage_log.json` — that's Phase 4 in carousel-master
+- Do not set a topic to `"done"` — that's Phase 4 in carousel-master
 - Do not trigger any downstream subskills — carousel-master handles sequencing
 - Do not touch other run folders — each run is isolated

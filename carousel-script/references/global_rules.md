@@ -1,6 +1,6 @@
 # Carousel Global Rules
 
-These rules apply to every slide of every carousel regardless of template.
+These rules apply to every slide of every carousel.
 
 ---
 
@@ -18,13 +18,46 @@ A carousel is not a flashcard set. It is a narrative — told in slides.
 
 The viewer should feel like they're being walked through something, not flipping through a reference sheet. Every slide picks up where the last one left off. The information builds. By the end, the viewer has been led somewhere — they understand something they didn't before, or understand it better.
 
-**The template tells you what to cover. Your job is to connect it.**
+**The pitch tells you the angle. Your job is to build a narrative around it.**
 
-Every template has a scope — contraindications, mechanism, indications, post-administration. Whatever the scope, the content inside it should still have a natural progression. Start from the most foundational idea and move toward the most specific. Establish context before making claims. Give the reader a reason to care before giving them the detail.
+Each carousel has a pitch — a 1-2 sentence editorial brief that defines the angle. The pitch is not a slide-by-slide blueprint. It tells you what the viewer should walk away understanding. You decide how to get there.
 
 **Before writing, ask: what is the through-line of this carousel?** What is the one thing the viewer should walk away understanding? Every slide should serve that through-line. If a slide doesn't move the narrative forward, cut it or reframe it.
 
+Start from the most foundational idea and move toward the most specific. Establish context before making claims. Give the reader a reason to care before giving them the detail.
+
 Narrative doesn't require breadth. A carousel entirely about contraindications can still tell a story — why this drug creates these risks, how each contraindication connects back to the drug's mechanism, which ones are most dangerous and why. That's a story. A list of bullet points is not.
+
+---
+
+## Carousel Structure
+
+Every carousel follows this general shape. The number of slides and depth of each section flexes based on the topic.
+
+### 1. Hook (Slide 1)
+Teases the angle. The reader should feel a knowledge gap or a stakes frame — something worth swiping for. Must contain the drug name. Max 15 words.
+
+### 2. Identity / Context (usually Slide 2)
+Grounds the reader. What is this drug? What class? What's it used for? Write for someone encountering this drug for the first time.
+
+This is not brief filler — it's the anchor that makes the rest of the carousel make sense. A medic who doesn't know this drug should walk away from this slide knowing what it is and why it exists.
+
+Depth depends on the drug:
+- Common drugs (epinephrine, naloxone) → 1 slide, concise
+- Uncommon drugs (pralidoxime, etomidate) → 1-2 slides, more grounding
+
+### 3. The Dive (variable number of slides)
+The core content — whatever the pitch is about. Structure it however serves the material:
+
+- **Named items** (contraindications, indications, adverse effects) → one per slide or group related items. Use `<topicName>` for each.
+- **Causal chain** (mechanism, post-administration timeline) → one step per slide, each building on the last.
+- **Argument or comparison** → narrative slides building toward a conclusion.
+
+### 4. Synthesis (1 slide, before CTA)
+Connects the dive back to clinical practice. Not a recap — a closing thought that lands the through-line. "This is why it matters" or "this is what to do with this knowledge."
+
+### 5. CTA (final slide)
+Save prompt + app reference. Standard options listed below.
 
 ---
 
@@ -70,6 +103,18 @@ Onset is 3–5 minutes IV.
 ```
 
 The first version is a label and bullets. The second is a sentence that leads somewhere.
+
+### No Throat-Clearing
+
+The lead line must be the most direct statement possible. Open with what the drug IS, what it DOES, or what the medic needs to know — not a roundabout setup, not a contextual warm-up, not "Let's talk about..." framing.
+
+**Wrong:** "When it comes to treating bradycardia, there's one drug that stands out."
+**Right:** "Atropine is the first-line drug for symptomatic bradycardia."
+
+**Wrong:** "This next receptor is where things get interesting."
+**Right:** "β-2 activation relaxes bronchial smooth muscle — that's the airway effect."
+
+State the thing, then explain it. Every slide. No exceptions.
 
 ---
 
@@ -125,7 +170,7 @@ Each line is a colored label followed by a dash and the key takeaway — dose, m
 - The viewer would benefit from seeing all items in one place after walking through them one by one
 
 **Do not use a recap slide when:**
-- The carousel is a continuous narrative chain (e.g., step-by-step mechanism in Template 3)
+- The carousel is a continuous narrative chain (e.g., step-by-step mechanism walkthrough)
 - The carousel only covers 1–2 items — a recap would just repeat the whole carousel
 - The content is already self-summarizing
 
@@ -263,7 +308,7 @@ Plain body text (no tag) is the default. Only use tags when the design layer nee
 - A carousel should be exactly as long as the content requires and no longer.
 - Do not pad slides with filler to reach a target length.
 - Short carousels (4–6 slides) are valid. A tight 5-slide carousel with strong narrative outperforms a padded 8-slide carousel with weak filler.
-- The slide ranges in each template are upper bounds, not targets.
+- Slide count should match what the content needs. Do not pad to hit a number.
 
 ---
 
@@ -344,28 +389,41 @@ Example — slide with topic header, color tags, and teaser:
 
 The hook is slide 1. It determines whether anyone sees the rest of the carousel.
 
-- Maximum 15 words for the hook line itself.
-- Must be specific to the drug or topic. Generic hooks are not acceptable.
-- Must contain the drug name (for single-drug templates) or the scenario/class name (for multi-drug templates).
-- Provoke slightly — make the viewer feel like they might not know this as well as they thought, or that there's something worth knowing here. Not sensationalized, not clickbait. Just a quiet challenge or a genuine tease.
-- A good hook creates a knowledge gap or a stakes frame. The viewer either doesn't know something and wants to, or realizes something matters and keeps reading.
-- Questions work when they're genuine and slightly pointed — not rhetorical softballs. "How well do you really know this drug?" works. "Did you know epinephrine has three receptors?" does not.
+### Structure
+
+The hook has two parts:
+1. **The frame** — a statement that names the drug and sets up the angle. Concrete and specific to what the carousel covers.
+2. **The question** — a direct question that makes the reader test themselves. It should hint at the specific content they're about to learn (a number, a scenario, a risk).
+
+Both parts together should stay under 25 words total. The question can serve as the teaser line or stand on its own.
+
+### Rules
+
+- Must contain the drug name.
+- Must be specific to the drug and the carousel's angle. Generic hooks are not acceptable.
+- **Use a question to create a knowledge gap.** The reader should instinctively try to answer it — and realize they're not sure. That's the swipe motivation.
+- Make the question concrete. Hint at what's coming: a specific number of items, a specific scenario, a specific risk. "Do you know the four major reasons to use it?" works because it tells the reader exactly what they'll learn and challenges them to recall.
 - Do not start with "Did you know," "Here's why," or "Let me explain."
 - Do not oversell. "The most important drug in EMS" or "You NEED to know this" is overdone. Confidence is quiet.
+- Do not use vague rhetorical questions. "How well do you really know this drug?" is too generic. "Can you name the three situations where it becomes dangerous?" is specific.
 
-**The hook can carry a teaser.** If the hook line sets up a question or a frame, a teaser can deliver the first hint of the answer — just enough to make the viewer swipe. Keep it short and specific, not vague.
-
-**Hook + teaser example:**
+**Hook examples:**
 ```
-[1]  Epinephrine — how well do you really know this drug?
-     *It does three jobs at once. Here's all of them...*
+[1]  [amber: Epinephrine] — one drug, more jobs than anything else on the ambulance.
+     *Do you know the four major reasons to use it?*
 ```
-
-**Hook formulas that work:**
-- `[Drug] — how well do you really know this drug?`
-- `[Drug] — [the one specific thing that makes it worth understanding].`
-- `[Drug]: everything on one card.`
-- `If [Drug] is on your next test, save this.`
+```
+[1]  [amber: Fentanyl] — safe when used right, dangerous when it's not.
+     *Can you name the three situations where it becomes dangerous?*
+```
+```
+[1]  [amber: Adenosine] — six seconds of nothing, then a reset.
+     *Do you know what actually happens when you push it?*
+```
+```
+[1]  [amber: Amiodarone] vs [amber: Lidocaine] — both treat V-fib.
+     *Do you know when to reach for one over the other?*
+```
 
 ---
 
@@ -417,6 +475,198 @@ Vary the save prompt to match context. The app reference line stays consistent.
 - Drug names. Always write the full generic name.
 - Receptor names on first use (α-1, β-1, β-2, muscarinic are standard notation, not abbreviations).
 - Clinical concepts being explained on that slide — write them out.
+
+---
+
+## Worked Example: Fentanyl Contraindications
+
+**Pitch:** "The reasons you don't give fentanyl and how to spot them."
+
+**Planning:**
+1. **Through-line:** Fentanyl has specific danger zones — a medic needs to recognize them before pushing the drug.
+2. **Identity bridge:** Well-known drug, 1 slide — synthetic opioid, mu-agonist, 100x morphine potency.
+3. **Arc:** Hook → identity → respiratory depression → chest wall rigidity → head injury → synthesis → CTA
+
+```
+[1]  [amber: Fentanyl] — safe when used right, dangerous when it's not.
+     *Can you name the three situations where it becomes dangerous?*
+
+[2]  <sectionLabel>Identity</sectionLabel>
+     Fentanyl is a synthetic [blue: opioid analgesic] that works by activating [blue: mu-opioid receptors] in the brain and spinal cord.
+     It's roughly 100 times more potent than morphine by weight — always dosed in *micrograms*, never milligrams.
+     Fast onset, short duration, and no histamine release. That makes it more hemodynamically stable than morphine, which is why it's the go-to for [green: acute pain] and [green: procedural sedation] in the field.
+     *But that potency comes with specific risks...*
+
+[3]  <sectionLabel>Contraindications</sectionLabel>
+     <topicName>Respiratory Depression</topicName>
+     Fentanyl is a [blue: mu-agonist]. Mu receptors suppress respiratory drive. If the patient is already hypoventilating, fentanyl will push them further.
+     [coral: Do not give fentanyl to a patient with respiratory depression] unless you have ventilatory support in place and are prepared to manage the airway.
+     [amber: Have naloxone drawn before you push it.] The risk goes up with any concurrent CNS depressant — alcohol, benzos, other opioids.
+     *Respiratory depression is the expected risk. The next one catches people off guard...*
+
+[4]  <sectionLabel>Adverse Effects</sectionLabel>
+     <topicName>Chest Wall Rigidity</topicName>
+     Push fentanyl too fast IV and the chest wall can lock up. The intercostal muscles go rigid. The patient can't breathe and *you can't ventilate them* with a BVM.
+     This is not a theoretical risk — it happens with rapid push or high doses.
+     [amber: Treat with naloxone or neuromuscular blockade.] Prevention is simpler: push slowly over 1-2 minutes.
+     *There's one more situation where fentanyl gets complicated...*
+
+[5]  <sectionLabel>Precautions</sectionLabel>
+     <topicName>Head Injury</topicName>
+     Opioids can raise ICP and mask neurologic findings. In a head injury patient, fentanyl makes your neuro exam less reliable.
+     This isn't an absolute contraindication — pain itself raises ICP too. But [amber: use the lowest effective dose] and reassess frequently.
+     The goal is pain control without losing your ability to track mental status changes.
+     *Here's the bottom line...*
+
+[6]  <sectionLabel>Synthesis</sectionLabel>
+     These aren't reasons to fear fentanyl. It's still one of the safest analgesics in the kit when used correctly.
+     They're reasons to slow down and think before you push it. Know the respiratory status. Push slowly. [amber: Have naloxone ready.] And in head injuries, dose conservatively and watch the neuro exam.
+     *Save this one...*
+
+[7]  Save this for your next shift.
+     Full doses, MOA, and contraindications for every drug.
+     Link in bio.
+```
+
+**Why this works:**
+- Hook names the drug, frames the angle, and uses a concrete question ("three situations") to create a knowledge gap. The reader tries to answer and realizes they want to check.
+- Identity slide grounds the reader in 4 sentences: class, potency, why it's preferred. Someone who's never heard of fentanyl can follow the rest.
+- Each dive slide is one named topic with a `<sectionLabel>` and `<topicName>`. Lead line states the point directly (no throat-clearing). Color tags match content type: coral for the contraindication, amber for clinical actions, blue for mechanism terms, green for indications.
+- Teasers hand off naturally — each one points to the next specific topic, not a vague "but wait."
+- Synthesis doesn't recap — it reframes. "These aren't reasons to fear fentanyl" is a closing thought, not a bullet list.
+- 7 slides total. No padding.
+
+---
+
+## Worked Example: Epinephrine Versatility
+
+**Pitch:** "Epinephrine does everything — and that's what makes it confusing. One drug, different doses, different concentrations, different routes."
+
+**Planning:**
+1. **Through-line:** Epi shows up in completely different scenarios looking like a completely different drug each time. Understanding the three receptors explains why.
+2. **Identity bridge:** 1 slide — the three-receptor profile IS the identity. That's what makes it versatile.
+3. **Arc:** Hook → receptors → cardiac arrest → anaphylaxis → push dose → croup/bronchospasm → synthesis → CTA
+
+```
+[1]  [amber: Epinephrine] — one drug, more jobs than anything else on the ambulance.
+     *Do you know the four major reasons to use it?*
+
+[2]  <sectionLabel>Identity</sectionLabel>
+     Epinephrine is a [blue: sympathomimetic] and [blue: catecholamine] — it mimics your body's own adrenaline response.
+     What makes it so versatile is that it hits three receptors at once. [blue: Alpha-1] causes vasoconstriction. [blue: Beta-1] increases HR and contractility. [blue: Beta-2] relaxes the airways.
+     Most drugs do one thing. Epi does three. That's why it shows up in [green: cardiac arrest], [green: anaphylaxis], [green: shock], and [green: croup] — and looks like a different drug each time.
+     *Start with the one where the dose is highest and the stakes are biggest...*
+
+[3]  <sectionLabel>Indications</sectionLabel>
+     <topicName>Cardiac Arrest</topicName>
+     1 mg IV/IO every 3-5 min. Concentration: 1:10,000.
+     In arrest, you're pushing epi for [blue: alpha-1] vasoconstriction. It tightens the peripheral vasculature, which raises coronary perfusion pressure between compressions. That's what gives defibrillation a better chance of working.
+     Push fast and flush with 20 mL NS to move it centrally.
+     *Anaphylaxis uses the same drug — but almost nothing else is the same...*
+
+[4]  <sectionLabel>Indications</sectionLabel>
+     <topicName>Anaphylaxis</topicName>
+     0.3 mg IM in the anterolateral thigh. Concentration: 1:1,000.
+     Here all three receptors matter. Alpha-1 reverses the vasodilation crashing the BP. Beta-1 supports the heart. Beta-2 opens the airways.
+     [amber: IM, not IV.] IV push epinephrine in a patient with a pulse risks *fatal arrhythmia*. The IM route gives a controlled absorption that the situation needs.
+     *But what about the patient who's hypotensive and still has a pulse?*
+
+[5]  <sectionLabel>Indications</sectionLabel>
+     <topicName>Push Dose Epi</topicName>
+     10-20 mcg IV every 2-5 min. You're mixing this yourself — dilute 1:10,000 down to 10 mcg/mL.
+     This is for the patient who is [green: hemodynamically unstable] but not in arrest. Too sick for a drip setup, not dead enough for 1 mg.
+     Small, controlled boluses of alpha-1 and beta-1 to bridge until you get a presssor hanging or the patient declares one direction or the other.
+     *There's one more use where epi doesn't even go into a vein...*
+
+[6]  <sectionLabel>Indications</sectionLabel>
+     <topicName>Croup & Bronchospasm</topicName>
+     5 mg nebulized. Still 1:1,000 concentration, but now it's inhaled.
+     This is pure [blue: beta-2] territory. The drug lands directly on the airway smooth muscle and relaxes it. Stridor improves within minutes.
+     Different route, different dose, different clinical target — same drug.
+     *Here's how to keep all of this straight...*
+
+[7]  <sectionLabel>Synthesis</sectionLabel>
+     The reason epi is confusing is that the indication changes everything about how you give it. The concentration, the route, the dose, and even which receptor you're targeting all shift.
+     The shortcut: [amber: Arrest = 1 mg IV push]. [amber: Anaphylaxis = 0.3 mg IM]. [amber: Push dose = 10-20 mcg IV]. [amber: Croup = 5 mg neb]. Match the scenario to the route and the rest follows.
+     *Save this one...*
+
+[8]  Save this for your next exam.
+     All 70 drugs, one app.
+     Link in bio.
+```
+
+**Why this works:**
+- Hook names the drug, frames the angle (versatility), and uses a numbered question ("four major reasons") that makes the reader count in their head. Concrete tease of what's coming.
+- Identity slide explains WHY epi is versatile (three receptors) instead of just listing uses. The receptor profile is the identity.
+- Each indication slide names one scenario with `<topicName>`, leads with the dose/route/concentration, then explains which receptor is doing the work. The reader connects the receptor to the clinical goal.
+- Push dose epi gets its own slide — it's a distinct use case students often don't learn until clinical rotations.
+- Teasers create natural bridges: "Anaphylaxis uses the same drug — but almost nothing else is the same" is a specific handoff, not a generic "but wait."
+- Synthesis gives a cheat sheet: scenario = route. One line per indication. Scannable and memorable.
+- 8 slides. Each one earns its place — four distinct indications, each with different dosing, justify the length.
+
+---
+
+## Worked Example: Midazolam for Seizures
+
+**Pitch:** "Midazolam for seizures — how it stops a seizure, the dosing by route, and what to watch for after."
+
+**Planning:**
+1. **Through-line:** Midazolam stops seizures by quieting neurons via GABA. Get it on board fast, then watch the airway.
+2. **Identity bridge:** 1 slide — benzo, GABA enhancer, multiple uses but seizures are the focus.
+3. **Arc:** Hook → identity → why timing matters → IM dosing → IN and IV → post-seizure risks → synthesis → CTA
+
+```
+[1]  [amber: Midazolam] for seizures — the go-to benzo in the field.
+     *Do you know how it stops a seizure and what to watch for after?*
+
+[2]  <sectionLabel>Identity</sectionLabel>
+     Midazolam is a [blue: benzodiazepine] — also called [amber: Versed].
+     It works by enhancing [blue: GABA] at the [blue: GABA-A receptor]. More chloride flows into the neuron, the neuron quiets down, and the uncontrolled firing that drives a seizure stops.
+     Used for [green: seizures], [green: agitation], and [green: procedural sedation] — but seizure management is where it earns its reputation in the field.
+     *Here's why speed matters...*
+
+[3]  <sectionLabel>Clinical Context</sectionLabel>
+     <topicName>Why Timing Matters</topicName>
+     A seizure that runs beyond 5 minutes is [green: status epilepticus]. The longer it continues, the harder it becomes to stop — and the more neuronal damage accumulates.
+     The goal is to get midazolam on board fast. Not after you establish access. Not after a full assessment. The drug goes in as soon as you confirm the patient is seizing.
+     *The dosing is weight-based and route-dependent...*
+
+[4]  <sectionLabel>Dosing</sectionLabel>
+     <topicName>IM</topicName>
+     0.2 mg/kg IM, max 10 mg. Onset 5-10 min.
+     Draw it up, anterolateral thigh, done. No IV needed, no delay. This is the fastest way to get the drug working when you arrive on scene.
+     *There are two other routes worth knowing...*
+
+[5]  <sectionLabel>Dosing</sectionLabel>
+     <topicName>IN and IV</topicName>
+     IN is 0.2 mg/kg, max 10 mg, onset 3-5 min. [amber: Split the dose between both nares] — full volume in one nostril causes runoff and cuts absorption. Use the 5 mg/mL concentration.
+     IV is 0.1 mg/kg, max 4 mg, onset 1-3 min. Fastest onset, but requires access you may not have on a seizing patient.
+     *Once the seizure breaks, your job changes...*
+
+[6]  <sectionLabel>Precautions</sectionLabel>
+     <topicName>After the Seizure Stops</topicName>
+     A postictal patient already has depressed respiratory drive. Now you've added a [blue: GABA enhancer] on top of that.
+     [lavender: Respiratory depression and apnea] are the primary risks. Alcohol or opioids on board make it worse.
+     [amber: Monitor RR and SpO₂ continuously.] Have BVM and suction ready. In elderly patients, *cut the dose in half* — they're significantly more sensitive.
+     *Here's the bottom line...*
+
+[7]  <sectionLabel>Synthesis</sectionLabel>
+     Midazolam stops seizures by calming the neurons that are firing out of control. Get it on board fast — IM if you don't have access, IN or IV if you do.
+     Once the seizure breaks, shift your focus to the airway. The benzo is still working even after the seizure isn't.
+     *Save this one...*
+
+[8]  Save this for your next shift.
+     Full doses, MOA, and contraindications for every drug.
+     Link in bio.
+```
+
+**Why this works:**
+- Straight-up single-indication deep dive. No comparisons to other benzos, no route selection debates. Just: here's the drug, here's how it works for seizures, here's the dosing, here's what to watch for.
+- Identity slide mentions other uses but immediately narrows focus to seizures. The reader knows the scope.
+- "Why Timing Matters" slide earns its place — it's not padding, it's the clinical reasoning that explains why the dosing routes are presented in priority order.
+- IM gets its own slide because it's the field default. IN and IV share a slide because they're secondary options.
+- Post-seizure precautions slide is the clinical pearl — the thing students don't think about until it happens. Postictal + benzo = airway risk.
+- 8 slides. Each one teaches one thing. No overlap.
 
 ---
 
