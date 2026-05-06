@@ -75,14 +75,14 @@ Three typefaces — all locked to their assigned roles. Do not mix.
 
 | Element | Size | Weight | Notes |
 |---------|------|--------|-------|
-| Hook drug name (`.hook-title`) | `13cqw` | 800 | Line height `.95`, letter-spacing `-0.02em` |
+| Hook drug name (`.hook-title`) | `13cqw` | 800 | Line height `.95`, letter-spacing `-0.02em` — no eyebrow above |
 | Topic header (`.dose-name`) | `8.5cqw` | 700 | Letter-spacing `-0.015em`, line-height `1` |
 | CTA save prompt (`.cta-line1`) | `10cqw` | 700 | Letter-spacing `-0.015em` |
 | Body line (`.line`) | `5.1cqw` | 400 | Line height `1.35` |
 | Teaser (`.teaser`) | `5.1cqw` | 400 | Italic, `--teaser-color` |
 | Hook line (`.hook-sub`) | `5.1cqw` | 500 | Max-width 88% |
 | Section label (`.slide-title.subtle`) | `3.4cqw` | 600 | Uppercase, letter-spacing `.26em`, color `#6a6a6a` |
-| Hook eyebrow (`.hook-eyebrow`) | `4.4cqw` | 700 | Uppercase, letter-spacing `.22em`, color `--amber` |
+
 | CI name (`.ci-item .nm`) | `5.4cqw` | 700 | — |
 | CI rationale (`.ci-item .why`) | `4.2cqw` | 400 | Color `#b4b4b4` |
 | Conc comparison (`.conc-line`) | `5.6cqw` | 500 | — |
@@ -159,17 +159,16 @@ Use `.body.center` on slides with compact content that should sit mid-card. Use 
 
 ### Hook (Slide 1) — `.hook-wrap`
 
-Full-bleed, vertically centered column. No frame or top-row.
+Full-bleed, vertically centered column. No frame or top-row. No eyebrow.
 
 ```
-[hook-eyebrow]     ← template label in amber, uppercase, letter-spaced
 [hook-title]       ← drug name, 13cqw, Barlow 800
 [hook-sub]         ← hook line, 5.1cqw, body text
 [hook-teaser]      ← teaser, italic (if present)
 [footer]
 ```
 
-- Eyebrow is auto-generated from template. See `template_eyebrows.md`.
+- The hook statement drives the frame — no category label needed.
 - Extra top padding clears the progress bar: `padding-top: calc(var(--safe-y) + 5cqw)`
 
 ---

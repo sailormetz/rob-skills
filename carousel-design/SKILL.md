@@ -1,6 +1,6 @@
 ---
 name: carousel-design
-description: "Renders a tagged carousel script into designed JPEG slides at 1080×1920 for TikTok. Reads the script from the run folder, builds an HTML layout using the established design system, screenshots each slide via Puppeteer, and writes JPEGs to runs/{combo_hash}/slides/. Called only by carousel-master — never trigger directly."
+description: "Renders a tagged carousel script into designed JPEG slides at 1080×1920 for TikTok. Reads the script from the run folder, builds an HTML layout using the established design system, screenshots each slide via Puppeteer, and writes JPEGs to runs/{topic_id}/slides/. Called only by carousel-master — never trigger directly."
 version: "1.0.0"
 author: rob
 tags: [carousel, design, rendering, tiktok]
@@ -18,11 +18,11 @@ Called by `carousel-master` at Step 2. Never triggered directly.
 
 ## Inputs
 
-Read from `carousel-pipeline/runs/{combo_hash}/`:
+Read from `carousel-pipeline/runs/{topic_id}/`:
 
 | File | Used for |
 |------|----------|
-| `carousel_pipeline_state.json` | `selection.template` (1–5) and `selection.key` (drug key) |
+| `carousel_pipeline_state.json` | `selection.topic_id`, `selection.drug`, `selection.pitch` |
 | `carousel_working_data.json` | `drug.genericName` — displayed on the hook slide |
 | `carousel_script.md` | Full tagged slide script |
 
@@ -30,8 +30,8 @@ Read from `carousel-pipeline/runs/{combo_hash}/`:
 
 ## Output
 
-- `carousel-pipeline/runs/{combo_hash}/carousel_render.html` — assembled HTML page
-- `carousel-pipeline/runs/{combo_hash}/slides/slide_01.jpg` through `slide_NN.jpg` — one JPEG per slide, 1080×1920
+- `carousel-pipeline/runs/{topic_id}/carousel_render.html` — assembled HTML page
+- `carousel-pipeline/runs/{topic_id}/slides/slide_01.jpg` through `slide_NN.jpg` — one JPEG per slide, 1080×1920
 
 ---
 
@@ -40,7 +40,7 @@ Read from `carousel-pipeline/runs/{combo_hash}/`:
 ### 1. Read inputs
 
 Load all three input files. Extract:
-- `template` number (1–5) → look up eyebrow label in `references/template_eyebrows.md`
+- `topic_id` from `carousel_pipeline_state.json` (for run folder identification)
 - `drug.genericName` from `carousel_working_data.json`
 - Full script text from `carousel_script.md`
 
@@ -182,20 +182,20 @@ Include the full CSS copied from `references/design_mockup.html` and the progres
 The screenshot script cannot be called with flags directly — the shell blocks complex invocations. Instead, write a small throwaway wrapper script with the paths hardcoded:
 
 ```js
-// write to: carousel-pipeline/runs/{combo_hash}/render.js
+// write to: carousel-pipeline/runs/{topic_id}/render.js
 const puppeteer = require('puppeteer');
 const path = require('path');
 const fs = require('fs');
 
-const htmlPath = path.resolve('carousel-pipeline/runs/{combo_hash}/carousel_render.html');
-const outDir   = path.resolve('carousel-pipeline/runs/{combo_hash}/slides');
+const htmlPath = path.resolve('carousel-pipeline/runs/{topic_id}/carousel_render.html');
+const outDir   = path.resolve('carousel-pipeline/runs/{topic_id}/slides');
 
 // ... (copy body from references/screenshot.js)
 ```
 
 Then run it from the workspace root:
 ```
-node carousel-pipeline/runs/{combo_hash}/render.js
+node carousel-pipeline/runs/{topic_id}/render.js
 ```
 
 The `slides/` directory is created automatically by the script. Each `.slide` element is captured at 1080×1920 and saved as `slide_01.jpg`, `slide_02.jpg`, etc.
@@ -208,11 +208,11 @@ Confirm the `slides/` directory exists and contains the expected number of JPEGs
 
 ## Design Reference
 
-`references/design_mockup.html` — full rendered epinephrine T1 carousel. Every CSS variable, font, color, spacing rule, and layout class is defined here. This is the visual source of truth. When in doubt, open it.
-
-`references/template_eyebrows.md` — maps template number to hook eyebrow label.
+`references/design_mockup.html` — full rendered example carousel. Every CSS variable, font, color, spacing rule, and layout class is defined here. This is the visual source of truth. When in doubt, open it.
 
 `references/screenshot.js` — Puppeteer script that renders each slide to JPEG.
+
+**Hook eyebrow:** Strategy pending finalization. See notes in Phase 1 of carousel-master.
 
 ---
 
@@ -221,6 +221,7 @@ Confirm the `slides/` directory exists and contains the expected number of JPEGs
 - Never generate slides without a completed script. If `carousel_script.md` is missing or empty, fail immediately with a clear error.
 - The design mockup is the visual anchor. Do not invent new CSS or deviate from established class names and layout patterns.
 - Do not modify the script. Render only what's written.
-- Do not write to `carousel_pipeline_state.json` or `carousel_usage_log.json` — carousel-master owns those.
+- Do not write to `carousel_pipeline_state.json` — carousel-master owns that.
 - Slide filenames are zero-padded two digits: `slide_01.jpg`, not `slide_1.jpg`.
 - The progress bar and footer are always rendered — never omit them.
+- The hook eyebrow rendering is pending finalization — do not implement until carousel-master confirms the strategy.

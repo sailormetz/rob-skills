@@ -3,13 +3,13 @@
 <head>
 
 <meta charset="utf-8">
-<title>Epinephrine — Rob the Paramedic</title>
+<title>Midazolam — Rob the Paramedic</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <!-- Fonts: Barlow Semi Condensed (titles/headers), IBM Plex Sans (body), JetBrains Mono (receptor names/monospace) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -66,9 +66,7 @@
   .slide-title,
   .hook-title,
   .dose-name,
-  .hook-eyebrow,
   .cta-line1,
-  .cta-eyebrow,
   .counter,
   .footer {
     font-family: 'Barlow Semi Condensed', 'IBM Plex Sans', sans-serif !important;
@@ -239,20 +237,14 @@
 
   /* ============================================================
      LAYOUT: HOOK SLIDE (slide 1)
-     Centered column layout with eyebrow, drug name, hook line,
-     and optional teaser. Extra top padding clears progress bar.
+     Centered column layout with drug name, hook line, and optional teaser.
+     No eyebrow — hook statement drives the frame.
+     Extra top padding clears progress bar.
      ============================================================ */
   .hook-wrap {
     position: absolute; inset: 0;
     padding: calc(var(--safe-y) + 5cqw) 6.5cqw var(--safe-y) 6.5cqw;
     display: flex; flex-direction: column; justify-content: center;
-  }
-
-  /* Eyebrow — template label (e.g. "Drug Breakdown") in amber above the drug name */
-  .hook-eyebrow {
-    font-size: 4.4cqw; letter-spacing: .22em; text-transform: uppercase;
-    color: var(--amber); font-weight: 700;
-    margin: 0 0 5cqw 0;
   }
 
   /* Drug name — large display type */
@@ -273,65 +265,6 @@
   .hook-teaser { margin-top: 1.4cqw; }
 
   /* ============================================================
-     MECHANISM SLIDE
-     .mech-list groups receptor lines with tighter spacing.
-     .mech-inline applies monospace to receptor name labels (α-1, β-1, etc.)
-     ============================================================ */
-  .mech-list {
-    display: flex; flex-direction: column; gap: 3cqw;
-    margin-top: 1cqw;
-  }
-
-  /* ============================================================
-     CONTRAINDICATIONS SLIDE
-     .ci-list groups CI items. Each .ci-item has a colored name
-     (.nm) and a smaller rationale line (.why).
-     ============================================================ */
-  .ci-list { display: flex; flex-direction: column; gap: 4.2cqw; }
-
-  .ci-item .nm {
-    font-size: 5.4cqw; font-weight: 700;
-  }
-  .ci-item .why {
-    font-size: 4.2cqw; color: #b4b4b4; font-weight: 400;
-    line-height: 1.35; margin-top: 1cqw;
-  }
-
-  /* ============================================================
-     PEARL SLIDE
-     .conc-statements is a stacked block for side-by-side
-     numerical comparisons (e.g. 1:10,000 vs 1:1,000).
-     .conc-num applies monospace to the numeric values.
-     ============================================================ */
-  .conc-statements {
-    display: flex; flex-direction: column; gap: 1.6cqw; margin: 2cqw 0;
-  }
-  .conc-line {
-    font-size: 5.6cqw; line-height: 1.25;
-    color: var(--ink); font-weight: 500; margin: 0;
-  }
-  .conc-num {
-    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace !important;
-    font-weight: 700; letter-spacing: -0.01em;
-  }
-
-  /* ============================================================
-     RECAP SLIDE
-     .recap-list holds one .recap-item per topic covered.
-     Each item has a colored .label and a plain .desc below it.
-     ============================================================ */
-  .recap-list { display: flex; flex-direction: column; gap: 5cqw; margin-top: 1cqw; }
-
-  .recap-item { display: flex; flex-direction: column; gap: 1.2cqw; }
-
-  .recap-item .label {
-    font-size: 4.4cqw; font-weight: 600; line-height: 1;
-  }
-  .recap-item .desc {
-    font-size: 4.8cqw; color: var(--ink); font-weight: 400; line-height: 1.35;
-  }
-
-  /* ============================================================
      LAYOUT: CTA SLIDE (last slide)
      Centered column, large save prompt, amber link.
      Extra top padding clears progress bar.
@@ -340,12 +273,6 @@
     position: absolute; inset: 0;
     padding: calc(var(--safe-y) + 5cqw) 6.5cqw var(--safe-y) 6.5cqw;
     display: flex; flex-direction: column; justify-content: center;
-  }
-
-  /* Optional small label above the save line */
-  .cta-eyebrow {
-    font-size: 3.1cqw; letter-spacing: .26em; text-transform: uppercase;
-    color: #8a8a8a; font-weight: 600; margin-bottom: 4cqw;
   }
 
   /* Save prompt — large Barlow display */
@@ -371,201 +298,145 @@
 
 <!-- Dev preview header — not part of slide design -->
 <div class="app-header">
-  <h1>Epinephrine · Drug Breakdown</h1>
-  <div class="meta">TikTok Carousel · 1080 × 1920 · 9 slides</div>
+  <h1>Midazolam · Seizures</h1>
+  <div class="meta">TikTok Carousel · 1080 × 1920 · 8 slides</div>
 </div>
 
 <!-- Dev preview grid — lays all slides out side by side for review -->
 <div class="stage">
 
   <!-- ==================== SLIDE 1 — HOOK ==================== -->
-  <!-- Layout: .hook-wrap centered column. Eyebrow = template title.
-       Drug name in large Barlow. Hook line in body type. Optional teaser. -->
+  <!-- Layout: .hook-wrap centered column.
+       Drug name in large Barlow. Hook line in body type. Optional teaser.
+       No eyebrow — hook statement drives the frame. -->
   <div class="slide" data-screen-label="01 Hook">
     <div class="hook-wrap">
-      <!-- Eyebrow: auto-generated from template. See template_eyebrows.md. -->
-      <div class="hook-eyebrow">Drug Breakdown</div>
       <!-- Drug generic name — large display -->
-      <h1 class="hook-title">Epinephrine.</h1>
+      <h1 class="hook-title">Midazolam.</h1>
       <!-- Hook line — the question or framing statement -->
-      <p class="hook-sub">How well do you really know this drug?</p>
+      <p class="hook-sub">For seizures — the go-to benzo in the field.</p>
       <!-- Teaser — italic, points to slide 2 -->
-      <p class="hook-teaser teaser">It does three jobs at once. Here's all of them…</p>
+      <p class="hook-teaser teaser">Do you know how it stops a seizure and what to watch for after?</p>
     </div>
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
   <!-- ==================== SLIDE 2 — IDENTITY ==================== -->
-  <!-- sectionLabel: "Epinephrine" (drug name as label on identity slides)
+  <!-- sectionLabel: "Identity" for first content slide
        body.center: vertically centered content block -->
   <div class="slide" data-screen-label="02 Identity">
     <div class="frame">
       <div class="top-row">
-        <h2 class="slide-title subtle">Epinephrine</h2>
-        <div class="counter">2 / 9</div>
+        <h2 class="slide-title subtle">Identity</h2>
+        <div class="counter">2 / 8</div>
       </div>
       <div class="body center">
-        <p class="line">Also called <span class="c-amber">Adrenalin</span> and <span class="c-amber">EpiPen</span>.</p>
-        <p class="line">It's a <span class="c-blue">sympathomimetic</span>, <span class="c-blue">catecholamine</span>, and <span class="c-blue">vasopressor</span> — it mimics your body's own stress response.</p>
-        <p class="line">First-line for both <span class="c-green">anaphylaxis</span> and <span class="c-green">cardiac arrest</span>.</p>
-        <p class="teaser">The reason it works for both comes down to which receptors it hits…</p>
+        <p class="line">Midazolam is a <span class="c-blue">benzodiazepine</span> — also called <span class="c-amber">Versed</span>.</p>
+        <p class="line">It enhances <span class="c-blue">GABA</span> at the <span class="c-blue">GABA-A receptor</span>. More chloride into the neuron, the neuron quiets down, and the uncontrolled firing that drives a seizure stops.</p>
+        <p class="line">Used for <span class="c-green">seizures</span>, <span class="c-green">agitation</span>, and <span class="c-green">procedural sedation</span> — but seizures are where it earns its reputation in the field.</p>
+        <p class="teaser">Here's why speed matters…</p>
       </div>
     </div>
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
-  <!-- ==================== SLIDE 3 — MECHANISM ==================== -->
-  <!-- .mech-list groups receptor lines. .mech-inline = monospace font lock
-       on receptor labels (α-1, β-1, β-2). -->
-  <div class="slide" data-screen-label="03 Mechanism">
+  <!-- ==================== SLIDE 3 — CLINICAL CONTEXT ==================== -->
+  <!-- Similar body slide structure. sectionLabel, optional topicName, body, teaser. -->
+  <div class="slide" data-screen-label="03 Timing">
     <div class="frame">
       <div class="top-row">
-        <h2 class="slide-title subtle">Mechanism</h2>
-        <div class="counter">3 / 9</div>
+        <h2 class="slide-title subtle">Clinical Context</h2>
+        <div class="counter">3 / 8</div>
       </div>
       <div class="body">
-        <p class="line">It hits <span class="c-amber">three receptors</span> at once, and each one does something different.</p>
-        <div class="mech-list">
-          <p class="line"><span class="c-amber mech-inline">α-1</span> causes vasoconstriction, which brings BP back up.</p>
-          <p class="line"><span class="c-blue mech-inline">β-1</span> increases HR and contractility.</p>
-          <p class="line"><span class="c-blue mech-inline">β-2</span> relaxes the airways.</p>
-        </div>
-        <p class="teaser">Which receptor matters most depends on why you're giving it…</p>
+        <h3 class="dose-name">Why Timing Matters</h3>
+        <p class="line">A seizure beyond 5 minutes is <span class="c-green">status epilepticus</span>. The longer it runs, the harder it is to stop — and the more <span class="c-lavender">neuronal damage</span> accumulates.</p>
+        <p class="line"><span class="c-amber">Get midazolam on board fast.</span> Not after access. Not after a full assessment. As soon as you confirm the patient is seizing.</p>
+        <p class="teaser">The dosing is weight-based and route-dependent…</p>
       </div>
     </div>
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
-  <!-- ==================== SLIDE 4 — DOSE: CARDIAC ARREST ==================== -->
-  <!-- .dose-name = topicName — large Barlow header naming the indication.
+  <!-- ==================== SLIDE 4 — IM DOSING ==================== -->
+  <!-- .dose-name = topicName — large Barlow header naming the route.
        Body lines follow directly below. -->
-  <div class="slide" data-screen-label="04 Cardiac Arrest Dose">
+  <div class="slide" data-screen-label="04 IM Dose">
     <div class="frame">
       <div class="top-row">
-        <h2 class="slide-title subtle">Dose</h2>
-        <div class="counter">4 / 9</div>
+        <h2 class="slide-title subtle">Dosing</h2>
+        <div class="counter">4 / 8</div>
       </div>
       <div class="body">
-        <h3 class="dose-name">Cardiac Arrest</h3>
-        <p class="line"><span class="c-amber">1 mg IV/IO</span> (1:10,000) every 3–5 min.</p>
-        <p class="line">Push fast and flush with 20 mL NS after each dose to move it centrally.</p>
-        <p class="teaser">Anaphylaxis is a different situation entirely…</p>
+        <h3 class="dose-name">IM</h3>
+        <p class="line">0.2 mg/kg IM, max 10 mg. Onset 5–10 min.</p>
+        <p class="line"><span class="c-amber">Anterolateral thigh</span>, done. No IV needed, no delay — fastest way to get the drug working on arrival.</p>
+        <p class="teaser">There are two other routes worth knowing…</p>
       </div>
     </div>
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
-  <!-- ==================== SLIDE 5 — DOSE: ANAPHYLAXIS ==================== -->
-  <div class="slide" data-screen-label="05 Anaphylaxis Dose">
+  <!-- ==================== SLIDE 5 — IN AND IV ==================== -->
+  <div class="slide" data-screen-label="05 IN and IV">
     <div class="frame">
       <div class="top-row">
-        <h2 class="slide-title subtle">Dose</h2>
-        <div class="counter">5 / 9</div>
+        <h2 class="slide-title subtle">Dosing</h2>
+        <div class="counter">5 / 8</div>
       </div>
       <div class="body">
-        <h3 class="dose-name">Anaphylaxis</h3>
-        <p class="line"><span class="c-amber">0.3–0.5 mg IM</span> (1:1,000) into the anterolateral thigh.</p>
-        <p class="line">That's ten times more concentrated than the arrest dose — the concentration matters as much as the dose.</p>
-        <p class="line"><span class="c-amber">Repeat every 5–15 min</span> if there's no improvement.</p>
-        <p class="teaser">Before you give it — know the contraindications…</p>
+        <h3 class="dose-name">IN and IV</h3>
+        <p class="line">IN: 0.2 mg/kg, max 10 mg, onset 3–5 min. <span class="c-amber">Split between both nares</span> — full volume in one nostril causes runoff. Use the <span class="c-amber">5 mg/mL</span> concentration.</p>
+        <p class="line">IV: 0.1 mg/kg, max 4 mg, onset 1–3 min. <span class="c-blue">Fastest onset</span>, but requires access you may not have on a seizing patient.</p>
+        <p class="teaser">Once the seizure breaks, your job changes…</p>
       </div>
     </div>
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
-  <!-- ==================== SLIDE 6 — CAUTIONS ==================== -->
-  <!-- .ci-list groups contraindication items. Each .ci-item has:
-       .nm = contraindication name (colored), .why = rationale (smaller, dimmer) -->
-  <div class="slide" data-screen-label="06 Contraindications">
+  <!-- ==================== SLIDE 6 — PRECAUTIONS ==================== -->
+  <!-- Similar body slide, showing post-seizure care. -->
+  <div class="slide" data-screen-label="06 Post-Seizure">
     <div class="frame">
       <div class="top-row">
-        <h2 class="slide-title subtle">Cautions</h2>
-        <div class="counter">6 / 9</div>
+        <h2 class="slide-title subtle">Precautions</h2>
+        <div class="counter">6 / 8</div>
       </div>
       <div class="body">
-        <p class="line">Epi has <span class="c-coral">relative contraindications</span> — not hard stops, but situations where the cardiovascular load becomes a real concern.</p>
-        <div class="ci-list">
-          <div class="ci-item">
-            <div class="nm c-coral">Coronary insufficiency</div>
-            <div class="why">Epi increases myocardial O₂ demand, which can worsen ischemia.</div>
-          </div>
-          <div class="ci-item">
-            <div class="nm c-coral">Uncontrolled HTN</div>
-            <div class="why">Carries the same concern.</div>
-          </div>
-        </div>
-        <p class="line">There are no absolute contraindications in cardiac arrest.</p>
-        <p class="teaser">One more thing — and it trips people up every time…</p>
+        <h3 class="dose-name">After the Seizure Stops</h3>
+        <p class="line">A postictal patient already has a depressed respiratory drive. <span class="c-amber">Versed</span> could make this worse.</p>
+        <p class="line"><span class="c-lavender">Respiratory depression and apnea</span> are the primary risks. Alcohol or opioids on board make it worse.</p>
+        <p class="line"><span class="c-amber">Monitor RR and SpO2 continuously.</span> Have BVM and suction ready. Elderly patients — <em>cut the dose in half</em>.</p>
+        <p class="teaser">Here's the bottom line…</p>
       </div>
     </div>
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
-  <!-- ==================== SLIDE 7 — CLINICAL PEARL ==================== -->
-  <!-- .conc-statements: stacked block for numerical comparisons.
-       .conc-num: monospace font on the numeric values (1:10,000 / 1:1,000). -->
-  <div class="slide" data-screen-label="07 Pearl">
+  <!-- ==================== SLIDE 7 — SYNTHESIS ==================== -->
+  <!-- body.center for conceptual summaries. -->
+  <div class="slide" data-screen-label="07 Synthesis">
     <div class="frame">
       <div class="top-row">
-        <h2 class="slide-title subtle">Clinical Pearl</h2>
-        <div class="counter">7 / 9</div>
+        <h2 class="slide-title subtle">Synthesis</h2>
+        <div class="counter">7 / 8</div>
       </div>
-      <div class="body">
-        <p class="line">The concentration mix-up is one of the most common errors with this drug.</p>
-        <div class="conc-statements">
-          <p class="conc-line"><span class="conc-num c-amber">1:10,000</span> is for IV push in arrest.</p>
-          <p class="conc-line"><span class="conc-num c-amber">1:1,000</span> is for IM in anaphylaxis.</p>
-        </div>
-        <p class="line">Getting them reversed means a <span class="c-lavender">tenfold dosing error</span>.</p>
-        <p class="teaser">Let's recap…</p>
+      <div class="body center">
+        <p class="line">Midazolam stops seizures by quieting neurons firing out of control. <span class="c-amber">Get it on board fast</span> — IM if you don't have access, IN or IV if you do.</p>
+        <p class="line">Once the seizure breaks, <span class="c-amber">shift to the airway</span>. The benzo is still working even after the seizure isn't.</p>
+        <p class="teaser">Save this one…</p>
       </div>
     </div>
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
 
-  <!-- ==================== SLIDE 8 — RECAP ==================== -->
-  <!-- .dose-name = topicName (e.g. "The essentials.")
-       .recap-list: one .recap-item per topic. Each item has:
-       .label (colored, topic name) + .desc (plain summary text) -->
-  <div class="slide" data-screen-label="08 Recap">
-    <div class="frame">
-      <div class="top-row">
-        <h2 class="slide-title subtle">Recap</h2>
-        <div class="counter">8 / 9</div>
-      </div>
-      <div class="body">
-        <h3 class="dose-name">The essentials.</h3>
-        <div class="recap-list">
-          <div class="recap-item">
-            <div class="label c-blue">Mechanism</div>
-            <div class="desc">α-1, β-1, β-2 stimulation</div>
-          </div>
-          <div class="recap-item">
-            <div class="label c-green">Cardiac Arrest</div>
-            <div class="desc">1 mg IV/IO (1:10,000) every 3–5 min</div>
-          </div>
-          <div class="recap-item">
-            <div class="label c-green">Anaphylaxis</div>
-            <div class="desc">0.3–0.5 mg IM (1:1,000) into the anterolateral thigh</div>
-          </div>
-          <div class="recap-item">
-            <div class="label c-coral">Contraindications</div>
-            <div class="desc">Relative: coronary insufficiency, uncontrolled HTN</div>
-          </div>
-        </div>
-        <p class="teaser">One more slide…</p>
-      </div>
-    </div>
-    <div class="footer">ROB THE PARAMEDIC</div>
-  </div>
-
-  <!-- ==================== SLIDE 9 — CTA ==================== -->
+  <!-- ==================== SLIDE 8 — CTA ==================== -->
   <!-- .cta-line1: large save prompt. .cta-line2: app reference.
        .cta-link: amber "Link in bio" on its own line. -->
-  <div class="slide" data-screen-label="09 CTA">
+  <div class="slide" data-screen-label="08 CTA">
     <div class="cta-wrap" style="justify-content:center; text-align:left;">
-      <h2 class="cta-line1">Save this for<br>your next exam.</h2>
-      <p class="cta-line2">All paramedic drugs, one app.<br><span class="cta-link">Link in bio</span></p>
+      <h2 class="cta-line1">Save this for<br>your next shift.</h2>
+      <p class="cta-line2">Full doses, MOA, and contraindications for every drug.<br><span class="cta-link">Link in bio</span></p>
     </div>
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>
@@ -577,7 +448,7 @@
      Prior segments = dim blue (.done), current = bright blue (.active). -->
 <script>
 (function() {
-  const TOTAL = 9;
+  const TOTAL = 8;
   document.querySelectorAll('.counter').forEach(el => {
     const m = el.textContent.match(/(\d+)\s*\/\s*(\d+)/);
     if (!m) return;
