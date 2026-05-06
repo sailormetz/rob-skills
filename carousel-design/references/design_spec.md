@@ -67,7 +67,7 @@ Three typefaces — all locked to their assigned roles. Do not mix.
 
 | Typeface | Assigned to |
 |----------|-------------|
-| **Barlow Semi Condensed** | Titles, headers, display text — `.slide-title`, `.hook-title`, `.dose-name`, `.hook-eyebrow`, `.cta-line1`, `.cta-eyebrow`, `.counter`, `.footer` |
+| **Barlow Semi Condensed** | Titles, headers, display text — `.slide-title`, `.hook-title`, `.dose-name`, `.cta-line1`, `.cta-eyebrow`, `.counter`, `.footer` |
 | **IBM Plex Sans** | Body text, teasers, CTA body — `.line`, `.teaser`, `.hook-sub`, `.cta-line2`, `.recap-item .label`, `.recap-item .desc` |
 | **JetBrains Mono** | Receptor name labels, numerical comparisons — `.mech-inline`, `.conc-num` |
 

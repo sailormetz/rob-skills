@@ -1,7 +1,7 @@
 ---
 name: carousel-design
 description: "Renders a tagged carousel script into designed JPEG slides at 1080×1920 for TikTok. Reads the script from the run folder, builds an HTML layout using the established design system, screenshots each slide via Puppeteer, and writes JPEGs to runs/{topic_id}/slides/. Called only by carousel-master — never trigger directly."
-version: "1.0.0"
+version: "2.0.0"
 author: rob
 tags: [carousel, design, rendering, tiktok]
 ---

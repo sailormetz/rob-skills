@@ -67,6 +67,7 @@
   .hook-title,
   .dose-name,
   .cta-line1,
+  .cta-eyebrow,
   .counter,
   .footer {
     font-family: 'Barlow Semi Condensed', 'IBM Plex Sans', sans-serif !important;
@@ -265,6 +266,65 @@
   .hook-teaser { margin-top: 1.4cqw; }
 
   /* ============================================================
+     MECHANISM SLIDE
+     .mech-list groups receptor lines with tighter spacing.
+     .mech-inline applies monospace to receptor name labels (α-1, β-1, etc.)
+     ============================================================ */
+  .mech-list {
+    display: flex; flex-direction: column; gap: 3cqw;
+    margin-top: 1cqw;
+  }
+
+  /* ============================================================
+     CONTRAINDICATIONS SLIDE
+     .ci-list groups CI items. Each .ci-item has a colored name
+     (.nm) and a smaller rationale line (.why).
+     ============================================================ */
+  .ci-list { display: flex; flex-direction: column; gap: 4.2cqw; }
+
+  .ci-item .nm {
+    font-size: 5.4cqw; font-weight: 700;
+  }
+  .ci-item .why {
+    font-size: 4.2cqw; color: #b4b4b4; font-weight: 400;
+    line-height: 1.35; margin-top: 1cqw;
+  }
+
+  /* ============================================================
+     PEARL SLIDE
+     .conc-statements is a stacked block for side-by-side
+     numerical comparisons (e.g. 1:10,000 vs 1:1,000).
+     .conc-num applies monospace to the numeric values.
+     ============================================================ */
+  .conc-statements {
+    display: flex; flex-direction: column; gap: 1.6cqw; margin: 2cqw 0;
+  }
+  .conc-line {
+    font-size: 5.6cqw; line-height: 1.25;
+    color: var(--ink); font-weight: 500; margin: 0;
+  }
+  .conc-num {
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace !important;
+    font-weight: 700; letter-spacing: -0.01em;
+  }
+
+  /* ============================================================
+     RECAP SLIDE
+     .recap-list holds one .recap-item per topic covered.
+     Each item has a colored .label and a plain .desc below it.
+     ============================================================ */
+  .recap-list { display: flex; flex-direction: column; gap: 5cqw; margin-top: 1cqw; }
+
+  .recap-item { display: flex; flex-direction: column; gap: 1.2cqw; }
+
+  .recap-item .label {
+    font-size: 4.4cqw; font-weight: 600; line-height: 1;
+  }
+  .recap-item .desc {
+    font-size: 4.8cqw; color: var(--ink); font-weight: 400; line-height: 1.35;
+  }
+
+  /* ============================================================
      LAYOUT: CTA SLIDE (last slide)
      Centered column, large save prompt, amber link.
      Extra top padding clears progress bar.
@@ -273,6 +333,12 @@
     position: absolute; inset: 0;
     padding: calc(var(--safe-y) + 5cqw) 6.5cqw var(--safe-y) 6.5cqw;
     display: flex; flex-direction: column; justify-content: center;
+  }
+
+  /* Optional small label above the save line */
+  .cta-eyebrow {
+    font-size: 3.1cqw; letter-spacing: .26em; text-transform: uppercase;
+    color: #8a8a8a; font-weight: 600; margin-bottom: 4cqw;
   }
 
   /* Save prompt — large Barlow display */
