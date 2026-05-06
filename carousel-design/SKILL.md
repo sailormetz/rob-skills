@@ -156,14 +156,14 @@ Recap lines in the script are formatted as `[color: Label] — description`. Spl
 ```html
 <div class="slide">
   <div class="cta-wrap">
-    <h2 class="cta-line1"><!-- save prompt --></h2>
-    <p class="cta-line2"><!-- app reference line --><br>
-      <span class="cta-link">Link in bio</span>
-    </p>
+    <p class="line"><!-- engagement question --></p>
+    <p class="line"><!-- resource hint + link in bio --></p>
   </div>
   <div class="footer">ROB THE PARAMEDIC</div>
 </div>
 ```
+
+CTA uses plain body text (`.line`) — no special heading, no colors, no amber link. Both lines render at the same size as standard body text.
 
 ---
 

@@ -66,7 +66,6 @@
   .slide-title,
   .hook-title,
   .dose-name,
-  .cta-line1,
   .counter,
   .footer {
     font-family: 'Barlow Semi Condensed', 'IBM Plex Sans', sans-serif !important;
@@ -325,30 +324,16 @@
 
   /* ============================================================
      LAYOUT: CTA SLIDE (last slide)
-     Centered column, large save prompt, amber link.
+     Centered column, plain body text. No special heading or
+     colors — engagement question + resource hint.
      Extra top padding clears progress bar.
      ============================================================ */
   .cta-wrap {
     position: absolute; inset: 0;
     padding: calc(var(--safe-y) + 5cqw) 6.5cqw var(--safe-y) 6.5cqw;
     display: flex; flex-direction: column; justify-content: center;
+    gap: 3.2cqw;
   }
-
-  /* Save prompt — large Barlow display */
-  .cta-line1 {
-    font-size: 10cqw; font-weight: 700; letter-spacing: -0.015em;
-    color: #fafafa; line-height: 1.02;
-    margin: 0 0 5cqw 0;
-  }
-
-  /* App reference line */
-  .cta-line2 {
-    font-size: 4.6cqw; color: #c8c8c8; line-height: 1.35;
-    font-weight: 500; margin: 0;
-  }
-
-  /* "Link in bio" — amber highlight */
-  .cta-link { color: var(--amber); font-weight: 600; }
 
 </style>
 </head>
@@ -490,12 +475,11 @@
   </div>
 
   <!-- ==================== SLIDE 8 — CTA ==================== -->
-  <!-- .cta-line1: large save prompt. .cta-line2: app reference.
-       .cta-link: amber "Link in bio" on its own line. -->
+  <!-- Plain body text. Engagement question + resource hint. No colors. -->
   <div class="slide" data-screen-label="08 CTA">
-    <div class="cta-wrap" style="justify-content:center; text-align:left;">
-      <h2 class="cta-line1">Save this for<br>your next shift.</h2>
-      <p class="cta-line2">Full doses, MOA, and contraindications for every drug.<br><span class="cta-link">Link in bio</span></p>
+    <div class="cta-wrap">
+      <p class="line">Did I miss anything? Call it out in the comments.</p>
+      <p class="line">I've broken down every drug in EMS just like this. Link in bio.</p>
     </div>
     <div class="footer">ROB THE PARAMEDIC</div>
   </div>

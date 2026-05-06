@@ -78,7 +78,7 @@ Ties the dive back to something the reader cares about. Connects the angle to cl
 Not a recap of bullet points — a closing thought that lands the through-line.
 
 ### CTA (final slide)
-Save prompt + app reference. Max 2 lines. Use standard options from global rules.
+Engagement question + subtle resource hint. Plain text, no color tags. Rotate the engagement line per carousel. Use standard options from global rules.
 
 ---
 
@@ -94,7 +94,7 @@ Use the numbered slide format specified in global rules.
 - The pitch guides the angle. Do not ignore it or drift into a generic drug overview.
 - Follow global rules for voice, tone, color tags, teasers, lead lines, no throat-clearing, abbreviations, and clinical accuracy.
 - Do not exceed 5 sentences per body slide. If a slide needs more, split it.
-- Hook: max 15 words. CTA: max 2 lines.
+- Hook: max 15 words. CTA: exactly 2 lines (engagement + resource hint), no color tags.
 - Do not pad with filler to hit a slide count. Short carousels (5-6 slides) are valid.
 - Do not repeat information across slides — each slide adds something new.
 - One emoji max per carousel, hook or CTA only.

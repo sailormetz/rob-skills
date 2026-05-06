@@ -67,8 +67,8 @@ Three typefaces — all locked to their assigned roles. Do not mix.
 
 | Typeface | Assigned to |
 |----------|-------------|
-| **Barlow Semi Condensed** | Titles, headers, display text — `.slide-title`, `.hook-title`, `.dose-name`, `.cta-line1`, `.counter`, `.footer` |
-| **IBM Plex Sans** | Body text, teasers, CTA body — `.line`, `.teaser`, `.hook-sub`, `.cta-line2`, `.recap-item .label`, `.recap-item .desc` |
+| **Barlow Semi Condensed** | Titles, headers, display text — `.slide-title`, `.hook-title`, `.dose-name`, `.counter`, `.footer` |
+| **IBM Plex Sans** | Body text, teasers, CTA body — `.line`, `.teaser`, `.hook-sub`, `.recap-item .label`, `.recap-item .desc` |
 | **JetBrains Mono** | Receptor name labels, numerical comparisons — `.mech-inline`, `.conc-num` |
 
 ### Type Scale (in cqw — scales with slide width)
@@ -77,7 +77,7 @@ Three typefaces — all locked to their assigned roles. Do not mix.
 |---------|------|--------|-------|
 | Hook drug name (`.hook-title`) | `13cqw` | 800 | Line height `.95`, letter-spacing `-0.02em` — no eyebrow above |
 | Topic header (`.dose-name`) | `8.5cqw` | 700 | Letter-spacing `-0.015em`, line-height `1` |
-| CTA save prompt (`.cta-line1`) | `10cqw` | 700 | Letter-spacing `-0.015em` |
+
 | Body line (`.line`) | `5.1cqw` | 400 | Line height `1.35` |
 | Teaser (`.teaser`) | `5.1cqw` | 400 | Italic, `--teaser-color` |
 | Hook line (`.hook-sub`) | `5.1cqw` | 500 | Max-width 88% |
@@ -89,7 +89,7 @@ Three typefaces — all locked to their assigned roles. Do not mix.
 | Recap label (`.recap-item .label`) | `4.4cqw` | 600 | IBM Plex Sans, colored |
 | Recap desc (`.recap-item .desc`) | `4.8cqw` | 400 | `--ink` |
 | Footer (`.footer`) | `2.7cqw` | 600 | Uppercase, letter-spacing `.26em`, color `#5a5a5a` |
-| CTA app line (`.cta-line2`) | `4.6cqw` | 500 | Color `#c8c8c8` |
+
 
 ---
 
@@ -270,17 +270,17 @@ Each topic covered gets a `.recap-item` with a colored `.label` and a plain `.de
 
 ### CTA (Last Slide) — `.cta-wrap`
 
-Full-bleed, vertically centered. No frame or top-row.
+Full-bleed, vertically centered. No frame or top-row. Plain body text only — no special heading, no colors.
 
 ```
-[cta-line1]        ← save prompt, 10cqw Barlow 700
-[cta-line2]        ← app reference line, 4.6cqw
-  [cta-link]       ← "Link in bio" in --amber
+[line]             ← engagement question, standard body text (5.1cqw)
+[line]             ← resource hint + "Link in bio", same size
 [footer]
 ```
 
 - Same extra top padding as hook: `padding-top: calc(var(--safe-y) + 5cqw)`
-- "Link in bio" is always on its own line, wrapped in `.cta-link` for amber color
+- Gap between lines: `3.2cqw` (same as body)
+- No amber, no Barlow, no `.cta-link` — everything renders as standard `.line`
 
 ---
 

@@ -49,7 +49,7 @@ The core content - whatever the pitch is about. Structure it however serves the 
 Connects the dive back to clinical practice. Not a recap - a closing thought that lands the through-line. "This is why it matters" or "this is what to do with this knowledge."
 
 ### 5. CTA (final slide)
-Save prompt + app reference. Standard options listed below.
+Engagement question + subtle resource hint. Standard options listed below.
 
 ---
 
@@ -280,15 +280,23 @@ Two parts: **frame** (statement naming drug + angle) and **question** (makes rea
 
 ---
 
-## CTA Options (rotate)
+## CTA Format
 
-Save prompt + app reference. Max 2 lines. No engagement bait.
+Two lines, plain text, no color tags. Engagement question first, resource hint second.
 
+**Line 1 — Engagement (rotate one per carousel):**
 ```
-Save this for your next exam. | All EMS drugs, one app. | Link in bio.
-Save this for your next shift. | Full doses, MOA, and contraindications for every drug. | Link in bio.
-Save this to your study deck. | The complete drug reference is in the bio. | Link in bio.
+Which drug should I break down next? Drop it in the comments.
+What's the drug that trips you up the most? Tell me in the comments.
+Did I miss anything? Call it out in the comments.
 ```
+
+**Line 2 — Resource hint (always the same):**
+```
+I've broken down every drug in EMS just like this. Link in bio.
+```
+
+The engagement line drives comments. The resource hint points toward more content without pitching a product. No "save this," no app name, no sales language.
 
 ---
 
@@ -345,9 +353,8 @@ Save this to your study deck. | The complete drug reference is in the bio. | Lin
      They're reasons to slow down and think before you push it. Know the respiratory status. Push slowly. [amber: Have naloxone ready.] And in head injuries, dose conservatively and watch the neuro exam.
      *Save this one...*
 
-[7]  Save this for your next shift.
-     Full doses, MOA, and contraindications for every drug.
-     Link in bio.
+[7]  Which drug should I break down next? Drop it in the comments.
+     I've broken down every drug in EMS just like this. Link in bio.
 ```
 
 **Why this works:**
@@ -412,9 +419,8 @@ Save this to your study deck. | The complete drug reference is in the bio. | Lin
      The shortcut: [amber: Arrest = 1 mg IV push]. [amber: Anaphylaxis = 0.3 mg IM]. [amber: Push dose = 10-20 mcg IV]. [amber: Croup = 5 mg neb]. Match the scenario to the route and the rest follows.
      *Save this one...*
 
-[8]  Save this for your next exam.
-     All EMS drugs, one app.
-     Link in bio.
+[8]  What's the drug that trips you up the most? Tell me in the comments.
+     I've broken down every drug in EMS just like this. Link in bio.
 ```
 
 **Why this works:**
@@ -477,9 +483,8 @@ Save this to your study deck. | The complete drug reference is in the bio. | Lin
      Once the seizure breaks, [amber: shift to the airway]. The benzo is still working even after the seizure isn't.
      *Save this one...*
 
-[8]  Save this for your next shift.
-     Full doses, MOA, and contraindications for every drug.
-     Link in bio.
+[8]  Did I miss anything? Call it out in the comments.
+     I've broken down every drug in EMS just like this. Link in bio.
 ```
 
 **Why this works:**
