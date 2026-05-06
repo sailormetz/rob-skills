@@ -156,7 +156,6 @@ Recap lines in the script are formatted as `[color: Label] — description`. Spl
 ```html
 <div class="slide">
   <div class="cta-wrap">
-    <p class="cta-eyebrow"><!-- optional eyebrow --></p>
     <h2 class="cta-line1"><!-- save prompt --></h2>
     <p class="cta-line2"><!-- app reference line --><br>
       <span class="cta-link">Link in bio</span>

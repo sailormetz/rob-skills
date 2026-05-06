@@ -67,7 +67,7 @@ Three typefaces — all locked to their assigned roles. Do not mix.
 
 | Typeface | Assigned to |
 |----------|-------------|
-| **Barlow Semi Condensed** | Titles, headers, display text — `.slide-title`, `.hook-title`, `.dose-name`, `.cta-line1`, `.cta-eyebrow`, `.counter`, `.footer` |
+| **Barlow Semi Condensed** | Titles, headers, display text — `.slide-title`, `.hook-title`, `.dose-name`, `.cta-line1`, `.counter`, `.footer` |
 | **IBM Plex Sans** | Body text, teasers, CTA body — `.line`, `.teaser`, `.hook-sub`, `.cta-line2`, `.recap-item .label`, `.recap-item .desc` |
 | **JetBrains Mono** | Receptor name labels, numerical comparisons — `.mech-inline`, `.conc-num` |
 
@@ -273,7 +273,6 @@ Each topic covered gets a `.recap-item` with a colored `.label` and a plain `.de
 Full-bleed, vertically centered. No frame or top-row.
 
 ```
-[cta-eyebrow]?     ← optional small label
 [cta-line1]        ← save prompt, 10cqw Barlow 700
 [cta-line2]        ← app reference line, 4.6cqw
   [cta-link]       ← "Link in bio" in --amber
