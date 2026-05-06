@@ -89,21 +89,17 @@ For each confirmed wrong claim:
 
 ### 5. Report to carousel-master
 
-Return a summary:
-- Number of claims checked
-- Number of corrections made
-- List of corrections (original → corrected, with source)
-- List of ambiguous flags (if any), with note for Sailor
+Return a summary of what was corrected. Carousel-master includes this in the Script Checkpoint message to Sailor.
 
-If zero corrections and zero flags: `"✅ Script verified — no issues found."`
+- If corrections were made: list each one (what changed and why)
+- If nothing was corrected: `"✅ Script verified — no issues found."`
 
 ---
 
 ## Rules
 
 - Verify every script, even simple ones. One wrong route can fail a student.
-- Auto-correct only confirmed errors. Never auto-correct ambiguous claims.
+- Auto-correct confirmed errors and ambiguous claims using best available evidence. Use your judgment.
 - Do not change voice, tone, or phrasing beyond what the factual correction requires.
 - Do not write to `carousel_pipeline_state.json` — carousel-master owns that.
-- If Perplexity returns no useful results for a query, flag the claim as unverified rather than assuming it's correct. Report it to Sailor in the Script Checkpoint message.
-- Log all corrections to the run folder: `carousel-pipeline/runs/{topic_id}/verification_log.json`
+- If Perplexity returns no useful results for a query, research it through other available means rather than leaving it unchecked.

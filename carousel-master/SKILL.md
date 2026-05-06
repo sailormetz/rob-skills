@@ -51,7 +51,7 @@ Each run gets its own folder at `carousel-pipeline/runs/{topic_id}/`. Multiple r
 | `carousel_pipeline_state.json` | `carousel-init` | Run progress tracking |
 | `carousel_working_data.json` | `carousel-init` | Extracted drug object |
 | `carousel_script.md` | `carousel-script` (step 1) | Full slide-by-slide carousel text |
-| `verification_log.json` | `carousel-script-verification` (step 1, post-script) | Claims checked, corrections made, flags raised |
+
 | `slides/slide_01.jpg`, etc. | `carousel-design` (step 2) | Finished JPEG slides |
 
 **Cleanup rules:**
@@ -137,8 +137,7 @@ On success, immediately run the `carousel-script-verification` subskill:
 - Extracts all major clinical claims from the script.
 - Queries each against NASEMSO/AHA/StatPearls/DailyMed via web search.
 - Auto-corrects confirmed errors. Flags ambiguous claims.
-- Writes corrections to `runs/{topic_id}/verification_log.json`.
-- Returns a summary of what was checked, corrected, and flagged.
+- Returns a summary of any corrections made.
 
 On script success + verification complete: set step 1 status to `"complete"`, write state file to disk.
 On script failure: set step 1 to `"error"`, write `error_log`, go to Failure Exit.
@@ -146,7 +145,7 @@ On verification failure (Perplexity unreachable, etc.): proceed to checkpoint bu
 
 ### Script Checkpoint
 
-After the script is written and verified, **STOP and wait for Sailor.** Send the script text to Sailor on Telegram, along with the verification summary (corrections made + any ambiguous flags). Wait for one of:
+After the script is written and verified, **STOP and wait for Sailor.** Send the script text to Sailor on Telegram. If verification corrected anything, include what was changed and why. Wait for one of:
 
 - **Edits** — Sailor sends changes. Apply them to `carousel_script.md`, then wait again.
 - **Approval** — Sailor says the script is good (e.g. "looks good", "approved", "go"). Proceed to Phase 3.
