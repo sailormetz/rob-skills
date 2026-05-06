@@ -214,7 +214,7 @@ Distinct from teasers: inline appears `*mid-sentence*`; teasers appear `*on thei
 
 ## Slide Limits
 
-- Body slides: 3-5 sentences. Split if more needed.
+- **Body text cap: 60 words max per slide.** Count body lines only — exclude sectionLabel, topicName, and teaser. If a slide exceeds 60 words, split it or cut. No exceptions.
 - Hook: max 25 words total (frame + question).
 - CTA: max 20 words.
 - Carousel length: as long as content requires, no padding. Short (5-6 slides) is valid.
