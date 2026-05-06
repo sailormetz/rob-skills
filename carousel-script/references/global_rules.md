@@ -155,36 +155,39 @@ The design layer applies color to specific words and phrases. The script signals
 
 ### Examples
 
-**Blue:**
-`Adenosine works by [blue: slowing conduction through the AV node].`
-`It's a [blue: calcium channel blocker] that reduces [blue: afterload] by relaxing vascular smooth muscle.`
+### Examples
 
-**Amber:**
-`Also known as [amber: Lopressor]. [amber: Hold if HR is below 60.]`
-`[amber: Titrate to effect] — start low and reassess before repeating.`
+```
+Blue (mechanism, receptors, drug class):
+  Adenosine works by [blue: slowing conduction through the AV node].
+  It's a [blue: calcium channel blocker] that reduces [blue: afterload] by relaxing vascular smooth muscle.
 
-**Green:**
-`The go-to for [green: symptomatic bradycardia] in the field.`
-`Indicated for [green: acute pulmonary edema] and [green: hypertensive emergency].`
+Amber (trade names, clinical directives):
+  Also known as [amber: Lopressor]. [amber: Hold if HR is below 60.]
+  [amber: Titrate to effect] — start low and reassess before repeating.
 
-**Coral:**
-`[coral: Hypersensitivity to sulfas] is an absolute contraindication.`
-`Do not give in [coral: second- or third-degree heart block] without a pacemaker.`
+Green (indications):
+  The go-to for [green: symptomatic bradycardia] in the field.
+  Indicated for [green: acute pulmonary edema] and [green: hypertensive emergency].
 
-**Lavender:**
-`Watch for [lavender: bronchospasm] in patients with reactive airway disease.`
-`Rapid infusion can cause [lavender: a sense of impending doom] and flushing.`
+Coral (contraindications):
+  [coral: Hypersensitivity to sulfas] is an absolute contraindication.
+  Do not give in [coral: second- or third-degree heart block] without a pacemaker.
+
+Lavender (adverse effects):
+  Watch for [lavender: bronchospasm] in patients with reactive airway disease.
+  Rapid infusion can cause [lavender: a sense of impending doom] and flushing.
+```
 
 **Wrong vs right:**
-❌ `[green: The go-to drug for treating symptomatic bradycardia in the field]`
-✅ `The go-to drug for [green: symptomatic bradycardia] in the field.`
-❌ `[amber: You should always monitor the blood pressure after giving this drug]`
-✅ `[amber: Monitor BP after each dose] — especially in volume-depleted patients.`
+```
+❌  [green: The go-to drug for treating symptomatic bradycardia in the field]
+✅  The go-to drug for [green: symptomatic bradycardia] in the field.
 
-### Rules
+❌  [amber: You should always monitor the blood pressure after giving this drug]
+✅  [amber: Monitor BP after each dose] — especially in volume-depleted patients.
+```
 
-- Green, coral, and lavender are strict — use only for their defined category. Blue and amber are discretionary; when in doubt, default to blue.
-- **Color the complete meaningful unit** — the full clinical entity or action phrase — but stop before you're coloring filler words and connector text. `[blue: slowing conduction through the AV node]` ✅. `[blue: It works by slowing conduction through the AV node]` ❌.
 - Every slide needs ≥1 color tag. Don't over-highlight — if every third word is colored, it loses effect.
 - Doses and routes are never tagged (design layer handles them). Teasers are never tagged.
 
