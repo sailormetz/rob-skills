@@ -440,7 +440,7 @@ The CTA is the closing line of the story — brief, practical, direct.
 
 ```
 Save this for your next exam.
-All 70 drugs, one app.
+All EMS drugs, one app.
 Link in bio.
 ```
 ```
