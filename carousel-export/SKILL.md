@@ -1,7 +1,7 @@
 ---
 name: carousel-export
-description: "Emails the finished JPEG carousel slides to Sailor and sends a Telegram ping. Final step in the carousel pipeline. Reads slides from runs/{combo_hash}/slides/, attaches them to an email with the pipeline state as the body, and notifies via Telegram. Called only by carousel-master — never trigger directly."
-version: "1.0.0"
+description: "Emails the finished JPEG carousel slides to Sailor and sends a Telegram ping. Final step in the carousel pipeline. Reads slides from runs/{topic_id}/slides/, attaches them to an email with the pipeline state as the body, and notifies via Telegram. Called only by carousel-master — never trigger directly."
+version: "2.0.0"
 author: rob
 tags: [carousel, export, email, telegram]
 ---
@@ -18,14 +18,14 @@ Called by `carousel-master` at Step 3. Never triggered directly.
 
 ## Inputs
 
-Read from `carousel-pipeline/runs/{combo_hash}/`:
+Read from `carousel-pipeline/runs/{topic_id}/`:
 
 | File | Used for |
 |------|----------|
-| `carousel_pipeline_state.json` | Email body — confirms what ran and the combo |
+| `carousel_pipeline_state.json` | Email body — confirms what ran and the topic |
 | `slides/slide_01.jpg` … `slide_NN.jpg` | Email attachments |
 
-The `combo_hash` comes from carousel-master's run context.
+The `topic_id` comes from carousel-master's run context.
 
 ---
 
@@ -33,15 +33,15 @@ The `combo_hash` comes from carousel-master's run context.
 
 ### 1. Verify slides exist
 
-List files in `runs/{combo_hash}/slides/`. Confirm at least one JPEG is present. If the slides directory is missing or empty, fail immediately — do not send a partial email.
+List files in `runs/{topic_id}/slides/`. Confirm at least one JPEG is present. If the slides directory is missing or empty, fail immediately — do not send a partial email.
 
 ### 2. Send email
 
 - **From:** robtheparamedic@gmail.com
 - **To:** sailormetz@gmail.com
-- **Subject:** `Carousel complete: {combo_hash}`
+- **Subject:** `Carousel complete: {topic_id}`
 - **Body:** Full JSON contents of `carousel_pipeline_state.json`
-- **Attachments:** All JPEGs from `runs/{combo_hash}/slides/`, in slide order
+- **Attachments:** All JPEGs from `runs/{topic_id}/slides/`, in slide order
 
 Use himalaya MML format. Attach each file using `<#part filename=/full/path/to/slide_NN.jpg name=slide_NN.jpg><#/part>`.
 
@@ -49,7 +49,7 @@ Use himalaya MML format. Attach each file using `<#part filename=/full/path/to/s
 
 Send a short message to Sailor on Telegram:
 
-> `{combo_hash}` is done and ready for review.
+> `{topic_id}` is done and ready for review.
 
 Use the `message` tool with `action=send`, `channel=telegram`, `target=8531672710`.
 
@@ -59,6 +59,6 @@ Use the `message` tool with `action=send`, `channel=telegram`, `target=853167271
 
 - Never send email if slides directory is missing or empty. Fail first.
 - Attach slides in order (slide_01 through slide_NN). Do not skip or reorder.
-- Do not write to `carousel_pipeline_state.json` or `carousel_usage_log.json` — carousel-master owns those.
+- Do not write to `carousel_pipeline_state.json` — carousel-master owns that.
 - Do not delete any files — carousel-master handles cleanup after Sailor approves.
 - If the email send fails, log the error and fail the step. Do not send Telegram without a successful email.

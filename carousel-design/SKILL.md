@@ -90,7 +90,6 @@ Construct a single HTML page with all slides using the design system from `refer
 ```html
 <div class="slide">
   <div class="hook-wrap">
-    <div class="hook-eyebrow"><!-- template eyebrow label --></div>
     <h1 class="hook-title"><!-- drug.genericName --></h1>
     <p class="hook-sub"><!-- hook line --></p>
     <p class="hook-teaser teaser"><!-- teaser (if present) --></p>
@@ -173,7 +172,7 @@ Recap lines in the script are formatted as `[color: Label] — description`. Spl
 
 Use the `write` tool to save the assembled page to:
 ```
-carousel-pipeline/runs/{combo_hash}/carousel_render.html
+carousel-pipeline/runs/{topic_id}/carousel_render.html
 ```
 Include the full CSS copied from `references/design_mockup.html` and the progress bar JS in the same file.
 
@@ -212,7 +211,7 @@ Confirm the `slides/` directory exists and contains the expected number of JPEGs
 
 `references/screenshot.js` — Puppeteer script that renders each slide to JPEG.
 
-**Hook eyebrow:** Strategy pending finalization. See notes in Phase 1 of carousel-master.
+
 
 ---
 
@@ -224,4 +223,4 @@ Confirm the `slides/` directory exists and contains the expected number of JPEGs
 - Do not write to `carousel_pipeline_state.json` — carousel-master owns that.
 - Slide filenames are zero-padded two digits: `slide_01.jpg`, not `slide_1.jpg`.
 - The progress bar and footer are always rendered — never omit them.
-- The hook eyebrow rendering is pending finalization — do not implement until carousel-master confirms the strategy.
+- No hook eyebrow — the hook statement drives the frame. Do not add an eyebrow element to slide 1.
