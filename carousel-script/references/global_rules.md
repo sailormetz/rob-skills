@@ -314,30 +314,30 @@ Save this to your study deck. | The complete drug reference is in the bio. | Lin
      *Can you name the three situations where it becomes dangerous?*
 
 [2]  <sectionLabel>Identity</sectionLabel>
-     Fentanyl is a synthetic [blue: opioid analgesic] that works by activating [blue: mu-opioid receptors] in the brain and spinal cord.
+     Fentanyl is a synthetic [blue: opioid analgesic] that works by [blue: activating mu-opioid receptors in the brain and spinal cord].
      It's roughly 100 times more potent than morphine by weight - always dosed in *micrograms*, never milligrams.
-     Fast onset, short duration, and no histamine release. That makes it more hemodynamically stable than morphine, which is why it's the go-to for [green: acute pain] and [green: procedural sedation] in the field.
+     Fast onset, short duration, and [blue: no histamine release]. That makes it more hemodynamically stable than morphine, which is why it's the go-to for [green: acute pain] and [green: procedural sedation] in the field.
      *But that potency comes with specific risks...*
 
 [3]  <sectionLabel>Contraindications</sectionLabel>
      <topicName>Respiratory Depression</topicName>
-     Fentanyl is a [blue: mu-agonist]. Mu receptors suppress respiratory drive. If the patient is already hypoventilating, fentanyl will push them further.
-     [coral: Do not give fentanyl to a patient with respiratory depression] unless you have ventilatory support in place and are prepared to manage the airway.
-     [amber: Have naloxone drawn before you push it.] The risk goes up with any concurrent CNS depressant - alcohol, benzos, other opioids.
+     Fentanyl is a [blue: mu-agonist] - [blue: mu receptors suppress respiratory drive]. If the patient is already hypoventilating, fentanyl will push them further.
+     Do not give fentanyl to a patient with [coral: respiratory depression] unless you have ventilatory support in place and are prepared to manage the airway.
+     [amber: Have naloxone drawn before you push it.] The risk goes up with any concurrent [coral: CNS depressant] - alcohol, benzos, other opioids.
      *Respiratory depression is the expected risk. The next one catches people off guard...*
 
 [4]  <sectionLabel>Adverse Effects</sectionLabel>
      <topicName>Chest Wall Rigidity</topicName>
-     Push fentanyl too fast IV and the chest wall can lock up. The intercostal muscles go rigid. The patient can't breathe and *you can't ventilate them* with a BVM.
+     Push fentanyl too fast IV and [lavender: chest wall rigidity] sets in. The intercostal muscles go rigid. The patient can't breathe and *you can't ventilate them* with a BVM.
      This is not a theoretical risk - it happens with rapid push or high doses.
-     [amber: Treat with naloxone or neuromuscular blockade.] Prevention is simpler: push slowly over 1-2 minutes.
+     [amber: Treat with naloxone or neuromuscular blockade.] Prevention is simpler: [amber: push slowly over 1-2 minutes].
      *There's one more situation where fentanyl gets complicated...*
 
 [5]  <sectionLabel>Precautions</sectionLabel>
      <topicName>Head Injury</topicName>
-     Opioids can raise ICP and mask neurologic findings. In a head injury patient, fentanyl makes your neuro exam less reliable.
+     Opioids can [blue: raise ICP and mask neurologic findings]. In a [coral: head injury] patient, fentanyl makes your neuro exam less reliable.
      This isn't an absolute contraindication - pain itself raises ICP too. But [amber: use the lowest effective dose] and reassess frequently.
-     The goal is pain control without losing your ability to track mental status changes.
+     The goal is pain control without losing your ability to [amber: track mental status changes].
      *Here's the bottom line...*
 
 [6]  <sectionLabel>Synthesis</sectionLabel>
@@ -396,7 +396,7 @@ Save this to your study deck. | The complete drug reference is in the bio. | Lin
 [5]  <sectionLabel>Indications</sectionLabel>
      <topicName>Push Dose Epi</topicName>
      10-20 mcg IV every 2-5 min. Dilute 1:10,000 down to 10 mcg/mL.
-     For the patient who is [green: hemodynamically unstable] but not in arrest. Too sick for a drip setup, not dead enough for 1 mg.
+     For the patient who is [blue: hemodynamically unstable] but not in arrest. Too sick for a drip setup, not dead enough for 1 mg.
      Small boluses of [blue: alpha-1] and [blue: beta-1] to bridge until you get a pressor hanging.
      *There's one more use where epi doesn't even go into a vein...*
 
@@ -456,12 +456,12 @@ Save this to your study deck. | The complete drug reference is in the bio. | Lin
 [4]  <sectionLabel>Dosing</sectionLabel>
      <topicName>IM</topicName>
      0.2 mg/kg IM, max 10 mg. Onset 5-10 min.
-     [blue: Anterolateral thigh], done. No IV needed, no delay — fastest way to get the drug working on arrival.
+     [amber: Anterolateral thigh], done. No IV needed, no delay — fastest way to get the drug working on arrival.
      *There are two other routes worth knowing...*
 
 [5]  <sectionLabel>Dosing</sectionLabel>
      <topicName>IN and IV</topicName>
-     IN: 0.2 mg/kg, max 10 mg, onset 3-5 min. [amber: Split between both nares] — full volume in one nostril causes runoff. Use the [blue: 5 mg/mL] concentration.
+     IN: 0.2 mg/kg, max 10 mg, onset 3-5 min. [amber: Split between both nares] — full volume in one nostril causes runoff. Use the [amber: 5 mg/mL] concentration.
      IV: 0.1 mg/kg, max 4 mg, onset 1-3 min. [blue: Fastest onset], but requires access you may not have on a seizing patient.
      *Once the seizure breaks, your job changes...*
 
