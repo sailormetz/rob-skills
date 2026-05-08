@@ -101,3 +101,4 @@ Then reply NO_REPLY.
 - Follow the schema exactly — no extra fields, no missing required fields
 - Keep `considerations` entries brief and clinically focused — 1–2 sentences each
 - Do not include dosing information anywhere in the entry
+- Never say "one of the most common home medications" or any variant ("commonly prescribed", "frequently encountered", "widely used"). This is a dataset of common home meds — that framing is redundant by definition. Describe what the drug does, not how common it is.
