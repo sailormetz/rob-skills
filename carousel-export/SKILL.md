@@ -39,7 +39,7 @@ List files in `runs/{topic_id}/slides/`. Confirm at least one JPEG is present. I
 
 - **From:** robtheparamedic@gmail.com
 - **To:** sailormetz@gmail.com
-- **Subject:** `Carousel complete: {topic_id}`
+- **Subject:** `Carousel - {topic_id} - {version}` where version is a whole number (1, 2, 3…) tracking how many times this topic has been exported. Read `export_version` from `carousel_pipeline_state.json` — if the field is missing, treat it as version 1. After a successful email send, increment `export_version` in the state file (this is the one exception to the "don't write state" rule).
 - **Body:** Full JSON contents of `carousel_pipeline_state.json`
 - **Attachments:** All JPEGs from `runs/{topic_id}/slides/`, in slide order
 
@@ -59,6 +59,6 @@ Use the `message` tool with `action=send`, `channel=telegram`, `target=853167271
 
 - Never send email if slides directory is missing or empty. Fail first.
 - Attach slides in order (slide_01 through slide_NN). Do not skip or reorder.
-- Do not write to `carousel_pipeline_state.json` — carousel-master owns that.
+- Do not write to `carousel_pipeline_state.json` — carousel-master owns that — **except** for `export_version`, which this skill increments after each successful email.
 - Do not delete any files — carousel-master handles cleanup after Sailor approves.
 - If the email send fails, log the error and fail the step. Do not send Telegram without a successful email.

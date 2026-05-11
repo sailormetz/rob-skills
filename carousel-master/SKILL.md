@@ -145,7 +145,7 @@ On verification failure (Perplexity unreachable, etc.): proceed to checkpoint bu
 
 ### Script Checkpoint
 
-After the script is written and verified, **STOP and wait for Sailor.** Send the script text to Sailor on Telegram. If verification corrected anything, include what was changed and why. Wait for one of:
+After the script is written and verified, **STOP and wait for Sailor.** Send the full script text to Sailor on Telegram — just the script, no preamble or summary (unless verification made corrections, in which case note what changed). Wait for one of:
 
 - **Edits** — Sailor sends changes. Apply them to `carousel_script.md`, then wait again.
 - **Approval** — Sailor says the script is good (e.g. "looks good", "approved", "go"). Proceed to Phase 3.
@@ -166,7 +166,7 @@ On failure: set step 2 to `"error"`, write `error_log`, go to Failure Exit.
 
 ### Design Checkpoint
 
-After slides are rendered, **STOP and wait for Sailor.** Email the slides to Sailor and ping on Telegram. Wait for one of:
+After slides are rendered, **STOP and wait for Sailor.** Email the slides to Sailor (via carousel-export), then send a short Telegram message: `Carousel emailed for {topic_id}.` Wait for one of:
 
 - **Edits** — Sailor wants changes to the script or design. Make the changes, re-render if needed, then wait again.
 - **Approval** — Sailor approves the slides (e.g. "looks good", "approved", "ship it"). Proceed to Phase 4.
@@ -206,6 +206,21 @@ Something went wrong. The pipeline stops here.
 4. Do NOT delete the run folder.
 5. Do NOT update the topic status to `"done"`.
 6. STOP.
+
+---
+
+## Sailor Communication Rules
+
+**Keep notifications minimal. Sailor does NOT want verbose updates during the pipeline.**
+
+| When | What to send (Telegram) |
+|------|------------------------|
+| Pipeline starts | `Running carousel pipeline for {topic_id}.` |
+| Script Checkpoint | Send the full script text — nothing else |
+| Design Checkpoint (after email) | `Carousel emailed for {topic_id}.` |
+| Failure | Error summary only |
+
+**Do NOT send:** progress updates between steps, verification summaries (unless corrections were made), step completion notices, or any other chatter. Three messages total for a clean run: start, script, emailed.
 
 ---
 
