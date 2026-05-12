@@ -220,6 +220,8 @@ Something went wrong. The pipeline stops here.
 | Design Checkpoint (after email) | `Carousel emailed for {topic_id}.` |
 | Failure | Error summary only |
 
+**Always use `message(action=send, channel=telegram, target=8531672710)` explicitly for all Telegram notifications.** Never rely on inbound message context — this pipeline runs in isolated cron sessions with no active chat context.
+
 **Do NOT send:** progress updates between steps, verification summaries (unless corrections were made), step completion notices, or any other chatter. Three messages total for a clean run: start, script, emailed.
 
 ---
