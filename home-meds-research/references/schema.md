@@ -1,6 +1,6 @@
-# Home Medications Schema
+# Home Medications Schema v2
 
-Full reference for home medication entries in `home-meds/home_meds.js`.
+Full reference for home medication entries.
 
 **Source of truth.** This file defines the contract between data and front-end for the home medications dataset.
 
@@ -14,12 +14,13 @@ Every field is filtered through one lens: **a paramedic on a scene, looking at a
 
 **Include:**
 - What the drug is and what condition it treats
-- How it works (enough to understand what it's doing to the patient's physiology)
-- Adverse effects and precautions relevant to EMS encounters
-- Overdose considerations when clinically significant (e.g., antidepressants, insulin, digoxin)
+- What comorbidities and other medications to expect
+- Overdose/toxicity findings when clinically relevant
+- Precautions relevant to prehospital care
 
 **Exclude:**
 - Dosing, routes, onset, duration — the medic is not administering this drug
+- Mechanism of action details
 - In-hospital monitoring parameters, titration protocols, or discharge instructions
 - Rare adverse effects with no prehospital relevance
 
@@ -31,7 +32,7 @@ Every field is filtered through one lens: **a paramedic on a scene, looking at a
 
 Every entry is verified against authoritative sources before being committed. Use in this order:
 
-1. **DailyMed** (dailymed.nlm.nih.gov) — FDA official drug labeling. Primary source for MOA, adverse effects, and drug class.
+1. **DailyMed** (dailymed.nlm.nih.gov) — FDA official drug labeling. Primary source for adverse effects and drug class.
 2. **StatPearls** (statpearls.com) — peer-reviewed, continuously updated. Good for clinical context and EMS-relevant considerations.
 3. **Lexicomp / Epocrates** — drug interactions, renal/hepatic considerations, adverse effect profiles.
 4. **UpToDate** — when deeper clinical context is needed.
@@ -44,9 +45,9 @@ All text in this dataset is written for a paramedic audience. Follow these rules
 
 - **Clinical and direct.** State what the drug does, what matters, and why. No editorializing, no hype words, no figurative language.
 - **Concrete over vague.** Don't write "may cause cardiovascular effects" — write "causes hypotension and bradycardia."
-- **Plain pharmacology.** Assume the reader knows basic A&P and pharmacology (receptors, drug classes, vital sign implications). Don't define terms like "vasodilation" or "antagonist." But do connect mechanism to clinical effect when the link isn't obvious.
-- **One idea per statement.** Don't chain sentences with semicolons or dashes. Each bullet or array entry should make one point.
-- **No dosing information anywhere.** The medic is not administering these drugs. Dose-related language (mg amounts, titration, tapering) does not belong in any field.
+- **Plain pharmacology.** Assume the reader knows basic A&P and pharmacology (receptors, drug classes, vital sign implications). Don't define terms like "vasodilation" or "antagonist."
+- **One idea per statement.** Each array entry should make one point.
+- **No dosing information anywhere.** The medic is not administering these drugs.
 
 ---
 
@@ -54,16 +55,18 @@ All text in this dataset is written for a paramedic audience. Follow these rules
 
 ```js
 {
-  id: "lisinopril",              // lowercase, hyphenated generic name — must be unique
-  summary: "",                   // 1–2 sentences: what it is + why patients take it (see Summary section)
-  genericName: "",               // Proper-case generic name as it appears on labeling
-  tradeNames: [],                // Array of trade name strings — critical, medics read bottle labels
-  category: [],                  // Clinical groupings for filtering (see Category Enums)
-  classes: [],                   // Pharmacological classes (see Classes section)
-  source: "",                    // Primary data source (see Source Values)
-  moa: [],                       // Mechanism of action (see MOA section)
-  patientIndications: [],        // Why patients are prescribed this drug — simple string array
-  considerations: []             // Adverse effects, EMS precautions, overdose if relevant — HTML strings
+  id: "",                  // lowercase, hyphenated generic name — must be unique
+  genericName: "",            // proper-case generic name
+  tradeNames: [],           // brand names
+  category: [],            // clinical groupings for filtering (see Category Enums)
+  classes: [],             // pharmacological class keys (snake_case, from drug_classes.js)
+  sources: [],             // data sources used (see Source Values)
+  indications: [],         // max 5 — why patients are prescribed this drug
+  comorbidities: [],       // max 5 — conditions the patient likely also has
+  polypharmacy: [],        // max 5 — other drugs the patient is likely also taking
+  overdoseToxicity: [],    // max 5 — signs/symptoms of toxicity (null if not clinically relevant)
+  precautions: [],         // max 5 — clinical risks and cautions for prehospital care
+  summary: ""              // 2–4 sentences — prehospital rapid-recall prose
 }
 ```
 
@@ -92,30 +95,6 @@ Lowercase, hyphenated generic name. This is the primary key for the dataset.
 
 ---
 
-### `summary`
-
-| | |
-|---|---|
-| **Type** | `string` |
-| **Required** | Yes |
-
-A quick-recognition field. 1–2 sentences: what the drug is (class) and what patients take it for. No mechanism (that belongs in `moa`). No EMS flags or adverse effects (that belongs in `considerations`). No HTML. Plain text only.
-
-The summary should match the style of the EMS drug summaries — concise and direct.
-
-**Do:**
-- `"An ACE inhibitor used for hypertension, heart failure, and diabetic nephropathy. One of the most commonly prescribed blood pressure medications."`
-- `"A cardioselective beta-1 blocker used for hypertension, angina, heart failure, and rate control in atrial fibrillation."`
-- `"An atypical antipsychotic used for schizophrenia, bipolar disorder, and as an off-label sleep aid. Very commonly seen on home med lists."`
-
-**Don't:**
-- Mechanism in the summary: `"Blocks the conversion of angiotensin I to angiotensin II..."` — that's what `moa` is for
-- EMS flags in the summary: `"Expect hypotension in the field..."` — that's what `considerations` is for
-- Vague clinical language: `"May cause cardiovascular effects."`
-- Dosing information
-
----
-
 ### `genericName`
 
 | | |
@@ -123,10 +102,9 @@ The summary should match the style of the EMS drug summaries — concise and dir
 | **Type** | `string` |
 | **Required** | Yes |
 
-Proper-case generic name as it appears on drug labeling.
+The generic name only. No brand names, no extra descriptors.
 
-**Do:**
-- `"Lisinopril"`, `"Metoprolol"`, `"Valproic Acid"`, `"Hydrocodone/Acetaminophen"`
+**Example:** `"Carvedilol"`, `"Lisinopril"`, `"Valproic Acid"`
 
 ---
 
@@ -137,14 +115,12 @@ Proper-case generic name as it appears on drug labeling.
 | **Type** | `string[]` |
 | **Required** | Yes (use `[]` if none) |
 
-Array of trade name strings. One entry per distinct brand. Medics frequently encounter brand names on bottles — this field is what allows them to map an unfamiliar label back to a known drug.
+All common brand names for this drug, including extended-release or combination formulations where the base drug is the same. Medics frequently encounter brand names on bottles — this field maps an unfamiliar label back to a known drug.
 
-**Do:**
-- `["Zestril", "Prinivil"]`
+**Examples:**
+- `["Coreg", "Coreg CR"]`
 - `["Lopressor", "Toprol-XL"]`
-- `["Coumadin", "Jantoven"]`
-- `["Norco", "Vicodin"]` — combination drugs list all major brand names
-- `[]` — if no widely recognized brand names exist
+- `["Norco", "Vicodin"]`
 
 ---
 
@@ -158,29 +134,22 @@ Array of trade name strings. One entry per distinct brand. Medics frequently enc
 
 Array of clinical groupings for front-end filtering. A drug appears under every category it belongs to.
 
-Categories describe **what type of condition the patient is being treated for** — not pharmacological class. Pharmacological class belongs in `classes`.
+Categories describe **what type of condition the patient is being treated for** — not pharmacological class.
 
 #### Category Enums
 
 | Value | Definition |
 |-------|------------|
-| `"Cardiovascular"` | Drugs used to manage blood pressure, heart rate, heart failure, angina, or cardiac rhythm in the outpatient setting. Includes ACE inhibitors, ARBs, beta blockers, calcium channel blockers, nitrates, and cardiac glycosides. |
-| `"Anticoagulation"` | Drugs that reduce clotting or platelet aggregation. Includes warfarin, DOACs (apixaban, rivaroxaban), and antiplatelets (clopidogrel, aspirin when used for cardiovascular prevention). Kept separate from Cardiovascular because the primary EMS implication is bleeding risk and reversal awareness. |
-| `"Pulmonary"` | Drugs used to manage chronic respiratory conditions. Includes maintenance inhalers, bronchodilators, inhaled corticosteroids, and leukotriene modifiers for asthma and COPD. |
-| `"Endocrine"` | Drugs that manage hormonal or metabolic conditions. Includes insulin, oral hypoglycemics, thyroid agents, and chronic corticosteroids. |
-| `"Neurological"` | Drugs used to manage chronic neurological conditions. Includes anticonvulsants, antiparkinsonian agents, and migraine prophylaxis. |
-| `"Psychiatric"` | Drugs used to manage mental health conditions. Includes antidepressants (SSRIs, SNRIs, TCAs, MAOIs), antipsychotics, mood stabilizers, anxiolytics, and sedative-hypnotics. Kept as its own category because overdose is the dominant EMS concern for this class. |
-| `"Pain & Anti-inflammatory"` | Drugs used for chronic pain, inflammation, or musculoskeletal conditions. Includes home opioids, NSAIDs, muscle relaxants, and disease-modifying agents when used for pain. |
-| `"GI"` | Drugs used to manage gastrointestinal conditions. Includes PPIs, H2 blockers, antiemetics, laxatives, and antidiarrheals when relevant to EMS context. |
+| `"Cardiovascular"` | Blood pressure, heart rate, heart failure, angina, or cardiac rhythm. |
+| `"Anticoagulation"` | Clotting reduction or platelet aggregation. Separate from Cardiovascular because primary EMS implication is bleeding risk. |
+| `"Pulmonary"` | Chronic respiratory conditions — inhalers, bronchodilators, inhaled corticosteroids. |
+| `"Endocrine"` | Hormonal or metabolic conditions — insulin, oral hypoglycemics, thyroid agents. |
+| `"Neurological"` | Chronic neurological conditions — anticonvulsants, antiparkinsonian agents. |
+| `"Psychiatric"` | Mental health — antidepressants, antipsychotics, mood stabilizers, anxiolytics, sedative-hypnotics. |
+| `"Pain & Anti-inflammatory"` | Chronic pain, inflammation, musculoskeletal — opioids, NSAIDs, muscle relaxants. |
+| `"GI"` | Gastrointestinal — PPIs, H2 blockers, antiemetics. |
 
 **Rule:** Include every category that applies. List the most EMS-relevant category first.
-
-**Examples:**
-- **Metoprolol:** `["Cardiovascular"]`
-- **Warfarin:** `["Anticoagulation", "Cardiovascular"]`
-- **Aspirin (home dose for ACS prevention):** `["Anticoagulation", "Cardiovascular"]`
-- **Amitriptyline:** `["Psychiatric", "Pain & Anti-inflammatory"]` — used for both depression and neuropathic pain
-- **Prednisone:** `["Endocrine", "Pulmonary"]` — chronic steroid use
 
 ---
 
@@ -192,236 +161,57 @@ Categories describe **what type of condition the patient is being treated for** 
 | **Required** | Yes |
 | **Min length** | 1 |
 
-Array of pharmacological class strings. These are the drug's formal classifications — not its clinical use category (that's `category`).
+Array of snake_case class keys referencing the centralized `DRUG_CLASSES` lookup in `data/drug_classes.js`. Always use keys from that file. If a new class is needed, add it to `drug_classes.js` first.
 
-Use the preferred spellings below. Add new values only when none of the existing ones fit.
-
-#### Preferred Class Spellings
-
-```
-ACE Inhibitor              Alpha-1 Antagonist         Antiarrhythmic
-Anticoagulant              Anticonvulsant             Antidepressant
-Antihistamine              Antihypertensive           Antiplatelet
-Antipsychotic              Antipyretic                ARB
-Atypical Antipsychotic     Benzodiazepine             Beta Blocker
-Beta-2 Agonist             Biguanide                  Bronchodilator
-Calcium Channel Blocker    Cardiac Glycoside          Cholinesterase Inhibitor
-Corticosteroid             Direct Oral Anticoagulant (DOAC)
-Direct Thrombin Inhibitor  Factor Xa Inhibitor        GLP-1 Agonist
-H2 Blocker                 Hormone                    Hypnotic
-Insulin                    LABA                       LAMA
-Leukotriene Modifier       Loop Diuretic              MAOI
-Mood Stabilizer            Muscle Relaxant            Nitrate
-NSAID                      Opioid Analgesic           Potassium-Sparing Diuretic
-Proton Pump Inhibitor      Sedative                   SGLT2 Inhibitor
-SNRI                       SSRI                       Statin
-Sulfonylurea               TCA                        Thiazide Diuretic
-Thyroid Agent              Vasodilator                Vitamin K Antagonist
-```
+**Key format:** All lowercase, words separated by underscores (e.g. `"calcium_channel_blocker"`, `"beta2_agonist"`). The front-end resolves display names via `DRUG_CLASSES[key]`.
 
 **Examples:**
-- **Lisinopril:** `["ACE Inhibitor", "Antihypertensive"]`
-- **Metoprolol:** `["Beta Blocker", "Antihypertensive", "Antiarrhythmic"]`
-- **Amlodipine:** `["Calcium Channel Blocker", "Antihypertensive"]`
-- **Warfarin:** `["Anticoagulant", "Vitamin K Antagonist"]`
-- **Sertraline:** `["Antidepressant", "SSRI"]`
-- **Amitriptyline:** `["Antidepressant", "TCA"]`
+- `["beta_blocker", "antihypertensive", "antiarrhythmic"]`
+- `["ace_inhibitor", "antihypertensive"]`
+- `["ssri", "antidepressant"]`
+- `["opioid_analgesic", "analgesic"]`
 
 ---
 
-### `source`
-
-| | |
-|---|---|
-| **Type** | `string` |
-| **Required** | Yes |
-
-Primary data source for this entry. Gives credibility and audit trail.
-
-#### Source Values
-
-| Value | When to use |
-|-------|-------------|
-| `"DailyMed"` | Primary source is FDA official drug labeling |
-| `"StatPearls"` | Primary source is StatPearls |
-| `"Mixed"` | Compiled from multiple sources |
-
----
-
-### `moa`
-
-| | |
-|---|---|
-| **Type** | `Array<MOAEntry>` |
-| **Required** | Yes |
-| **Min length** | 1 |
-
-Array of mechanism-of-action entries. Each entry describes one mechanism by which the drug produces its clinical effects. Uses the same MOA structure as the EMS drug schema for front-end compatibility.
-
-#### MOA Entry Object
-
-```js
-{
-  brief: "",      // Required — HTML string rendered as body text on the card
-  target: {       // Required — structured data rendered as scannable elements
-    name: "",     // What the drug binds to / acts on
-    action: "",   // How it acts on the target (see Action Enum)
-    result: "",   // Clinical effect — rendered bold green, most prominent element
-    system: ""    // Biological system (see System Enum)
-  }
-}
-```
-
-#### Front-End Rendering (how it displays on the card)
-
-Each MOA entry renders top-to-bottom:
-1. **Target name** — highlighted mono-font tag (color-coded by system) + **action badge** — uppercase label next to it (e.g. "BLOCKS", "INHIBITS")
-2. **Result** — bold green text, 15px, font-weight 700. The most visually prominent line.
-3. **Brief** — smaller body text (14px, regular weight). The prose explanation.
-
-#### `brief`
-
-| | |
-|---|---|
-| **Type** | `string` |
-| **Required** | Yes |
-
-One to two sentences tying the mechanism together in prose. This renders as supporting body text below the target and result. Written for a reader who understands pharmacology — don't define basic terms.
-
-**Style rules:**
-- Clinical and direct. State the mechanism plainly, connect it to the patient outcome.
-- No figurative language. No hype words.
-- HTML is allowed but rarely needed — the target/result structure already provides visual emphasis.
-
-#### `target`
-
-| | |
-|---|---|
-| **Type** | `object` |
-| **Required** | Yes |
-
-Structured metadata about what the drug acts on and what happens.
-
-##### `target.name`
-What the drug binds to or acts on. Free text.
-- `"Beta-1 adrenergic receptors"`, `"Angiotensin-converting enzyme (ACE)"`, `"HMG-CoA reductase"`, `"COX-1 & COX-2"`, `"Mu-opioid receptors"`
-
-##### `target.action`
-How the drug acts on the target. Use the Action Enum below.
-
-##### `target.result`
-The clinical effect for the patient. This is the most visually prominent text on the card (bold green). Keep it short and scannable — use ↓/↑ arrows for physiological changes.
-- `"↓ HR, ↓ contractility, ↓ BP"`, `"↓ Vasoconstriction, ↓ aldosterone, ↓ preload/afterload"`, `"Bronchodilation"`
-
-##### `target.system`
-Biological system classification. Use the System Enum below.
-
-#### Action Enum
-
-| Value | Meaning | Example |
-|-------|---------|--------|
-| `"agonist"` | Activates the receptor | Albuterol → β-2 |
-| `"antagonist"` | Blocks by competing for the receptor | Losartan → AT1 |
-| `"blocker"` | Blocks an ion channel or transporter | Amlodipine → Ca²⁺ channels |
-| `"enhancer"` | Potentiates existing activity | Gabapentin → GABA (indirect) |
-| `"inhibitor"` | Inhibits an enzyme | Lisinopril → ACE |
-| `"stimulator"` | Triggers a biological process | Semaglutide → GLP-1 |
-| `"stabilizer"` | Stabilizes cell membranes | Phenytoin → Na⁺ channels |
-| `"donor"` | Provides a substrate | Levothyroxine → T4 |
-| `"modulator"` | Modulates receptor/channel activity without simple on/off | Lithium → multiple second messengers |
-
-#### System Enum
-
-| Value | Covers |
-|-------|--------|
-| `"adrenergic"` | α and β receptors — metoprolol, carvedilol, clonidine, tamsulosin |
-| `"cholinergic"` | Muscarinic / nicotinic receptors — ipratropium, donepezil |
-| `"opioid"` | μ, κ, δ receptors — hydrocodone, oxycodone, tramadol |
-| `"GABAergic"` | GABA-A receptors — alprazolam, clonazepam, zolpidem, gabapentin |
-| `"serotonergic"` | 5-HT receptors — SSRIs, SNRIs, trazodone |
-| `"dopaminergic"` | D1/D2 receptors — aripiprazole, haloperidol, quetiapine |
-| `"glutamatergic"` | NMDA receptors — memantine |
-| `"ion-channel"` | Na⁺/K⁺/Ca²⁺ channels — amlodipine, diltiazem, phenytoin |
-| `"enzymatic"` | COX, PDE, HMG-CoA reductase, ACE, etc. — aspirin, statins, lisinopril, omeprazole |
-| `"metabolic"` | Glucose / glycogen / thyroid pathways — insulin, metformin, levothyroxine |
-| `"inflammatory"` | Glucocorticoid receptors — prednisone |
-| `"coagulation"` | Clotting cascade — warfarin, apixaban, clopidogrel |
-| `"histaminergic"` | H1/H2 receptors — diphenhydramine, cetirizine, loratadine |
-| `"hormonal"` | Hormone receptors — oral contraceptives, testosterone |
-| `"purinergic"` | Adenosine / uric acid pathways — allopurinol, colchicine |
-| `"other"` | Mechanisms that don't fit above — hydroxychloroquine, methotrexate |
-
-#### When to use multiple MOA entries
-
-For most home meds, **a single MOA entry is sufficient.** Use multiple entries only when the drug acts through genuinely distinct mechanisms that produce different clinical effects.
-
-```js
-// Single mechanism — most drugs
-moa: [
-  {
-    brief: "Inhibits HMG-CoA reductase, the rate-limiting enzyme in cholesterol synthesis, reducing hepatic cholesterol production and increasing LDL receptor expression.",
-    target: {
-      name: "HMG-CoA reductase",
-      action: "inhibitor",
-      result: "↓ Hepatic cholesterol synthesis, ↑ LDL receptor expression",
-      system: "enzymatic"
-    }
-  }
-]
-
-// Multiple mechanisms — carvedilol (alpha + beta blocker)
-moa: [
-  {
-    brief: "Blocks alpha-1 adrenergic receptors, causing vasodilation and reducing peripheral vascular resistance.",
-    target: {
-      name: "Alpha-1 adrenergic receptors",
-      action: "antagonist",
-      result: "Vasodilation, ↓ SVR",
-      system: "adrenergic"
-    }
-  },
-  {
-    brief: "Non-selectively blocks beta-1 and beta-2 adrenergic receptors, slowing heart rate and reducing myocardial contractility.",
-    target: {
-      name: "Beta-1 & Beta-2 adrenergic receptors",
-      action: "antagonist",
-      result: "↓ HR, ↓ contractility",
-      system: "adrenergic"
-    }
-  }
-]
-```
-
----
-
-### `patientIndications`
+### `sources`
 
 | | |
 |---|---|
 | **Type** | `string[]` |
 | **Required** | Yes |
-| **Min length** | 1 |
 
-Simple string array listing why patients are prescribed this drug. Condition names only — no dose structures, no routes, no clinical detail.
+Array of data sources used for this entry.
 
-This tells the medic what the patient's underlying medical history likely includes when they see this drug on a med list.
+#### Source Values
 
-**Do:**
-- `["Hypertension", "Heart failure", "Diabetic nephropathy", "Post-MI"]`
-- `["Atrial fibrillation", "DVT prophylaxis", "Mechanical heart valve"]`
-- `["Type 2 diabetes"]`
-- `["Depression", "Generalized anxiety disorder", "OCD", "PTSD"]`
+| Value | When to use |
+|-------|-------------|
+| `"DailyMed"` | FDA official drug labeling |
+| `"StatPearls"` | StatPearls |
+| `"Lexicomp"` | Lexicomp / Epocrates |
+| `"UpToDate"` | UpToDate |
 
-**Don't:**
-- Clinical notes or caveats — keep it to condition names only
-- Dosing information
-- `["Used for hypertension and heart failure"]` — not a label, just list the conditions
-
-**Style:** Capitalize each word. Use the condition name a paramedic would recognize.
+**Example:** `["DailyMed", "StatPearls"]`
 
 ---
 
-### `considerations`
+### `indications`
+
+| | |
+|---|---|
+| **Type** | `string[]` |
+| **Required** | Yes |
+| **Max length** | 5 |
+
+The medical conditions this drug is prescribed to treat or prevent. Each entry should be a short condition label — not a sentence. 1–4 words. Use parentheticals for specificity where needed.
+
+**Good:** `"Heart failure (HFrEF)"`, `"Hypertension"`, `"Post-MI LV dysfunction"`
+
+**Bad:** `"Used to treat high blood pressure and reduce cardiac workload"`
+
+---
+
+### `comorbidities`
 
 | | |
 |---|---|
@@ -429,37 +219,79 @@ This tells the medic what the patient's underlying medical history likely includ
 | **Required** | Yes (use `[]` if none) |
 | **Max length** | 5 |
 
-Array of HTML strings. **Maximum 5 entries.** These are the 5 most important things a medic needs to know about this drug on a call. This is where adverse effects, EMS precautions, and overdose information live — merged into one field because the distinction between "adverse effect" and "precaution" doesn't hold up well in the prehospital context.
+Medical conditions commonly seen alongside this medication — conditions the patient likely also has, based on the typical population prescribed this drug. Short medical terms only, 1–4 words per entry.
 
-Prioritize ruthlessly. If a drug has 10 possible considerations, pick the 5 that are most likely to matter on a prehospital call. The goal is signal, not completeness.
+**Good:** `"Coronary artery disease"`, `"Type 2 diabetes"`, `"COPD / asthma"`
 
-#### What belongs here
+**Bad:** `"Patients often have underlying lung disease due to smoking history"`
 
-- Adverse effects with prehospital relevance (hypotension, bradycardia, hypoglycemia, sedation, bleeding)
-- Drug-class precautions a medic should know on a call
-- Overdose findings and EMS relevance — **only include when the drug has significant overdose concern** (TCAs, digoxin, insulin, lithium, beta blockers, CCBs, opioids) or when overdose produces a recognizable prehospital toxidrome. Skip it for drugs where overdose is uncommon or non-specific (lisinopril, statins, PPIs).
-- Narrow therapeutic index warnings
+---
 
-#### What doesn't belong here
+### `polypharmacy`
 
-- Chronic monitoring parameters (INR levels, renal function labs, therapeutic drug levels)
-- In-hospital treatment beyond EMS scope
-- Rare adverse effects with no prehospital significance
-- Dosing information
+| | |
+|---|---|
+| **Type** | `string[]` |
+| **Required** | Yes (use `[]` if none) |
+| **Max length** | 5 |
 
-#### Style rules
+Other medications this patient is commonly also taking. Every entry must follow one of exactly two formats:
 
-- **One idea per entry.** Each string is one clinically actionable statement — one to two sentences max.
-- **Be specific.** Don't say "cardiac effects" — say "bradycardia and hypotension."
-- **Connect to the call.** Don't just name the adverse effect — explain why it matters in the field when non-obvious.
-- **Overdose entries** should describe what the medic would see (presentation/toxidrome) and any prehospital-relevant management. Don't detail in-hospital protocols.
+- **Single drug:** the generic drug name only — use when the drug is specific enough to stand alone
+- **Class with examples:** the class name followed by the most common examples in parentheses — use when the class is the meaningful unit
+
+No sentences. No explanations.
+
+**Good — single drug:** `"Digoxin"`
+
+**Good — class with examples:** `"ACE Inhibitors (lisinopril, enalapril, ramipril)"`
+
+**Bad:** `"Patients are often on a diuretic to manage fluid retention"`
+
+**Bad:** `"Furosemide (a loop diuretic)"`
+
+---
+
+### `overdoseToxicity`
+
+| | |
+|---|---|
+| **Type** | `string[]` or `null` |
+| **Required** | No — use `null` if overdose is not a realistic field scenario |
+| **Max length** | 5 |
+
+Signs and symptoms of acute toxicity or supratherapeutic dosing. Each entry is a brief clinical finding — a short noun phrase, optionally with a tight qualifier. **No treatments, no mechanisms, no explanatory clauses.**
+
+Only populate this field for drugs where overdose/toxicity is something a medic might actually encounter in the field. Use `null` for drugs where OD is essentially a non-issue.
+
+**Good:** `"Severe bradycardia, including high-degree AV block"`, `"Hypotension, often refractory"`
+
+**Bad:** `"Hypotension — worsened by concurrent alpha-1 blockade, more severe than typical beta blocker OD"`
+
+---
+
+### `precautions`
+
+| | |
+|---|---|
+| **Type** | `string[]` (HTML strings) |
+| **Required** | Yes (use `[]` if none) |
+| **Max length** | 5 |
+
+The most important clinical precautions a paramedic must be aware of for this drug. Each entry is an HTML string capturing one high-level precaution as a brief, concrete statement. **Focus on the risk or concern itself — do not include treatments, interventions, or management steps. No action items.**
+
+**Good:** `'<span class="hl hl--drug">Atropine</span> is largely ineffective for carvedilol-induced <span class="hl hl--ci">bradycardia</span>.'`
+
+**Good:** `'Compensatory <span class="hl hl--warn">tachycardia is blunted</span> — a normal HR does not rule out shock.'`
+
+**Bad:** `"If the patient is bradycardic, atropine will not work — move to transcutaneous pacing and glucagon early."`
 
 #### HTML Highlight Spans
 
 Use inline `<span>` tags with highlight classes to visually emphasize key clinical terms. These are rendered by the front-end with colored text.
 
 | CSS Class | Color | Use for |
-|-----------|-------|---------|
+|-----------|-------|--------|
 | `hl hl--general` | Blue | General information, neutral emphasis |
 | `hl hl--drug` | Amber | Drug names, trade names |
 | `hl hl--indication` | Green | Indications, desired therapeutic effects |
@@ -471,40 +303,30 @@ Use inline `<span>` tags with highlight classes to visually emphasize key clinic
 
 **Rules:**
 - Use highlights to draw the eye to the clinically critical term — not to decorate every noun.
-- One to two highlights per consideration entry is typical. Don't over-highlight.
+- One to two highlights per entry is typical. Don't over-highlight.
 - The highlight should be on the key clinical term itself (the adverse effect, the drug name, the condition), not on filler words.
 
-**Do:**
-```js
-'Can cause significant <span class="hl hl--ci">hypotension</span>, especially in volume-depleted patients or those on multiple antihypertensives.'
-```
+#### Priority order
 
-**Don't:**
-```js
-'<span class="hl hl--general">Can cause</span> <span class="hl hl--ci">significant hypotension</span>, <span class="hl hl--warn">especially</span> in volume-depleted patients.'
-// Too many highlights — cluttered and distracting
-```
+1. Life-threatening drug interactions (flag prehospital drugs explicitly)
+2. Vital sign effects this drug causes or masks
+3. Adverse events and clinical red flags
+4. General cautions relevant to prehospital care that don't fit the above
 
-#### Examples
+#### Prehospital drug interactions
 
-```js
-// Lisinopril — no overdose section (uncommon, non-specific)
-considerations: [
-  'Can cause significant <span class="hl hl--ci">hypotension</span>, especially in volume-depleted patients or those on multiple antihypertensives — a dry, hot patient on lisinopril is at high risk.',
-  '<span class="hl hl--ci">Angioedema</span> is a rare but life-threatening adverse effect — rapid swelling of the lips, tongue, or airway. Manage as an airway emergency. More common in Black patients.',
-  'A persistent dry cough is the most common adverse effect — patients often report it. Not dangerous, but important for history-taking.',
-  'Does not cause reflex tachycardia — heart rate will not reliably compensate for hypotension.'
-]
+Flag any interactions with these commonly paramedic-administered drugs: epinephrine, atropine, adenosine, amiodarone, lidocaine, dopamine, norepinephrine, nitroglycerin, aspirin, dextrose, naloxone, fentanyl, morphine, ketamine, midazolam, ondansetron, glucagon, calcium gluconate.
 
-// Metoprolol — 5 entries max, overdose included (beta blocker OD is a known prehospital emergency)
-considerations: [
-  'Causes <span class="hl hl--ci">bradycardia</span> and <span class="hl hl--ci">hypotension</span> — worsened by calcium channel blockers, digoxin, or clonidine.',
-  'Masks <span class="hl hl--warn">tachycardia</span> in hypoglycemia, hypovolemia, and anaphylaxis — a normal heart rate does not mean stable.',
-  'Patients may be <span class="hl hl--warn">unresponsive to standard epi doses</span> during anaphylaxis.',
-  'Abrupt discontinuation causes <span class="hl hl--ci">rebound hypertension</span> and can precipitate angina or MI.',
-  '<span class="hl hl--ci">Overdose</span>: severe bradycardia, hypotension, heart block. Prehospital: atropine, glucagon, calcium, transcutaneous pacing.'
-]
-```
+---
+
+### `summary`
+
+| | |
+|---|---|
+| **Type** | `string` |
+| **Required** | Yes |
+
+2–4 sentences combining prehospital relevance and key paramedic takeaways. This should read as rapid-recall prose — clinically precise, practically focused. Cover what this drug signals about the patient, what it changes about your assessment, and the highest-stakes concern on scene.
 
 ---
 
@@ -512,105 +334,83 @@ considerations: [
 
 ```js
 function validateHomeMed(entry) {
-  // Rule 1: id is required, lowercase, hyphenated
-  if (!entry.id || entry.id !== entry.id.toLowerCase()) {
-    error(`Invalid id: "${entry.id}"`);
-  }
-
-  // Rule 2: summary is required
-  if (!entry.summary) error(`Missing summary for ${entry.id}`);
-
-  // Rule 3: genericName is required
-  if (!entry.genericName) error(`Missing genericName for ${entry.id}`);
-
-  // Rule 4: tradeNames must be an array
-  if (!Array.isArray(entry.tradeNames)) error(`tradeNames must be array for ${entry.id}`);
-
-  // Rule 5: category must be non-empty array of valid enums
   const validCategories = [
     "Cardiovascular", "Anticoagulation", "Pulmonary", "Endocrine",
     "Neurological", "Psychiatric", "Pain & Anti-inflammatory", "GI"
   ];
-  if (!Array.isArray(entry.category) || entry.category.length === 0) {
-    error(`category must be non-empty array for ${entry.id}`);
-  }
-  entry.category.forEach(c => {
-    if (!validCategories.includes(c)) error(`Invalid category "${c}" for ${entry.id}`);
-  });
+  const validSources = ["DailyMed", "StatPearls", "Lexicomp", "UpToDate"];
 
-  // Rule 6: classes must be non-empty array
-  if (!Array.isArray(entry.classes) || entry.classes.length === 0) {
-    error(`classes must be non-empty array for ${entry.id}`);
+  // id: required, lowercase, hyphenated
+  if (!entry.id || entry.id !== entry.id.toLowerCase()) error(`Invalid id: "${entry.id}"`);
+
+  // genericName: required
+  if (!entry.genericName) error(`Missing genericName for ${entry.id}`);
+
+  // tradeNames: must be array
+  if (!Array.isArray(entry.tradeNames)) error(`tradeNames must be array for ${entry.id}`);
+
+  // category: non-empty array of valid enums
+  if (!Array.isArray(entry.category) || entry.category.length === 0) error(`category must be non-empty array for ${entry.id}`);
+  entry.category.forEach(c => { if (!validCategories.includes(c)) error(`Invalid category "${c}" for ${entry.id}`); });
+
+  // classes: non-empty array
+  if (!Array.isArray(entry.classes) || entry.classes.length === 0) error(`classes must be non-empty array for ${entry.id}`);
+
+  // sources: non-empty array of valid values
+  if (!Array.isArray(entry.sources) || entry.sources.length === 0) error(`sources must be non-empty array for ${entry.id}`);
+  entry.sources.forEach(s => { if (!validSources.includes(s)) error(`Invalid source "${s}" for ${entry.id}`); });
+
+  // indications: non-empty array, max 5
+  if (!Array.isArray(entry.indications) || entry.indications.length === 0) error(`indications must be non-empty array for ${entry.id}`);
+  if (entry.indications.length > 5) error(`indications exceeds 5-entry max for ${entry.id}`);
+
+  // comorbidities: array, max 5
+  if (!Array.isArray(entry.comorbidities)) error(`comorbidities must be array for ${entry.id}`);
+  if (entry.comorbidities.length > 5) error(`comorbidities exceeds 5-entry max for ${entry.id}`);
+
+  // polypharmacy: array, max 5
+  if (!Array.isArray(entry.polypharmacy)) error(`polypharmacy must be array for ${entry.id}`);
+  if (entry.polypharmacy.length > 5) error(`polypharmacy exceeds 5-entry max for ${entry.id}`);
+
+  // overdoseToxicity: null or array max 5
+  if (entry.overdoseToxicity !== null) {
+    if (!Array.isArray(entry.overdoseToxicity)) error(`overdoseToxicity must be array or null for ${entry.id}`);
+    if (entry.overdoseToxicity.length > 5) error(`overdoseToxicity exceeds 5-entry max for ${entry.id}`);
   }
 
-  // Rule 7: source must be a valid value
-  const validSources = ["DailyMed", "StatPearls", "Mixed"];
-  if (!validSources.includes(entry.source)) {
-    error(`Invalid source "${entry.source}" for ${entry.id}`);
-  }
+  // precautions: array, max 5
+  if (!Array.isArray(entry.precautions)) error(`precautions must be array for ${entry.id}`);
+  if (entry.precautions.length > 5) error(`precautions exceeds 5-entry max for ${entry.id}`);
 
-  // Rule 8: moa must be non-empty array, each entry must have brief + target
-  if (!Array.isArray(entry.moa) || entry.moa.length === 0) {
-    error(`moa must be non-empty array for ${entry.id}`);
-  }
-  entry.moa.forEach((m, i) => {
-    if (!m.brief) error(`moa entry ${i} missing brief for ${entry.id}`);
-    if (!m.target) error(`moa entry ${i} missing target for ${entry.id}`);
-    if (m.target) {
-      if (!m.target.name) error(`moa entry ${i} target missing name for ${entry.id}`);
-      if (!m.target.action) error(`moa entry ${i} target missing action for ${entry.id}`);
-      if (!m.target.result) error(`moa entry ${i} target missing result for ${entry.id}`);
-      if (!m.target.system) error(`moa entry ${i} target missing system for ${entry.id}`);
-    }
-  });
-
-  // Rule 9: patientIndications must be non-empty array of strings
-  if (!Array.isArray(entry.patientIndications) || entry.patientIndications.length === 0) {
-    error(`patientIndications must be non-empty array for ${entry.id}`);
-  }
-
-  // Rule 10: considerations must be an array, max 5 entries
-  if (!Array.isArray(entry.considerations)) {
-    error(`considerations must be array for ${entry.id}`);
-  }
-  if (entry.considerations.length > 5) {
-    error(`considerations exceeds 5-entry max for ${entry.id}`);
-  }
+  // summary: required
+  if (!entry.summary) error(`Missing summary for ${entry.id}`);
 }
 ```
 
 ---
 
-## Full Entry Example — Lisinopril
+## Full Entry Example — Carvedilol
 
 ```js
 {
-  id: "lisinopril",
-  summary: "An ACE inhibitor used for hypertension, heart failure, and diabetic nephropathy. One of the most commonly prescribed blood pressure medications.",
-  genericName: "Lisinopril",
-  tradeNames: ["Zestril", "Prinivil"],
+  id: "carvedilol",
+  genericName: "Carvedilol",
+  tradeNames: ["Coreg", "Coreg CR"],
   category: ["Cardiovascular"],
-  classes: ["ACE Inhibitor", "Antihypertensive"],
-  source: "DailyMed",
-  moa: [
-    {
-      brief: "Inhibits ACE, blocking the conversion of angiotensin I to angiotensin II — reducing vasoconstriction and aldosterone release, which lowers blood pressure and decreases cardiac preload and afterload.",
-      target: {
-        name: "Angiotensin-converting enzyme (ACE)",
-        action: "inhibitor",
-        result: "↓ Vasoconstriction, ↓ aldosterone, ↓ preload/afterload",
-        system: "enzymatic"
-      }
-    }
+  classes: ["beta_blocker", "alpha1_antagonist", "antihypertensive"],
+  sources: ["DailyMed", "StatPearls"],
+  indications: ["Heart failure (HFrEF)", "Hypertension", "Post-MI LV dysfunction"],
+  comorbidities: ["Coronary artery disease", "Type 2 diabetes", "Chronic kidney disease", "Atrial fibrillation"],
+  polypharmacy: ["ACE Inhibitors (lisinopril, enalapril)", "Loop diuretics (furosemide)", "Statins (atorvastatin)", "Aspirin", "Digoxin"],
+  overdoseToxicity: ["Severe bradycardia, including high-degree AV block", "Hypotension, often refractory", "Bronchospasm", "Hypoglycemia (masked symptoms)", "Altered mental status progressing to seizures"],
+  precautions: [
+    '<span class="hl hl--drug">Atropine</span> is largely ineffective for carvedilol-induced <span class="hl hl--ci">bradycardia</span>.',
+    'Compensatory <span class="hl hl--warn">tachycardia is blunted</span> — a normal HR does not rule out shock.',
+    '<span class="hl hl--drug">Epinephrine</span> response is diminished — standard doses may not restore BP or HR in <span class="hl hl--ci">anaphylaxis</span>.',
+    'Non-selective beta blockade can trigger <span class="hl hl--ci">bronchospasm</span> in COPD/asthma patients.',
+    'Abrupt discontinuation risks <span class="hl hl--ci">rebound hypertension</span> and acute coronary syndrome.'
   ],
-  patientIndications: ["Hypertension", "Heart failure", "Diabetic nephropathy", "Post-MI"],
-  considerations: [
-    'Can cause significant <span class="hl hl--ci">hypotension</span>, especially in volume-depleted patients or those on multiple antihypertensives.',
-    '<span class="hl hl--ci">Angioedema</span> is a rare but life-threatening adverse effect — rapid swelling of the lips, tongue, or airway. Manage as an airway emergency.',
-    'A persistent dry cough is the most common adverse effect — not dangerous, but useful for history-taking.',
-    'Does not cause reflex tachycardia — heart rate will not reliably compensate for hypotension.',
-    'Hyperkalemia risk, especially in renal impairment or when combined with potassium-sparing diuretics.'
-  ]
+  summary: "Carvedilol is a combined alpha-beta blocker used in patients with significant cardiac disease — heart failure, post-MI, and hypertension. Its presence on a med list signals a patient with limited cardiac reserve who cannot compensate for hemodynamic stress. Expect blunted heart rate responses across the board: shock, hypoglycemia, and anaphylaxis will all present atypically. Standard prehospital interventions (atropine, epinephrine) have reduced efficacy."
 }
 ```
 
@@ -621,14 +421,16 @@ function validateHomeMed(entry) {
 ```
 {
   id                    // lowercase, hyphenated — unique key
-  summary               // 1–2 sentences — what it is + why patients take it (plain text, no HTML)
-  genericName           // proper-case generic name
-  tradeNames[]          // brand names found on bottles
-  category[]            // clinical grouping enums (8 values — see Category Enums)
-  classes[]             // pharmacological classes (see Preferred Class Spellings)
-  source                // "DailyMed" | "StatPearls" | "Mixed"
-  moa[]                 // { brief, target: { name, action, result, system } }
-  patientIndications[]  // why patients take it — condition name strings
-  considerations[]      // HTML strings — max 5, the most important things a medic needs to know
+  genericName              // proper-case generic name
+  tradeNames[]           // brand names found on bottles
+  category[]            // clinical grouping enums (8 values)
+  classes[]             // pharmacological class keys (snake_case, from drug_classes.js)
+  sources[]             // ["DailyMed", "StatPearls", "Lexicomp", "UpToDate"]
+  indications[]         // max 5 — why patients take it (short labels)
+  comorbidities[]       // max 5 — conditions patient likely also has
+  polypharmacy[]        // max 5 — other drugs patient is likely also taking
+  overdoseToxicity[]    // max 5 or null — toxicity findings only
+  precautions[]         // max 5 — risks and cautions, no treatments
+  summary               // 2–4 sentences — prehospital rapid-recall prose
 }
 ```
