@@ -7,9 +7,12 @@ description: >
   carousel-char-count, carousel-design, carousel-export.
   Each run lives in its own folder keyed by topic ID.
   Trigger this skill when the message is "run carousel pipeline", "create a new
-  carousel", or "approve carousel" / "done with [topic_id]" (to finalize a
-  completed run). This skill is the only entry point for carousel generation —
-  never run the subskills directly.
+  carousel", "approve carousel" / "done with [topic_id]" (to finalize a
+  completed run), script/slide approvals (e.g. "looks good", "approved",
+  "script approved", "slides look good"), or edit requests for in-progress
+  carousels (e.g. "trim slide 3", "change the hook", "redo the design").
+  This skill is the only entry point for carousel generation — never run
+  the subskills directly.
 ---
 
 # Carousel Master — Pipeline Orchestrator
