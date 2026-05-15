@@ -3,7 +3,8 @@ name: carousel-master
 description: >
   Orchestrates the full TikTok carousel generation pipeline for the paramedic
   pharmacology account. Selects a topic from carousel_topics.json, then runs
-  three subskills in sequence: carousel-script, carousel-design, carousel-export.
+  subskills in sequence: carousel-script, carousel-script-verification,
+  carousel-char-count, carousel-design, carousel-export.
   Each run lives in its own folder keyed by topic ID.
   Trigger this skill when the message is "run carousel pipeline", "create a new
   carousel", or "approve carousel" / "done with [topic_id]" (to finalize a
@@ -139,13 +140,21 @@ On success, immediately run the `carousel-script-verification` subskill:
 - Auto-corrects confirmed errors. Flags ambiguous claims.
 - Returns a summary of any corrections made.
 
-On script success + verification complete: set step 1 status to `"complete"`, write state file to disk.
+On script success + verification complete: run the `carousel-char-count` subskill.
+
+**Char count enforcement** (`carousel-char-count`):
+- Programmatically counts characters per slide (markup stripped, whitespace normalized).
+- Any slide over 400 characters is rewritten with minimum edits to fit under the limit.
+- Re-counts to verify. Up to 3 trim cycles before flagging for manual review.
+- Returns a summary of what was trimmed (if anything).
+
+On char count pass (all slides ≤ 400): set step 1 status to `"complete"`, write state file to disk.
 On script failure: set step 1 to `"error"`, write `error_log`, go to Failure Exit.
-On verification failure (Perplexity unreachable, etc.): proceed to checkpoint but include a warning that verification could not complete.
+On verification failure (Perplexity unreachable, etc.): proceed to char count and checkpoint but include a warning that verification could not complete.
 
 ### Script Checkpoint
 
-After the script is written and verified, **STOP and wait for Sailor.** Send the full script text to Sailor on Telegram — just the script, no preamble or summary (unless verification made corrections, in which case note what changed). Wait for one of:
+After the script is written, verified, and char-count enforced, **STOP and wait for Sailor.** Send the full script text to Sailor on Telegram — just the script, no preamble or summary (unless verification made corrections, in which case note what changed). Wait for one of:
 
 - **Edits** — Sailor sends changes. Apply them to `carousel_script.md`, then wait again.
 - **Approval** — Sailor says the script is good (e.g. "looks good", "approved", "go"). Proceed to Phase 3.
