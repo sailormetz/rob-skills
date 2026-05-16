@@ -1,4 +1,18 @@
-# Drug Carousel — Structure & Format
+# Drug Carousel Guide
+
+Everything needed to write a drug carousel: how it sounds, how it's formatted, and worked examples. Load this file in full before writing any slides.
+
+---
+
+## Voice
+
+Write like a sharp colleague explaining — not a textbook, lecture, or bullet list. Complete sentences that sound natural spoken aloud. If it reads like a PowerPoint slide, rewrite it.
+
+- Direct and confident. No hedging ("you might want to consider"). State the information.
+- Don't talk down ("did you know?", "fun fact!"). Don't over-explain.
+- Don't repeat pharmacokinetic details already established on an earlier slide unless clinically actionable here.
+- One emoji max per carousel (hook or CTA only).
+- **Em dashes:** sparingly, for emphasis only. Not for chaining clauses. If a period or comma works, use that.
 
 ---
 
@@ -17,7 +31,6 @@ The design layer applies color to specific words and phrases. Signal highlights 
 | `[lavender: ...]` | `#7c6ddd` | **What the drug can cause.** Clinically significant adverse effects worth remembering. |
 
 **Examples:**
-
 ```
 Adenosine works by [blue: slowing conduction through the AV node].
 Also known as [amber: Lopressor]. [amber: Hold if HR is below 60.]
@@ -40,6 +53,16 @@ Watch for [lavender: bronchospasm] in patients with reactive airway disease.
 ```
 [lavender: Bradycardia] can occur, especially with *rapid push*.
 ```
+
+---
+
+## Planning
+
+Before writing any slides, answer these three questions:
+
+1. **What's the through-line?** One sentence: what does the viewer understand at the end that they didn't at the start?
+2. **What's the context bridge?** What minimum drug context does the reader need before the dive? (Usually 1 slide: name, class, what it's for. More for obscure drugs.)
+3. **What's the arc?** Map the progression from hook → identity → dive → synthesis → CTA. Each slide earns its place.
 
 ---
 
@@ -85,16 +108,6 @@ Use when 3+ named items were covered — scannable summary before CTA. Format: `
      [color: Category] — brief summary
      *One more slide...*
 ```
-
----
-
-## Planning
-
-Before writing any slides, answer these three questions:
-
-1. **What's the through-line?** One sentence: what does the viewer understand at the end that they didn't at the start?
-2. **What's the context bridge?** What minimum drug context does the reader need before the dive? (Usually 1 slide: name, class, what it's for. More for obscure drugs.)
-3. **What's the arc?** Map the progression from hook → identity → dive → synthesis → CTA. Each slide earns its place.
 
 ---
 
@@ -159,6 +172,26 @@ Two parts: **frame** (statement naming drug + angle) and **question** (makes rea
 ## Auto-Generated (don't write these)
 
 Progress bar, footer ("ROB THE PARAMEDIC"), hook/CTA layout — all handled by the design layer.
+
+---
+
+## CTA Format
+
+Two lines, plain text, no color tags. Engagement question first, resource hint second.
+
+**Line 1 — Engagement (rotate one per carousel):**
+```
+Which drug should I break down next? Drop it in the comments.
+What's the drug that trips you up the most? Tell me in the comments.
+Did I miss anything? Call it out in the comments.
+```
+
+**Line 2 — Resource hint (always the same):**
+```
+I've broken down every drug in EMS just like this. Link in bio.
+```
+
+No "save this," no app name, no sales language.
 
 ---
 

@@ -29,16 +29,15 @@ For shift-story type: the opener and lesson in structured form.
 
 **Step 3 — Load the reference files:**
 - `skills/carousel-script/references/global_rules.md` — universal rules for all carousels
-- `skills/carousel-script/references/{type}/voice.md` — voice, tone, and CTA for this type
-- `skills/carousel-script/references/{type}/structure.md` — slide format, labels, limits, and hook rules for this type
+- `skills/carousel-script/references/{type}/guide.md` — voice, tone, formatting rules, CTA, and worked examples for this type
 
-Do not begin writing until all five files are read.
+Do not begin writing until all four files are read.
 
 ---
 
 ## Planning
 
-Before writing, plan the carousel. The loaded `structure.md` for this type defines what planning looks like — follow it.
+Before writing, plan the carousel. The loaded `guide.md` for this type defines what planning looks like — follow it.
 
 ---
 
@@ -56,7 +55,7 @@ Write the finished script to `carousel-pipeline/runs/{topic_id}/carousel_script.
 
 ## Rules
 
-- Read all five reference files before writing.
+- Read all four reference files before writing.
 - The pitch/opener guides everything. Don't ignore it.
 - Don't pad to hit a slide count. Short is fine.
 - Don't repeat information across slides — each slide adds something new.
