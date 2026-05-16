@@ -1,6 +1,6 @@
 ---
 name: carousel-char-count
-description: "Counts characters per slide in a carousel script and trims any slide exceeding 400 characters. Runs after carousel-script-verification and before the Script Checkpoint. Strips all markup (color tags, HTML, section tags) and counts raw text + whitespace. Over-limit slides are rewritten by the LLM with minimum edits, then re-counted to verify. Called only by carousel-master — never trigger directly."
+description: "Counts characters per slide in a carousel script and trims any slide exceeding the type's char limit (400 for drug, 200 for shift-story). Reads the limit from selection.type in the pipeline state and passes it to the counting script. Over-limit slides are rewritten with minimum edits, then re-counted to verify. Called only by carousel-master — never trigger directly."
 version: "1.0.0"
 author: rob
 tags: [carousel, validation, char-count, trimming]
@@ -8,7 +8,7 @@ tags: [carousel, validation, char-count, trimming]
 
 # carousel-char-count
 
-Enforces a 400-character limit per slide on carousel scripts. Counts characters programmatically after stripping all markup, then uses LLM rewriting to trim any slide that exceeds the limit.
+Enforces a per-type character limit on carousel scripts (400 for drug, 200 for shift-story). Reads the limit from `selection.type` in the pipeline state, counts characters programmatically after stripping all markup, then uses LLM rewriting to trim any slide that exceeds the limit.
 
 ## Use this skill when
 
@@ -22,9 +22,19 @@ Read from `carousel-pipeline/runs/{topic_id}/`:
 
 | File | Used for |
 |------|----------|
+| `carousel_pipeline_state.json` | Get `selection.type` to determine the char limit |
 | `carousel_script.md` | The script to validate and potentially trim |
 
 The counting script lives at `skills/carousel-char-count/references/count_chars.py`.
+
+## Char Limits by Type
+
+| Type | Limit |
+|------|-------|
+| `drug` | 400 |
+| `shift-story` | 200 |
+
+Read `selection.type` from the pipeline state, look up the limit above, and pass it to the counting script.
 
 ---
 
@@ -46,7 +56,7 @@ Characters are counted **after stripping all markup**:
 ### 1. Run the counting script
 
 ```bash
-python3 skills/carousel-char-count/references/count_chars.py carousel-pipeline/runs/{topic_id}/carousel_script.md
+python3 skills/carousel-char-count/references/count_chars.py carousel-pipeline/runs/{topic_id}/carousel_script.md {char_limit}
 ```
 
 The script outputs a JSON array:
@@ -59,7 +69,7 @@ The script outputs a JSON array:
 ```
 
 - Exit code `0` = all slides pass. Skip to step 4.
-- Exit code `1` = at least one slide over 400 chars. Continue to step 2.
+- Exit code `1` = at least one slide over limit. Continue to step 2.
 
 ### 2. Rewrite over-limit slides
 
@@ -80,7 +90,7 @@ For each slide where `over > 0`:
 Run the counting script again:
 
 ```bash
-python3 skills/carousel-char-count/references/count_chars.py carousel-pipeline/runs/{topic_id}/carousel_script.md
+python3 skills/carousel-char-count/references/count_chars.py carousel-pipeline/runs/{topic_id}/carousel_script.md {char_limit}
 ```
 
 - Exit code `0` = all slides now pass. Continue to step 4.
@@ -90,9 +100,9 @@ python3 skills/carousel-char-count/references/count_chars.py carousel-pipeline/r
 
 Return a brief summary to carousel-master:
 
-- If all slides passed on the first count: `"Char count: all slides under 400."`
-- If trimming was needed: `"Char count: trimmed slide(s) [N, N] to fit under 400. Verified."`
-- If trimming failed after 3 attempts: `"Char count: slide(s) [N] still over 400 after 3 trim attempts. Manual review needed."`
+- If all slides passed on the first count: `"Char count: all slides under {char_limit}."`
+- If trimming was needed: `"Char count: trimmed slide(s) [N, N] to fit under {char_limit}. Verified."`
+- If trimming failed after 3 attempts: `"Char count: slide(s) [N] still over {char_limit} after 3 trim attempts. Manual review needed."`
 
 Do not message Sailor directly — carousel-master handles all communication.
 

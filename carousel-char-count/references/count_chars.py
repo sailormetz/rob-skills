@@ -4,7 +4,7 @@ Count characters per slide in a carousel script markdown file.
 Strips all markup (HTML spans, color tags, section tags) and counts
 raw text + whitespace per slide.
 
-Usage: python3 count_chars.py <path_to_carousel_script.md>
+Usage: python3 count_chars.py <path_to_carousel_script.md> <char_limit>
 
 Output: JSON array of { slide, chars, over } objects.
 Exit code 0 = all slides pass, 1 = at least one slide over limit.
@@ -13,8 +13,6 @@ Exit code 0 = all slides pass, 1 = at least one slide over limit.
 import re
 import sys
 import json
-
-CHAR_LIMIT = 400
 
 
 def strip_markup(text: str) -> str:
@@ -59,11 +57,12 @@ def count_slide_chars(slide_text: str) -> int:
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python3 count_chars.py <carousel_script.md>", file=sys.stderr)
+    if len(sys.argv) < 3:
+        print("Usage: python3 count_chars.py <carousel_script.md> <char_limit>", file=sys.stderr)
         sys.exit(2)
 
     script_path = sys.argv[1]
+    char_limit = int(sys.argv[2])
     with open(script_path, 'r') as f:
         script_text = f.read()
 
@@ -73,7 +72,7 @@ def main():
 
     for slide_num, slide_text in slides:
         chars = count_slide_chars(slide_text)
-        over = chars - CHAR_LIMIT if chars > CHAR_LIMIT else 0
+        over = chars - char_limit if chars > char_limit else 0
         results.append({
             "slide": slide_num,
             "chars": chars,
