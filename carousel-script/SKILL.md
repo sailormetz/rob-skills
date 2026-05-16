@@ -1,6 +1,6 @@
 ---
 name: carousel-script
-description: "Writes the slide-by-slide carousel script for a single topic. Reads the drug data and the topic pitch from the run folder, loads global rules, and produces the full carousel text as a markdown file. The pitch defines the angle — there are no rigid templates. Called only by carousel-master — never trigger directly."
+description: "Writes the slide-by-slide carousel script for a single topic. Supports drug and shift-story types. Loads global rules plus per-type voice and structure references, then produces the full script from the pitch or opener. Called only by carousel-master — never trigger directly."
 version: "3.0.0"
 author: rob
 tags: [carousel, script, content, pipeline]
@@ -14,25 +14,31 @@ You are writing one carousel. Read all reference files before writing anything.
 
 ## Inputs
 
-Read these files before writing:
+Follow this order — each step depends on the previous one.
 
-1. `carousel-pipeline/runs/{topic_id}/carousel_pipeline_state.json` — get `selection.topic_id`, `selection.type`, and the pitch/opener/lesson
-2. `carousel-pipeline/runs/{topic_id}/carousel_working_data.json` — drug object (drug type) or opener+lesson (shift-story type)
-3. `skills/carousel-script/references/global_rules.md` — universal rules for all carousels
-4. `skills/carousel-script/references/{type}/voice.md` — voice, tone, and CTA for this carousel type
-5. `skills/carousel-script/references/{type}/structure.md` — slide format, labels, limits, and hook rules for this type
+**Step 1 — Read the pipeline state:**
+`carousel-pipeline/runs/{topic_id}/carousel_pipeline_state.json`
 
-Where `{type}` is `selection.type` from the pipeline state (`drug` or `shift-story`).
+This is the source of truth for the run. Pull `selection.topic_id`, `selection.type`, and the content inputs (`selection.pitch` for drug type; `selection.opener` + `selection.lesson` for shift-story type). You now know the `topic_id` and `type` — use them in every path below.
+
+**Step 2 — Read the working data:**
+`carousel-pipeline/runs/{topic_id}/carousel_working_data.json`
+
+For drug type: the full drug object (doses, indications, contraindications, etc.).
+For shift-story type: the opener and lesson in structured form.
+
+**Step 3 — Load the reference files:**
+- `skills/carousel-script/references/global_rules.md` — universal rules for all carousels
+- `skills/carousel-script/references/{type}/voice.md` — voice, tone, and CTA for this type
+- `skills/carousel-script/references/{type}/structure.md` — slide format, labels, limits, and hook rules for this type
+
+Do not begin writing until all five files are read.
 
 ---
 
-## Planning (do this before writing any slides)
+## Planning
 
-Answer these three questions:
-
-1. **What's the through-line?** One sentence: what does the viewer understand at the end that they didn't at the start?
-2. **What's the context bridge?** What minimum setup does the reader need before the dive?
-3. **What's the arc?** Map the progression from hook → context → dive → synthesis → CTA. Each slide earns its place.
+Before writing, plan the carousel. The loaded `structure.md` for this type defines what planning looks like — follow it.
 
 ---
 
