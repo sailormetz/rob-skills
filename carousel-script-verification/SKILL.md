@@ -25,6 +25,8 @@ Checks the generated carousel script for major clinical inaccuracies before Sail
 
 ## Inputs
 
+This skill runs on `drug` type carousels only. Shift-story carousels skip verification entirely — carousel-master handles that branching.
+
 Read from `carousel-pipeline/runs/{topic_id}/`:
 - `carousel_script.md` — the script to verify
 - `carousel_pipeline_state.json` — for `selection.drug` and `selection.pitch`
